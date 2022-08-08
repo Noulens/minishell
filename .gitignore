@@ -1,3 +1,7 @@
+#other
+*.nfs*
+*.txt
+
 # Prerequisites
 *.d
 
