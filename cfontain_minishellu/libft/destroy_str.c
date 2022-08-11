@@ -19,7 +19,7 @@ void	destroy_str(char **str)
 	i = 0;
 	if (str)
 	{
-		while (str[i] != NULL)
+		while (str[i])
 		{
 			free (str[i]);
 			i++;

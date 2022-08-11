@@ -65,19 +65,18 @@ int main(int argc, char **argv, char **env)
 	(void)argv;
 	(void)argc;
 	(void)env;
-	int status;
-	status = 0;
 	init(&minishell);
 	init_username(&minishell);
 	ft_printf("%s:%s$ ", minishell.username, minishell.pathname);
 	minishell.command.name = readline(0);
 	while (minishell.command.name != NULL)
 	{
-		if (ft_strncmp(minishell.command.name, "exit", 4) == 0)
-			exit(status);
-		if (parse_arg(&minishell.command, env) == 1)
-			destroy_command(&minishell.command);
-		ft_fork(&minishell.command, env);
+		if (ft_builtin(&minishell) == 1)
+		{
+			if (parse_arg(&minishell.command, env) == 1)
+				destroy_command(&minishell.command);
+			ft_fork(&minishell.command, env);
+		}	
 		destroy_command(&minishell.command);
 		ft_printf("%s:%s$ ", minishell.username, minishell.pathname);
 		minishell.command.name = readline(0);

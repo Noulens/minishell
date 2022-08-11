@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Aug 11 13:13:07 2022
+# Make data base, printed on Thu Aug 11 16:45:41 2022
 
 # Variables
 
@@ -37,11 +39,9 @@ GDMSESSION = ubuntu
 # environment
 XMODIFIERS = @im=ibus
 # makefile
-CURDIR := /home/cfontain/Documents/minishell
+CURDIR := /home/cfontain/Documents/minishell/minishell
 # makefile
 SHELL = /bin/sh
-# makefile (from 'Makefile', line 23)
-RM = rm -f
 # environment
 SNAP_DATA = /var/snap/code/102
 # environment
@@ -49,17 +49,15 @@ VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:43042
+JOURNAL_STREAM = 8:33402
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
 SNAP_INSTANCE_NAME = code
 # environment
 SNAP_ARCH = amd64
-# makefile (from 'Makefile', line 1)
-MAKEFILE_LIST :=  Makefile
-# makefile (from 'Makefile', line 15)
-LIB_DIR = ./libft
+# makefile
+MAKEFILE_LIST := 
 # automatic
 @F = $(notdir $@)
 # environment
@@ -71,17 +69,15 @@ MAKELEVEL := 0
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=2a19c2723bf0c8938741cdd462f4e3d7
-# makefile (from 'Makefile', line 21)
-OBJS = ${SRCS:.c=.o} 
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=790862ff57a64d608743c30462f50285
 # environment
-MANAGERPID = 1164
+MANAGERPID = 1201
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 LC_NAME = fr_FR.UTF-8
 # environment
-VSCODE_CWD = /home/cfontain/Documents/minishell
+VSCODE_CWD = /home/cfontain/Documents/minishell/minishell
 # environment
 GSETTINGS_SCHEMA_DIR = /snap/code/102/usr/share/glib-2.0/schemas
 # default
@@ -91,7 +87,7 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/cfontain-OMEN-by-HP-Laptop-15-dc0xxx:@/tmp/.ICE-unix/1394,unix/cfontain-OMEN-by-HP-Laptop-15-dc0xxx:/tmp/.ICE-unix/1394
+SESSION_MANAGER = local/cfontain-OMEN-by-HP-Laptop-15-dc0xxx:@/tmp/.ICE-unix/1426,unix/cfontain-OMEN-by-HP-Laptop-15-dc0xxx:/tmp/.ICE-unix/1426
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -107,7 +103,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 644f6e9a1c2f46dcb3ee5c4616320040
+INVOCATION_ID = 2d894e165c18473497a3e6f7b4b7a884
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/102/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -125,11 +121,11 @@ DISPLAY = :0
 # environment
 SNAP_INSTANCE_KEY = 
 # environment
-PWD = /home/cfontain/Documents/minishell
+PWD = /home/cfontain/Documents/minishell/minishell
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1358
+SSH_AGENT_PID = 1390
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -147,7 +143,7 @@ VSCODE_CODE_CACHE_PATH = /home/cfontain/.config/Code/CachedData/3b889b090b5ad579
 # environment
 LOGNAME = cfontain
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # environment
@@ -176,16 +172,10 @@ MAKE = $(MAKE_COMMAND)
 MAKECMDGOALS := all
 # environment
 QT_IM_MODULE = ibus
-# makefile (from 'Makefile', line 19)
-SRCS = main.c check_path.c str_triple_join.c init.c destroy_all.c parse_command.c username.c fork.c
 # environment
 SNAP_USER_DATA = /home/cfontain/snap/code/102
 # environment
 SHLVL = 1
-# makefile (from 'Makefile', line 17)
-LIBFT = ./libft/libft.a
-# makefile (from 'Makefile', line 25)
-CC = gcc -L/usr/lib/x86_64-linux-gnu 
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # default
@@ -197,11 +187,9 @@ SNAP_REVISION = 102
 # environment
 LC_MONETARY = fr_FR.UTF-8
 # makefile
-.DEFAULT_GOAL := all
+.DEFAULT_GOAL := 
 # environment
 XDG_CURRENT_DESKTOP = Unity
-# makefile (from 'Makefile', line 13)
-NAME = minishell
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -245,15 +233,13 @@ LC_ALL = C
 # environment
 DBUS_STARTER_BUS_TYPE = session
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/c5d68c99_3414_4147_a8f5_f52c533c2157
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/72d7d8fb_81e2_476f_ab30_a57934c49027
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.85
+GNOME_TERMINAL_SERVICE = :1.645
 # default
 SUFFIXES := 
-# makefile (from 'Makefile', line 27)
-FLAGS = -Wall -Wextra -Werror -g 
 # environment
 SNAP_REEXEC = 
 # environment
@@ -273,12 +259,11 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 2032
+VSCODE_PID = 16503
 # environment
-DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=2a19c2723bf0c8938741cdd462f4e3d7
- 
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=790862ff57a64d608743c30462f50285
 # variable set hash-table stats:
-# Load=133/1024=13%, Rehash=0, Collisions=20/164=12%
+# Load=125/1024=12%, Rehash=0, Collisions=18/147=12%
 
 # Pattern-specific Variable Values
 
@@ -286,123 +271,37 @@ DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=2a19c2723bf0c8938741cdd
 
 # Directories
 
-# . (device 2053, inode 919561): 24 files, no impossibilities.
+# . (device 2053, inode 1048587): 6 files, no impossibilities.
 
-# 24 files, no impossibilities in 1 directories.
+# 6 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
-%.o: %.c
-#  recipe to execute (from 'Makefile', line 32):
-		  @${CC} ${FLAGS}  -c $< -o ${<:.c=.o} 
-
-# 1 implicit rules, 0 (0.0%) terminal.
+# No implicit rules.
 
 # Files
 
 # Not a target:
-check_path.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-10 12:47:57.804740662
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-init.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-10 15:16:04.659758999
-#  File has been updated.
-#  Successfully updated.
-
-all: minishell
-#  Phony target (prerequisite of .PHONY).
+all:
 #  Command line target.
-#  Implicit rule search has not been done.
+#  Implicit rule search has been done.
 #  File does not exist.
-#  File has been updated.
-#  Successfully updated.
-
-.PHONY: all clean fclean re
-#  Implicit rule search has not been done.
-#  Modification time never checked.
 #  File has not been updated.
-
-# Not a target:
-main.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-11 12:43:11.156954612
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-parse_command.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-09 16:35:49.786823094
-#  File has been updated.
-#  Successfully updated.
-
-str_triple_join.o: str_triple_join.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'str_triple_join'
-#  Last modified 2022-08-11 12:43:12.156954571
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 32):
-		  @${CC} ${FLAGS}  -c $< -o ${<:.c=.o} 
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-11 12:17:28.197017398
+#  File does not exist.
+ 
 #  File has been updated.
-#  Successfully updated.
+#  Failed to be updated.
 
 # Not a target:
-destroy_all.c:
+makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-11 12:37:25.336968684
-#  File has been updated.
-#  Successfully updated.
-
-minishell: main.o check_path.o str_triple_join.o init.o destroy_all.o parse_command.o username.o fork.o libft/libft.a
-#  Implicit rule search has not been done.
-#  Last modified 2022-08-11 12:43:13.592954513
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 40):
-		  @echo "\033[34m----Compiling----"
-		  @${CC} ${FLAGS} ${OBJS} -L -lm -lreadline -o ${NAME} ${LIBFT} 
-		  @echo "OK"
-
-libft/libft.a:
-#  Implicit rule search has not been done.
-#  Last modified 2022-08-11 12:43:13.568954514
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 35):
-		  @echo "\033[35m----Building libft----"
-		  @make -sC ${LIB_DIR}
-		  @echo "OK"
-
-fclean: clean
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
 #  File does not exist.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 53):
-		  @echo "\033[33m----Cleaning all----"
-		  @${RM} ${NAME}
-		  @${RM} ${LIBFT}
-		  @echo "OK"
-
-fork.o: fork.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'fork'
-#  Last modified 2022-08-11 12:43:12.396954561
 #  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 32):
-		  @${CC} ${FLAGS}  -c $< -o ${<:.c=.o} 
+#  Failed to be updated.
 
 # Not a target:
 .DEFAULT:
@@ -411,114 +310,26 @@ fork.o: fork.c
 #  File has not been updated.
 
 # Not a target:
-str_triple_join.c:
+GNUmakefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-09 16:35:49.786823094
-#  File has been updated.
-#  Successfully updated.
-
-username.o: username.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'username'
-#  Last modified 2022-08-11 12:43:12.348954563
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 32):
-		  @${CC} ${FLAGS}  -c $< -o ${<:.c=.o} 
-
-re: fclean all
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
 #  File does not exist.
-#  File has not been updated.
-
-clean:
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 45):
- 
-		  @echo "\033[31m----Cleaning libft----"
-		  @make clean -sC ${LIB_DIR}
-		  @echo "OK"
-		  @echo "\033[31m----Cleaning objects----"
-		  @${RM} ${OBJS}
-		  @echo "OK"
-
-check_path.o: check_path.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'check_path'
-#  Last modified 2022-08-11 12:43:12.120954573
 #  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 32):
-		  @${CC} ${FLAGS}  -c $< -o ${<:.c=.o} 
-
-init.o: init.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'init'
-#  Last modified 2022-08-11 12:43:12.19695457
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 32):
-		  @${CC} ${FLAGS}  -c $< -o ${<:.c=.o} 
-
-main.o: main.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'main'
-#  Last modified 2022-08-11 12:43:12.072954575
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 32):
-		  @${CC} ${FLAGS}  -c $< -o ${<:.c=.o} 
-
-parse_command.o: parse_command.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'parse_command'
-#  Last modified 2022-08-11 12:43:12.316954565
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 32):
-		  @${CC} ${FLAGS}  -c $< -o ${<:.c=.o} 
-
-# Not a target:
-fork.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-11 12:42:31.996956205
-#  File has been updated.
-#  Successfully updated.
-
-destroy_all.o: destroy_all.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'destroy_all'
-#  Last modified 2022-08-11 12:43:12.236954568
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 32):
-		  @${CC} ${FLAGS}  -c $< -o ${<:.c=.o} 
-
-# Not a target:
-username.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-10 15:40:46.535698699
-#  File has been updated.
-#  Successfully updated.
+#  Failed to be updated.
 
 # files hash-table stats:
-# Load=26/1024=3%, Rehash=0, Collisions=0/79=0%
+# Load=6/1024=1%, Rehash=0, Collisions=0/15=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 44 / storage = 419 B / avg = 9 B
-# current buf: size = 8162 B / used = 419 B / count = 44 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 14 / storage = 134 B / avg = 9 B
+# current buf: size = 8162 B / used = 134 B / count = 14 / avg = 9 B
 
-# strcache performance: lookups = 90 / hit rate = 51%
+# strcache performance: lookups = 17 / hit rate = 17%
 # hash-table stats:
-# Load=44/8192=1%, Rehash=0, Collisions=1/90=1%
-# Finished Make data base on Thu Aug 11 13:13:07 2022
+# Load=14/8192=0%, Rehash=0, Collisions=1/17=6%
+# Finished Make data base on Thu Aug 11 16:45:41 2022
 
  

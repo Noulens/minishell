@@ -16,7 +16,7 @@ LIB_DIR		= ./libft
 
 LIBFT		= ./libft/libft.a
 
-SRCS		= main.c check_path.c str_triple_join.c init.c destroy_all.c parse_command.c username.c fork.c
+SRCS		= main.c check_path.c str_triple_join.c init.c destroy_all.c parse_command.c username.c fork.c ft_builtin.c
 
 OBJS		= ${SRCS:.c=.o} 
 

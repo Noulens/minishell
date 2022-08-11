@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/cfontain/Documents/minishell/minishell'
+make: Leaving directory '/home/cfontain/Documents/minishell/minishell'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+

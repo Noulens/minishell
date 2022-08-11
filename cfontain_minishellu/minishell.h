@@ -65,4 +65,5 @@ void    init_username(t_minishell *minishell);
 int		ft_fork(t_command *command, char **env);
 int		ft_child1(t_command *command, char **env);
 
+int ft_builtin(t_minishell *minishell);
 #endif
