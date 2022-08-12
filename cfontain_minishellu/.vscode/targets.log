@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Aug 11 16:28:21 2022
+# Make data base, printed on Fri Aug 12 11:26:46 2022
 
 # Variables
 
@@ -49,7 +49,7 @@ VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:33402
+JOURNAL_STREAM = 8:35617
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -69,19 +69,21 @@ USERNAME = cfontain
 # environment
 MAKELEVEL := 0
 # environment
+MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
+# environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=790862ff57a64d608743c30462f50285
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=78da21fb49f959d83b3e157762f61c92
 # makefile (from 'Makefile', line 21)
 OBJS = ${SRCS:.c=.o} 
 # environment
-MANAGERPID = 1201
+MANAGERPID = 1207
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 LC_NAME = fr_FR.UTF-8
 # environment
-VSCODE_CWD = /home/cfontain/Documents/minishell/minishell/cfontain minishellu
+VSCODE_CWD = /home/cfontain/Documents/minishell/minishell/cfontain_minishellu
 # environment
 GSETTINGS_SCHEMA_DIR = /snap/code/102/usr/share/glib-2.0/schemas
 # default
@@ -91,7 +93,7 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/cfontain-OMEN-by-HP-Laptop-15-dc0xxx:@/tmp/.ICE-unix/1426,unix/cfontain-OMEN-by-HP-Laptop-15-dc0xxx:/tmp/.ICE-unix/1426
+SESSION_MANAGER = local/cfontain-OMEN-by-HP-Laptop-15-dc0xxx:@/tmp/.ICE-unix/1444,unix/cfontain-OMEN-by-HP-Laptop-15-dc0xxx:/tmp/.ICE-unix/1444
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -107,7 +109,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 2d894e165c18473497a3e6f7b4b7a884
+INVOCATION_ID = bf7e1b53b10f4d8496438a8161578fac
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/102/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -129,7 +131,7 @@ PWD = /home/cfontain/Documents/minishell/minishell/cfontain_minishellu
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1390
+SSH_AGENT_PID = 1408
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -147,7 +149,7 @@ VSCODE_CODE_CACHE_PATH = /home/cfontain/.config/Code/CachedData/3b889b090b5ad579
 # environment
 LOGNAME = cfontain
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # environment
@@ -228,6 +230,8 @@ GDK_BACKEND = x11
 LC_PAPER = fr_FR.UTF-8
 # environment
 QT_ACCESSIBILITY = 1
+# environment
+DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
 # default
 MAKEFILES := 
 # environment
@@ -245,11 +249,11 @@ LC_ALL = C
 # environment
 DBUS_STARTER_BUS_TYPE = session
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/4492948e_7280_48ad_81a7_e1368daa5430
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/58a18dfa_3edb_410c_a89c_641320cf38b7
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.85
+GNOME_TERMINAL_SERVICE = :1.84
 # default
 SUFFIXES := 
 # makefile (from 'Makefile', line 27)
@@ -273,15 +277,15 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 2106
+VSCODE_PID = 2052
 # environment
-DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=790862ff57a64d608743c30462f50285
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=78da21fb49f959d83b3e157762f61c92
+ 
 # variable set hash-table stats:
-# Load=133/1024=13%, Rehash=0, Collisions=20/164=12%
+# Load=135/1024=13%, Rehash=0, Collisions=20/166=12%
 
 # Pattern-specific Variable Values
 
- 
 # No pattern-specific variable values.
 
 # Directories
@@ -344,7 +348,7 @@ parse_command.c:
 str_triple_join.o: str_triple_join.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'str_triple_join'
-#  Last modified 2022-08-11 16:27:37.063599264
+#  Last modified 2022-08-11 16:44:07.583832471
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 32):
@@ -367,7 +371,7 @@ destroy_all.c:
 ft_builtin.o: ft_builtin.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ft_builtin'
-#  Last modified 2022-08-11 16:27:37.243597735
+#  Last modified 2022-08-11 16:44:07.8438273
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 32):
@@ -375,7 +379,7 @@ ft_builtin.o: ft_builtin.c
 
 minishell: main.o check_path.o str_triple_join.o init.o destroy_all.o parse_command.o username.o fork.o ft_builtin.o libft/libft.a
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-11 16:27:38.395587945
+#  Last modified 2022-08-11 16:44:09.083802637
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 40):
@@ -385,7 +389,7 @@ minishell: main.o check_path.o str_triple_join.o init.o destroy_all.o parse_comm
 
 libft/libft.a:
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-11 16:27:38.367588184
+#  Last modified 2022-08-11 16:44:09.055803194
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 35):
@@ -407,7 +411,7 @@ fclean: clean
 fork.o: fork.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'fork'
-#  Last modified 2022-08-11 16:27:37.211598006
+#  Last modified 2022-08-11 16:44:07.811827937
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 32):
@@ -429,7 +433,7 @@ str_triple_join.c:
 username.o: username.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'username'
-#  Last modified 2022-08-11 16:27:37.183598245
+#  Last modified 2022-08-11 16:44:07.775828653
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 32):
@@ -444,7 +448,7 @@ re: fclean all
 # Not a target:
 ft_builtin.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-11 16:13:47.926011673
+#  Last modified 2022-08-11 16:36:45.244127872
 #  File has been updated.
 #  Successfully updated.
 
@@ -464,7 +468,7 @@ clean:
 check_path.o: check_path.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'check_path'
-#  Last modified 2022-08-11 16:27:37.031599535
+#  Last modified 2022-08-11 16:44:07.543833266
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 32):
@@ -473,7 +477,7 @@ check_path.o: check_path.c
 init.o: init.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'init'
-#  Last modified 2022-08-11 16:27:37.091599026
+#  Last modified 2022-08-11 16:44:07.635831437
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 32):
@@ -482,7 +486,7 @@ init.o: init.c
 main.o: main.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'main'
-#  Last modified 2022-08-11 16:27:36.995599841
+#  Last modified 2022-08-11 16:44:07.49583422
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 32):
@@ -491,7 +495,7 @@ main.o: main.c
 parse_command.o: parse_command.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'parse_command'
-#  Last modified 2022-08-11 16:27:37.151598516
+#  Last modified 2022-08-11 16:44:07.731829528
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 32):
@@ -501,14 +505,13 @@ parse_command.o: parse_command.c
 fork.c:
 #  Implicit rule search has been done.
 #  Last modified 2022-08-11 12:42:31.996956205
- 
 #  File has been updated.
 #  Successfully updated.
 
 destroy_all.o: destroy_all.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'destroy_all'
-#  Last modified 2022-08-11 16:27:37.119598788
+#  Last modified 2022-08-11 16:44:07.675830641
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 32):
@@ -535,6 +538,6 @@ username.c:
 # strcache performance: lookups = 96 / hit rate = 51%
 # hash-table stats:
 # Load=47/8192=1%, Rehash=0, Collisions=1/96=1%
-# Finished Make data base on Thu Aug 11 16:28:21 2022
+# Finished Make data base on Fri Aug 12 11:26:46 2022
 
  

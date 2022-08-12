@@ -64,20 +64,21 @@ int main(int argc, char **argv, char **env)
 	t_minishell minishell;
 	(void)argv;
 	(void)argc;
-	(void)env;
 	init(&minishell);
 	init_username(&minishell);
 	ft_printf("%s:%s$ ", minishell.username, minishell.pathname);
 	minishell.command.name = readline(0);
 	while (minishell.command.name != NULL)
 	{
-		if (ft_builtin(&minishell) == 1)
+		if (ft_builtin(&minishell, env) == 1)
 		{
 			if (parse_arg(&minishell.command, env) == 1)
+			{
 				destroy_command(&minishell.command);
+			}	
 			ft_fork(&minishell.command, env);
-		}	
-		destroy_command(&minishell.command);
+		}
+		//destroy_command(&minishell.command);
 		ft_printf("%s:%s$ ", minishell.username, minishell.pathname);
 		minishell.command.name = readline(0);
 	}
