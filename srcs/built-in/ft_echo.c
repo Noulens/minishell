@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:23:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/16 21:07:34 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/16 23:55:28 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	ft_echo(int argc, char **argv)
 {
 	int		option_n;
-	char	c;
 
 	option_n = 0;
 	while (--argc > 0 && (*++argv)[0] == '-')
@@ -30,20 +29,19 @@ int	ft_echo(int argc, char **argv)
 	while (*argv && argc-- > 0)
 	{
 		if (argc > 0)
-			c = ' ';
+			printf("%s ", *argv);
 		else
-			c = '\0';
-		printf("%s%c", *argv, c);
+			printf("%s", *argv);
 		argv++;
 	}
 	if (!option_n)
 		printf("\n");
 	return (SUCCESS);
 }
-/*
+
 int main(int argc, char **argv)
 {
 	ft_echo(argc, argv);
 	return 0;
 }
-*/
+
