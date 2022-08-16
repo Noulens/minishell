@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/16 21:07:04 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/16 21:17:12 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_data
 void	print_welcome_msg(void);
 	/* --- build-in --- */
 int		ft_echo(int argc, char **argv);
+int		ft_pwd(void);
 
 /* This is a minimal set of ANSI/VT100 color codes */
 # define END "\033[0m"
