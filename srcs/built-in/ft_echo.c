@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:23:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/16 23:55:28 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/08/17 00:04:08 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ int	ft_echo(int argc, char **argv)
 		printf("\n");
 	return (SUCCESS);
 }
-
+/*
 int main(int argc, char **argv)
 {
 	ft_echo(argc, argv);
 	return 0;
 }
-
+*/
