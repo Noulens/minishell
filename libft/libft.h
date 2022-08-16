@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:05:08 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/16 14:17:05 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/16 17:27:31 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,6 @@ void	ft_cpy(char *suf, char *p);
 /* Other */
 long	ft_atol(const char *nptr);
 int		ft_atoi_base(const char *str, int base);
-t_int	*ft_lstnewint(int content);
-int		ft_lstsizem(t_int *lst, int n);
 void	ft_free_split(char **tofree);
 
 #endif

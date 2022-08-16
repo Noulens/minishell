@@ -12,4 +12,5 @@
 	* [ ] ctrl-C
 	* [ ] ctrl-D
 	* [ ] ctrl-\
-* ...
+* Divers
+	* [x] welcome msg en ascii

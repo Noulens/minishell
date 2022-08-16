@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/16 15:50:35 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/16 17:46:36 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# define _POSIX_C_SOURCE 199309L
+//# define _POSIX_C_SOURCE 199309L
 # include <sys/types.h>
 # include <signal.h>
 # include <limits.h>
@@ -47,6 +47,10 @@ void	print_welcome_msg(void);
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"
 # define YELLOW "\033[0;33m"
+# define PURPLE "\033[0;35m"
+# define CYAN "\033[0;36m"
+# define WHITE "\033[0;37m"
 # define BLUE "\033[0;34m"
+# define IRED "\033[0;41m" 
 
 #endif
