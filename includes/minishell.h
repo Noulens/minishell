@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/16 14:54:16 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/16 15:50:35 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ typedef struct s_data
 {
 	pid_t	pid_client;
 }	t_data;
+
+/* Protos */
+	/* --- init --- */
+void	print_welcome_msg(void);
 
 /* This is a minimal set of ANSI/VT100 color codes */
 # define END "\033[0m"
