@@ -6,11 +6,11 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:23:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/16 19:55:11 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/16 21:07:34 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 int	ft_echo(int argc, char **argv)
 {
@@ -38,7 +38,7 @@ int	ft_echo(int argc, char **argv)
 	}
 	if (!option_n)
 		printf("\n");
-	return (0);
+	return (SUCCESS);
 }
 /*
 int main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/16 19:58:05 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/16 21:07:04 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,16 @@
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-/* # define _POSIX_C_SOURCE 199309L */
 # include <sys/types.h>
 # include <signal.h>
+# include <linux/limits.h>
 # include <limits.h>
 # include "../libft/libft.h"
 
+/* define macros */
 # define SA_RESTART	0x10000000
+# define SUCCESS 0
+# define FAIL 1
 
 /* Structure signal*/
 typedef struct s_data
