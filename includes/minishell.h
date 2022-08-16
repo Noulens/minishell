@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/16 21:17:12 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/16 23:41:35 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+//# include <readline/readline.h>
+//# include <readline/history.h>
 # include <sys/types.h>
 # include <signal.h>
 # include <linux/limits.h>
