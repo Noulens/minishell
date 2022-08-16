@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/16 17:46:36 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/16 19:58:05 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-//# define _POSIX_C_SOURCE 199309L
+/* # define _POSIX_C_SOURCE 199309L */
 # include <sys/types.h>
 # include <signal.h>
 # include <limits.h>
@@ -40,6 +40,8 @@ typedef struct s_data
 /* Protos */
 	/* --- init --- */
 void	print_welcome_msg(void);
+	/* --- build-in --- */
+int		ft_echo(int argc, char **argv);
 
 /* This is a minimal set of ANSI/VT100 color codes */
 # define END "\033[0m"

@@ -1,7 +1,7 @@
 <!-- Task List -->
 ## TNO
 * Implement :
-	* [ ] echo et l’option -n
+	* [x] echo et l’option -n
 	* [ ] cd uniquement avec un chemin relatif ou absolu
 	* [ ] pwd sans aucune option
 	* [ ] export sans aucune option
