@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:29:21 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/18 15:41:17 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:46:36 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*env_parser(char **envp)
 		{
 			p = ft_substr(p, 0, ft_strlen(p));
 			if (!p)
-				return (write(1, "malloc issue env_parser", 23), NULL);
+				return (write(1, "malloc issue env_parser\n", 24), NULL);
 			break ;
 		}
 	}
@@ -35,45 +35,64 @@ char	*env_parser(char **envp)
 char	**paths_maker(char **envp)
 {
 	char	*path;
-	char	**bin_paths;
+	char	**bin_path;
 	char	*tmp;
+	char	**tmp2;
 	int		i;
 
 	path = env_parser(envp);
 	if (!path)
-		bin_paths = ft_split("/usr/bin", ' ');
+		bin_path = ft_split("/usr/bin", ' ');
 	else
-		bin_paths = ft_split(path + 5, ':');
+		bin_path = ft_split(path + 5, ':');
 	free(path);
+	if (!bin_path)
+		return (NULL);
 	i = -1;
-	while (bin_paths[++i])
+	while (bin_path[++i])
 	{
-		tmp = bin_paths[i];
-		bin_paths[i] = ft_strjoin(bin_paths[i], "/");
+		tmp = bin_path[i];
+		tmp2 = bin_path;
+		bin_path[i] = ft_strjoin(bin_path[i], "/");
+		if (!bin_path[i])
+			return (ft_free_split(tmp2), NULL);
 		free(tmp);
 	}
-	return (bin_paths);
+	return (bin_path);
 }
 
-char	*cmd_check(char **bin_paths, char *cmd)
+char	*cmd_check(char **bin_path, char *cmd)
 {
 	char	*tmp;
 	int		i;
-	
+
+	if (!bin_path || !*bin_path)
+		return (NULL);
 	i = -1;
-	while (bin_paths[++i])
+	while (bin_path[++i])
 	{
-		tmp = ft_strjoin(bin_paths[i], cmd);
+		tmp = ft_strjoin(bin_path[i], cmd);
 		if (access(tmp, F_OK | X_OK) == 0)
-			return (ft_free_split(bin_paths), tmp);
+			return (ft_free_split(bin_path), tmp);
 		else
 			free(tmp);
 	}
-	return (write(1, "command not found", 17), NULL);
+	return (ft_free_split(bin_path), NULL);
 }
 
 int	main(int argc, char **argv, char **envp)
 {
+	char	*cmd_path;
 
+	if (argc > 1)
+	{
+		cmd_path = cmd_check(paths_maker(envp), argv[1]);
+		if (!cmd_path)
+		{
+			perror(cmd_path);
+			return (-1);
+		}
+		execve(cmd_path, ++argv, envp);
+	}
 	return (0);
 }
