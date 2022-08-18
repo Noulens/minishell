@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/16 23:41:35 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/08/18 17:29:25 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# define _POSIX_C_SOURCE 199309L
 # include <stdio.h>
 # include <string.h>
 # include <stdlib.h>
@@ -21,8 +22,8 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdio.h>
-//# include <readline/readline.h>
-//# include <readline/history.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 # include <sys/types.h>
 # include <signal.h>
 # include <linux/limits.h>
