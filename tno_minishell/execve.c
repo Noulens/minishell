@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:29:21 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/18 19:36:40 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/18 19:42:16 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*env_parser(char *env_var)
 
 	p = NULL;
 	env_ptr = getenv(env_var);
+	if (!env_ptr)
+		return (NULL);
 	p = ft_substr(env_ptr, 0, ft_strlen(env_ptr));
 		if (!p)
 			return (write(1, "malloc issue env_parser\n", 24), NULL);
@@ -82,7 +84,6 @@ int	main(int argc, char **argv, char **envp)
 		cmd_path = cmd_check(paths_maker(), argv[1]);
 		if (!cmd_path)
 		{
-			perror(cmd_path);
 			return (-1);
 		}
 		execve(cmd_path, ++argv, envp);
