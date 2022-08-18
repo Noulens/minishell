@@ -6,33 +6,26 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:29:21 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/18 18:11:03 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/18 19:36:40 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-char	*env_parser(char **envp)
+char	*env_parser(char *env_var)
 {
 	char	*p;
+	char	*env_ptr;
 
-	while (*envp)
-	{
-		p = ft_strnstr(*envp, "PATH=", 5);
+	p = NULL;
+	env_ptr = getenv(env_var);
+	p = ft_substr(env_ptr, 0, ft_strlen(env_ptr));
 		if (!p)
-			++envp;
-		else
-		{
-			p = ft_substr(p, 0, ft_strlen(p));
-			if (!p)
-				return (write(1, "malloc issue env_parser\n", 24), NULL);
-			break ;
-		}
-	}
+			return (write(1, "malloc issue env_parser\n", 24), NULL);
 	return (p);
 }
 
-char	**paths_maker(char **envp)
+char	**paths_maker(void)
 {
 	char	*path;
 	char	**bin_path;
@@ -40,11 +33,11 @@ char	**paths_maker(char **envp)
 	char	**tmp2;
 	int		i;
 
-	path = env_parser(envp);
+	path = env_parser("PATH");
 	if (!path)
 		bin_path = ft_split("/usr/bin", ' ');
 	else
-		bin_path = ft_split(path + 5, ':');
+		bin_path = ft_split(path, ':');
 	free(path);
 	if (!bin_path)
 		return (NULL);
@@ -86,7 +79,7 @@ int	main(int argc, char **argv, char **envp)
 
 	if (argc > 1)
 	{
-		cmd_path = cmd_check(paths_maker(envp), argv[1]);
+		cmd_path = cmd_check(paths_maker(), argv[1]);
 		if (!cmd_path)
 		{
 			perror(cmd_path);
