@@ -6,85 +6,59 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 18:08:38 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/06/15 17:24:28 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/05/10 16:28:17 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_strl(char *str)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		i;
+	int		len;
+	char	*p;
+	char	*char_ptr;
+
+	len = ft_strlen(s1) + ft_strlen(s2);
+	p = (char *)malloc(sizeof(char) * len + 1);
+	if (!p)
+		return (NULL);
+	char_ptr = p;
+	while (*s1)
+		*p++ = *s1++;
+	while (*s2)
+		*p++ = *s2++;
+	*p = 0;
+	return (char_ptr);
+}
+
+/*#include <stdio.h>
+#include <stdlib.h>
+
+size_t	ft_strlen(const char *s)
+{
+	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (*(s + i))
 		++i;
 	return (i);
 }
 
-static int	ft_size(char **str, int size)
+int	main(void)
 {
-	int	i;
-	int	j;
-	int	k;
+	char	s1[] = "Niiiiiiiiiiiiiiiiiiiiiiiiiiiice";
+	char	s2[] = "join";
 
-	i = 0;
-	k = 0;
-	while (i < size)
-	{
-		j = 0;
-		while (str[i][j] != '\0')
-		{
-			++j;
-			++k;
-		}
-		++i;
-	}
-	return (k);
-}
+	printf("%s", ft_strjoin(s1, s2));
+	return (0);
+}*/
 
-static void	ft_supercat(char *dest, char **str, char *sep, int size)
+/*#include <stdio.h>
+
+char *ft_strjoin(int size, char **strs, char *sep);
+
+int	main(int argc, char **argv)
 {
-	int	i;
-	int	j;
-	int	k;
-	int	l;
-
-	i = 0;
-	k = 0;
-	while (i < size)
-	{
-		j = 0;
-		while (str[i][j] != '\0')
-		{
-			dest[k++] = str[i][j++];
-		}
-		if (i < size - 1)
-		{
-			l = 0;
-			while (sep[l])
-			{
-				dest[k++] = sep[l++];
-			}
-		}
-		++i;
-	}
-	dest[k] = 0;
-}
-
-char	*ft_strjoin(int size, char **strs, char *sep)
-{
-	char	*sct;
-	int		total;
-	int		len_sep;
-
-	if (size == 0 || !strs)
-		return (NULL);
-	total = ft_size(strs, size);
-	len_sep = ft_strl(sep);
-	sct = (char *)malloc(total + (size - 1) * len_sep + 1);
-	if (!sct)
-		return (NULL);
-	ft_supercat(sct, strs, sep, size);
-	return (sct);
-}
+	printf("./ex03/output___said___this___is___a___success :\n");
+	printf("%s\n",  ft_strjoin(argc, argv, "___"));
+}*/

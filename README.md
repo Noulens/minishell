@@ -1,5 +1,8 @@
 <!-- Task List -->
 ## TNO
+* Garbage collector :
+	* liste chainee avec un lst_add_back du pointeur a chaque malloc et un free final de la lst a la fin.
+	* Inutile d'y ajouter les ptr des que l'on sait qu'ils vont etre free dans la foulee.
 * Implement :
 	* [x] echo et l’option -n
 	* [ ] cd uniquement avec un chemin relatif ou absolu
