@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/19 18:33:08 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/19 19:01:10 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 int	main(int argc, char **argv, char **envp)
 {
-	;
+	pid_t	the_pid;
+	
 }
