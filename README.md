@@ -17,3 +17,4 @@
 	* [ ] ctrl-\
 * Divers
 	* [x] welcome msg en ascii
+	* [ ] $? -> faire une variable static int qui enregistre la valeur de retour du dernier pipe
