@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/18 17:29:25 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/19 16:14:32 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include <signal.h>
 # include <linux/limits.h>
 # include <limits.h>
+# include <errno.h>
 # include "../libft/libft.h"
 
 /* define macros */

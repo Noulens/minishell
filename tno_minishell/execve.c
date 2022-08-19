@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:29:21 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/18 19:42:16 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/19 18:30:35 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,12 @@ int	main(int argc, char **argv, char **envp)
 
 	if (argc > 1)
 	{
-		cmd_path = cmd_check(paths_maker(), argv[1]);
+		if (access(argv[1], F_OK | X_OK) == 0)
+			cmd_path = argv[1];
+		else
+			cmd_path = cmd_check(paths_maker(), argv[1]);
 		if (!cmd_path)
-		{
 			return (-1);
-		}
 		execve(cmd_path, ++argv, envp);
 	}
 	return (0);

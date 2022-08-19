@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   welcome_message.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 15:34:55 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/16 23:44:44 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/08/19 18:43:03 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void	print_welcome_msg(void)
 {
 	printf("\n"WHITE);
-
 	printf("░▒░    ░░▓  ░ ▒░     ▒▒░▓▒▒▓▒ ▒ ░ ▒ ░  ▒░░▒░░░▒░▓      ▒▓     \n");
 	printf("███╗   ███╗██╗███╗   ██╗██╗██████╗██╗  ██╗█████╗██╗    ██╗    \n");
 	printf(YELLOW);
@@ -27,11 +26,10 @@ void	print_welcome_msg(void)
 	printf("(cheers)");
 	printf("\n"END);
 }
-
-
+/*
 int main(void)
 {
 	print_welcome_msg();
 	return 0;
 }
-
+*/
