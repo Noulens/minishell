@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/19 16:14:32 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/19 20:23:32 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,38 @@
 # include "../libft/libft.h"
 
 /* define macros */
+
 # define SA_RESTART	0x10000000
 # define SUCCESS 0
 # define FAIL 1
 
 /* Structure signal*/
+
 typedef struct s_data
 {
 	pid_t	pid_client;
 }	t_data;
 
 /* Protos */
-	/* --- init --- */
+
+	/* --- core --- */
+
+char	*prompt_line(void);
+
+	/* --- utilities --- */
+
 void	print_welcome_msg(void);
+int		gb_c(t_list **gb, void *content);
+
 	/* --- build-in --- */
+
 int		ft_echo(int argc, char **argv);
 int		ft_pwd(void);
+int		ft_env(char **envp);
+void	ft_exit(t_list **gb);
 
 /* This is a minimal set of ANSI/VT100 color codes */
+
 # define END "\033[0m"
 # define GREY "\033[0;30m"
 # define RED "\033[0;31m"
@@ -59,6 +73,6 @@ int		ft_pwd(void);
 # define CYAN "\033[0;36m"
 # define WHITE "\033[0;37m"
 # define BLUE "\033[0;34m"
-# define IRED "\033[0;41m" 
+# define IRED "\033[0;41m"
 
 #endif

@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/19 18:43:44 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/19 20:06:55 by tnoulens         ###   ########.fr       */
+/*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
+/*   Updated: 2022/08/19 20:34:49 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../includes/minishell.h"
 
-void	ft_exit(t_list **gb)
+int	main(int argc, char **argv, char **envp)
 {
-	/* mettre fct qui detruit le gqrbqge collector */
-	rl_clear_history();
-	prinft("exit");
-	exit(EXIT_SUCCESS);
+	return (0);
 }

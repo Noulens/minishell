@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 15:34:55 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/19 18:43:03 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/19 19:29:38 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	print_welcome_msg(void)
 {
+	char	*username;
+
 	printf("\n"WHITE);
 	printf("░▒░    ░░▓  ░ ▒░     ▒▒░▓▒▒▓▒ ▒ ░ ▒ ░  ▒░░▒░░░▒░▓      ▒▓     \n");
 	printf("███╗   ███╗██╗███╗   ██╗██╗██████╗██╗  ██╗█████╗██╗    ██╗    \n");
@@ -23,7 +25,11 @@ void	print_welcome_msg(void)
 	printf("██║╚██╔╝██║██║██║╚██╗██║██║╚═══██║██╔══██║██╔══╝██║    ██║    \n");
 	printf("██║ ╚═╝ ██║██║██║ ╚████║██║██████║██║  ██║█████╗██████╗██████╗\n");
 	printf("╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚═════╝╚═╝  ╚═╝╚════╝╚═════╝╚═════╝\n");
-	printf("(cheers)");
+	username = getenv("USER");
+	if (!username)
+		printf("\nWelcome, unknown env -i tester...");
+	else
+		printf ("\nWelcome %s", username);
 	printf("\n"END);
 }
 /*

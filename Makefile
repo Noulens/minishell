@@ -6,27 +6,39 @@
 #    By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/08/19 20:02:21 by tnoulens         ###   ########.fr        #
+#    Updated: 2022/08/19 20:39:29 by tnoulens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= minishell
+NAME		=	minishell
 
-LIB_DIR		= ./libft
+LIB_DIR		=	./libft
 
-LIBFT		= ./libft/libft.a
+LIBFT		=	./libft/libft.a
 
-SRCS		= main.c check_path.c str_triple_join.c init.c destroy_all.c parse_command.c username.c fork.c ft_builtin.c
+MAIN		=	./srcs/main.c
 
-OBJS		= ${SRCS:.c=.o} 
+CORE		=	./srcs/core/prompt.c\
 
-RM		= rm -f
+BUILTIN		=	./srcs/built-in/ft_echo.c\
+				./srcs/built-in/ft_env.c\
+				./srcs/built-in/ft_exit.c\
+				./srcs/built-in/ft_pwd.c\
 
-CC		= gcc -L/usr/lib/x86_64-linux-gnu
+UTILITIES	= 	./srcs/utilities/garbage_collector.c\
+				./srcs/utilities/welcome_message.c\
 
-FLAGS		=   -Wall -Wextra -Werror -g 
+SRCS		=	${MAIN} ${CORE} ${BUILTIN} ${UTILITIES}
 
-all		: ${NAME}
+OBJS		=	${SRCS:.c=.o} 
+
+RM			=	rm -f
+
+CC			=	cc -L/usr/lib/x86_64-linux-gnu
+
+FLAGS		=	-Wall -Wextra -Werror -g 
+
+all			:	${NAME}
 
 %.o: %.c
 		  @${CC} ${FLAGS}  -c $< -o ${<:.c=.o} 
@@ -55,6 +67,6 @@ fclean		: clean
 		  @${RM} ${LIBFT}
 		  @echo "OK"
 
-re		: fclean all
+re			: fclean all
 
 .PHONY		: all clean fclean re
