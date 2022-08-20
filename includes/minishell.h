@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/19 21:07:58 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/20 16:37:53 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@
 
 /* Structure signal*/
 
-typedef struct s_data
+typedef struct s_signal
 {
 	pid_t	pid_client;
-}	t_data;
+}	t_signal;
 
 /* Protos */
 
