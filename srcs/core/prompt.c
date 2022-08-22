@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:34:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/19 20:52:07 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/22 15:16:02 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int	main(void)
 	char *p = prompt_line();
 	printf("%s", p);
 	free(p);
-	rl_clear_history();
 	return (0);
 }
 */

@@ -1,5 +1,7 @@
 <!-- Task List -->
 ## TNO
+* Execute on multipipe :
+	* Je suis en train de faire une boucle pour executer les cmd multiples en creant autant de pipe que necessaire et en utilisant execve
 * Garbage collector :
 	* liste chainee avec un lst_add_back du pointeur a chaque malloc et un free final de la lst a la fin.
 	* Inutile d'y ajouter les ptr des que l'on sait qu'ils vont etre free dans la foulee.
