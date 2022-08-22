@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/20 16:37:53 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/08/22 14:42:32 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
 # define SA_RESTART	0x10000000
 # define SUCCESS 0
 # define FAIL 1
+# define MAX_PIPE 1024 /* max # of pipe per process: pipe(7) man page
+set in /proc/sys/fs/pipe-user-pages-soft (since Linux 4.5) */
 
 /* Structure signal*/
 
@@ -49,11 +51,12 @@ typedef struct s_signal
 	/* --- core --- */
 
 char	*prompt_line(void);
+int		exec(char **argv, char **envp);
 
 	/* --- utilities --- */
 
 void	print_welcome_msg(void);
-int		gb_c(t_list **gb, void *content);
+int		gb_c(t_list **gb, void *content, void **content2);
 
 	/* --- build-in --- */
 

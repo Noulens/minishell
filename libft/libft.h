@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:05:08 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/18 14:15:00 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/22 14:40:51 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 typedef struct s_list
 {
 	void			*content;
+	void			**content2;
 	struct s_list	*next;
 }	t_list;
 
@@ -71,7 +72,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 /* Bonus */
-t_list	*ft_lstnew(void *content);
+t_list	*ft_lstnew(void *content, void **content2);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);

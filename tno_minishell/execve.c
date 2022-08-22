@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:29:21 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/19 18:30:35 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/22 14:23:01 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,22 +72,20 @@ char	*cmd_check(char **bin_path, char *cmd)
 		else
 			free(tmp);
 	}
-	return (ft_free_split(bin_path), NULL);
+	return (ft_free_split(bin_path),perror(errno), NULL);
 }
 
-int	main(int argc, char **argv, char **envp)
+int	exec(char **argv, char **envp)
 {
 	char	*cmd_path;
 
-	if (argc > 1)
-	{
-		if (access(argv[1], F_OK | X_OK) == 0)
-			cmd_path = argv[1];
+	if (access(argv[0], F_OK | X_OK) == 0)
+			cmd_path = argv[0];
 		else
-			cmd_path = cmd_check(paths_maker(), argv[1]);
+			cmd_path = cmd_check(paths_maker(), argv[0]);
 		if (!cmd_path)
-			return (-1);
-		execve(cmd_path, ++argv, envp);
-	}
+			return (errno);
+		if (execve(cmd_path, ++argv, envp) == -1)
+			return (perror(errno), errno);
 	return (0);
 }
