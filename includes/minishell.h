@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/22 14:42:32 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/22 17:00:01 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,14 @@ typedef struct s_signal
 {
 	pid_t	pid_client;
 }	t_signal;
+
+typedef struct s_commands
+{
+	char	**cmd;
+	char	**env;
+	int		fd[2];
+	t_list	**gb;
+}	t_command;
 
 /* Protos */
 

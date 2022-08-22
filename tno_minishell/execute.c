@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execve.c                                           :+:      :+:    :+:   */
+/*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:29:21 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/22 14:23:01 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/22 19:20:34 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,20 +72,20 @@ char	*cmd_check(char **bin_path, char *cmd)
 		else
 			free(tmp);
 	}
-	return (ft_free_split(bin_path),perror(errno), NULL);
+	return (ft_free_split(bin_path),perror("cmd_check"), NULL);
 }
 
-int	exec(char **argv, char **envp)
+int	exec(char **cmds, char **envp)
 {
 	char	*cmd_path;
 
-	if (access(argv[0], F_OK | X_OK) == 0)
-			cmd_path = argv[0];
+	if (access(cmds[0], F_OK | X_OK) == 0)
+			cmd_path = cmds[0];
 		else
-			cmd_path = cmd_check(paths_maker(), argv[0]);
+			cmd_path = cmd_check(paths_maker(), cmds[0]);
 		if (!cmd_path)
 			return (errno);
-		if (execve(cmd_path, ++argv, envp) == -1)
-			return (perror(errno), errno);
+		if (execve(cmd_path, cmds, envp) == -1)
+			return (perror("exec"), errno);
 	return (0);
 }
