@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/22 20:11:49 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/22 20:23:26 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,18 @@ int	close_fd(int end[1024][2], int i)
 int	pipex(t_command *cm)
 {
 	int		i;
-	pid_t	pid;
+	pid_t	*pid;
 	int		end[1024][2];
 	char	**arg_cm;
+	int		status;
 
 	i = 0;
 	while (cm->cmd[i])
 		i++;
 	if (i == 0)
 		return (1);
+	pid = malloc(sizeof(pid_t) * i);
+	gb_c(cm->gb, (void *)pid, NULL);
 	while (--i >= 0)
 	{
 		if (pipe(end[i]) < 0)
@@ -44,14 +47,23 @@ int	pipex(t_command *cm)
 	i = -1;
 	while (cm->cmd[++i])
 	{
-		pid = fork();
-		if (pid == -1)
+		pid[i] = fork();
+		if (pid[i] == -1)
 			return (perror("pipex"), errno);
-		else if (pid == 0)
+		else if (pid[i] == 0)
 		{
 			arg_cm = ft_split(cm->cmd[i], ' ');
 			gb_c(cm->gb, NULL, (void **)arg_cm);
 			exec(arg_cm, cm->env);
+		}
+		else
+		{
+			waitpid(pid[i], &status, 0);
+			printf("Parent : I received my %d child\n", i + 1);
+			if (WIFEXITED(status))
+				printf("Parent : It exited successfully, exit code %d\n", WEXITSTATUS(status));
+            else
+                printf("Parent : It was interrupted...\n");
 		}
 	}
 	return (0);
