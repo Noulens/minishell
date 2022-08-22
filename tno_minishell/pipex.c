@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/22 20:36:31 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/22 20:44:12 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	pipex(t_command *cm)
 	}
 	return (0);
 }
-
+/*
 int main(int argc, char **argv, char **envp)
 {
 	t_command cm;
@@ -82,4 +82,4 @@ int main(int argc, char **argv, char **envp)
 	pipex(&cm);
 	ft_lstclear(*(cm.gb));
 	return (0);
-}
+}*/

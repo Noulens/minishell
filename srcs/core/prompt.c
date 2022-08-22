@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:34:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/22 16:24:04 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/22 20:51:49 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,17 @@ char	*prompt_line(void)
 		return (printf("command: arg list too long\n"), NULL);
 	return (line_read);
 }
-/*
+
 int	main(void)
 {
+	char *p;
+	
 	print_welcome_msg();
-	char *p = prompt_line();
-	printf("%s", p);
+	while (42)
+	{
+		p = prompt_line();
+		printf("%s\n", p);
+	}
 	free(p);
-	rl_clear_history();
 	return (0);
-}*/
+}
