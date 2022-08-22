@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/22 20:44:12 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/23 00:44:39 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	pipex(t_command *cm)
 		{
 			arg_cm = ft_split(cm->cmd[i], ' ');
 			gb_c(cm->gb, NULL, (void **)arg_cm);
+			int fd = open("file", O_CREAT | O_RDWR | O_TRUNC, 0777);
+			dup2(fd, STDOUT_FILENO);
 			exec(arg_cm, cm->env);
 		}
 		else
@@ -68,7 +70,7 @@ int	pipex(t_command *cm)
 	}
 	return (0);
 }
-/*
+
 int main(int argc, char **argv, char **envp)
 {
 	t_command cm;
@@ -82,4 +84,4 @@ int main(int argc, char **argv, char **envp)
 	pipex(&cm);
 	ft_lstclear(*(cm.gb));
 	return (0);
-}*/
+}
