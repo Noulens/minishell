@@ -6,7 +6,7 @@
 #    By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/08/22 16:23:15 by tnoulens         ###   ########.fr        #
+#    Updated: 2022/08/23 14:42:02 by tnoulens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,20 @@ RM			=	rm -f
 
 CC			=	cc -L/usr/lib/x86_64-linux-gnu
 
-FLAGS		=	-Wall -Wextra -Werror -g 
+FLAGS		=	-Wall -Wextra -Werror -g
+
+SUPP		=	echo -n "{
+    leak readline
+    Memcheck:Leak
+    ...
+    fun:readline
+}
+{
+    leak add_history
+    Memcheck:Leak
+    ...
+    fun:add_history
+}" > ignore_leak.supp
 
 all			: ${NAME}
 
@@ -50,7 +63,8 @@ ${LIBFT}	:
 
 ${NAME}		: ${OBJS}  ${LIBFT}
 		@echo "\033[34m----Compiling----"
-		@${CC} ${FLAGS} ${OBJS} -L -lm -lreadline -o ${NAME} ${LIBFT} 
+		@${CC} ${FLAGS} ${OBJS} -L -lm -lreadline -o ${NAME} ${LIBFT}
+		@${SUPP}
 		@echo "OK"
 
 clean		:

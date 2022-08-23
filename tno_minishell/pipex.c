@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/23 00:44:39 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/08/23 14:51:18 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int	pipex(t_command *cm)
 		{
 			arg_cm = ft_split(cm->cmd[i], ' ');
 			gb_c(cm->gb, NULL, (void **)arg_cm);
-			int fd = open("file", O_CREAT | O_RDWR | O_TRUNC, 0777);
-			dup2(fd, STDOUT_FILENO);
+			//int fd = open("file", O_CREAT | O_RDWR | O_TRUNC, 0777);
+			//dup2(fd, STDOUT_FILENO);
 			exec(arg_cm, cm->env);
 		}
 		else
