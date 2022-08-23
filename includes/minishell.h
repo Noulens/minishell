@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/22 17:00:01 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/23 15:38:58 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_commands
 
 char	*prompt_line(void);
 int		exec(char **argv, char **envp);
+int		pipex(t_command *cm);
 
 	/* --- utilities --- */
 

@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:34:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/22 20:51:49 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/23 15:43:02 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,25 @@ char	*prompt_line(void)
 	return (line_read);
 }
 
-int	main(void)
+int main(int argc, char **argv, char **envp)
 {
-	char *p;
-	
+	char 		*p;
+	t_command 	cm;
+	t_list		*list;
+
+	(void)argc;
+	(void)argv;
+	list = NULL;
+	cm.env = envp;
+	cm.gb = &list;
 	print_welcome_msg();
 	while (42)
 	{
 		p = prompt_line();
-		printf("%s\n", p);
+		cm.cmd = ft_split(p, '|');
+		pipex(&cm);
 	}
+	ft_lstclear(*(cm.gb));
 	free(p);
 	return (0);
 }
