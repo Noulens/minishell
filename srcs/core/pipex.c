@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/23 16:00:32 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/23 17:52:25 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,16 @@ int	pipex(t_command *cm)
 			gb_c(cm->gb, NULL, (void **)arg_cm);
 			//int fd = open("file", O_CREAT | O_RDWR | O_TRUNC, 0777);
 			//dup2(fd, STDOUT_FILENO);
-			if (exec(arg_cm, cm->env) == -1)
-				return (perror("exec: "), errno);
+			cm->exec_ret = exec(arg_cm, cm->env);
 		}
 		else
 		{
 			waitpid(pid[i], &status, 0);
-			printf("Parent : I received my %d child\n", i + 1);
+			printf("Parent: I received my %d child\n", i + 1);
 			if (WIFEXITED(status))
-				printf("Parent : It exited successfully, exit code %d\n", WEXITSTATUS(status));
-            else
-                printf("Parent : It was interrupted...\n");
+				printf("Parent: exit success, code %d\n", cm->exec_ret = WEXITSTATUS(status));
+			else
+				printf("Parent: It was interrupted...\n");
 		}
 	}
 	return (0);

@@ -21,4 +21,5 @@
 	* [ ] ctrl-\
 * Divers
 	* [x] welcome msg en ascii
-	* [ ] $? -> faire une variable static int qui enregistre la valeur de retour du dernier pipe
+	* [ ] $? -> faire une variable int qui enregistre la valeur de retour du dernier pipe
+		* le parent recoit le code d'exit du child, a placer dans cm->exec_ret

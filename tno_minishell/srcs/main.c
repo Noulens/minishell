@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/23 16:46:42 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/23 18:04:28 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char **argv, char **envp)
 		cm.cmd = ft_split(p, '|');
 		pipex(&cm);
 		ft_free_split(cm.cmd);
-		printf("ok\n");
+		printf("%d\n", cm.exec_ret);
 	}
 	ft_lstclear(*(cm.gb));
 	free(p);
