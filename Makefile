@@ -6,7 +6,7 @@
 #    By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/08/23 14:42:02 by tnoulens         ###   ########.fr        #
+#    Updated: 2022/08/23 16:14:03 by tnoulens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,14 +19,16 @@ LIBFT		=	./libft/libft.a
 MAIN		=	./srcs/main.c
 
 CORE		=	./srcs/core/prompt.c\
+				./srcs/core/pipex.c\
+				./srcs/core/execute.c
 
 BUILTIN		=	./srcs/built-in/ft_echo.c\
 				./srcs/built-in/ft_env.c\
 				./srcs/built-in/ft_exit.c\
-				./srcs/built-in/ft_pwd.c\
+				./srcs/built-in/ft_pwd.c
 
 UTILITIES	= 	./srcs/utilities/garbage_collector.c\
-				./srcs/utilities/welcome_message.c\
+				./srcs/utilities/welcome_message.c
 
 SRCS		=	${MAIN} ${CORE} ${BUILTIN} ${UTILITIES}
 
@@ -34,22 +36,11 @@ OBJS		=	${SRCS:.c=.o}
 
 RM			=	rm -f
 
-CC			=	cc -L/usr/lib/x86_64-linux-gnu
+CC			=	cc
 
 FLAGS		=	-Wall -Wextra -Werror -g
 
-SUPP		=	echo -n "{
-    leak readline
-    Memcheck:Leak
-    ...
-    fun:readline
-}
-{
-    leak add_history
-    Memcheck:Leak
-    ...
-    fun:add_history
-}" > ignore_leak.supp
+SUPP		=	printf "{\n    leak readline\n    Memcheck:Leak\n    ...\n    fun:readline\n}\n{\n    leak add_history\n   Memcheck:Leak\n    ...\n    fun:add_history\n}" > ignore_leak.supp
 
 all			: ${NAME}
 
@@ -63,7 +54,7 @@ ${LIBFT}	:
 
 ${NAME}		: ${OBJS}  ${LIBFT}
 		@echo "\033[34m----Compiling----"
-		@${CC} ${FLAGS} ${OBJS} -L -lm -lreadline -o ${NAME} ${LIBFT}
+		@${CC} ${FLAGS} ${OBJS} -L/usr/include -lreadline -o ${NAME} ${LIBFT}
 		@${SUPP}
 		@echo "OK"
 
@@ -79,6 +70,7 @@ fclean		: clean
 		@echo "\033[33m----Cleaning all----"
 		@${RM} ${NAME}
 		@${RM} ${LIBFT}
+		@${RM} ignore_leak.supp
 		@echo "OK"
 
 re			: fclean all
