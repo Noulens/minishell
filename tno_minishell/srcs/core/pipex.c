@@ -6,11 +6,11 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/23 15:40:21 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/23 16:47:22 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../../includes/minishell.h"
 
 int	open_fd(int end[1024][2], int i)
 {

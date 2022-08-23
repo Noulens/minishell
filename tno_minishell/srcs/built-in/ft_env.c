@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/23 16:41:49 by tnoulens         ###   ########.fr       */
+/*   Created: 2022/08/18 19:00:00 by tnoulens          #+#    #+#             */
+/*   Updated: 2022/08/23 16:48:00 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../../includes/minishell.h"
 
-int	main(int argc, char **argv, char **envp)
+int	ft_env(char **envp)
 {
-	char		*p;
-	t_command	cm;
-	t_list		*list;
+	int	i;
 
-	(void)argc;
-	(void)argv;
-	list = NULL;
-	cm.env = envp;
-	cm.gb = &list;
-	print_welcome_msg();
-	while (42)
+	if (!envp || !*envp)
+		return (1);
+	i = 0;
+	while (envp[i])
 	{
-		p = prompt_line();
-		cm.cmd = ft_split(p, '|');
-		pipex(&cm);
-		ft_free_split(cm.cmd);
-		printf("ok\n");
+		ft_putendl_fd(envp[i], 1);
+		++i;
 	}
-	ft_lstclear(*(cm.gb));
-	free(p);
 	return (0);
 }
+/*
+int	main(int argc, char **argv, char ** envp)
+{
+	(void)argc;
+	(void)argv;
+	ft_env(envp);
+	return (0);
+}*/

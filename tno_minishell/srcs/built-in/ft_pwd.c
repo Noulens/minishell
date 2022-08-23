@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/23 16:41:49 by tnoulens         ###   ########.fr       */
+/*   Created: 2022/08/16 20:47:10 by tnoulens          #+#    #+#             */
+/*   Updated: 2022/08/23 16:48:12 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../../includes/minishell.h"
 
-int	main(int argc, char **argv, char **envp)
+int	ft_pwd(void)
 {
-	char		*p;
-	t_command	cm;
-	t_list		*list;
+	char	wd[PATH_MAX];
 
-	(void)argc;
-	(void)argv;
-	list = NULL;
-	cm.env = envp;
-	cm.gb = &list;
-	print_welcome_msg();
-	while (42)
+	if (getcwd(wd, PATH_MAX))
 	{
-		p = prompt_line();
-		cm.cmd = ft_split(p, '|');
-		pipex(&cm);
-		ft_free_split(cm.cmd);
-		printf("ok\n");
+		ft_putendl_fd(wd, 1);
+		return (SUCCESS);
 	}
-	ft_lstclear(*(cm.gb));
-	free(p);
-	return (0);
+	else
+		return (FAIL);
 }
+/*
+int main(void)
+{
+	ft_pwd();
+	return 0;
+}
+*/
