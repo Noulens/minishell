@@ -6,13 +6,13 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/23 17:52:00 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/24 19:51:16 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-int	open_fd(int end[1024][2], int i)
+int	open_fd(int end[MAX_PIPE + 1][2], int i)
 {
 	while (--i >= 0)
 	{
@@ -22,7 +22,7 @@ int	open_fd(int end[1024][2], int i)
 	return (0);
 }
 
-int	close_fd(int end[1024][2], int i)
+int	close_fd(int end[MAX_PIPE + 1][2], int i)
 {
 	while (--i >= 0)
 	{
@@ -38,9 +38,10 @@ int	pipex(t_command *cm)
 {
 	int		i;
 	pid_t	*pid;
-	int		end[1024][2];
+	int		end[MAX_PIPE + 1][2];
 	char	**arg_cm;
 	int		status;
+	int		k;
 
 	i = 0;
 	while (cm->cmd[i])
@@ -48,12 +49,16 @@ int	pipex(t_command *cm)
 	if (i == 0)
 		return (1);
 	pid = malloc(sizeof(pid_t) * i);
+	if (!pid)
+		return (1);
+	k = i - 1;
 	gb_c(cm->gb, (void *)pid, NULL);
-	while (--i >= 0)
+	if (k != 0) {
+	while (--k >= 0)
 	{
-		if (pipe(end[i]) < 0)
+		if (pipe(end[k]) < 0)
 			return (perror("pipex"), errno);
-	}
+	} }
 	i = -1;
 	while (cm->cmd[++i])
 	{
@@ -62,20 +67,26 @@ int	pipex(t_command *cm)
 			return (perror("pipex"), errno);
 		else if (pid[i] == 0)
 		{
+			if (i != 1 && k != 0) {dup2(end[i][1], i + 1);
+			close(end[i][1]);
+			close(end[i][0]);}
+			else if (k != 0) {dup2(end[i - 1][0], i - 1);
+			close(end[i-1][0]);
+			close(end[i-1][1]);}
 			arg_cm = ft_split(cm->cmd[i], ' ');
 			gb_c(cm->gb, NULL, (void **)arg_cm);
-			//int fd = open("file", O_CREAT | O_RDWR | O_TRUNC, 0777);
-			//dup2(fd, STDOUT_FILENO);
 			cm->exec_ret = exec(arg_cm, cm->env);
+            return 0;
 		}
 		else
 		{
+			close_fd(end, i);
 			waitpid(pid[i], &status, 0);
-			printf("Parent: I received my %d child\n", i + 1);
+			printf("P: received %d child\n", i + 1);
 			if (WIFEXITED(status))
-				printf("Parent: exit success, code %d\n", cm->exec_ret = WEXITSTATUS(status));
+				printf("P: exit success: %d\n", cm->exec_ret = WEXITSTATUS(status));
 			else
-				printf("Parent: It was interrupted...\n");
+				printf("P: interrupted\n");
 		}
 	}
 	return (0);
