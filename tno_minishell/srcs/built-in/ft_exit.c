@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:43:44 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/23 16:48:05 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/24 21:51:57 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ void	ft_exit(t_list **gb)
 {
 	ft_lstclear(*gb);
 	rl_clear_history();
-	printf("exit");
+	printf("exit\n");
 	exit(EXIT_SUCCESS);
 }
