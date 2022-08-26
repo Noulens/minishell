@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/26 16:29:58 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/26 16:49:47 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	child_mgmt(t_command *cm, int i, int *end, int cmd_nbr)
 
 	cm->pid = fork();
 	if (cm->pid == -1)
-		return (perror("pipex"), errno);
+		return (perror("child_mgmt"), errno);
 	else if (!cm->pid)
 	{
 		if (cmd_nbr > 1)
@@ -94,17 +94,12 @@ int	pipex(t_command *cm)
 	if (cmd_nbr == 0)
 		return (0);
 	end = malloc(2 * sizeof(int) * (cmd_nbr - 1));
-	if (!end && cmd_nbr - 1 != 0)
-		return (perror("pipex"), errno);
-	if (open_pipes(cmd_nbr, end) != 0)
+	if ((!end && cmd_nbr - 1 != 0) || open_pipes(cmd_nbr, end) != 0)
 		return (perror("pipex"), errno);
 	i = -1;
 	while (cm->cmd[++i])
-	{
 		child_mgmt(cm, i, end, cmd_nbr);
-	}
 	close_pipes(cmd_nbr, end);
-	free(end);
 	i = -1;
 	while (++i < cmd_nbr)
 	{
@@ -114,5 +109,5 @@ int	pipex(t_command *cm)
 		else
 			printf("P: %d interrupted\n", i);
 	}
-	return (cm->exec_ret);
+	return (free(end), cm->exec_ret);
 }
