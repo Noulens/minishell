@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:13:12 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/06/13 17:46:33 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/25 19:27:47 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	ft_count_word(const char *str, char c)
 	i = 0;
 	word_flag = 0;
 	word_count = 0;
-	while (str[i])
+	while (str && str[i])
 	{
 		if (str[i] == c)
 		{
