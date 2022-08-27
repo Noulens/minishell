@@ -1,9 +1,10 @@
 <!-- Task List -->
 ## TNO
 * Execute on multipipe :
-	* [...] Je suis en train de faire une boucle pour executer les cmd multiples en creant autant de pipe que necessaire et en utilisant execve
-		* pour le moment j'arrive a avoir autant de de process que de commande et le parent ultime attend la fin de chacun d'eux: ./test "echo yo" "echo -n fuu" "ls -la" "echo test" sans leak et sans erreur
-		* j'implemente le piping en boucle : while (i < nb_cmd) {pipe(end[i])} ...
+	* [x] Boucle pour executer les cmd multiples en creant autant de pipe que necessaire et en utilisant execve
+
+* Here_doc :
+	* [] faire le Here_doc de pipex
 
 * Garbage collector :
 	* [x] int	gb_c(t_list **gb, void *content, void **content2)  : liste chainee avec un lst_add_back du pointeur * ou du pointeur ** ou NULL a chaque malloc et un free final de la lst a la fin. Inutile d'y ajouter les ptr des que l'on sait qu'ils vont etre free dans la foulee.

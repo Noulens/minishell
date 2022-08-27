@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:29:21 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/25 19:50:36 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/26 19:42:58 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	exec(char **cmds, char **envp)
 	else
 		cmd_path = cmd_check(paths_maker(), cmds[0]);
 	if (!cmd_path)
-		return (errno);
+		exit(errno);
 	if (execve(cmd_path, cmds, envp) == -1)
 		return (perror("exec"), errno);
 	return (0);

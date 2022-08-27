@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/25 16:13:00 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/26 17:32:59 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ typedef struct s_signal
 typedef struct s_commands
 {
 	char	**cmd;
-	pid_t	pid;
+	pid_t	pid; // a supprimer quand le *pids sera ok
+	pid_t	*pids; // pour pipex
+	int		*end; // pour pipex
 	char	**env;
 	int		fd[2];
 	int		exec_ret;

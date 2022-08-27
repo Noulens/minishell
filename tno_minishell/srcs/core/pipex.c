@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/26 16:49:47 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/26 18:55:03 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	open_pipes(int cmd_nbr, int *end)
 	while (i < cmd_nbr - 1)
 	{
 		if (pipe(end + 2 * i) < 0)
-			return (free(end), perror("open_pipes"), errno);
+			return (perror("open_pipes"), errno);
 		i++;
 	}
 	return (0);
@@ -34,16 +34,18 @@ static int	close_pipes(int cmd_nbr, int *end)
 	while (i < 2 * (cmd_nbr - 1))
 	{
 		if (close(end[i]) == -1)
-			return (free(end), perror("close_pipes"), errno);
+			return (perror("close_pipes"), errno);
 		i++;
 	}
 	return (0);
 }
 
-static void	dupper(int zero, int first)
+static void	dupper(int input, int output)
 {
-	dup2(zero, 0);
-	dup2(first, 1);
+	if (dup2(input, STDIN_FILENO) == -1)
+		return (perror("dupper input"), (void)0);
+	if (dup2(output, STDOUT_FILENO) == -1)
+		return (perror("dupper output"), (void)0);
 }
 
 static int	nb_cmd(t_command *cm)
@@ -76,8 +78,9 @@ int	child_mgmt(t_command *cm, int i, int *end, int cmd_nbr)
 		}
 		close_pipes(cmd_nbr, end);
 		arg_cm = ft_split(cm->cmd[i], ' ');
-		gb_c(cm->gb, NULL, (void **)arg_cm);
+		//gb_c(cm->gb, NULL, (void **)arg_cm);
 		cm->exec_ret = exec(arg_cm, cm->env);
+		ft_free_split(arg_cm);
 		return (0);
 	}
 	return (0);
@@ -89,10 +92,11 @@ int	pipex(t_command *cm)
 	int		*end;
 	int		ret;
 	int		i;
-
+/* revoir gestion d'erreur */
 	cmd_nbr = nb_cmd(cm);
 	if (cmd_nbr == 0)
 		return (0);
+	/* malloc le tableau de pid et sortir end pour le malloc dans une fonction init */
 	end = malloc(2 * sizeof(int) * (cmd_nbr - 1));
 	if ((!end && cmd_nbr - 1 != 0) || open_pipes(cmd_nbr, end) != 0)
 		return (perror("pipex"), errno);
@@ -101,6 +105,7 @@ int	pipex(t_command *cm)
 		child_mgmt(cm, i, end, cmd_nbr);
 	close_pipes(cmd_nbr, end);
 	i = -1;
+	/* refaire parent dans un fonction qui waitpid le tableau de pid */
 	while (++i < cmd_nbr)
 	{
 		waitpid(-1, &ret, 0);
@@ -109,5 +114,6 @@ int	pipex(t_command *cm)
 		else
 			printf("P: %d interrupted\n", i);
 	}
+	/* free pid et end */
 	return (free(end), cm->exec_ret);
 }
