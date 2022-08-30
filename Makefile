@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+         #
+#    By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/08/23 16:14:03 by tnoulens         ###   ########.fr        #
+#    Updated: 2022/08/30 16:15:34 by cfontain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,11 @@ MAIN		=	./srcs/main.c
 
 CORE		=	./srcs/core/prompt.c\
 				./srcs/core/pipex.c\
-				./srcs/core/execute.c
+				./srcs/core/execute.c\
+				./srcs/core/m_parsing_quote.c\
+				./srcs/core/m_split_init.c\
+				./srcs/core/m_split_parse.c\
+				./srcs/core/cut_quote.c
 
 BUILTIN		=	./srcs/built-in/ft_echo.c\
 				./srcs/built-in/ft_env.c\

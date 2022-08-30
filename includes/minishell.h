@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/26 17:32:59 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/30 16:19:22 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,30 @@ set in /proc/sys/fs/pipe-user-pages-soft (since Linux 4.5) */
 
 /* Structure signal*/
 
+typedef struct s_new_cut_line
+{
+	int		i;
+	int		j;
+	int		trigger;
+	char	c;
+
+}			t_new_cut_line;
+
+typedef struct s_mega_split
+{
+	int		i;
+	int		j;
+	int		count;
+
+}			t_mega_split;
+
+typedef struct s_split
+{
+	char	**str;
+	int		len;
+	int		count;
+}	t_split;
+
 typedef struct s_signal
 {
 	pid_t	pid_client;
@@ -59,6 +83,25 @@ typedef struct s_commands
 }	t_command;
 
 /* Protos */
+
+	/* --- parsing line --- */
+
+char	*m_init_str(char *s, char c, char *str, int *j);
+int		m_line_lenght(char *s, char c, int *j);
+char	**ft_split_space_and_quote(char *s, char c);
+char	**m_split(char *str);
+void	count_sep_quote(t_mega_split *split, char *s);
+int		m_split_count_line(char *s, char c);
+void	ft_count_up(t_mega_split *split);
+char	*m_malloc_str(char *str, int len);
+void	m_init_str_with_sep(char *s, char *str, int *i, int *k);
+int		char_is_sep(char c);
+int		check_single_quote(char *str, int *i);
+int		check_double_quote(char *str, int *i);
+int		parsing_quote(char *str);
+void	new_cut_line2(char *str, char *new_str, t_new_cut_line *line);
+char	*new_cut_line(char *str);
+int		cut_quote(char **split_line);
 
 	/* --- core --- */
 

@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,12 +6,10 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Aug 11 16:45:41 2022
+# Make data base, printed on Tue Aug 30 16:15:46 2022
 
 # Variables
 
-# 'override' directive
-GNUMAKEFLAGS := 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
@@ -25,107 +21,97 @@ DESKTOP_SESSION = ubuntu
 # environment
 XDG_SESSION_CLASS = user
 # environment
-SNAP_COMMON = /var/snap/code/common
-# environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-XAUTHORITY = /run/user/1000/gdm/Xauthority
+XAUTHORITY = /mnt/nfs/homes/cfontain/.Xauthority
 # environment
 GDMSESSION = ubuntu
 # environment
 XMODIFIERS = @im=ibus
 # makefile
-CURDIR := /home/cfontain/Documents/minishell/minishell
+CURDIR := /mnt/nfs/homes/cfontain/Documents/Cursus/minishell
 # makefile
 SHELL = /bin/sh
+# makefile (from 'Makefile', line 41)
+RM = rm -f
 # environment
-SNAP_DATA = /var/snap/code/102
+GDM_LANG = en
 # environment
 VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:33402
+JOURNAL_STREAM = 9:8222820
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
-# environment
-SNAP_INSTANCE_NAME = code
-# environment
-SNAP_ARCH = amd64
-# makefile
-MAKEFILE_LIST := 
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# makefile (from 'Makefile', line 15)
+LIB_DIR = ./libft
 # automatic
 @F = $(notdir $@)
 # environment
 IM_CONFIG_PHASE = 1
+# 'override' directive
+GNUMAKEFLAGS := 
 # environment
-USERNAME = cfontain
+MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
 # environment
-MAKELEVEL := 0
+XDG_DATA_DIRS = /usr/share/gnome:/usr/share/ubuntu:/mnt/nfs/homes/cfontain/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
 # environment
-XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/101819/bus,guid=0e9b859503f67d6807461f08630df481
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=790862ff57a64d608743c30462f50285
+_ = /usr/bin/code
+# makefile (from 'Makefile', line 39)
+OBJS = ${SRCS:.c=.o} 
 # environment
-MANAGERPID = 1201
+MANAGERPID = 1659032
 # environment
-LESSOPEN = | /usr/bin/lesspipe %s
+VSCODE_CWD = /mnt/nfs/homes/cfontain/Documents/Cursus/minishell
 # environment
-LC_NAME = fr_FR.UTF-8
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session20
 # environment
-VSCODE_CWD = /home/cfontain/Documents/minishell/minishell
-# environment
-GSETTINGS_SCHEMA_DIR = /snap/code/102/usr/share/glib-2.0/schemas
+KRB5CCNAME = FILE:/tmp/krb5cc_101819_9bY6YL
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+PATH = /mnt/nfs/homes/cfontain/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
-GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
+GPG_AGENT_INFO = /run/user/101819/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/cfontain-OMEN-by-HP-Laptop-15-dc0xxx:@/tmp/.ICE-unix/1426,unix/cfontain-OMEN-by-HP-Laptop-15-dc0xxx:/tmp/.ICE-unix/1426
+SESSION_MANAGER = local/e1r12p14.clusters.42paris.fr:@/tmp/.ICE-unix/1659582,unix/e1r12p14.clusters.42paris.fr:/tmp/.ICE-unix/1659582
 # environment
-XDG_RUNTIME_DIR = /run/user/1000
-# environment
-GDK_PIXBUF_MODULE_FILE = /home/cfontain/snap/code/common/.cache/gdk-pixbuf-loaders.cache
-# environment
-SNAP = /snap/code/102
-# environment
-SNAP_VERSION = 3b889b09
+XDG_RUNTIME_DIR = /run/user/101819
 # environment
 XDG_MENU_PREFIX = gnome-
 # environment
-DISABLE_WAYLAND = 1
-# environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 2d894e165c18473497a3e6f7b4b7a884
-# environment
-GDK_PIXBUF_MODULEDIR = /snap/code/102/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
+INVOCATION_ID = cb772fb0c12f4c4fb02626849812a6ed
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
-LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/cfontain
+# makefile (from 'Makefile', line 34)
+UTILITIES = ./srcs/utilities/garbage_collector.c ./srcs/utilities/welcome_message.c
 # environment
 XDG_SESSION_DESKTOP = ubuntu
 # environment
-SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+SSH_AUTH_SOCK = /run/user/101819/keyring/ssh
 # automatic
 %F = $(notdir $%)
 # environment
 DISPLAY = :0
 # environment
-SNAP_INSTANCE_KEY = 
-# environment
-PWD = /home/cfontain/Documents/minishell/minishell
+PWD = /mnt/nfs/homes/cfontain/Documents/Cursus/minishell
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1390
+SSH_AGENT_PID = 1659546
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -133,27 +119,17 @@ GTK_MODULES = gail:atk-bridge
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
-HOME = /home/cfontain
-# environment
-LESSCLOSE = /usr/bin/lesspipe %s %s
+HOME = /mnt/nfs/homes/cfontain
 # environment
 VSCODE_CLI = 1
 # environment
-VSCODE_CODE_CACHE_PATH = /home/cfontain/.config/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
+VSCODE_CODE_CACHE_PATH = /mnt/nfs/homes/cfontain/.config/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
 # environment
 LOGNAME = cfontain
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
-SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
-# environment
-SNAP_CONTEXT = OkFIKGYNABu6bqUEWM2sIn7C4-PxERXU5-Ry1kL_c4otdmjNLgTp
-# automatic
-+F = $(notdir $+)
-# environment
 ELECTRON_NO_ATTACH_CONSOLE = 1
-# environment
-SNAP_USER_COMMON = /home/cfontain/snap/code/common
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # environment
@@ -161,9 +137,7 @@ GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
-LC_TIME = fr_FR.UTF-8
-# environment
-SNAP_REAL_HOME = /home/cfontain
+MAKELEVEL := 0
 # environment
 COLORTERM = truecolor
 # default
@@ -172,98 +146,104 @@ MAKE = $(MAKE_COMMAND)
 MAKECMDGOALS := all
 # environment
 QT_IM_MODULE = ibus
+# makefile (from 'Makefile', line 37)
+SRCS = ${MAIN} ${CORE} ${BUILTIN} ${UTILITIES}
 # environment
-SNAP_USER_DATA = /home/cfontain/snap/code/102
-# environment
-SHLVL = 1
-# environment
-GNOME_SHELL_SESSION_MODE = ubuntu
+SHLVL = 2
+# makefile (from 'Makefile', line 17)
+LIBFT = ./libft/libft.a
+# makefile (from 'Makefile', line 43)
+CC = cc
 # default
 MAKE_VERSION := 4.2.1
 # environment
 USER = cfontain
-# environment
-SNAP_REVISION = 102
-# environment
-LC_MONETARY = fr_FR.UTF-8
 # makefile
-.DEFAULT_GOAL := 
+.DEFAULT_GOAL := all
 # environment
 XDG_CURRENT_DESKTOP = Unity
+# environment
+LIBVIRT_DEFAULT_URI = qemu:///system
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
-# environment
-LC_TELEPHONE = fr_FR.UTF-8
 # default
 MAKE_COMMAND := make
+# environment
+OLDPWD = /mnt/nfs/homes/cfontain/Documents/Cursus/minishell
 # default
 .VARIABLES := 
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-274db8b0-1.69.2-main.sock
+LANGUAGE = en
+# environment
+XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+# environment
+VSCODE_IPC_HOOK = /run/user/101819/vscode-21d98923-1.69.2-main.sock
 # makefile
 MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
+# makefile (from 'Makefile', line 19)
+MAIN = ./srcs/main.c
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
 GDK_BACKEND = x11
+# automatic
++F = $(notdir $+)
 # environment
-LC_PAPER = fr_FR.UTF-8
+NO_AT_BRIDGE = 1
 # environment
 QT_ACCESSIBILITY = 1
+# environment
+DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
 # default
 MAKEFILES := 
-# environment
-SNAP_COOKIE = OkFIKGYNABu6bqUEWM2sIn7C4-PxERXU5-Ry1kL_c4otdmjNLgTp
-# environment
-LC_NUMERIC = fr_FR.UTF-8
 # automatic
 <F = $(notdir $<)
-# environment
-LC_MEASUREMENT = fr_FR.UTF-8
-# environment
-SNAP_NAME = code
+# makefile (from 'Makefile', line 29)
+BUILTIN = ./srcs/built-in/ft_echo.c ./srcs/built-in/ft_env.c ./srcs/built-in/ft_exit.c ./srcs/built-in/ft_pwd.c
+# makefile (from 'Makefile', line 47)
+SUPP = printf "{\n    leak readline\n    Memcheck:Leak\n    ...\n    fun:readline\n}\n{\n    leak add_history\n   Memcheck:Leak\n    ...\n    fun:add_history\n}" > ignore_leak.supp
 # environment
 LC_ALL = C
 # environment
 DBUS_STARTER_BUS_TYPE = session
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/72d7d8fb_81e2_476f_ab30_a57934c49027
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/b12e6d06_ff4d_442b_b64f_03a6deb3ea91
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.645
+GNOME_TERMINAL_SERVICE = :1.105
 # default
 SUFFIXES := 
-# environment
-SNAP_REEXEC = 
+# makefile (from 'Makefile', line 45)
+FLAGS = -Wall -Wextra -Werror -g
 # environment
 CHROME_DESKTOP = code-url-handler.desktop
-# environment
-WINDOWPATH = 2
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
-# environment
-LC_IDENTIFICATION = fr_FR.UTF-8
+# makefile (from 'Makefile', line 21)
+CORE = ./srcs/core/prompt.c ./srcs/core/pipex.c ./srcs/core/execute.c ./srcs/core/m_parsing_quote.c ./srcs/core/m_split_init.c ./srcs/core/m_split_parse.c ./srcs/core/cut_quote.c
+# makefile (from 'Makefile', line 13)
+NAME = minishell
 # default
 .RECIPEPREFIX := 
-# environment
-LC_ADDRESS = fr_FR.UTF-8
 # environment
 LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 16503
+DOCKER_HOST = unix:///run/user/101819/docker.sock
 # environment
-DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=790862ff57a64d608743c30462f50285
+VSCODE_PID = 1684273
+# environment
+DBUS_STARTER_ADDRESS = unix:path=/run/user/101819/bus,guid=0e9b859503f67d6807461f08630df481
 # variable set hash-table stats:
-# Load=125/1024=12%, Rehash=0, Collisions=18/147=12%
+# Load=116/1024=11%, Rehash=0, Collisions=17/156=11%
 
 # Pattern-specific Variable Values
 
@@ -271,37 +251,183 @@ DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=790862ff57a64d608743c30
 
 # Directories
 
-# . (device 2053, inode 1048587): 6 files, no impossibilities.
+# . (device 56, inode 328905032): 12 files, no impossibilities.
+# srcs/core (device 56, inode 328905059): 13 files, no impossibilities so far.
+# srcs (device 56, inode 328905057): 4 files, no impossibilities so far.
 
-# 6 files, no impossibilities in 1 directories.
+# 29 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
-# No implicit rules.
+%.o: %.c
+#  recipe to execute (from 'Makefile', line 52):
+		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o} 
+
+# 1 implicit rules, 0 (0.0%) terminal.
 
 # Files
 
-# Not a target:
-all:
+all: minishell
+#  Phony target (prerequisite of .PHONY).
 #  Command line target.
-#  Implicit rule search has been done.
+#  Implicit rule search has not been done.
 #  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+
+.PHONY: all clean fclean re
+#  Implicit rule search has not been done.
+#  Modification time never checked.
 #  File has not been updated.
+
+# Not a target:
+srcs/built-in/ft_echo.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+ 
+#  File has not been updated.
+
+srcs/core/m_split_init.o: srcs/core/m_split_init.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'srcs/core/m_split_init'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := srcs/core/m_split_init.o
+# automatic
+# % := 
+# automatic
+# * := srcs/core/m_split_init
+# automatic
+# + := srcs/core/m_split_init.c
+# automatic
+# | := 
+# automatic
+# < := srcs/core/m_split_init.c
+# automatic
+# ^ := srcs/core/m_split_init.c
+# automatic
+# ? := srcs/core/m_split_init.c
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/15=7%
+#  recipe to execute (from 'Makefile', line 52):
+		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o} 
+
+# Not a target:
+srcs/core/m_split_parse.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/core/prompt.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-30 16:03:14.164354465
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  File does not exist.
- 
+#  Last modified 2022-08-30 16:15:34.549824004
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
 
 # Not a target:
-makefile:
+srcs/main.c:
 #  Implicit rule search has been done.
+#  Last modified 2022-08-30 16:03:14.166354477
+#  File has been updated.
+#  Successfully updated.
+
+srcs/core/execute.o: srcs/core/execute.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'srcs/core/execute'
+#  Last modified 2022-08-30 16:15:36.038832992
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 52):
+		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o} 
+
+minishell: srcs/main.o srcs/core/prompt.o srcs/core/pipex.o srcs/core/execute.o srcs/core/m_parsing_quote.o srcs/core/m_split_init.o srcs/core/m_split_parse.o srcs/core/cut_quote.o srcs/built-in/ft_echo.o srcs/built-in/ft_env.o srcs/built-in/ft_exit.o srcs/built-in/ft_pwd.o srcs/utilities/garbage_collector.o srcs/utilities/welcome_message.o libft/libft.a
+#  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
-#  Failed to be updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+#  recipe to execute (from 'Makefile', line 60):
+		@echo "\033[34m----Compiling----"
+		@${CC} ${FLAGS} ${OBJS} -L/usr/include -lreadline -o ${NAME} ${LIBFT}
+		@${SUPP}
+		@echo "OK"
+
+libft/libft.a:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 55):
+		@echo "\033[35m----Building libft----"
+		@make -sC ${LIB_DIR}
+		@echo "OK"
+
+fclean: clean
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 74):
+		@echo "\033[33m----Cleaning all----"
+		@${RM} ${NAME}
+		@${RM} ${LIBFT}
+		@${RM} ignore_leak.supp
+		@echo "OK"
+
+srcs/core/pipex.o: srcs/core/pipex.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'srcs/core/pipex'
+#  Last modified 2022-08-30 16:15:35.948832449
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 52):
+		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o} 
+
+srcs/core/m_parsing_quote.o: srcs/core/m_parsing_quote.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'srcs/core/m_parsing_quote'
+#  Last modified 2022-08-30 16:15:36.124833512
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 52):
+		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o} 
+
+# Not a target:
+srcs/built-in/ft_env.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/built-in/ft_exit.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/utilities/garbage_collector.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/core/m_split_init.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-30 16:15:46.743897616
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 .DEFAULT:
@@ -310,26 +436,102 @@ makefile:
 #  File has not been updated.
 
 # Not a target:
-GNUmakefile:
-#  Implicit rule search has been done.
+srcs/built-in/ft_pwd.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+re: fclean all
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
 #  File does not exist.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 66):
+		@echo "\033[31m----Cleaning libft----"
+		@make clean -sC ${LIB_DIR}
+		@echo "OK"
+		@echo "\033[31m----Cleaning objects----"
+		@${RM} ${OBJS}
+		@echo "OK"
+
+# Not a target:
+srcs/utilities/welcome_message.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/core/execute.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-30 16:03:14.16035444
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/core/pipex.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-30 16:03:14.162354453
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/core/m_parsing_quote.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-30 16:14:34.805463343
+#  File has been updated.
+#  Successfully updated.
+
+srcs/core/prompt.o: srcs/core/prompt.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'srcs/core/prompt'
+#  Last modified 2022-08-30 16:15:35.859831912
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 52):
+		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o} 
+
+srcs/main.o: srcs/main.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'srcs/main'
+#  Last modified 2022-08-30 16:15:35.763831332
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 52):
+		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o} 
+
+# Not a target:
+srcs/core/cut_quote.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+ms: all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 83):
+		valgrind --suppressions=ignore_leak.supp --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --verbose ./minishell
 
 # files hash-table stats:
-# Load=6/1024=1%, Rehash=0, Collisions=0/15=0%
+# Load=31/1024=3%, Rehash=0, Collisions=0/85=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 14 / storage = 134 B / avg = 9 B
-# current buf: size = 8162 B / used = 134 B / count = 14 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 66 / storage = 939 B / avg = 14 B
+# current buf: size = 8162 B / used = 939 B / count = 66 / avg = 14 B
 
-# strcache performance: lookups = 17 / hit rate = 17%
+# strcache performance: lookups = 100 / hit rate = 34%
 # hash-table stats:
-# Load=14/8192=0%, Rehash=0, Collisions=1/17=6%
-# Finished Make data base on Thu Aug 11 16:45:41 2022
+# Load=66/8192=1%, Rehash=0, Collisions=6/100=6%
+# Finished Make data base on Tue Aug 30 16:15:46 2022
 
  

@@ -1,6 +1,25 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/cfontain/Documents/minishell/minishell'
-make: Leaving directory '/home/cfontain/Documents/minishell/minishell'
+make --dry-run --keep-going --print-directory
+make: Entering directory '/mnt/nfs/homes/cfontain/Documents/Cursus/minishell'
+cc -Wall -Wextra -Werror -g  -c srcs/core/m_split_init.c -o srcs/core/m_split_init.o 
  
-make: *** No targets specified and no makefile found.  Stop.
-
+cc -Wall -Wextra -Werror -g  -c srcs/core/m_split_parse.c -o srcs/core/m_split_parse.o 
+cc -Wall -Wextra -Werror -g  -c srcs/core/cut_quote.c -o srcs/core/cut_quote.o 
+ 
+cc -Wall -Wextra -Werror -g  -c srcs/built-in/ft_echo.c -o srcs/built-in/ft_echo.o 
+ 
+cc -Wall -Wextra -Werror -g  -c srcs/built-in/ft_env.c -o srcs/built-in/ft_env.o 
+cc -Wall -Wextra -Werror -g  -c srcs/built-in/ft_exit.c -o srcs/built-in/ft_exit.o 
+cc -Wall -Wextra -Werror -g  -c srcs/built-in/ft_pwd.c -o srcs/built-in/ft_pwd.o 
+ 
+cc -Wall -Wextra -Werror -g  -c srcs/utilities/garbage_collector.c -o srcs/utilities/garbage_collector.o 
+cc -Wall -Wextra -Werror -g  -c srcs/utilities/welcome_message.c -o srcs/utilities/welcome_message.o 
+echo "\033[35m----Building libft----"
+ 
+make -sC ./libft
+echo "OK"
+echo "\033[34m----Compiling----"
+cc -Wall -Wextra -Werror -g ./srcs/main.o ./srcs/core/prompt.o ./srcs/core/pipex.o ./srcs/core/execute.o ./srcs/core/m_parsing_quote.o ./srcs/core/m_split_init.o ./srcs/core/m_split_parse.o ./srcs/core/cut_quote.o ./srcs/built-in/ft_echo.o ./srcs/built-in/ft_env.o ./srcs/built-in/ft_exit.o ./srcs/built-in/ft_pwd.o ./srcs/utilities/garbage_collector.o ./srcs/utilities/welcome_message.o  -L/usr/include -lreadline -o minishell ./libft/libft.a
+printf "{\n    leak readline\n    Memcheck:Leak\n    ...\n    fun:readline\n}\n{\n    leak add_history\n   Memcheck:Leak\n    ...\n    fun:add_history\n}" > ignore_leak.supp
+echo "OK"
+make: Leaving directory '/mnt/nfs/homes/cfontain/Documents/Cursus/minishell'
+ 
