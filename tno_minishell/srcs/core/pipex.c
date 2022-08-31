@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/26 18:55:03 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/31 18:13:01 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,12 @@ int	child_mgmt(t_command *cm, int i, int *end, int cmd_nbr)
 		}
 		close_pipes(cmd_nbr, end);
 		arg_cm = ft_split(cm->cmd[i], ' ');
+		free(end);
 		//gb_c(cm->gb, NULL, (void **)arg_cm);
 		cm->exec_ret = exec(arg_cm, cm->env);
 		ft_free_split(arg_cm);
-		return (0);
+		ft_free_split(cm->cmd);
+		return (17);
 	}
 	return (0);
 }
@@ -92,20 +94,18 @@ int	pipex(t_command *cm)
 	int		*end;
 	int		ret;
 	int		i;
-/* revoir gestion d'erreur */
+
 	cmd_nbr = nb_cmd(cm);
 	if (cmd_nbr == 0)
 		return (0);
-	/* malloc le tableau de pid et sortir end pour le malloc dans une fonction init */
 	end = malloc(2 * sizeof(int) * (cmd_nbr - 1));
 	if ((!end && cmd_nbr - 1 != 0) || open_pipes(cmd_nbr, end) != 0)
-		return (perror("pipex"), errno);
+		return (free(end), perror("pipex"), errno);
 	i = -1;
 	while (cm->cmd[++i])
 		child_mgmt(cm, i, end, cmd_nbr);
 	close_pipes(cmd_nbr, end);
 	i = -1;
-	/* refaire parent dans un fonction qui waitpid le tableau de pid */
 	while (++i < cmd_nbr)
 	{
 		waitpid(-1, &ret, 0);
@@ -114,6 +114,5 @@ int	pipex(t_command *cm)
 		else
 			printf("P: %d interrupted\n", i);
 	}
-	/* free pid et end */
 	return (free(end), cm->exec_ret);
 }

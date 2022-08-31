@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/23 17:52:25 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/31 17:16:02 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int	pipex(t_command *cm)
 			//int fd = open("file", O_CREAT | O_RDWR | O_TRUNC, 0777);
 			//dup2(fd, STDOUT_FILENO);
 			cm->exec_ret = exec(arg_cm, cm->env);
+			exit(17);
 		}
 		else
 		{

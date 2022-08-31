@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/26 18:49:58 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/08/31 18:13:52 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	main(int argc, char **argv, char **envp)
 	list = NULL;
 	cm.env = envp;
 	cm.gb = &list;
+	cm.exec_ret = -1;
 	print_welcome_msg();
 	while (42)
 	{

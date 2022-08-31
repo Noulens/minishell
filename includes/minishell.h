@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/30 16:19:22 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/08/31 17:59:27 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,8 @@ typedef struct s_signal
 typedef struct s_commands
 {
 	char	**cmd;
-	pid_t	pid; // a supprimer quand le *pids sera ok
-	pid_t	*pids; // pour pipex
-	int		*end; // pour pipex
+	pid_t	pid;
+	int		*end;
 	char	**env;
 	int		fd[2];
 	int		exec_ret;
