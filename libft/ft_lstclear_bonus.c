@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 16:50:29 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/22 20:42:42 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/02 01:36:27 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	ft_lstclear(t_list *lst)
 		tmp = lst->next;
 		if (lst->content)
 			free(lst->content);
-		ft_free_split((char **)lst->content2);
+		if (lst->content2)
+			ft_free_split((char **)lst->content2);
 		free(lst);
 		lst = tmp;
 	}
