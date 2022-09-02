@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/09/02 20:08:17 by waxxy            ###   ########.fr       */
+=======
+/*   Updated: 2022/09/02 16:20:34 by cfontain         ###   ########.fr       */
+>>>>>>> refs/remotes/origin/main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +90,7 @@ typedef struct s_commands
 
 	/* --- parsing line --- */
 
+void	parsing_token(char *str);
 char	*m_init_str(char *s, char c, char *str, int *j);
 int		m_line_lenght(char *s, char c, int *j);
 char	**ft_split_space_and_quote(char *s, char c);

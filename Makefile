@@ -6,7 +6,7 @@
 #    By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/09/02 20:09:22 by waxxy            ###   ########.fr        #
+#    Updated: 2022/09/02 20:20:19 by waxxy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ CORE		=	./srcs/core/prompt.c\
 				./srcs/core/m_parsing_quote.c\
 				./srcs/core/m_split_init.c\
 				./srcs/core/m_split_parse.c\
-				./srcs/core/cut_quote.c
+				./srcs/core/cut_quote.c\
+				./srcs/core/parsing_token.c
 
 BUILTIN		=	./srcs/built-in/ft_echo.c\
 				./srcs/built-in/ft_env.c\
