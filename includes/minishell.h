@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/02 11:41:06 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/02 16:20:34 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ typedef struct s_commands
 	char	**env;
 	int		fd[2];
 	int		exec_ret;
-	t_list	**gb;
+	t_list	*gb;
 }	t_command;
 
 /* Protos */
