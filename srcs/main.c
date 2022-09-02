@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/30 16:23:36 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/02 11:28:52 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	main(int argc, char **argv, char **envp)
 	while (42)
 	{
 		p = prompt_line();
+		parsing_token(p);
 		cm.cmd = ft_split(p, '|');
 		pipex(&cm);
 		ft_free_split(cm.cmd);

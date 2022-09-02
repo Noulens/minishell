@@ -6,7 +6,7 @@
 #    By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/08/30 16:15:34 by cfontain         ###   ########.fr        #
+#    Updated: 2022/09/02 10:37:40 by cfontain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ CORE		=	./srcs/core/prompt.c\
 				./srcs/core/m_parsing_quote.c\
 				./srcs/core/m_split_init.c\
 				./srcs/core/m_split_parse.c\
-				./srcs/core/cut_quote.c
+				./srcs/core/cut_quote.c\
+				./srcs/core/parsing_token.c
 
 BUILTIN		=	./srcs/built-in/ft_echo.c\
 				./srcs/built-in/ft_env.c\
