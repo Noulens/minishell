@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/31 18:13:01 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/02 13:46:11 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,14 @@ int	child_mgmt(t_command *cm, int i, int *end, int cmd_nbr)
 		}
 		close_pipes(cmd_nbr, end);
 		arg_cm = ft_split(cm->cmd[i], ' ');
-		free(end);
-		//gb_c(cm->gb, NULL, (void **)arg_cm);
+		if (gb_c(&cm->gb, NULL, (void **)arg_cm) == -1)
+		{
+			ft_lstclear(cm->gb);
+			exit(errno);
+		}
 		cm->exec_ret = exec(arg_cm, cm->env);
-		ft_free_split(arg_cm);
-		ft_free_split(cm->cmd);
-		return (17);
+		ft_lstclear(cm->gb);
+		exit(EXIT_SUCCESS);
 	}
 	return (0);
 }
@@ -99,8 +101,8 @@ int	pipex(t_command *cm)
 	if (cmd_nbr == 0)
 		return (0);
 	end = malloc(2 * sizeof(int) * (cmd_nbr - 1));
-	if ((!end && cmd_nbr - 1 != 0) || open_pipes(cmd_nbr, end) != 0)
-		return (free(end), perror("pipex"), errno);
+	if ((gb_c(&cm->gb, (void *)end, NULL) == -1 && cmd_nbr - 1 != 0) || open_pipes(cmd_nbr, end) != 0)
+		return (perror("pipex"), errno);
 	i = -1;
 	while (cm->cmd[++i])
 		child_mgmt(cm, i, end, cmd_nbr);
@@ -114,5 +116,5 @@ int	pipex(t_command *cm)
 		else
 			printf("P: %d interrupted\n", i);
 	}
-	return (free(end), cm->exec_ret);
+	return (cm->exec_ret);
 }

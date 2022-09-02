@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 16:50:29 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/02 01:36:27 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/02 13:25:12 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_lstclear(t_list *lst)
 		tmp = lst->next;
 		if (lst->content)
 			free(lst->content);
-		if (lst->content2)
+		if (lst->content2 != NULL)
 			ft_free_split((char **)lst->content2);
 		free(lst);
 		lst = tmp;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/31 17:59:27 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/02 02:11:43 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ typedef struct s_commands
 	char	**env;
 	int		fd[2];
 	int		exec_ret;
-	t_list	**gb;
+	t_list	*gb;
 }	t_command;
 
 /* Protos */
