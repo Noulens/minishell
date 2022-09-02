@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:06:24 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/02 20:06:54 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/02 20:28:16 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,12 @@ int	close_pipes(int cmd_nbr, int *end)
 		i++;
 	}
 	return (0);
+}
+
+void	dupper(int input, int output)
+{
+	if (dup2(input, STDIN_FILENO) == -1)
+		return (perror("dupper input"), (void)0);
+	if (dup2(output, STDOUT_FILENO) == -1)
+		return (perror("dupper output"), (void)0);
 }

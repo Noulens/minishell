@@ -6,19 +6,11 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/02 20:09:43 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/02 20:27:57 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-static void	dupper(int input, int output)
-{
-	if (dup2(input, STDIN_FILENO) == -1)
-		return (perror("dupper input"), (void)0);
-	if (dup2(output, STDOUT_FILENO) == -1)
-		return (perror("dupper output"), (void)0);
-}
 
 static int	nb_cmd(t_command *cm)
 {

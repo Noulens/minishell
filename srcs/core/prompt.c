@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:34:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/02 14:00:01 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/02 22:05:49 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ char	*prompt_line(void)
 	line_read = readline("> ");
 	if (line_read && *line_read)
 		add_history(line_read);
+	else if (line_read == NULL)
+	{
+		ft_printf("exit\n");
+		exit(4);
+	}
 	return (line_read);
 }
 /*

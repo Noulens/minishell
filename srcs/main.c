@@ -6,11 +6,15 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/02 20:19:41 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/02 22:15:56 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+/* set ONE global variable to manage signals */
+
+t_command	*g_cm;
 
 void	ft_printab(char **str)
 {
@@ -42,31 +46,28 @@ int	space_only(char *p)
 	return (1);
 }
 
-void	signal_handler()
-{
-	;
-}
-
 int	main(int argc, char **argv, char **envp)
 {
 	char		*p;
 	t_command	cm;
 
 	init_struct(&cm, envp, argc, argv);
+	g_cm = &cm;
 	print_welcome_msg();
+	signal_handling();
 	while (42)
 	{
 		p = prompt_line();
-		if (p == NULL || space_only(p))
+		if (space_only(p))
 			continue ;
 		cm.cmd = ft_split(p, '|');
 		cm.gb = ft_lstnew(NULL, (void **)cm.cmd);
 		if (cm.gb == NULL)
-			return (-2);
+			return (ft_printf("%s", strerror(errno)), errno);
 		cm.exec_ret = pipex(&cm);
 		ft_lstclear(cm.gb);
 		printf("%d\n", cm.exec_ret);
+		init_struct(&cm, envp, argc, argv);
 	}
-	free(p);
 	return (0);
 }

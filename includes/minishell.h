@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/09/02 20:08:17 by waxxy            ###   ########.fr       */
-=======
-/*   Updated: 2022/09/02 16:20:34 by cfontain         ###   ########.fr       */
->>>>>>> refs/remotes/origin/main
+/*   Updated: 2022/09/02 22:16:44 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +117,7 @@ int		gb_c(t_list **gb, void *content, void **content2);
 void    init_struct(t_command *cm, char **envp, int argc, char **argv);
 int		close_pipes(int cmd_nbr, int *end);
 int		open_pipes(int cmd_nbr, int *end);
+void	dupper(int input, int output);
 
 
 	/* --- build-in --- */
@@ -128,7 +125,11 @@ int		open_pipes(int cmd_nbr, int *end);
 int		ft_echo(int argc, char **argv);
 int		ft_pwd(void);
 int		ft_env(char **envp);
-void	ft_exit(t_list **gb);
+void	ft_exit(t_command *cm);
+
+	/* --- signals --- */
+void	tmp_handler(int sig, siginfo_t *info, void *context);
+void	signal_handling(void);
 
 /* This is a minimal set of ANSI/VT100 color codes */
 
