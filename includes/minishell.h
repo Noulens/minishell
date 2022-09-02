@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/02 02:11:43 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/02 20:08:17 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_commands
 	int		*end;
 	char	**env;
 	int		fd[2];
+	short	here_doc;
 	int		exec_ret;
 	t_list	*gb;
 }	t_command;
@@ -112,6 +113,10 @@ int		pipex(t_command *cm);
 
 void	print_welcome_msg(void);
 int		gb_c(t_list **gb, void *content, void **content2);
+void    init_struct(t_command *cm, char **envp, int argc, char **argv);
+int		close_pipes(int cmd_nbr, int *end);
+int		open_pipes(int cmd_nbr, int *end);
+
 
 	/* --- build-in --- */
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+         #
+#    By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/08/30 16:15:34 by cfontain         ###   ########.fr        #
+#    Updated: 2022/09/02 20:09:22 by waxxy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,9 @@ BUILTIN		=	./srcs/built-in/ft_echo.c\
 				./srcs/built-in/ft_pwd.c
 
 UTILITIES	= 	./srcs/utilities/garbage_collector.c\
-				./srcs/utilities/welcome_message.c
+				./srcs/utilities/welcome_message.c\
+				./srcs/utilities/pipes_mgmt.c\
+				./srcs/utilities/init.c
 
 SRCS		=	${MAIN} ${CORE} ${BUILTIN} ${UTILITIES}
 

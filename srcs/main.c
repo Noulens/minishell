@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/02 14:06:10 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/02 20:04:36 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,17 @@ int	space_only(char *p)
 	return (1);
 }
 
+void	signal_handler()
+{
+	;
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	char		*p;
 	t_command	cm;
 
-	(void)argc;
-	(void)argv;
-	cm.env = envp;
-	cm.exec_ret = -1;
-	cm.gb = NULL;
+	init_struct(&cm, envp, argc, argv);
 	print_welcome_msg();
 	while (42)
 	{
