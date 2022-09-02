@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/02 13:57:53 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/02 14:06:10 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	main(int argc, char **argv, char **envp)
 	cm.env = envp;
 	cm.exec_ret = -1;
 	cm.gb = NULL;
-	//print_welcome_msg();
+	print_welcome_msg();
 	while (42)
 	{
 		p = prompt_line();
