@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/03 13:08:53 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/03 14:06:45 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,7 @@ int	child_mgmt(t_command *cm, int i, int cmd_nbr)
 		close_pipes(cmd_nbr, cm->end);
 		arg_cm = ft_split(cm->cmd[i], ' ');
 		if (gb_c(&cm->gb, NULL, (void **)arg_cm) == -1)
-		{
-			ft_lstclear(cm->gb);
-			exit(errno);
-		}
+			return (ft_lstclear(cm->gb), exit(errno), errno);
 		cm->exec_ret = exec(arg_cm, cm->env);
 		ft_lstclear(cm->gb);
 		exit(cm->exec_ret);
