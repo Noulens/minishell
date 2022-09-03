@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/02 22:16:44 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/03 13:48:57 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_commands
 {
 	char	**cmd;
 	pid_t	pid;
+	pid_t	*pids;
 	int		*end;
 	char	**env;
 	int		fd[2];

@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:29:21 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/02 13:59:48 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/03 12:28:48 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,24 @@ char	*cmd_check(char **bin_path, char *cmd)
 		else
 			free(tmp);
 	}
-	return (ft_free_split(bin_path), perror("cmd_check"), NULL);
+	return (ft_free_split(bin_path), NULL);
 }
 
 int	exec(char **cmds, char **envp)
 {
 	char	*cmd_path;
 
-	if (access(cmds[0], F_OK | X_OK) == 0)
-		cmd_path = cmds[0];
+	if (memchr(cmds[0], '/', ft_strlen(cmds[0])))
+	{
+		if (access(cmds[0], F_OK | X_OK) == 0)
+			cmd_path = cmds[0];
+		else
+			return(perror("access"), errno);
+	}
 	else
 		cmd_path = cmd_check(paths_maker(), cmds[0]);
 	if (!cmd_path)
-		return(errno);
+		return(ft_printf("%s: command not found\n", cmds[0]), 127);
 	if (execve(cmd_path, cmds, envp) == -1)
 		return (perror("exec"), errno);
 	return (0);

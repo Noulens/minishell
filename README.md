@@ -17,7 +17,7 @@
 	* [x] env sans aucune option ni argument
 	* [ ] exit sans aucune option
 * Signaux :
-	* [ ] ctrl-C en cours, j'ai des bugs d'affichage
+	* [x] ctrl-C OK sans leaks : write(1, "\n", 1); rl_on_new_line(); rl_redisplay();
 	* [x] ctrl-D OK sans leaks
 	* [ ] ctrl-\ à tester
 * Divers
