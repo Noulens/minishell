@@ -4,7 +4,7 @@
 	* [x] Boucle pour executer les cmd multiples en creant autant de pipe que necessaire et en utilisant execve
 
 * Here_doc :
-	* [] faire le Here_doc de pipex
+	* [ ] Here_doc : prototype ok, il faut activer ou désactivier le flag manuellement a ce stade. << LIMITER :token a chercher, qui active le flag.
 
 * Garbage collector :
 	* [x] int	gb_c(t_list **gb, void *content, void **content2)  : liste chainee avec un lst_add_back du pointeur * ou du pointeur ** ou NULL a chaque malloc et un free final de la lst a la fin. Inutile d'y ajouter les ptr des que l'on sait qu'ils vont etre free dans la foulee.
