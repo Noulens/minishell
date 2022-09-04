@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/03 13:48:57 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/04 13:45:05 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
 # define SA_RESTART	0x10000000
 # define SUCCESS 0
 # define FAIL 1
+# define TRUE 1
+# define FALSE 0
 # define MAX_PIPE 1024 /* max # of pipe per process: pipe(7) man page
 set in /proc/sys/fs/pipe-user-pages-soft (since Linux 4.5) */
 
@@ -79,6 +81,7 @@ typedef struct s_commands
 	char	**env;
 	int		fd[2];
 	short	here_doc;
+	char	*limiter;
 	int		exec_ret;
 	t_list	*gb;
 }	t_command;

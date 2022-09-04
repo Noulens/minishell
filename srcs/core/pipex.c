@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/03 14:06:45 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/04 14:22:02 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	child_mgmt(t_command *cm, int i, int cmd_nbr)
 		if (cmd_nbr > 1)
 		{
 			if (i == 0)
-				dupper(STDIN_FILENO, cm->end[1]);
+				dupper(cm->fd[0], cm->end[1]);
 			else if (i == cmd_nbr - 1)
 				dupper(cm->end[2 * i - 2], STDOUT_FILENO);
 			else
@@ -51,6 +51,34 @@ int	child_mgmt(t_command *cm, int i, int cmd_nbr)
 	return (0);
 }
 
+int	check_heredoc(t_command *cm)
+{
+	char	*p;
+	
+	p = NULL;
+	if (cm->here_doc == 0)
+		return (cm->fd[0]);
+	cm->fd[0] = open(".", __O_TMPFILE | O_RDWR | O_EXCL, 0644);
+	if (cm->fd[0] == -1)
+		return (perror("check_heredoc open"), errno);
+	write(1, ">", 1);
+	p = get_next_line(STDIN_FILENO);
+	if (!p)
+		return (close(cm->fd[0]), perror("check_heredoc gnl"), errno);
+	while (ft_strncmp(p, "stop", 4))
+	{
+		write(1, ">", 1);
+		ft_putstr_fd(p, cm->fd[0]);
+		free(p);
+		p = get_next_line(STDIN_FILENO);
+		if (!p)
+			return (close(cm->fd[0]), perror("check_heredoc wgnl"), errno);
+	}
+	free(p);
+	close(cm->fd[0]);
+	return (cm->fd[0]);
+}
+
 int	pipex(t_command *cm)
 {
 	int		cmd_nbr;
@@ -60,6 +88,7 @@ int	pipex(t_command *cm)
 	cmd_nbr = nb_cmd(cm);
 	if (cmd_nbr == 0)
 		return (0);
+	check_heredoc(cm);
 	cm->pids = (pid_t *)malloc(cmd_nbr * sizeof(pid_t));
 	if (gb_c(&cm->gb, (void *)cm->pids, NULL) == -1)
 		return (perror("pipex pids"), errno);
