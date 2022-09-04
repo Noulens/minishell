@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/04 13:45:05 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/04 16:35:00 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int		pipex(t_command *cm);
 void	print_welcome_msg(void);
 int		gb_c(t_list **gb, void *content, void **content2);
 void    init_struct(t_command *cm, char **envp, int argc, char **argv);
-int		close_pipes(int cmd_nbr, int *end);
+int		close_pipes(int cmd_nbr, int *end, t_command *cm);
 int		open_pipes(int cmd_nbr, int *end);
 void	dupper(int input, int output);
 
