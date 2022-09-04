@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:06:24 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/04 17:01:01 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/04 20:50:00 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ int	close_pipes(int cmd_nbr, int *end, t_command *cm)
 	}
 	if (cm->here_doc == TRUE)
 	{
-		close(cm->fd[0] == -1);
-			return (perror("close_pipes hd"), errno);
+		close(cm->fd[0]);
 		unlink(".here_doc.tmp");
 	}
 	return (0);

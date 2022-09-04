@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/04 16:51:56 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/04 21:30:47 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,26 +50,29 @@ int	child_mgmt(t_command *cm, int i, int cmd_nbr)
 	return (0);
 }
 
-void	check_heredoc(t_command *cm)
+void	check_heredoc(void)
 {
 	char	*p;
 	int		stdin_fd;
 	int		tmp_fd;
 
-	(void)cm;
 	tmp_fd = open(".here_doc.tmp", O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (tmp_fd == -1)
 		return (perror("check_heredoc open"), (void)0);
 	stdin_fd = dup(STDIN_FILENO);
-	p = "";
-	write(1, "> ", 2);
-	p = get_next_line(stdin_fd);
+	p = NULL;
 	while (ft_strncmp(p, "stop", 4))
 	{
-		write(1, "> ", 2);
+		write(1, "-> ", 3);
+		p = get_next_line(stdin_fd);
+		if (p == NULL)
+		{
+			ft_printf("warning: expected stop\n");
+			break ;
+		}
 		ft_putstr_fd(p, tmp_fd);
 		free(p);
-		p = get_next_line(stdin_fd);
+		p = NULL;
 	}
 	free(p);
 	close(stdin_fd);
@@ -80,7 +83,7 @@ void	get_fd_in(t_command *cm)
 {
 	if (cm->here_doc == TRUE)
 	{
-		check_heredoc(cm);
+		check_heredoc();
 		cm->fd[0] = open(".here_doc.tmp", O_RDONLY);
 		if (cm->fd[0] == -1)
 			perror("get_fd_in");
@@ -94,7 +97,6 @@ int	pipex(t_command *cm)
 	int		i;
 
 	cmd_nbr = nb_cmd(cm);
-	printf(" cmd nbr %d ", cmd_nbr);
 	if (cmd_nbr == 0)
 		return (0);
 	get_fd_in(cm);
