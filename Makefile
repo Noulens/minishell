@@ -6,7 +6,7 @@
 #    By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/09/05 16:35:24 by tnoulens         ###   ########.fr        #
+#    Updated: 2022/09/05 16:49:43 by tnoulens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ SUPP		=	printf "{\n    leak readline\n    Memcheck:Leak\n    ...\n    fun:readli
 all			: ${NAME}
 
 %.o: %.c
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o} 
+		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
 
 ${LIBFT}	:
 		@echo "\033[35m----Building libft----"

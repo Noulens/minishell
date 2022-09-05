@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:33:49 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/05 16:37:02 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:35:43 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,12 @@ void	tmp_handler(int sig, siginfo_t *info, void *context)
 	(void)context;
 	if (sig == SIGINT)
 	{
-		write(1, "\n", 1);
+		g_cm->sigint = TRUE;
+		g_cm->exec_ret = 130;
+		if (g_cm->fdhd != -1)
+			close(g_cm->fdhd);
+		write(STDIN_FILENO, "\n", 1);
+		rl_replace_line("", 1);
 		rl_on_new_line();
 		rl_redisplay();
 	}
@@ -36,4 +41,3 @@ void	signal_handling(void)
 	sigaction(SIGINT, &sa, NULL);
 	sigaction(SIGQUIT, &sa, NULL);
 }
-

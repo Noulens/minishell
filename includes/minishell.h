@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/05 16:32:18 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:22:37 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,11 @@ typedef struct s_commands
 	int		*end;
 	char	**env;
 	int		fd[2];
+	int		fdhd;
 	short	here_doc;
 	char	*limiter;
 	int		exec_ret;
+	short	sigint;
 	t_list	*gb;
 }	t_command;
 

@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/05 16:36:55 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:48:09 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,21 +60,22 @@ void	check_heredoc(void)
 	if (tmp_fd == -1)
 		return (perror("check_heredoc open"), (void)0);
 	stdin_fd = dup(STDIN_FILENO);
+	g_cm->fdhd = stdin_fd;
 	while (1)
 	{
-		write(1, "heredoc> ", 9);
+		write(STDIN_FILENO, "heredoc> ", 9);
 		p = get_next_line(stdin_fd);
 		if (p == NULL || !ft_strncmp(p, "stop", 4))
 		{
+			close(stdin_fd);
 			if (p == NULL)
 				ft_printf("warning: expected stop\n");
+			free(p);
 			break ;
 		}
 		ft_putstr_fd(p, tmp_fd);
 		free(p);
 	}
-	free(p);
-	close(stdin_fd);
 	close(tmp_fd);
 }
 
@@ -106,11 +107,11 @@ int	pipex(t_command *cm)
 	if ((gb_c(&cm->gb, (void *)cm->end, NULL) == -1 && cmd_nbr - 1 != 0) || open_pipes(cmd_nbr, cm->end) != 0)
 		return (perror("pipex end"), errno);
 	i = -1;
-	while (cm->cmd[++i])
+	while (cm->cmd[++i] && cm->sigint == FALSE)
 		child_mgmt(cm, i, cmd_nbr);
 	close_pipes(cmd_nbr, cm->end, cm);
 	i = -1;
-	while (++i < cmd_nbr)
+	while (++i < cmd_nbr && cm->sigint == FALSE)
 	{
 		waitpid(cm->pids[i], &ret, 0);
 		if (WIFEXITED(ret))

@@ -6,13 +6,13 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/05 16:39:11 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:26:16 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/* set ONE global variable to manage signals */
+t_command	*g_cm;
 
 void	ft_printab(char **str)
 {
