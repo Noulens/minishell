@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/04 21:30:47 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/05 16:16:52 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,18 @@ void	check_heredoc(void)
 	if (tmp_fd == -1)
 		return (perror("check_heredoc open"), (void)0);
 	stdin_fd = dup(STDIN_FILENO);
-	p = NULL;
-	while (ft_strncmp(p, "stop", 4))
+	while (1)
 	{
-		write(1, "-> ", 3);
+		write(1, "heredoc> ", 9);
 		p = get_next_line(stdin_fd);
-		if (p == NULL)
+		if (p == NULL || !ft_strncmp(p, "stop", 4))
 		{
-			ft_printf("warning: expected stop\n");
+			if (p == NULL)
+				ft_printf("warning: expected stop\n");
 			break ;
 		}
 		ft_putstr_fd(p, tmp_fd);
 		free(p);
-		p = NULL;
 	}
 	free(p);
 	close(stdin_fd);
