@@ -6,11 +6,11 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 19:00:00 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/18 19:10:46 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/05 16:36:11 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 int	ft_env(char **envp)
 {

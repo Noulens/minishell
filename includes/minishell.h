@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/04 20:49:36 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/05 16:32:18 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,8 @@ void	ft_exit(t_command *cm);
 	/* --- signals --- */
 void	tmp_handler(int sig, siginfo_t *info, void *context);
 void	signal_handling(void);
+
+extern t_command	*g_cm;
 
 /* This is a minimal set of ANSI/VT100 color codes */
 

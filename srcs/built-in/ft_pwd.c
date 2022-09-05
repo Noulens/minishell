@@ -6,11 +6,11 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 20:47:10 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/16 21:14:54 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/05 16:36:20 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 int	ft_pwd(void)
 {

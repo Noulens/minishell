@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   m_split_parse.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:58:18 by cfontain          #+#    #+#             */
-/*   Updated: 2022/08/30 16:20:05 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/05 16:36:45 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 void	count_sep_quote(t_mega_split *split, char *s)
 {
