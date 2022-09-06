@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/06 16:50:15 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:44:13 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	space_only(char *p)
 	i = 0;
 	while (p[i])
 	{
-		if (ft_isspace(p[i]))
+		if (isspace(p[i]))
 			i++;
 		else
 			return (0);
@@ -92,6 +92,7 @@ int	main(int argc, char **argv, char **envp)
 		cm.gb = ft_lstnew(NULL, (void **)cm.cmd);
 		if (cm.gb == NULL)
 			return (ft_printf("%s", strerror(errno)), errno);
+		parsing_token(cm.cmd[0], &cm);	
 		cm.exec_ret = pipex(&cm);
 		ft_lstclear(cm.gb);
 		printf("%d\n", cm.exec_ret);

@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/06 16:34:41 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:44:58 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,15 @@ typedef struct s_signal
 typedef struct s_commands
 {
 	char	**cmd;
+	char	*infile;
+	char	*outfile;
 	pid_t	pid;
 	pid_t	*pids;
 	int		*end;
 	int		fd[2];
 	int		fdhd;
 	short	here_doc;
+	short	outfile_append;
 	char	*limiter;
 	int		exec_ret;
 	short	sigint;
@@ -92,7 +95,8 @@ typedef struct s_commands
 
 	/* --- parsing line --- */
 
-void	parsing_token(char *str);
+void	ft_printab(char **str);
+int		parsing_token(char *str, t_command *cmd);
 char	*m_init_str(char *s, char c, char *str, int *j);
 int		m_line_lenght(char *s, char c, int *j);
 char	**ft_split_space_and_quote(char *s, char c);
@@ -102,7 +106,7 @@ int		m_split_count_line(char *s, char c);
 void	ft_count_up(t_mega_split *split);
 char	*m_malloc_str(char *str, int len);
 void	m_init_str_with_sep(char *s, char *str, int *i, int *k);
-int		char_is_sep(char c);
+int	char_is_quote(char c);
 int		check_single_quote(char *str, int *i);
 int		check_double_quote(char *str, int *i);
 int		parsing_quote(char *str);
