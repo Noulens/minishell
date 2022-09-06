@@ -6,11 +6,11 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 19:00:00 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/18 19:10:46 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/06 14:29:29 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 int	ft_env(char **envp)
 {
@@ -21,7 +21,7 @@ int	ft_env(char **envp)
 	i = 0;
 	while (envp[i])
 	{
-		ft_putendl_fd(envp[i], 1);
+		ft_putendl_fd(envp[i], STDOUT_FILENO);
 		++i;
 	}
 	return (0);

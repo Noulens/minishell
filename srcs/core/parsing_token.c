@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_token.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 10:36:13 by cfontain          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/09/06 17:11:36 by cfontain         ###   ########.fr       */
+=======
+/*   Updated: 2022/09/05 16:36:49 by tnoulens         ###   ########.fr       */
+>>>>>>> e3002d26c9fff1cd7daa32407f6478555edfbe72
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 int		char_is_token(char c)
 {

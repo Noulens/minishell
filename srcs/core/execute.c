@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:29:21 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/03 12:28:48 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/06 14:05:12 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 char	*env_parser(char *env_var)
 {
@@ -84,12 +84,12 @@ int	exec(char **cmds, char **envp)
 		if (access(cmds[0], F_OK | X_OK) == 0)
 			cmd_path = cmds[0];
 		else
-			return(perror("access"), errno);
+			return (perror("access"), errno);
 	}
 	else
 		cmd_path = cmd_check(paths_maker(), cmds[0]);
 	if (!cmd_path)
-		return(ft_printf("%s: command not found\n", cmds[0]), 127);
+		return (ft_printf("%s: command not found\n", cmds[0]), 127);
 	if (execve(cmd_path, cmds, envp) == -1)
 		return (perror("exec"), errno);
 	return (0);

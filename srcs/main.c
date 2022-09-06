@@ -3,16 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
 /*   Updated: 2022/09/06 17:14:35 by cfontain         ###   ########.fr       */
+=======
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
+/*   Updated: 2022/09/06 14:13:00 by tnoulens         ###   ########.fr       */
+>>>>>>> e3002d26c9fff1cd7daa32407f6478555edfbe72
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
-
-/* set ONE global variable to manage signals */
+#include "minishell.h"
 
 t_command	*g_cm;
 
@@ -38,7 +43,7 @@ int	space_only(char *p)
 	i = 0;
 	while (p[i])
 	{
-		if (isspace(p[i]))
+		if (ft_isspace(p[i]))
 			i++;
 		else
 			return (0);
@@ -57,10 +62,16 @@ int	main(int argc, char **argv, char **envp)
 	signal_handling();
 	while (42)
 	{
-		p = prompt_line();
+		p = prompt_line(&cm);
 		if (space_only(p))
+		{
+			cm.sigint = FALSE;
 			continue ;
+<<<<<<< HEAD
 
+=======
+		}
+>>>>>>> e3002d26c9fff1cd7daa32407f6478555edfbe72
 		cm.cmd = ft_split(p, '|');
 		cm.gb = ft_lstnew(NULL, (void **)cm.cmd);
 		if (cm.gb == NULL)

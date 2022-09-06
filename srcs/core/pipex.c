@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/04 21:30:47 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/06 14:44:05 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 static int	nb_cmd(t_command *cm)
 {
@@ -44,13 +44,14 @@ int	child_mgmt(t_command *cm, int i, int cmd_nbr)
 		if (gb_c(&cm->gb, NULL, (void **)arg_cm) == -1)
 			return (ft_lstclear(cm->gb), exit(errno), errno);
 		cm->exec_ret = exec(arg_cm, cm->env);
+		close_std_in_child();
 		ft_lstclear(cm->gb);
 		exit(cm->exec_ret);
 	}
 	return (0);
 }
 
-void	check_heredoc(void)
+void	check_heredoc(t_command *cm)
 {
 	char	*p;
 	int		stdin_fd;
@@ -60,22 +61,22 @@ void	check_heredoc(void)
 	if (tmp_fd == -1)
 		return (perror("check_heredoc open"), (void)0);
 	stdin_fd = dup(STDIN_FILENO);
-	p = NULL;
-	while (ft_strncmp(p, "stop", 4))
+	cm->fdhd = stdin_fd;
+	while (1)
 	{
-		write(1, "-> ", 3);
+		write(STDIN_FILENO, "heredoc> ", 9);
 		p = get_next_line(stdin_fd);
-		if (p == NULL)
+		if (p == NULL || !ft_strncmp(p, "stop", 4))
 		{
-			ft_printf("warning: expected stop\n");
+			close(stdin_fd);
+			if (p == NULL)
+				ft_printf("warning: expected stop\n");
+			free(p);
 			break ;
 		}
 		ft_putstr_fd(p, tmp_fd);
 		free(p);
-		p = NULL;
 	}
-	free(p);
-	close(stdin_fd);
 	close(tmp_fd);
 }
 
@@ -83,7 +84,7 @@ void	get_fd_in(t_command *cm)
 {
 	if (cm->here_doc == TRUE)
 	{
-		check_heredoc();
+		check_heredoc(cm);
 		cm->fd[0] = open(".here_doc.tmp", O_RDONLY);
 		if (cm->fd[0] == -1)
 			perror("get_fd_in");
@@ -107,11 +108,11 @@ int	pipex(t_command *cm)
 	if ((gb_c(&cm->gb, (void *)cm->end, NULL) == -1 && cmd_nbr - 1 != 0) || open_pipes(cmd_nbr, cm->end) != 0)
 		return (perror("pipex end"), errno);
 	i = -1;
-	while (cm->cmd[++i])
+	while (cm->cmd[++i] && cm->sigint == FALSE)
 		child_mgmt(cm, i, cmd_nbr);
 	close_pipes(cmd_nbr, cm->end, cm);
 	i = -1;
-	while (++i < cmd_nbr)
+	while (++i < cmd_nbr && cm->sigint == FALSE)
 	{
 		waitpid(cm->pids[i], &ret, 0);
 		if (WIFEXITED(ret))

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:33:49 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/03 13:57:48 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/06 14:04:46 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 void	tmp_handler(int sig, siginfo_t *info, void *context)
 {
@@ -18,7 +18,12 @@ void	tmp_handler(int sig, siginfo_t *info, void *context)
 	(void)context;
 	if (sig == SIGINT)
 	{
-		write(1, "\n", 1);
+		g_cm->sigint = TRUE;
+		g_cm->exec_ret = 130;
+		if (g_cm->fdhd != -1)
+			close(g_cm->fdhd);
+		write(STDIN_FILENO, "\n", 1);
+		rl_replace_line("", 1);
 		rl_on_new_line();
 		rl_redisplay();
 	}
@@ -29,11 +34,10 @@ void	tmp_handler(int sig, siginfo_t *info, void *context)
 void	signal_handling(void)
 {
 	struct sigaction	sa;
-	
+
 	sa.sa_flags = SA_RESTART;
 	sigemptyset(&sa.sa_mask);
 	sa.sa_sigaction = tmp_handler;
 	sigaction(SIGINT, &sa, NULL);
 	sigaction(SIGQUIT, &sa, NULL);
 }
-

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pipes_mgmt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:06:24 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/04 20:50:00 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/06 14:44:58 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 int	open_pipes(int cmd_nbr, int *end)
 {
@@ -51,4 +51,14 @@ void	dupper(int input, int output)
 		return (perror("dupper input"), (void)0);
 	if (dup2(output, STDOUT_FILENO) == -1)
 		return (perror("dupper output"), (void)0);
+}
+
+void	close_std_in_child(void)
+{
+	if (close(0) == -1)
+			return (perror("close_std_in_child"), (void)0);
+	if (close(1) == -1)
+			return (perror("close_std_in_child"), (void)0);
+	if (close(2) == -1)
+			return (perror("close_std_in_child"), (void)0);
 }

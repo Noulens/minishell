@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   m_parsing_quote.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 14:51:12 by cfontain          #+#    #+#             */
-/*   Updated: 2022/08/30 16:14:34 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/05 16:36:36 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 int	check_single_quote(char *str, int *i)
 {

@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/19 18:43:44 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/05 16:36:16 by tnoulens         ###   ########.fr       */
+/*   Created: 2022/09/06 14:06:46 by tnoulens          #+#    #+#             */
+/*   Updated: 2022/09/06 14:25:23 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	ft_exit(t_command *cm)
+int	ft_isspace(char c)
 {
-	ft_lstclear(cm->gb);
-	printf("exit\n");
-	exit(EXIT_SUCCESS);
+	if (c == '\t' || c == '\n' || c == '\v'
+		|| c == '\f' || c == '\r' || c == ' ')
+		return (1);
+	else
+		return (0);
 }

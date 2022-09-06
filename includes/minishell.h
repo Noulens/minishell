@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/06 16:00:32 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:15:28 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,12 @@ typedef struct s_commands
 	int		*end;
 	char	**env;
 	int		fd[2];
+	int		fdhd;
 	short	here_doc;
 	short	outfile_append;
 	char	*limiter;
 	int		exec_ret;
+	short	sigint;
 	t_list	*gb;
 }	t_command;
 
@@ -114,7 +116,7 @@ int		cut_quote(char **split_line);
 
 	/* --- core --- */
 
-char	*prompt_line(void);
+char	*prompt_line(t_command *cm);
 int		exec(char **argv, char **envp);
 int		pipex(t_command *cm);
 
@@ -124,6 +126,7 @@ void	print_welcome_msg(void);
 int		gb_c(t_list **gb, void *content, void **content2);
 void    init_struct(t_command *cm, char **envp, int argc, char **argv);
 int		close_pipes(int cmd_nbr, int *end, t_command *cm);
+void	close_std_in_child(void);
 int		open_pipes(int cmd_nbr, int *end);
 void	dupper(int input, int output);
 
@@ -138,6 +141,8 @@ void	ft_exit(t_command *cm);
 	/* --- signals --- */
 void	tmp_handler(int sig, siginfo_t *info, void *context);
 void	signal_handling(void);
+
+extern t_command	*g_cm;
 
 /* This is a minimal set of ANSI/VT100 color codes */
 

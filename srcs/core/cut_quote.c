@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cut_quote.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:56:06 by cfontain          #+#    #+#             */
-/*   Updated: 2022/08/30 16:15:46 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/05 16:36:26 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 void	new_cut_line2(char *str, char *new_str, t_new_cut_line *line)
 {
