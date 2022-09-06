@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/05 22:22:37 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/06 13:07:47 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int		cut_quote(char **split_line);
 
 	/* --- core --- */
 
-char	*prompt_line(void);
+char	*prompt_line(t_command *cm);
 int		exec(char **argv, char **envp);
 int		pipex(t_command *cm);
 

@@ -6,13 +6,13 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:34:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/05 20:32:12 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/06 13:06:41 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*prompt_line(void)
+char	*prompt_line(t_command *cm)
 {
 	static char	*line_read;
 
@@ -24,6 +24,8 @@ char	*prompt_line(void)
 	line_read = readline("> ");
 	if (line_read && *line_read)
 		add_history(line_read);
+	if (cm->sigint == TRUE)
+		cm->sigint = FALSE;
 	else if (line_read == NULL)
 	{
 		ft_printf("exit\n");

@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/05 22:26:16 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/06 13:10:42 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,12 @@ int	main(int argc, char **argv, char **envp)
 	signal_handling();
 	while (42)
 	{
-		p = prompt_line();
+		p = prompt_line(&cm);
 		if (space_only(p))
+		{
+			cm.sigint = FALSE;
 			continue ;
+		}
 		cm.cmd = ft_split(p, '|');
 		cm.gb = ft_lstnew(NULL, (void **)cm.cmd);
 		if (cm.gb == NULL)
