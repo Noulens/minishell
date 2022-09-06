@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:20:29 by cfontain          #+#    #+#             */
-/*   Updated: 2022/08/30 16:15:46 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/06 11:51:45 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*m_init_str(char *s, char c, char *str, int *j)
 			i++;
 	while (s[i] != 0 && s[i] != c)
 	{
-		if (char_is_sep(s[i]) == 0)
+		if (char_is_quote(s[i]) == 0)
 		{
 			if (parsing_quote(s + i) == 0)
 			{

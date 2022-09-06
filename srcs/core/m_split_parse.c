@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:58:18 by cfontain          #+#    #+#             */
-/*   Updated: 2022/08/30 16:20:05 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/06 11:52:40 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	count_sep_quote(t_mega_split *split, char *s)
 	}
 }
 
-int	char_is_sep(char c)
+int	char_is_quote(char c)
 {
 	if (c == 34 || c == 39)
 		return (0);
@@ -54,7 +54,7 @@ int	m_split_count_line(char *s, char c)
 			split.i++;
 			split.j++;
 		}
-		if (s[split.i] != 0 && char_is_sep(s[split.i]) == 0
+		if (s[split.i] != 0 && char_is_quote(s[split.i]) == 0
 			&&parsing_quote(s + split.i) == 0)
 			count_sep_quote(&split, s);
 		else

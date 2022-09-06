@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/03 13:47:34 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/06 17:14:35 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	main(int argc, char **argv, char **envp)
 		p = prompt_line();
 		if (space_only(p))
 			continue ;
+
 		cm.cmd = ft_split(p, '|');
 		cm.gb = ft_lstnew(NULL, (void **)cm.cmd);
 		if (cm.gb == NULL)
