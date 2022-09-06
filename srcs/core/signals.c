@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:33:49 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/06 12:52:16 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/06 14:04:46 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	tmp_handler(int sig, siginfo_t *info, void *context)
 void	signal_handling(void)
 {
 	struct sigaction	sa;
-	
+
 	sa.sa_flags = SA_RESTART;
 	sigemptyset(&sa.sa_mask);
 	sa.sa_sigaction = tmp_handler;

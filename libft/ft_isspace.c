@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/02 19:57:27 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/06 14:04:29 by tnoulens         ###   ########.fr       */
+/*   Created: 2022/09/06 14:06:46 by tnoulens          #+#    #+#             */
+/*   Updated: 2022/09/06 14:25:23 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	init_struct(t_command *cm, char **envp, int argc, char **argv)
+int	ft_isspace(char c)
 {
-	(void)argc;
-	(void)argv;
-	cm->cmd = NULL;
-	cm->pid = -1;
-	cm->end = NULL;
-	cm->env = envp;
-	cm->fd[0] = STDIN_FILENO;
-	cm->fd[1] = STDOUT_FILENO;
-	cm->fdhd = -1;
-	cm->here_doc = TRUE;
-	cm->limiter = NULL;
-	cm->pids = NULL;
-	cm->end = NULL;
-	cm->gb = NULL;
-	cm->sigint = FALSE;
+	if (c == '\t' || c == '\n' || c == '\v'
+		|| c == '\f' || c == '\r' || c == ' ')
+		return (1);
+	else
+		return (0);
 }

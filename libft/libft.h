@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:05:08 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/22 20:35:50 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/06 14:13:38 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ void	ft_cpy(char *suf, char *p);
 long	ft_atol(const char *nptr);
 int		ft_atoi_base(const char *str, int base);
 void	ft_free_split(char **tofree);
+int		ft_isspace(char c);
 
 #endif

@@ -82,7 +82,8 @@ SRCS		=	ft_isalpha.c\
 				get_next_line_bonus.c\
 				ft_free_split.c\
 				ft_atoi_base.c\
-				get_next_line_utils_bonus.c
+				get_next_line_utils_bonus.c\
+				ft_isspace.c
 
 
 OBJS		=	${SRCS:.c=.o}
