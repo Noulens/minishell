@@ -6,7 +6,7 @@
 #    By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/09/05 16:49:43 by tnoulens         ###   ########.fr        #
+#    Updated: 2022/09/06 16:11:33 by tnoulens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ BUILTIN		=	./srcs/built-in/ft_echo.c\
 UTILITIES	= 	./srcs/utilities/garbage_collector.c\
 				./srcs/utilities/welcome_message.c\
 				./srcs/utilities/pipes_mgmt.c\
-				./srcs/utilities/init.c
+				./srcs/utilities/init.c\
+				./srcs/utilities/clean_up.c
 
 SRCS		=	${MAIN} ${CORE} ${BUILTIN} ${UTILITIES}
 

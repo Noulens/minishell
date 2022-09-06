@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:06:24 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/06 14:44:58 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/06 14:48:51 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ void	dupper(int input, int output)
 void	close_std_in_child(void)
 {
 	if (close(0) == -1)
-			return (perror("close_std_in_child"), (void)0);
+		return (perror("close_std_in_child"), (void)0);
 	if (close(1) == -1)
-			return (perror("close_std_in_child"), (void)0);
+		return (perror("close_std_in_child"), (void)0);
 	if (close(2) == -1)
-			return (perror("close_std_in_child"), (void)0);
+		return (perror("close_std_in_child"), (void)0);
 }

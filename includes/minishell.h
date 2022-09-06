@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/06 14:43:37 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/06 16:34:41 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ typedef struct s_commands
 	pid_t	pid;
 	pid_t	*pids;
 	int		*end;
-	char	**env;
 	int		fd[2];
 	int		fdhd;
 	short	here_doc;
@@ -86,6 +85,7 @@ typedef struct s_commands
 	int		exec_ret;
 	short	sigint;
 	t_list	*gb;
+	t_list	*env;
 }	t_command;
 
 /* Protos */
@@ -120,6 +120,7 @@ int		pipex(t_command *cm);
 
 void	print_welcome_msg(void);
 int		gb_c(t_list **gb, void *content, void **content2);
+void	clean_up(t_list *lst, t_lsenv *lste);
 void    init_struct(t_command *cm, char **envp, int argc, char **argv);
 int		close_pipes(int cmd_nbr, int *end, t_command *cm);
 void	close_std_in_child(void);

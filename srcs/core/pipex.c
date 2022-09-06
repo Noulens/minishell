@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/06 14:44:05 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/06 16:28:12 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	child_mgmt(t_command *cm, int i, int cmd_nbr)
 			return (ft_lstclear(cm->gb), exit(errno), errno);
 		cm->exec_ret = exec(arg_cm, cm->env);
 		close_std_in_child();
-		ft_lstclear(cm->gb);
+		clean_up(cm->gb, cm->env);
 		exit(cm->exec_ret);
 	}
 	return (0);
