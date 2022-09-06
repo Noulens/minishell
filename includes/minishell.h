@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/06 13:07:47 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/06 14:43:37 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ void	print_welcome_msg(void);
 int		gb_c(t_list **gb, void *content, void **content2);
 void    init_struct(t_command *cm, char **envp, int argc, char **argv);
 int		close_pipes(int cmd_nbr, int *end, t_command *cm);
+void	close_std_in_child(void);
 int		open_pipes(int cmd_nbr, int *end);
 void	dupper(int input, int output);
 

@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/06 13:13:49 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/06 14:44:05 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,14 @@ int	child_mgmt(t_command *cm, int i, int cmd_nbr)
 		if (gb_c(&cm->gb, NULL, (void **)arg_cm) == -1)
 			return (ft_lstclear(cm->gb), exit(errno), errno);
 		cm->exec_ret = exec(arg_cm, cm->env);
+		close_std_in_child();
 		ft_lstclear(cm->gb);
 		exit(cm->exec_ret);
 	}
 	return (0);
 }
 
-void	check_heredoc(void)
+void	check_heredoc(t_command *cm)
 {
 	char	*p;
 	int		stdin_fd;
@@ -60,7 +61,7 @@ void	check_heredoc(void)
 	if (tmp_fd == -1)
 		return (perror("check_heredoc open"), (void)0);
 	stdin_fd = dup(STDIN_FILENO);
-	g_cm->fdhd = stdin_fd;
+	cm->fdhd = stdin_fd;
 	while (1)
 	{
 		write(STDIN_FILENO, "heredoc> ", 9);
@@ -83,7 +84,7 @@ void	get_fd_in(t_command *cm)
 {
 	if (cm->here_doc == TRUE)
 	{
-		check_heredoc();
+		check_heredoc(cm);
 		cm->fd[0] = open(".here_doc.tmp", O_RDONLY);
 		if (cm->fd[0] == -1)
 			perror("get_fd_in");
