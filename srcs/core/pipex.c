@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/06 14:44:05 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:35:56 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	nb_cmd(t_command *cm)
+/*static int	nb_cmd(t_command *cm)
 {
 	int	i;
 
@@ -20,7 +20,7 @@ static int	nb_cmd(t_command *cm)
 	while (cm->cmd[i])
 		i++;
 	return (i);
-}
+}*/
 
 int	child_mgmt(t_command *cm, int i, int cmd_nbr)
 {
@@ -40,7 +40,7 @@ int	child_mgmt(t_command *cm, int i, int cmd_nbr)
 		else
 			dupper(cm->end[2 * i - 2], cm->end[2 * i + 1]);
 		close_pipes(cmd_nbr, cm->end, cm);
-		arg_cm = ft_split(cm->cmd[i], ' ');
+		arg_cm = cm->cmd;
 		if (gb_c(&cm->gb, NULL, (void **)arg_cm) == -1)
 			return (ft_lstclear(cm->gb), exit(errno), errno);
 		cm->exec_ret = exec(arg_cm, cm->env);
@@ -97,9 +97,10 @@ int	pipex(t_command *cm)
 	int		ret;
 	int		i;
 
-	cmd_nbr = nb_cmd(cm);
+	/*cmd_nbr = nb_cmd(cm);
 	if (cmd_nbr == 0)
-		return (0);
+		return (0);*/
+	cmd_nbr = 1;
 	get_fd_in(cm);
 	cm->pids = (pid_t *)malloc(cmd_nbr * sizeof(pid_t));
 	if (gb_c(&cm->gb, (void *)cm->pids, NULL) == -1)
@@ -108,7 +109,7 @@ int	pipex(t_command *cm)
 	if ((gb_c(&cm->gb, (void *)cm->end, NULL) == -1 && cmd_nbr - 1 != 0) || open_pipes(cmd_nbr, cm->end) != 0)
 		return (perror("pipex end"), errno);
 	i = -1;
-	while (cm->cmd[++i] && cm->sigint == FALSE)
+	while (++i < cmd_nbr && cm->sigint == FALSE)
 		child_mgmt(cm, i, cmd_nbr);
 	close_pipes(cmd_nbr, cm->end, cm);
 	i = -1;

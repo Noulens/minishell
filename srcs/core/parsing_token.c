@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_token.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 10:36:13 by cfontain          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/09/06 17:11:36 by cfontain         ###   ########.fr       */
-=======
-/*   Updated: 2022/09/05 16:36:49 by tnoulens         ###   ########.fr       */
->>>>>>> e3002d26c9fff1cd7daa32407f6478555edfbe72
+/*   Updated: 2022/09/06 17:38:45 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,8 +159,8 @@ int		chevron_in(char *str, t_command *cmd, int *i)
 		cmd->infile = ft_strdup_without_quote(str + (*i));
 		if (cmd->infile == NULL)
 			return (1);
-		cmd->fd[1] = open(cmd->infile, O_RDONLY);
-		if (cmd->fd[1] == -1)
+		cmd->fd[0] = open(cmd->infile, O_RDONLY);
+		if (cmd->fd[0] == -1)
 			return (perror(cmd->infile), 1);	
 	}	
 	(*i) = next_token_or_space(str, (*i));
@@ -182,10 +178,10 @@ int		chevron_out(char *str, t_command *cmd, int *i)
 	cmd->outfile = ft_strdup_without_quote(str + (*i));
 	if (cmd->outfile == NULL)
 		return (1);
-	if (cmd->outfile_append != 1)	
+	if (cmd->outfile_append != 1)
 		cmd->fd[1] = open(cmd->outfile, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (cmd->outfile_append == 1)
-		cmd->fd[1] = open(cmd->outfile, O_WRONLY | O_CREAT, 0644);
+		cmd->fd[1] = open(cmd->outfile, O_WRONLY | O_CREAT | O_APPEND , 0644);
 	if (cmd->fd[1] == -1)
 		return (perror(cmd->outfile), 1);	
 	(*i) = next_token_or_space(str, (*i));	
@@ -282,14 +278,14 @@ int parsing_token(char *str, t_command *cmd)
 				return (1);
 		}		
 	}	
-	printf("infile =%s\n", cmd->infile);
+	/*printf("infile =%s\n", cmd->infile);
 	printf("outfile =%s\n", cmd->outfile);
 	printf("limiter =%s\n", cmd->limiter);
 	ft_printab(cmd->cmd);
 	printf("%s\n", cmd->cmd[0]);
 	printf("heredoc =%d\n", cmd->here_doc);
 	printf("append =%d\n", cmd->outfile_append);
-
+*/
 	return (0);
 }
 

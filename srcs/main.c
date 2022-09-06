@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/06 17:14:35 by cfontain         ###   ########.fr       */
-=======
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/06 14:13:00 by tnoulens         ###   ########.fr       */
->>>>>>> e3002d26c9fff1cd7daa32407f6478555edfbe72
+/*   Updated: 2022/09/06 17:38:26 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +36,7 @@ int	space_only(char *p)
 	i = 0;
 	while (p[i])
 	{
-		if (ft_isspace(p[i]))
+		if (isspace(p[i]))
 			i++;
 		else
 			return (0);
@@ -67,15 +60,12 @@ int	main(int argc, char **argv, char **envp)
 		{
 			cm.sigint = FALSE;
 			continue ;
-<<<<<<< HEAD
-
-=======
 		}
->>>>>>> e3002d26c9fff1cd7daa32407f6478555edfbe72
 		cm.cmd = ft_split(p, '|');
 		cm.gb = ft_lstnew(NULL, (void **)cm.cmd);
 		if (cm.gb == NULL)
 			return (ft_printf("%s", strerror(errno)), errno);
+		parsing_token(cm.cmd[0], &cm);	
 		cm.exec_ret = pipex(&cm);
 		ft_lstclear(cm.gb);
 		printf("%d\n", cm.exec_ret);
