@@ -3,10 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+         #
+#    By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2022/09/06 16:11:33 by tnoulens         ###   ########.fr        #
+=======
+#    Updated: 2022/09/07 14:45:26 by cfontain         ###   ########.fr        #
+>>>>>>> 92ed35f82a12ff8b933296de5e4b0fdcfe882ed9
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +30,8 @@ CORE		=	./srcs/core/prompt.c\
 				./srcs/core/m_split_parse.c\
 				./srcs/core/cut_quote.c\
 				./srcs/core/parsing_token.c\
-				./srcs/core/signals.c
+				./srcs/core/signals.c\
+				./srcs/core/parsing_alias.c
 
 BUILTIN		=	./srcs/built-in/ft_echo.c\
 				./srcs/built-in/ft_env.c\
