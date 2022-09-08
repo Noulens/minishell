@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:20:29 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/06 17:37:04 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/07 12:23:28 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ char	*m_init_str(char *s, char c, char *str, int *j)
 
 	k = 0;
 	i = *j;
-	while (s[i] != 0 && s[i] == c)
-			i++;
 	while (s[i] != 0 && s[i] != c)
 	{
 		if (char_is_quote(s[i]) == 0)
@@ -37,13 +35,15 @@ char	*m_init_str(char *s, char c, char *str, int *j)
 			if (parsing_quote(s + i) == 0)
 			{
 				m_init_str_with_sep(s, str, &i, &k);
-				return ((*j = i), str);
+				//return ((*j = i), str);
 			}
 		}
 		str[k] = s[i];
 		i++;
 		k++;
 	}
+	if (s[i] == c)
+		i++;
 	return ((*j = i), str);
 }
 
@@ -62,8 +62,8 @@ int	m_line_lenght(char *s, char c, int *j)
 		{
 			i++;
 			k++;
-			while (s[i] != 0 && (s[i] != 34 || s[i + 1] != ' ')
-				&& (s[i] != 39 || s[i + 1] != ' '))
+			while (s[i] != 0 && (s[i] != 34 || s[i + 1] != '|')
+				&& (s[i] != 39 || s[i + 1] != '|'))
 			{
 				i++;
 				k++;
@@ -98,11 +98,11 @@ void	m_init_str_with_sep(char *s, char *str, int *i, int *k)
 		str[(*k)] = s[(*i)];
 		(*k)++;
 		(*i)++;
-	}
-	while (s[(*i)] != 0 && s[(*i)] != ' ')
+	}/*
+	while (s[(*i)] != 0 && s[(*i)] != '|')
 	{
 		str[(*k)] = s[(*i)];
 		(*k)++;
 		(*i)++;
-	}
+	}*/
 }

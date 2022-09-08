@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/06 17:15:28 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/08 16:21:41 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@
 set in /proc/sys/fs/pipe-user-pages-soft (since Linux 4.5) */
 
 /* Structure signal*/
+
+typedef struct s_list_split
+{
+	char			*str;
+	void	*next;
+}	t_list_split;
 
 typedef struct s_new_cut_line
 {
@@ -91,11 +97,21 @@ typedef struct s_commands
 	t_list	*gb;
 }	t_command;
 
+typedef struct s_minishell
+{
+	t_command cm[10];
+	int	nbr_cmd;
+	char	**cmd_array;
+}	t_minishell;
 /* Protos */
 
 	/* --- parsing line --- */
 
+int		char_is_token(char c);
 void	ft_printab(char **str);
+int		char_is_whitespace(char c);
+int	check_quote(char *str, int i);
+char	*parsing_alias(char *str, char **env);
 int		parsing_token(char *str, t_command *cmd);
 char	*m_init_str(char *s, char c, char *str, int *j);
 int		m_line_lenght(char *s, char c, int *j);

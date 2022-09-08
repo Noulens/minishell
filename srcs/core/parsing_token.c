@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 10:36:13 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/06 17:38:45 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:05:57 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,12 +136,12 @@ char	*ft_strdup_without_quote(char *str)
 	i = 0;
 	new_str = NULL;
 	quote = 0;
-	new_str = calloc(sizeof(char), ft_strlen(str));
+	new_str = calloc(sizeof(char), (ft_strlen(str) + 1));
 	if (new_str == NULL)
 		return (NULL);
 	while (char_is_whitespace(str[i]) == 1)
 		i++;
-	ft_strdup_without_quote_2(str, new_str, i, quote);	
+	ft_strdup_without_quote_2(str, new_str, i, quote);
 	return (new_str);
 }
 
