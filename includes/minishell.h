@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/06 17:44:58 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/08 13:51:10 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_commands
 	char	**cmd;
 	char	*infile;
 	char	*outfile;
+	char	**env;
 	pid_t	pid;
 	pid_t	*pids;
 	int		*end;
@@ -88,7 +89,6 @@ typedef struct s_commands
 	int		exec_ret;
 	short	sigint;
 	t_list	*gb;
-	t_list	*env;
 }	t_command;
 
 /* Protos */
@@ -106,7 +106,7 @@ int		m_split_count_line(char *s, char c);
 void	ft_count_up(t_mega_split *split);
 char	*m_malloc_str(char *str, int len);
 void	m_init_str_with_sep(char *s, char *str, int *i, int *k);
-int	char_is_quote(char c);
+int		char_is_quote(char c);
 int		check_single_quote(char *str, int *i);
 int		check_double_quote(char *str, int *i);
 int		parsing_quote(char *str);
@@ -124,7 +124,7 @@ int		pipex(t_command *cm);
 
 void	print_welcome_msg(void);
 int		gb_c(t_list **gb, void *content, void **content2);
-void	clean_up(t_list *lst, t_lsenv *lste);
+void	clean_up(t_list *lst, char **env);
 void    init_struct(t_command *cm, char **envp, int argc, char **argv);
 int		close_pipes(int cmd_nbr, int *end, t_command *cm);
 void	close_std_in_child(void);

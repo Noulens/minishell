@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/06 17:44:13 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/08 13:54:38 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	space_only(char *p)
 	i = 0;
 	while (p[i])
 	{
-		if (isspace(p[i]))
+		if (ft_isspace(p[i]))
 			i++;
 		else
 			return (0);
@@ -44,29 +44,8 @@ int	space_only(char *p)
 	return (1);
 }
 
-void	build_env(t_command *cm, char **envp)
+static void	init_minishell(t_command *cm, int argc, char **argv, char **envp)
 {
-	char	shlvl[10];
-	char	*p;
-	
-	if (envp != NULL)
-	{
-		cm->env = ft_lstnew(*envp, NULL);
-		cm->env++;
-	}
-	p = getenv("SHLVL");
-	if (!p)
-		;
-	while (*envp != NULL)
-	{
-		ft_lstadd_back(&cm->env, ft_lstnew(*envp, NULL));
-		*envp++;
-	}
-}
-
-void	init_minishell(t_command *cm, int argc, char **argv, char **envp)
-{
-	init_struct(cm, envp, argc, argv);
 	g_cm = cm;
 	cm->env = NULL;
 	build_env(cm, envp);
