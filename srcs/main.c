@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/09 18:18:22 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/09 18:37:16 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	main(int argc, char **argv, char **envp)
 			cm.sigint = FALSE;
 			continue ;
 		}
-		p = parsing_alias(p, envp);
+		p = parsing_alias(p, minishell.env);
 		minishell.cmd_array = m_split(p);
 		parsing_token(minishell.cmd_array[i], &cm);
 		cm.gb = ft_lstnew(NULL, (void **)minishell.cmd_array);
