@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/08 17:22:12 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/09 17:59:56 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,39 +46,42 @@ void	ft_printab(char **str)
 
 int	space_only(char *p)
 {
-	int	i;
+	int		i;
+	char	*char_ptr;
 
 	i = 0;
-	while (p[i])
+	char_ptr = p;
+	while (char_ptr)
 	{
-		if (ft_isspace(p[i]))
-			i++;
+		if (ft_isspace(*char_ptr))
+			char_ptr++;
 		else
 			return (0);
 	}
 	return (1);
 }
 
-static void	init_minishell(t_command *cm, int argc, char **argv, char **envp)
+static void	init_minishell(t_minishell *ms, int argc, char **argv, char **envp)
 {
+	(void)argc;
+	(void)argv;
 	g_cm = cm;
-	cm->env = NULL;
-	build_env(cm, envp);
+	build_env(ms, envp);
 }
 
 int	main(int argc, char **argv, char **envp)
 {
 	char		*p;
-	int		i;
-	t_minishell minishell;
-	t_command cm;
+	int			i;
+	t_minishell	minishell;
+	t_command	cm;
 
 	i = 0;
-	init_struct(&cm, envp, argc, argv);
 	g_cm = &cm;
 	print_welcome_msg();
 	signal_handling();
-	init_minishell(&cm, envp, argc, argv);
+	init_minishell(&minishell, argc, argv, envp);
+	init_struct(&minishell, &cm);
 	while (42)
 	{
 		p = prompt_line(&cm);
@@ -98,7 +101,7 @@ int	main(int argc, char **argv, char **envp)
 		cm.exec_ret = pipex(&cm);
 		ft_lstclear(cm.gb);
 		printf("%d\n", cm.exec_ret);
-		init_struct(&cm, envp, argc, argv);
+		init_struct(&minishell, &cm);
 	}
 	return (0);
 }

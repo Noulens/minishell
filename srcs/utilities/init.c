@@ -6,17 +6,14 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:57:27 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/08 17:20:37 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/09 17:58:29 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	init_struct(t_command *cm, char **envp, int argc, char **argv)
+void	init_struct(t_minishell *ms, t_command *cm)
 {
-	(void)argc;
-	(void)argv;
-	(void)envp;
 	cm->cmd = NULL;
 	cm->pid = -1;
 	cm->end = NULL;
@@ -29,7 +26,7 @@ void	init_struct(t_command *cm, char **envp, int argc, char **argv)
 	cm->infile = NULL;
 	cm->outfile = NULL;
 	cm->pids = NULL;
-	cm->end = NULL;
+	cm->env = ms->env;
 	cm->gb = NULL;
 	cm->sigint = FALSE;
 }

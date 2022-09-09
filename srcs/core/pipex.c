@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/06 17:44:33 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/09 17:38:15 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	child_mgmt(t_command *cm, int i, int cmd_nbr)
 		else if (i == 0)
 			dupper(cm->fd[0], cm->end[1]);
 		else if (i == cmd_nbr - 1)
-			dupper(cm->end[2 * i - 2], STDOUT_FILENO);
+			dupper(cm->end[2 * i - 2], cm->fd[1]);
 		else
 			dupper(cm->end[2 * i - 2], cm->end[2 * i + 1]);
 		close_pipes(cmd_nbr, cm->end, cm);

@@ -3,14 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+         #
+#    By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2022/09/06 16:11:33 by tnoulens         ###   ########.fr        #
-=======
-#    Updated: 2022/09/07 14:45:26 by cfontain         ###   ########.fr        #
->>>>>>> 92ed35f82a12ff8b933296de5e4b0fdcfe882ed9
+#    Updated: 2022/09/09 13:56:32 by tnoulens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/08 17:21:13 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/09 17:58:36 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,10 @@ typedef struct s_commands
 
 typedef struct s_minishell
 {
-	t_command cm[10];
-	int	nbr_cmd;
-	char	**cmd_array;
+	t_command	cm[10];
+	char		**env;
+	int			nbr_cmd;
+	char		**cmd_array;
 }	t_minishell;
 /* Protos */
 
@@ -135,13 +136,14 @@ int		cut_quote(char **split_line);
 char	*prompt_line(t_command *cm);
 int		exec(char **argv, char **envp);
 int		pipex(t_command *cm);
+void	build_env(t_minishell *ms, char **envp);
 
 	/* --- utilities --- */
 
 void	print_welcome_msg(void);
 int		gb_c(t_list **gb, void *content, void **content2);
 void	clean_up(t_list *lst, char **env);
-void    init_struct(t_command *cm, char **envp, int argc, char **argv);
+void	init_struct(t_minishell *ms, t_command *cm);
 int		close_pipes(int cmd_nbr, int *end, t_command *cm);
 void	close_std_in_child(void);
 int		open_pipes(int cmd_nbr, int *end);
