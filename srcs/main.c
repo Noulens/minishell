@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/09 17:59:56 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/09 18:18:22 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ static void	init_minishell(t_minishell *ms, int argc, char **argv, char **envp)
 {
 	(void)argc;
 	(void)argv;
-	g_cm = cm;
 	build_env(ms, envp);
 }
 

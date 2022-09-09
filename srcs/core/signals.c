@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:33:49 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/09 13:56:18 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/09 18:26:37 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	tmp_handler(int sig, siginfo_t *info, void *context)
 	}
 	else if (sig == SIGQUIT)
 	{
-		write(STDIN_FILENO, "\b\b", 2);
 		return ;
 	}
 }

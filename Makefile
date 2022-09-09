@@ -6,7 +6,7 @@
 #    By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/09/09 13:56:32 by tnoulens         ###   ########.fr        #
+#    Updated: 2022/09/09 18:19:37 by tnoulens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ CORE		=	./srcs/core/prompt.c\
 				./srcs/core/cut_quote.c\
 				./srcs/core/parsing_token.c\
 				./srcs/core/signals.c\
-				./srcs/core/parsing_alias.c
+				./srcs/core/parsing_alias.c\
+				./srcs/core/build_env.c
 
 BUILTIN		=	./srcs/built-in/ft_echo.c\
 				./srcs/built-in/ft_env.c\
