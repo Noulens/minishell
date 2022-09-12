@@ -1,62 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_token.c                                    :+:      :+:    :+:   */
+/*   init_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 10:36:13 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/08 17:05:57 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/12 14:34:41 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		char_is_token(char c)
-{
-	if (c == '<' || c == '>' || c == '$' || c == '|')
-		return (1);
-	else
-		return (0);	
-}
-
-int	check_quote(char *str, int i)
-{
-	if (str[i] == 39)
-	{
-		i++;
-		while (str[i] != 0 && str[i] != 39)
-			i++;
-		if (str[i] != 39)
-			return (1);
-	}
-	if (str[i] == 34)
-	{
-		i++;
-		while (str[i] != 0 && str[i] != 34)
-			i++;
-		if (str[i] != 34)
-			return (1);
-	}
-	return (0);
-}
-
-int	char_is_whitespace(char c)
-{
-	if (c >= 9 && c <= 11)
-		return (1);
-	if (c == ' ')
-		return (1);
-	return (0);
-}
-
-int		next_token_or_space(char *str, int i)
+int	next_token_or_space(char *str, int i)
 {
 	char	c;
 
 	c = 0;
 	while (char_is_whitespace(str[i]) == 1)
-		i++;	
+		i++;
 	while (str[i] != 0 && char_is_token(str[i]) == 0
 		&& char_is_whitespace(str[i]) == 0)
 	{
@@ -75,10 +37,10 @@ int		next_token_or_space(char *str, int i)
 	return (i);
 }
 
-int		next_token(char *str, int i)
+int	next_token(char *str, int i)
 {
 	char	c;
-	
+
 	c = 0;
 	while (str[i] != 0 && char_is_token(str[i]) == 0)
 	{
@@ -96,13 +58,14 @@ int		next_token(char *str, int i)
 	}
 	return (i);
 }
+
 void	ft_strdup_without_quote_2(char *str, char *new_str, int i, int quote)
 {
 	int		j;
 	char	c;
 	int		k;
 
-	k = 0;
+	k = -1;
 	j = next_token_or_space(str, i);
 	while (i < j)
 	{
@@ -115,12 +78,9 @@ void	ft_strdup_without_quote_2(char *str, char *new_str, int i, int quote)
 				c = str[i];
 				quote = 2;
 			}
-		}	
-		if (str[i] != c)
-		{
-			new_str[k] = str[i];
-			k++;
 		}
+		if (str[i] != c)
+			new_str[++k] = str[i];
 		if (str[i] == c)
 			quote--;
 		i++;
@@ -145,7 +105,7 @@ char	*ft_strdup_without_quote(char *str)
 	return (new_str);
 }
 
-int		chevron_in(char *str, t_command *cmd, int *i)
+int	chevron_in(char *str, t_command *cmd, int *i)
 {
 	(*i)++;
 	if (str[(*i)] == '<')
@@ -153,7 +113,7 @@ int		chevron_in(char *str, t_command *cmd, int *i)
 		(*i)++;
 		cmd->here_doc = 1;
 		cmd->limiter = ft_strdup_without_quote(str + (*i));
-	}	
+	}
 	else
 	{
 		cmd->infile = ft_strdup_without_quote(str + (*i));
@@ -161,34 +121,34 @@ int		chevron_in(char *str, t_command *cmd, int *i)
 			return (1);
 		cmd->fd[0] = open(cmd->infile, O_RDONLY);
 		if (cmd->fd[0] == -1)
-			return (perror(cmd->infile), 1);	
-	}	
+			return (perror(cmd->infile), 1);
+	}
 	(*i) = next_token_or_space(str, (*i));
 	return (0);
 }
 
-int		chevron_out(char *str, t_command *cmd, int *i)
+int	chevron_out(char *str, t_command *cmd, int *i)
 {
 	(*i)++;
 	if (str[(*i)] == '>')
 	{
 		(*i)++;
-		cmd->outfile_append  = 1;
-	}	
+		cmd->outfile_append = 1;
+	}
 	cmd->outfile = ft_strdup_without_quote(str + (*i));
 	if (cmd->outfile == NULL)
 		return (1);
 	if (cmd->outfile_append != 1)
 		cmd->fd[1] = open(cmd->outfile, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (cmd->outfile_append == 1)
-		cmd->fd[1] = open(cmd->outfile, O_WRONLY | O_CREAT | O_APPEND , 0644);
+		cmd->fd[1] = open(cmd->outfile, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	if (cmd->fd[1] == -1)
-		return (perror(cmd->outfile), 1);	
-	(*i) = next_token_or_space(str, (*i));	
+		return (perror(cmd->outfile), 1);
+	(*i) = next_token_or_space(str, (*i));
 	return (0);
 }
 
-int chevron_init(char *str, int *i, t_command *cmd)
+int	chevron_init(char *str, int *i, t_command *cmd)
 {
 	if (str[(*i)] == '<')
 	{
@@ -201,9 +161,9 @@ int chevron_init(char *str, int *i, t_command *cmd)
 			return (1);
 	}
 	return (0);
-}	
+}
 
-int		cmd_init_2(char *str, int *i, t_command *cmd, int count)
+int	init_cmd_array2(char *str, int *i, t_command *cmd, int count)
 {
 	int		k;
 	int		l;
@@ -229,12 +189,12 @@ int		cmd_init_2(char *str, int *i, t_command *cmd, int count)
 	return (0);
 }
 
-int		cmd_init(char *str, int *i, t_command *cmd)
+int	init_cmd_array(char *str, int *i, t_command *cmd)
 {
 	int		j;
 	int		k;
 	int		count;
-	
+
 	k = *i;
 	j = next_token(str, k);
 	k = *i;
@@ -246,47 +206,48 @@ int		cmd_init(char *str, int *i, t_command *cmd)
 			k++;
 		count ++;
 	}
-	if (cmd_init_2(str, i, cmd, count) == 1)
+	if (init_cmd_array2(str, i, cmd, count) == 1)
 		return (1);
 	return (0);
-
 }
 
-int parsing_token(char *str, t_command *cmd)
+void	add_cmd_to_gb(t_command *cmd, t_minishell *minishell)
 {
-	int		i;
-	int 	j;
-	int		trigg;
+	if (cmd->cmd != NULL)
+		gb_c(&minishell->gb, NULL, (void**)cmd->cmd);
+	if (cmd->infile != NULL)
+		gb_c(&minishell->gb, (void*)cmd->infile, NULL);
+	if (cmd->outfile != NULL)
+		gb_c(&minishell->gb, (void*)cmd->outfile, NULL);
+	if (cmd->limiter != NULL)
+		gb_c(&minishell->gb, (void*)cmd->limiter, NULL);	
+}
 
+int	init_cmd(char *str, t_command *cmd, t_minishell *minishell)
+{
+	int	i;
+	int	j;
+	int	trigg;
+	
 	trigg = 0;
 	i = 0;
 	j = 0;
-	cmd->cmd = NULL;
-	cmd->outfile_append = 0;
 	while (str[i] != 0)
 	{
 		while (char_is_whitespace(str[i]) == 1)
-		i++;	
+		i++;
 		if (str[i] == '<' || str[i] == '>')
-			{
-				if (chevron_init(str, &i, cmd) == 1)
-					return (1);
-			}
+		{	
+			if (chevron_init(str, &i, cmd) == 1)
+				return (1);
+		}
 		else if (str[i] != 0)
 		{
-			if (cmd_init(str, &i, cmd) == 1)
+			if (init_cmd_array(str, &i, cmd) == 1)
 				return (1);
-		}		
-	}	
-	/*printf("infile =%s\n", cmd->infile);
-	printf("outfile =%s\n", cmd->outfile);
-	printf("limiter =%s\n", cmd->limiter);
-	ft_printab(cmd->cmd);
-	printf("%s\n", cmd->cmd[0]);
-	printf("heredoc =%d\n", cmd->here_doc);
-	printf("append =%d\n", cmd->outfile_append);
-*/
+		}
+	}
+	add_cmd_to_gb(cmd, minishell);
+	//ajouter une fonction qui remplit ma liste des elements malloque dans la commande
 	return (0);
 }
-
-

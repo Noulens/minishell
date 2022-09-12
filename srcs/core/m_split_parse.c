@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:58:18 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/08 16:45:12 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/09 11:30:04 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,6 @@ void	count_sep_quote(t_mega_split *split, char *s)
 	}
 }
 
-int	char_is_quote(char c)
-{
-	if (c == 34 || c == 39)
-		return (0);
-	else
-		return (1);
-}
-
 int	m_split_count_line(char *s, char c)
 {
 	t_mega_split	split;
@@ -52,25 +44,6 @@ int	m_split_count_line(char *s, char c)
 		split.i++;
 	}
 	return (split.count);
-}
-
-char	**copy_list_to_2d_array(t_list *list)
-{
-	int	len;
-	char **array;
-	int		i;
-
-	i = 0;
-	len = 0;
-	len = ft_lstsize(list);
-	array = malloc(sizeof(char *) * (len + 1));
-	while (i < len)
-	{
-		array[i] = list->content;
-		list = list->next;
-		i++;
-	}
-	return (array);
 }
 
 int	check_empty_str(char *str)
@@ -96,6 +69,7 @@ char	**m_split_space_and_quote(char *s, char c)
 	t_split	split;
 	int		i;
 	int		j;
+
 	split.str = NULL;
 	split.count = 0;
 	i = 0;

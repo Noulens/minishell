@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:43:44 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/05 16:36:16 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/12 13:18:19 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_exit(t_command *cm)
+void	ft_exit(t_minishell *minishell)
 {
-	ft_lstclear(cm->gb);
+	ft_lstclear(minishell->gb);
 	printf("exit\n");
 	exit(EXIT_SUCCESS);
 }

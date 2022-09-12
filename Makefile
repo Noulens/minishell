@@ -6,7 +6,7 @@
 #    By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/09/07 14:45:26 by cfontain         ###   ########.fr        #
+#    Updated: 2022/09/09 12:07:04 by cfontain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,11 @@ CORE		=	./srcs/core/prompt.c\
 				./srcs/core/m_split_init.c\
 				./srcs/core/m_split_parse.c\
 				./srcs/core/cut_quote.c\
-				./srcs/core/parsing_token.c\
+				./srcs/core/init_cmd.c\
 				./srcs/core/signals.c\
-				./srcs/core/parsing_alias.c
+				./srcs/core/expend_alias.c\
+				./srcs/core/copy_str_with_alias.c\
+				./srcs/core/init_chevron.c
 
 BUILTIN		=	./srcs/built-in/ft_echo.c\
 				./srcs/built-in/ft_env.c\
@@ -37,7 +39,8 @@ BUILTIN		=	./srcs/built-in/ft_echo.c\
 UTILITIES	= 	./srcs/utilities/garbage_collector.c\
 				./srcs/utilities/welcome_message.c\
 				./srcs/utilities/pipes_mgmt.c\
-				./srcs/utilities/init.c
+				./srcs/utilities/init.c\
+				./srcs/utilities/char_check.c
 
 SRCS		=	${MAIN} ${CORE} ${BUILTIN} ${UTILITIES}
 

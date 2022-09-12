@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/08 16:21:41 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/12 14:35:10 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ typedef struct s_commands
 	char	*limiter;
 	int		exec_ret;
 	short	sigint;
-	t_list	*gb;
+	
 }	t_command;
 
 typedef struct s_minishell
@@ -102,17 +102,20 @@ typedef struct s_minishell
 	t_command cm[10];
 	int	nbr_cmd;
 	char	**cmd_array;
+	int		exec_ret;
+	t_list	*gb;
 }	t_minishell;
 /* Protos */
 
 	/* --- parsing line --- */
 
-int		char_is_token(char c);
+
 void	ft_printab(char **str);
 int		char_is_whitespace(char c);
-int	check_quote(char *str, int i);
-char	*parsing_alias(char *str, char **env);
-int		parsing_token(char *str, t_command *cmd);
+char	*init_str_alias(char *str, char **env, int len, t_minishell *minishell);
+int		break_point_alias(char *str, int i);
+int		trigger_double_quote(int trigg, char c);
+int		init_cmd(char *str, t_command *cmd, t_minishell *minishell);
 char	*m_init_str(char *s, char c, char *str, int *j);
 int		m_line_lenght(char *s, char c, int *j);
 char	**ft_split_space_and_quote(char *s, char c);
@@ -122,37 +125,40 @@ int		m_split_count_line(char *s, char c);
 void	ft_count_up(t_mega_split *split);
 char	*m_malloc_str(char *str, int len);
 void	m_init_str_with_sep(char *s, char *str, int *i, int *k);
-int	char_is_quote(char c);
 int		check_single_quote(char *str, int *i);
 int		check_double_quote(char *str, int *i);
 int		parsing_quote(char *str);
 void	new_cut_line2(char *str, char *new_str, t_new_cut_line *line);
 char	*new_cut_line(char *str);
 int		cut_quote(char **split_line);
-
+char	*expend_alias(char *str, char **env, t_minishell *minishell);
 	/* --- core --- */
 
 char	*prompt_line(t_command *cm);
 int		exec(char **argv, char **envp);
-int		pipex(t_command *cm);
+int		pipex(t_command *cm, t_minishell *minishell);
 
 	/* --- utilities --- */
 
 void	print_welcome_msg(void);
 int		gb_c(t_list **gb, void *content, void **content2);
-void    init_struct(t_command *cm, char **envp, int argc, char **argv);
+void	init_struct(t_command *cm, char **envp);
+void	init_minishell(t_minishell *minishell);
 int		close_pipes(int cmd_nbr, int *end, t_command *cm);
 void	close_std_in_child(void);
 int		open_pipes(int cmd_nbr, int *end);
 void	dupper(int input, int output);
-
+int		char_is_token(char c);
+int		char_is_quote(char c);
+int		char_is_whitespace(char c);
+int		check_quote(char *str, int i);
 
 	/* --- build-in --- */
 
 int		ft_echo(int argc, char **argv);
 int		ft_pwd(void);
 int		ft_env(char **envp);
-void	ft_exit(t_command *cm);
+void	ft_exit(t_minishell *minishell);
 
 	/* --- signals --- */
 void	tmp_handler(int sig, siginfo_t *info, void *context);

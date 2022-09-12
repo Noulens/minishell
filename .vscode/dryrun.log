@@ -8,9 +8,11 @@ cc -Wall -Wextra -Werror -g -I includes/  -c srcs/core/m_parsing_quote.c -o srcs
 cc -Wall -Wextra -Werror -g -I includes/  -c srcs/core/m_split_init.c -o srcs/core/m_split_init.o
 cc -Wall -Wextra -Werror -g -I includes/  -c srcs/core/m_split_parse.c -o srcs/core/m_split_parse.o
 cc -Wall -Wextra -Werror -g -I includes/  -c srcs/core/cut_quote.c -o srcs/core/cut_quote.o
-cc -Wall -Wextra -Werror -g -I includes/  -c srcs/core/parsing_token.c -o srcs/core/parsing_token.o
+cc -Wall -Wextra -Werror -g -I includes/  -c srcs/core/init_cmd.c -o srcs/core/init_cmd.o
 cc -Wall -Wextra -Werror -g -I includes/  -c srcs/core/signals.c -o srcs/core/signals.o
-cc -Wall -Wextra -Werror -g -I includes/  -c srcs/core/parsing_alias.c -o srcs/core/parsing_alias.o
+cc -Wall -Wextra -Werror -g -I includes/  -c srcs/core/expend_alias.c -o srcs/core/expend_alias.o
+cc -Wall -Wextra -Werror -g -I includes/  -c srcs/core/copy_str_with_alias.c -o srcs/core/copy_str_with_alias.o
+cc -Wall -Wextra -Werror -g -I includes/  -c srcs/core/init_chevron.c -o srcs/core/init_chevron.o
 cc -Wall -Wextra -Werror -g -I includes/  -c srcs/built-in/ft_echo.c -o srcs/built-in/ft_echo.o
 cc -Wall -Wextra -Werror -g -I includes/  -c srcs/built-in/ft_env.c -o srcs/built-in/ft_env.o
 cc -Wall -Wextra -Werror -g -I includes/  -c srcs/built-in/ft_exit.c -o srcs/built-in/ft_exit.o
@@ -19,11 +21,12 @@ cc -Wall -Wextra -Werror -g -I includes/  -c srcs/utilities/garbage_collector.c 
 cc -Wall -Wextra -Werror -g -I includes/  -c srcs/utilities/welcome_message.c -o srcs/utilities/welcome_message.o
 cc -Wall -Wextra -Werror -g -I includes/  -c srcs/utilities/pipes_mgmt.c -o srcs/utilities/pipes_mgmt.o
 cc -Wall -Wextra -Werror -g -I includes/  -c srcs/utilities/init.c -o srcs/utilities/init.o
+cc -Wall -Wextra -Werror -g -I includes/  -c srcs/utilities/char_check.c -o srcs/utilities/char_check.o
 echo "\033[35m----Building libft----"
 make -sC ./libft
 echo "OK\033[0m"
 echo "\033[34m----Compiling----"
-cc -Wall -Wextra -Werror -g -I includes/ ./srcs/main.o ./srcs/core/prompt.o ./srcs/core/pipex.o ./srcs/core/execute.o ./srcs/core/m_parsing_quote.o ./srcs/core/m_split_init.o ./srcs/core/m_split_parse.o ./srcs/core/cut_quote.o ./srcs/core/parsing_token.o ./srcs/core/signals.o ./srcs/core/parsing_alias.o ./srcs/built-in/ft_echo.o ./srcs/built-in/ft_env.o ./srcs/built-in/ft_exit.o ./srcs/built-in/ft_pwd.o ./srcs/utilities/garbage_collector.o ./srcs/utilities/welcome_message.o ./srcs/utilities/pipes_mgmt.o ./srcs/utilities/init.o  -L/usr/include -lreadline -o minishell ./libft/libft.a
+cc -Wall -Wextra -Werror -g -I includes/ ./srcs/main.o ./srcs/core/prompt.o ./srcs/core/pipex.o ./srcs/core/execute.o ./srcs/core/m_parsing_quote.o ./srcs/core/m_split_init.o ./srcs/core/m_split_parse.o ./srcs/core/cut_quote.o ./srcs/core/init_cmd.o ./srcs/core/signals.o ./srcs/core/expend_alias.o ./srcs/core/copy_str_with_alias.o ./srcs/core/init_chevron.o ./srcs/built-in/ft_echo.o ./srcs/built-in/ft_env.o ./srcs/built-in/ft_exit.o ./srcs/built-in/ft_pwd.o ./srcs/utilities/garbage_collector.o ./srcs/utilities/welcome_message.o ./srcs/utilities/pipes_mgmt.o ./srcs/utilities/init.o ./srcs/utilities/char_check.o  -L/usr/include -lreadline -o minishell ./libft/libft.a
 printf "{\n    leak readline\n    Memcheck:Leak\n    ...\n    fun:readline\n}\n{\n    leak add_history\n   Memcheck:Leak\n    ...\n    fun:add_history\n}" > ignore_leak.supp
 echo "OK\033[0m"
 make: Leaving directory '/mnt/nfs/homes/cfontain/Documents/Cursus/minishell'

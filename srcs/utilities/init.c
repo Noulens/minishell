@@ -6,16 +6,22 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:57:27 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/07 14:31:53 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/12 14:32:16 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	init_struct(t_command *cm, char **envp, int argc, char **argv)
+void	init_minishell(t_minishell *minishell)
 {
-	(void)argc;
-	(void)argv;
+	minishell->nbr_cmd = 0;
+	minishell->cmd_array = NULL;
+	minishell->exec_ret = 0;
+	minishell->gb = NULL;
+}
+
+void	init_struct(t_command *cm, char **envp)
+{
 	cm->cmd = NULL;
 	cm->pid = -1;
 	cm->end = NULL;
@@ -30,6 +36,5 @@ void	init_struct(t_command *cm, char **envp, int argc, char **argv)
 	cm->outfile = NULL;
 	cm->pids = NULL;
 	cm->end = NULL;
-	cm->gb = NULL;
 	cm->sigint = FALSE;
 }

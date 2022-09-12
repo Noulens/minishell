@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cut_quote.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:56:06 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/05 16:36:26 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/09 11:37:10 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	new_cut_line2(char *str, char *new_str, t_new_cut_line *line)
+/*void	new_cut_line2(char *str, char *new_str, t_new_cut_line *line)
 {
 	if (str[(*line).i] == 34 || str[(*line).i] == 39)
 	{
@@ -68,4 +68,4 @@ int	cut_quote(char **split_line)
 		i++;
 	}
 	return (0);
-}
+}*/
