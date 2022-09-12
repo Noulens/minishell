@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:29:21 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/06 14:05:12 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:25:56 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ int	exec(char **cmds, char **envp)
 	{
 		if (access(cmds[0], F_OK | X_OK) == 0)
 			cmd_path = cmds[0];
+		else if (errno == 13)
+			return (perror("access"), 126);
 		else
 			return (perror("access"), errno);
 	}

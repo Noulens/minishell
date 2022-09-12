@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/12 15:51:45 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/12 16:51:57 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,28 +46,27 @@ void	ft_printab(char **str)
 
 int	space_only(char *p)
 {
-	int	i;
+	int		i;
+	char	*char_ptr;
 
 	i = 0;
-	if (p)
+	char_ptr = p;
+	while (char_ptr)
 	{
-		while (p[i])
-		{
-			if (isspace(p[i]))
-				i++;
-			else
-				return (0);
-		}
-	}	
+		if (ft_isspace(*char_ptr))
+			char_ptr++;
+		else
+			return (0);
+	}
 	return (1);
 }
 
 int	main(int argc, char **argv, char **envp)
 {
 	char		*p;
-	int		i;
-	t_minishell minishell;
-	t_command cm;
+	int			i;
+	t_minishell	minishell;
+	t_command	cm;
 
 	i = 0;
 	(void)argv;
@@ -138,5 +137,38 @@ int	main(int argc, char **argv, char **envp)
 			i++;
 		}	
 	}
+
+
+
+
+
+
+
+
+
 	return (0);
+
+
+
+
+
+int main()
+{
+    char str[] = ">>";
+    
+    if (str[0] = (str[0] | str[1]))
+        printf("ca marche\n");
+
+    return 0;
+}
+
+
+0 = COMMANDE
+1 = CHEVRON in
+2 = CHEVRON OUT
+3 = pipe
+4 = alias ($)
+5 = 0
+
+
 }*/

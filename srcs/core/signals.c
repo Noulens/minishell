@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:33:49 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/06 14:04:46 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/09 18:26:37 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ void	tmp_handler(int sig, siginfo_t *info, void *context)
 		rl_redisplay();
 	}
 	else if (sig == SIGQUIT)
+	{
 		return ;
+	}
 }
 
 void	signal_handling(void)

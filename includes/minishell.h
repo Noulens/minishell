@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/09/12 14:35:10 by cfontain         ###   ########.fr       */
+=======
+/*   Updated: 2022/09/09 17:58:36 by tnoulens         ###   ########.fr       */
+>>>>>>> 028d83a75eff617d6a570501db96db6e715f6eeb
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +87,10 @@ typedef struct s_commands
 	char	**cmd;
 	char	*infile;
 	char	*outfile;
+	char	**env;
 	pid_t	pid;
 	pid_t	*pids;
 	int		*end;
-	char	**env;
 	int		fd[2];
 	int		fdhd;
 	short	here_doc;
@@ -99,11 +103,18 @@ typedef struct s_commands
 
 typedef struct s_minishell
 {
+<<<<<<< HEAD
 	t_command cm[10];
 	int	nbr_cmd;
 	char	**cmd_array;
 	int		exec_ret;
 	t_list	*gb;
+=======
+	t_command	cm[10];
+	char		**env;
+	int			nbr_cmd;
+	char		**cmd_array;
+>>>>>>> 028d83a75eff617d6a570501db96db6e715f6eeb
 }	t_minishell;
 /* Protos */
 
@@ -125,6 +136,10 @@ int		m_split_count_line(char *s, char c);
 void	ft_count_up(t_mega_split *split);
 char	*m_malloc_str(char *str, int len);
 void	m_init_str_with_sep(char *s, char *str, int *i, int *k);
+<<<<<<< HEAD
+=======
+int		char_is_quote(char c);
+>>>>>>> 028d83a75eff617d6a570501db96db6e715f6eeb
 int		check_single_quote(char *str, int *i);
 int		check_double_quote(char *str, int *i);
 int		parsing_quote(char *str);
@@ -136,14 +151,24 @@ char	*expend_alias(char *str, char **env, t_minishell *minishell);
 
 char	*prompt_line(t_command *cm);
 int		exec(char **argv, char **envp);
+<<<<<<< HEAD
 int		pipex(t_command *cm, t_minishell *minishell);
+=======
+int		pipex(t_command *cm);
+void	build_env(t_minishell *ms, char **envp);
+>>>>>>> 028d83a75eff617d6a570501db96db6e715f6eeb
 
 	/* --- utilities --- */
 
 void	print_welcome_msg(void);
 int		gb_c(t_list **gb, void *content, void **content2);
+<<<<<<< HEAD
 void	init_struct(t_command *cm, char **envp);
 void	init_minishell(t_minishell *minishell);
+=======
+void	clean_up(t_list *lst, char **env);
+void	init_struct(t_minishell *ms, t_command *cm);
+>>>>>>> 028d83a75eff617d6a570501db96db6e715f6eeb
 int		close_pipes(int cmd_nbr, int *end, t_command *cm);
 void	close_std_in_child(void);
 int		open_pipes(int cmd_nbr, int *end);

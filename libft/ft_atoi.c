@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:10:21 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/08/16 14:17:50 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/09 17:22:24 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_atoi(const char *nptr)
 	int	sign;
 	int	result;
 
+	if (nptr == NULL || *nptr == '\0')
+		return (0);
 	sign = 1;
 	while ((*nptr >= 9 && *nptr <= 13) || *nptr == 32)
 		++nptr;

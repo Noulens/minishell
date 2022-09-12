@@ -3,10 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+         #
+#    By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2022/09/09 12:07:04 by cfontain         ###   ########.fr        #
+=======
+#    Updated: 2022/09/09 18:19:37 by tnoulens         ###   ########.fr        #
+>>>>>>> 028d83a75eff617d6a570501db96db6e715f6eeb
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,9 +31,14 @@ CORE		=	./srcs/core/prompt.c\
 				./srcs/core/cut_quote.c\
 				./srcs/core/init_cmd.c\
 				./srcs/core/signals.c\
+<<<<<<< HEAD
 				./srcs/core/expend_alias.c\
 				./srcs/core/copy_str_with_alias.c\
 				./srcs/core/init_chevron.c
+=======
+				./srcs/core/parsing_alias.c\
+				./srcs/core/build_env.c
+>>>>>>> 028d83a75eff617d6a570501db96db6e715f6eeb
 
 BUILTIN		=	./srcs/built-in/ft_echo.c\
 				./srcs/built-in/ft_env.c\
@@ -40,7 +49,11 @@ UTILITIES	= 	./srcs/utilities/garbage_collector.c\
 				./srcs/utilities/welcome_message.c\
 				./srcs/utilities/pipes_mgmt.c\
 				./srcs/utilities/init.c\
+<<<<<<< HEAD
 				./srcs/utilities/char_check.c
+=======
+				./srcs/utilities/clean_up.c
+>>>>>>> 028d83a75eff617d6a570501db96db6e715f6eeb
 
 SRCS		=	${MAIN} ${CORE} ${BUILTIN} ${UTILITIES}
 

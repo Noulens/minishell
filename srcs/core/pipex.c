@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/09/12 13:17:29 by cfontain         ###   ########.fr       */
+=======
+/*   Updated: 2022/09/09 17:38:15 by tnoulens         ###   ########.fr       */
+>>>>>>> 028d83a75eff617d6a570501db96db6e715f6eeb
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +40,7 @@ int	child_mgmt(t_command *cm, int i, int cmd_nbr, t_minishell *minishell)
 		else if (i == 0)
 			dupper(cm->fd[0], cm->end[1]);
 		else if (i == cmd_nbr - 1)
-			dupper(cm->end[2 * i - 2], STDOUT_FILENO);
+			dupper(cm->end[2 * i - 2], cm->fd[1]);
 		else
 			dupper(cm->end[2 * i - 2], cm->end[2 * i + 1]);
 		close_pipes(cmd_nbr, cm->end, cm);
@@ -45,7 +49,11 @@ int	child_mgmt(t_command *cm, int i, int cmd_nbr, t_minishell *minishell)
 			return (ft_lstclear(minishell->gb), exit(errno), errno);
 		cm->exec_ret = exec(arg_cm, cm->env);
 		close_std_in_child();
+<<<<<<< HEAD
 		ft_lstclear(minishell->gb);
+=======
+		clean_up(cm->gb, cm->env);
+>>>>>>> 028d83a75eff617d6a570501db96db6e715f6eeb
 		exit(cm->exec_ret);
 	}
 	return (0);

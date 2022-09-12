@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:34:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/06 13:06:41 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/09 18:01:22 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ char	*prompt_line(t_command *cm)
 		cm->sigint = FALSE;
 	else if (line_read == NULL)
 	{
+		clean_up(cm->gb, cm->env);
 		ft_printf("exit\n");
 		exit(4);
 	}
