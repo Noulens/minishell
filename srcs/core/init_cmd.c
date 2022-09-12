@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 10:36:13 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/12 14:34:41 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/12 18:20:44 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,12 +226,12 @@ void	add_cmd_to_gb(t_command *cmd, t_minishell *minishell)
 int	init_cmd(char *str, t_command *cmd, t_minishell *minishell)
 {
 	int	i;
-	int	j;
-	int	trigg;
+	//int	j;
+	//int	trigg;
 	
-	trigg = 0;
+	//trigg = 0;
 	i = 0;
-	j = 0;
+	//j = 0;
 	while (str[i] != 0)
 	{
 		while (char_is_whitespace(str[i]) == 1)

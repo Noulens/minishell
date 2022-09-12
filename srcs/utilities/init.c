@@ -3,20 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:57:27 by waxxy             #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/09/12 14:32:16 by cfontain         ###   ########.fr       */
-=======
-/*   Updated: 2022/09/09 17:58:29 by tnoulens         ###   ########.fr       */
->>>>>>> 028d83a75eff617d6a570501db96db6e715f6eeb
+/*   Updated: 2022/09/12 18:22:17 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-<<<<<<< HEAD
 void	init_minishell(t_minishell *minishell)
 {
 	minishell->nbr_cmd = 0;
@@ -25,10 +20,7 @@ void	init_minishell(t_minishell *minishell)
 	minishell->gb = NULL;
 }
 
-void	init_struct(t_command *cm, char **envp)
-=======
 void	init_struct(t_minishell *ms, t_command *cm)
->>>>>>> 028d83a75eff617d6a570501db96db6e715f6eeb
 {
 	cm->cmd = NULL;
 	cm->pid = -1;
@@ -42,11 +34,6 @@ void	init_struct(t_minishell *ms, t_command *cm)
 	cm->infile = NULL;
 	cm->outfile = NULL;
 	cm->pids = NULL;
-<<<<<<< HEAD
-	cm->end = NULL;
-=======
 	cm->env = ms->env;
-	cm->gb = NULL;
->>>>>>> 028d83a75eff617d6a570501db96db6e715f6eeb
 	cm->sigint = FALSE;
 }

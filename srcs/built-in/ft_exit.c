@@ -3,26 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:43:44 by tnoulens          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/09/12 13:18:19 by cfontain         ###   ########.fr       */
-=======
-/*   Updated: 2022/09/08 14:22:00 by tnoulens         ###   ########.fr       */
->>>>>>> 028d83a75eff617d6a570501db96db6e715f6eeb
+/*   Updated: 2022/09/12 20:09:14 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_exit(t_minishell *minishell)
+void	ft_exit(t_minishell *minishell, char *code)
 {
-<<<<<<< HEAD
-	ft_lstclear(minishell->gb);
-=======
-	clean_up(cm->gb, cm->env);
->>>>>>> 028d83a75eff617d6a570501db96db6e715f6eeb
-	printf("exit\n");
-	exit(cm->exec_ret);
+	char	*p;
+
+	p = code;
+	clean_up(minishell->gb, minishell->env);
+	ft_printf("exit\n");
+	if (p == NULL)
+		exit(minishell->exec_ret);
+	else
+	{
+		while (*p)
+		{
+			if (!ft_isdigit(*p))
+			{
+				ft_printf("minishell: exit: %s: not numeric\n", code);
+				exit(2);
+			}
+			p++;
+		}
+		exit(ft_atoi(code));
+	}
 }

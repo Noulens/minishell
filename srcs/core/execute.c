@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:29:21 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/09 14:25:56 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/12 18:42:19 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,20 +79,23 @@ int	exec(char **cmds, char **envp)
 {
 	char	*cmd_path;
 
-	if (memchr(cmds[0], '/', ft_strlen(cmds[0])))
+	if (cmds != NULL)
 	{
-		if (access(cmds[0], F_OK | X_OK) == 0)
-			cmd_path = cmds[0];
-		else if (errno == 13)
-			return (perror("access"), 126);
+		if (memchr(cmds[0], '/', ft_strlen(cmds[0])))
+		{
+			if (access(cmds[0], F_OK | X_OK) == 0)
+				cmd_path = cmds[0];
+			else if (errno == 13)
+				return (perror("access"), 126);
+			else
+				return (perror("access"), errno);
+		}
 		else
-			return (perror("access"), errno);
+			cmd_path = cmd_check(paths_maker(), cmds[0]);
+		if (!cmd_path)
+			return (ft_printf("%s: command not found\n", cmds[0]), 127);
+		if (execve(cmd_path, cmds, envp) == -1)
+			return (perror("exec"), errno);
 	}
-	else
-		cmd_path = cmd_check(paths_maker(), cmds[0]);
-	if (!cmd_path)
-		return (ft_printf("%s: command not found\n", cmds[0]), 127);
-	if (execve(cmd_path, cmds, envp) == -1)
-		return (perror("exec"), errno);
 	return (0);
 }

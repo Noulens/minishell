@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/12 16:51:57 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/12 19:48:12 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,22 @@ void	ft_printab(char **str)
 
 int	space_only(char *p)
 {
-	int		i;
 	char	*char_ptr;
 
-	i = 0;
 	char_ptr = p;
-	while (char_ptr)
+	if (char_ptr != NULL)
 	{
-		if (ft_isspace(*char_ptr))
-			char_ptr++;
-		else
-			return (0);
+		while (char_ptr)
+		{
+			if (ft_isspace(*char_ptr))
+				char_ptr++;
+			else
+				return (0);
+		}
+		return (1);
 	}
-	return (1);
+	else
+		return (1);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -72,32 +75,31 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	(void)argc;
 	init_minishell(&minishell);
+	build_env(&minishell, envp);
 	g_cm = &cm;
 	print_welcome_msg();
 	signal_handling();
 	while (42)
 	{
-		init_struct(&cm, envp);
-		p = prompt_line(&cm);
+		init_struct(&minishell, &cm);
+		minishell.gb = NULL;
+		p = prompt_line(&minishell, &cm);
 		if (space_only(p))
 		{
 			cm.sigint = FALSE;
 			continue ;
 		}
-		p = expend_alias(p, envp, &minishell);
+		p = expend_alias(p, minishell.env, &minishell);
 		minishell.cmd_array = m_split(p);
 		if (minishell.cmd_array == NULL)
 			continue ;
 		init_cmd(minishell.cmd_array[i], &cm, &minishell);
-		minishell.gb = ft_lstnew(NULL, (void **)minishell.cmd_array); //TOUTES LES FONCTIONS QUI ECHOUE DOIVENT INFLUER SUR MINISHELL.EXEC_RET
-		if (minishell.gb == NULL)
+		if (gb_c(&minishell.gb, (void *)p, (void **)minishell.cmd_array) == -1)
 			return (ft_printf("%s", strerror(errno)), errno);
-		gb_c(&minishell.gb, (void *)p, NULL);
 		minishell.nbr_cmd = ft_strlen_tab(minishell.cmd_array);
 		minishell.exec_ret = pipex(&cm, &minishell);
 		ft_lstclear(minishell.gb);
 		printf("%d\n", cm.exec_ret);
-		//init_struct(&cm, envp);
 	}
 	return (0);
 }

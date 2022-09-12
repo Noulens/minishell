@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:34:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/09 18:01:22 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/12 19:41:05 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*prompt_line(t_command *cm)
+char	*prompt_line(t_minishell *ms, t_command *cm)
 {
 	static char	*line_read;
 
@@ -22,16 +22,18 @@ char	*prompt_line(t_command *cm)
 		line_read = NULL;
 	}
 	line_read = readline("> ");
+	if (line_read == NULL)
+	{
+		clean_up(ms->gb, ms->env);
+		ft_printf("exit\n");
+		exit(4);
+	}
+	if (*line_read == '\0')
+		return (NULL);
 	if (line_read && *line_read)
 		add_history(line_read);
 	if (cm->sigint == TRUE)
 		cm->sigint = FALSE;
-	else if (line_read == NULL)
-	{
-		clean_up(cm->gb, cm->env);
-		ft_printf("exit\n");
-		exit(4);
-	}
 	return (line_read);
 }
 

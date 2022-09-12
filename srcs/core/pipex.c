@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/09/12 13:17:29 by cfontain         ###   ########.fr       */
-=======
-/*   Updated: 2022/09/09 17:38:15 by tnoulens         ###   ########.fr       */
->>>>>>> 028d83a75eff617d6a570501db96db6e715f6eeb
+/*   Updated: 2022/09/12 17:15:45 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +45,7 @@ int	child_mgmt(t_command *cm, int i, int cmd_nbr, t_minishell *minishell)
 			return (ft_lstclear(minishell->gb), exit(errno), errno);
 		cm->exec_ret = exec(arg_cm, cm->env);
 		close_std_in_child();
-<<<<<<< HEAD
-		ft_lstclear(minishell->gb);
-=======
-		clean_up(cm->gb, cm->env);
->>>>>>> 028d83a75eff617d6a570501db96db6e715f6eeb
+		clean_up(minishell->gb, cm->env);
 		exit(cm->exec_ret);
 	}
 	return (0);
