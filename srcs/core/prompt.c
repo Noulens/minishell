@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:34:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/12 19:41:05 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/13 20:02:28 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*prompt_line(t_minishell *ms, t_command *cm)
 	line_read = readline("> ");
 	if (line_read == NULL)
 	{
-		clean_up(ms->gb, ms->env);
+		clean_up(ms->gb, ms->env_array, ms->env);
 		ft_printf("exit\n");
 		exit(4);
 	}

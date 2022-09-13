@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/13 17:12:02 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/13 20:20:44 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,9 @@ typedef struct s_minishell
 	char		**cmd_array;
 	int			exec_ret;
 	t_list		*gb;
-	char		**env;
+	t_list		*env;
+	char		**env_array;
+	char		**local_env;
 	t_tok		*list;
 }	t_minishell;
 /* Protos */
@@ -159,7 +161,7 @@ void	build_env(t_minishell *ms, char **envp);
 void	print_welcome_msg(void);
 int		gb_c(t_list **gb, void *content, void **content2);
 void	init_minishell(t_minishell *minishell);
-void	clean_up(t_list *lst, char **env);
+void	clean_up(t_list *lst, char **env_array, t_list *env);
 void	init_struct(t_minishell *ms, t_command *cm);
 int		close_pipes(int cmd_nbr, int *end, t_command *cm);
 void	close_std_in_child(void);
@@ -170,14 +172,16 @@ int		char_is_quote(char c);
 int		char_is_whitespace(char c);
 int		check_quote(char *str, int i);
 int		char_is_token_with_trigg(char c, int trigger);
-void	error_clean_up(t_list *lst, char **env);
+void	error_clean_up(t_list *lst, char **env_array, t_list *env);
+void    list_to_array(t_minishell *ms);
 
 	/* --- build-in --- */
 
-int		ft_echo(int argc, char **argv);
-int		ft_pwd(void);
-int		ft_env(char **envp);
-void	ft_exit(t_minishell *minishell, char *code);
+int		ft_echo(t_minishell *minishell, int argc, char **argv);
+int		ft_pwd(t_minishell *minishell, int argc, char **argv);
+int		ft_env(t_minishell *minishell, int argc, char **argv);
+void	ft_exit(t_minishell *minishell, int argc, char **argv);
+int 	ft_export(t_minishell *minishell, int argc, char **argv);
 
 	/* --- signals --- */
 void	tmp_handler(int sig, siginfo_t *info, void *context);

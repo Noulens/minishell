@@ -3,25 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 19:00:00 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/06 16:03:59 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/13 18:47:10 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_env(char **envp)
+int	ft_env(t_minishell *minishell, int argc, char **argv)
 {
 	int	i;
 
-	if (!envp || !*envp)
+	(void)argc;
+	(void)argv;
+	if (!minishell->env_array || !*minishell->env_array)
 		return (1);
 	i = 0;
-	while (envp[i])
+	while (minishell->env_array[i])
 	{
-		ft_putendl_fd(envp[i], STDOUT_FILENO);
+		ft_putendl_fd(minishell->env_array[i], STDOUT_FILENO);
 		++i;
 	}
 	return (0);

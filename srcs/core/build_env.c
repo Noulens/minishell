@@ -3,66 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   build_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 13:53:15 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/09 17:28:34 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/13 19:59:57 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static int	nb_var(char **envp)
-{
-	int		i;
-	char	**p;
-
-	i = 0;
-	p = envp;
-	if (p != NULL && *p != NULL)
-	{
-		while (*p++)
-			i++;
-	}
-	if (!getenv("SHLVL"))
-		i++;
-	if (!getenv("PWD"))
-		i++;
-	return (i);
-}
-
-static void	init_env_var(t_minishell *ms, int i, int shlvl)
+static void	init_env_var(t_minishell *ms, int shlvl)
 {
 	char	*pwd;
 	char	*lvl;
 
 	pwd = getcwd(NULL, 0);
 	lvl = ft_itoa(shlvl);
-	ms->env = (char **)malloc(sizeof(char *) * i + sizeof(char *));
-	if (ms->env == NULL)
-	{
-		perror("init_env_var");
-		exit(errno);
-	}
-	ms->env[0] = ft_strjoin("SHLVL=", lvl);
+	ft_lstadd_back(&ms->env, ft_lstnew(ft_strjoin("SHLVL=", lvl), NULL));
+	if (ft_lstlast(ms->env)->content == NULL)
+		return(perror("init_env_var"), (void)0);
 	free(lvl);
-	ms->env[1] = ft_strjoin("PWD=", pwd);
+	ft_lstadd_back(&ms->env, ft_lstnew(ft_strjoin("PWD=", pwd), NULL));
+	if (ft_lstlast(ms->env)->content == NULL)
+		return(perror("init_env_var"), (void)0);
 	free(pwd);
-	ms->env[i] = NULL;
+}
+
+void    list_to_array(t_minishell *ms)
+{
+    t_list  *tmp;
+    size_t  idx;
+
+    idx = ft_lstsize(ms->env);
+    ms->env_array = (char **)ft_calloc(sizeof(char *), idx + 1);
+    if (!ms->env_array)
+        return (perror("list_to_array"), (void)0);
+    tmp = ms->env;
+    idx = 0;
+    while (tmp != NULL)
+    {
+        ms->env_array[idx] = tmp->content;
+        idx++;
+        tmp = tmp->next;
+    }  
 }
 
 void	build_env(t_minishell *ms, char **envp)
 {
 	int	shlvl;
 	int	i;
-	int	j;
 
-	i = nb_var(envp);
 	shlvl = ft_atoi(getenv("SHLVL"));
 	++shlvl;
-	init_env_var(ms, i, shlvl);
+	init_env_var(ms, shlvl);
 	i = 0;
-	j = 0;
 	if (envp != NULL && *envp != NULL)
 	{
 		while (envp[i] != NULL)
@@ -72,14 +66,29 @@ void	build_env(t_minishell *ms, char **envp)
 				i++;
 			else
 			{
-				ms->env[j + 2] = ft_strdup(envp[i]);
-				j++;
+				ft_lstadd_back(&ms->env, ft_lstnew(ft_strdup(envp[i]), NULL));
+				if (ft_lstlast(ms->env)->content == NULL)
+					return(perror("build_env"), (void)0);
 				i++;
 			}
 		}
 	}
+    list_to_array(ms);
 }
 /*
+void	ft_printlist(t_list *list)
+{
+	if (list)
+	{
+		while (list != NULL)
+		{
+			if (list->content != NULL)
+				ft_printf("%s\n", list->content);
+			list = list->next;
+		}
+	}
+}
+
 void	ft_printab(char **str)
 {
 	int		i;
@@ -95,14 +104,41 @@ void	ft_printab(char **str)
 	}
 }
 
+void	ftft_lstclear(t_list *lst)
+{
+	t_list	*tmp;
+
+	if (!lst)
+		return ;
+	while (lst)
+	{
+		tmp = lst->next;
+		if (lst->content)
+        {
+            ft_printf("%s\n", lst->content);
+			free(lst->content);
+        }
+		if (lst->content2 != NULL)
+			ft_free_split((char **)lst->content2);
+		free(lst);
+		lst = tmp;
+	}
+	lst = NULL;
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	t_minishell	ms;
 
 	(void)argc;
 	(void)argv;
+    ms.env = NULL;
 	build_env(&ms, envp);
-	ft_printab(ms.env);
-	ft_free_split(ms.env);
+	ft_printlist(ms.env);
+    ft_printf("\n");
+    ft_printab(ms.env_array);
+    ft_printf("\n");
+	ftft_lstclear(ms.env);
+    free(ms.env_array);
 	return (0);
 }*/

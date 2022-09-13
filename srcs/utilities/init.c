@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:57:27 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/12 18:22:17 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/13 20:22:32 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ void	init_minishell(t_minishell *minishell)
 	minishell->cmd_array = NULL;
 	minishell->exec_ret = 0;
 	minishell->gb = NULL;
+	minishell->env = NULL;
 	minishell->list = NULL;
+	minishell->local_env = NULL;
 }
 
 void	init_struct(t_minishell *ms, t_command *cm)
@@ -35,6 +37,6 @@ void	init_struct(t_minishell *ms, t_command *cm)
 	cm->infile = NULL;
 	cm->outfile = NULL;
 	cm->pids = NULL;
-	cm->env = ms->env;
+	cm->env = ms->env_array;
 	cm->sigint = FALSE;
 }

@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/13 14:45:53 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/13 20:04:25 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	child_mgmt(t_command *cm, int i, int cmd_nbr, t_minishell *minishell)
 			return (ft_lstclear(minishell->gb), exit(errno), errno);
 		cm->exec_ret = exec(arg_cm, cm->env);
 		close_std_in_child();
-		clean_up(minishell->gb, cm->env);
+		clean_up(minishell->gb, minishell->env_array, minishell->env);
 		exit(cm->exec_ret);
 	}
 	return (0);
@@ -66,11 +66,11 @@ void	check_heredoc(t_command *cm)
 	{
 		write(STDIN_FILENO, "heredoc> ", 9);
 		p = get_next_line(stdin_fd);
-		if (p == NULL || !ft_strncmp(p, "stop", 4))
+		if (p == NULL || !ft_strncmp(p, cm->limiter, ft_strlen(cm->limiter)))
 		{
 			close(stdin_fd);
 			if (p == NULL)
-				ft_printf("warning: expected stop\n");
+				ft_printf("warning: expected %s\n");
 			free(p);
 			break ;
 		}
