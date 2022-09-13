@@ -43,6 +43,12 @@ set in /proc/sys/fs/pipe-user-pages-soft (since Linux 4.5) */
 
 /* Structure signal*/
 
+typedef struct s_tok {
+    char *data;
+    int type;
+    void *next;
+}        t_tok;
+
 typedef struct s_list_split
 {
 	char			*str;
@@ -105,12 +111,19 @@ typedef struct s_minishell
 	int			exec_ret;
 	t_list		*gb;
 	char		**env;
+	t_tok		*list;
 }	t_minishell;
 /* Protos */
 
 	/* --- parsing line --- */
 
-
+void	ft_lstclear_tok(t_tok *lst);
+t_tok	*ft_lstnew_tok(char *content, int content2);
+t_tok	*ft_lstlast_tok(t_tok *lst);
+void	ft_lstadd_back_tok(t_tok **lst, t_tok *new);
+void	printlist(t_tok *list);
+int		parse_lexer(t_minishell *minishell, char **env);
+int		lexer(char *str, t_minishell *minishell);
 void	ft_printab(char **str);
 int		char_is_whitespace(char c);
 char	*init_str_alias(char *str, char **env, int len, t_minishell *minishell);
@@ -156,13 +169,14 @@ int		char_is_token(char c);
 int		char_is_quote(char c);
 int		char_is_whitespace(char c);
 int		check_quote(char *str, int i);
+int		char_is_token_with_trigg(char c, int trigger);
 
 	/* --- build-in --- */
 
 int		ft_echo(int argc, char **argv);
 int		ft_pwd(void);
 int		ft_env(char **envp);
-void	ft_exit(t_minishell *minishell);
+void	ft_exit(t_minishell *minishell, char *code);
 
 	/* --- signals --- */
 void	tmp_handler(int sig, siginfo_t *info, void *context);

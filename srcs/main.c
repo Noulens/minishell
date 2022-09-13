@@ -73,6 +73,7 @@ int	main(int argc, char **argv, char **envp)
 
 	i = 0;
 	(void)argv;
+	(void)i;
 	(void)argc;
 	init_minishell(&minishell);
 	build_env(&minishell, envp);
@@ -81,6 +82,7 @@ int	main(int argc, char **argv, char **envp)
 	signal_handling();
 	while (42)
 	{
+		minishell.list = NULL;
 		init_struct(&minishell, &cm);
 		minishell.gb = NULL;
 		p = prompt_line(&minishell, &cm);
@@ -89,7 +91,10 @@ int	main(int argc, char **argv, char **envp)
 			cm.sigint = FALSE;
 			continue ;
 		}
-		p = expend_alias(p, minishell.env, &minishell);
+		lexer(p, &minishell);
+		parse_lexer(&minishell, envp);
+		printlist(minishell.list);
+		/*p = expend_alias(p, minishell.env, &minishell);
 		minishell.cmd_array = m_split(p);
 		if (minishell.cmd_array == NULL)
 			continue ;
@@ -97,9 +102,10 @@ int	main(int argc, char **argv, char **envp)
 		if (gb_c(&minishell.gb, (void *)p, (void **)minishell.cmd_array) == -1)
 			return (ft_printf("%s", strerror(errno)), errno);
 		minishell.nbr_cmd = ft_strlen_tab(minishell.cmd_array);
-		minishell.exec_ret = pipex(&cm, &minishell);
+		minishell.exec_ret = pipex(&cm, &minishell);*/
 		ft_lstclear(minishell.gb);
-		printf("%d\n", cm.exec_ret);
+		ft_lstclear_tok(minishell.list);
+		printf("%d\n", minishell.exec_ret);
 	}
 	return (0);
 }
