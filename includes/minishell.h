@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/12 17:37:29 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/12 22:15:04 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,7 @@ typedef struct s_minishell
 /* Protos */
 
 	/* --- parsing line --- */
-
-
+	
 void	ft_printab(char **str);
 int		char_is_whitespace(char c);
 char	*init_str_alias(char *str, char **env, int len, t_minishell *minishell);
@@ -156,13 +155,14 @@ int		char_is_token(char c);
 int		char_is_quote(char c);
 int		char_is_whitespace(char c);
 int		check_quote(char *str, int i);
+void	error_clean_up(t_list *lst, char **env);
 
 	/* --- build-in --- */
 
 int		ft_echo(int argc, char **argv);
 int		ft_pwd(void);
 int		ft_env(char **envp);
-void	ft_exit(t_minishell *minishell);
+void	ft_exit(t_minishell *minishell, char *code);
 
 	/* --- signals --- */
 void	tmp_handler(int sig, siginfo_t *info, void *context);

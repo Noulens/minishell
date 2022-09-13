@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 10:36:13 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/12 18:20:44 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/13 00:20:49 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ char	*ft_strdup_without_quote(char *str)
 	i = 0;
 	new_str = NULL;
 	quote = 0;
-	new_str = calloc(sizeof(char), (ft_strlen(str) + 1));
+	new_str = ft_calloc(sizeof(char), (ft_strlen(str) + 1));
 	if (new_str == NULL)
 		return (NULL);
 	while (char_is_whitespace(str[i]) == 1)
@@ -170,12 +170,12 @@ int	init_cmd_array2(char *str, int *i, t_command *cmd, int count)
 
 	l = 0;
 	k = *i;
-	cmd->cmd = malloc(sizeof(char *) * (count + 1));
+	cmd->cmd = malloc(sizeof(char *) * count + sizeof(char *));
 	if (cmd->cmd == NULL)
 		return (1);
 	while (l <= count)
 	{
-		cmd->cmd[l] = 0;
+		cmd->cmd[l] = NULL;
 		l++;
 	}
 	l = 0;
@@ -186,6 +186,7 @@ int	init_cmd_array2(char *str, int *i, t_command *cmd, int count)
 		l++;
 	}
 	*i = k;
+	cmd->cmd[l] = NULL;
 	return (0);
 }
 
@@ -213,7 +214,7 @@ int	init_cmd_array(char *str, int *i, t_command *cmd)
 
 void	add_cmd_to_gb(t_command *cmd, t_minishell *minishell)
 {
-	if (cmd->cmd != NULL)
+		if (cmd->cmd != NULL && cmd->cmd != NULL)
 		gb_c(&minishell->gb, NULL, (void**)cmd->cmd);
 	if (cmd->infile != NULL)
 		gb_c(&minishell->gb, (void*)cmd->infile, NULL);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   m_split_parse.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:58:18 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/09 11:30:04 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/12 23:52:22 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	**m_split_space_and_quote(char *s, char c)
 	j = 0;
 	split.len = 0;
 	split.count = (m_split_count_line(s, c));
-	split.str = (char **)malloc(sizeof(char *) * (split.count + 1));
+	split.str = (char **)malloc(sizeof(char *) * split.count + sizeof(char *));
 	if (split.str == NULL)
 		return (NULL);
 	while (i < split.count)
@@ -87,7 +87,7 @@ char	**m_split_space_and_quote(char *s, char c)
 			return (ft_printf("synthax error near unexpected token\n"), NULL);
 		i++;
 	}
-	split.str[i] = 0;
+	split.str[i] = NULL;
 	return (split.str);
 }
 
