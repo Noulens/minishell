@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:43:44 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/12 20:09:14 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/13 16:36:36 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ void	ft_exit(t_minishell *minishell, char *code)
 		{
 			if (!ft_isdigit(*p))
 			{
-				ft_printf("minishell: exit: %s: not numeric\n", code);
+				ft_putstr_fd("minishell: exit:", 2);
+				ft_putstr_fd(code, 2);
+				ft_putstr_fd(": not a numeric argument\n", 2);
 				exit(2);
 			}
 			p++;

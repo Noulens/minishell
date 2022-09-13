@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 10:36:13 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/13 00:20:49 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/13 11:43:26 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,7 +186,6 @@ int	init_cmd_array2(char *str, int *i, t_command *cmd, int count)
 		l++;
 	}
 	*i = k;
-	cmd->cmd[l] = NULL;
 	return (0);
 }
 
@@ -214,7 +213,7 @@ int	init_cmd_array(char *str, int *i, t_command *cmd)
 
 void	add_cmd_to_gb(t_command *cmd, t_minishell *minishell)
 {
-		if (cmd->cmd != NULL && cmd->cmd != NULL)
+	if (cmd->cmd != NULL)
 		gb_c(&minishell->gb, NULL, (void**)cmd->cmd);
 	if (cmd->infile != NULL)
 		gb_c(&minishell->gb, (void*)cmd->infile, NULL);

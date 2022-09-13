@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:45:42 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/13 11:28:34 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/13 14:34:53 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	ft_free_split(char **tofree)
 		return ;
 	while (tofree[++k])
 	{
-		ft_printf("\n %s freed\n", tofree[k]);
 		free(tofree[k]);
 		tofree[k] = NULL;
 	}

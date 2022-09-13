@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/13 00:27:35 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/13 14:27:46 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int	main(int argc, char **argv, char **envp)
 		init_struct(&minishell, &cm);
 		minishell.gb = NULL;
 		p = prompt_line(&minishell, &cm);
+		
 		if (space_only(p))
 		{
 			cm.sigint = FALSE;
@@ -94,11 +95,12 @@ int	main(int argc, char **argv, char **envp)
 		if (minishell.cmd_array == NULL)
 			continue ;
 		init_cmd(minishell.cmd_array[i], &cm, &minishell);
-		if (gb_c(&minishell.gb, (void *)p, (void **)minishell.cmd_array) == -1)
+		if (gb_c(&minishell.gb, NULL, (void **)minishell.cmd_array) == -1)
+			return (ft_printf("%s", strerror(errno)), errno);
+		if (gb_c(&minishell.gb, (void *)p, NULL) == -1)
 			return (ft_printf("%s", strerror(errno)), errno);
 		minishell.nbr_cmd = ft_strlen_tab(minishell.cmd_array);
 		minishell.exec_ret = pipex(&cm, &minishell);
-		ft_printf(YELLOW"fini\n"END);
 		ft_lstclear(minishell.gb);
 		printf("%d\n", cm.exec_ret);
 	}

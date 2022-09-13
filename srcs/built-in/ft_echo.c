@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:23:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/05 16:36:06 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/13 17:08:22 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_echo(int argc, char **argv)
+int	ft_echo(t_minishell *minishell, int argc, char **argv)
 {
 	int		option_n;
 
+	(void)minishell;
 	option_n = 0;
 	while (--argc > 0 && (*++argv)[0] == '-')
 	{

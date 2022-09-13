@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/13 00:20:21 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/13 14:45:53 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,7 @@ int	child_mgmt(t_command *cm, int i, int cmd_nbr, t_minishell *minishell)
 		if (gb_c(&minishell->gb, NULL, (void **)arg_cm) == -1)
 			return (ft_lstclear(minishell->gb), exit(errno), errno);
 		cm->exec_ret = exec(arg_cm, cm->env);
-//		close_std_in_child();
-		ft_printf(YELLOW"fini\n"END);
+		close_std_in_child();
 		clean_up(minishell->gb, cm->env);
 		exit(cm->exec_ret);
 	}
