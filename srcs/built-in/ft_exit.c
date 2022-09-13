@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:43:44 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/13 20:03:55 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/13 21:03:07 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@ static void	exit_1(void)
 
 static void	exit_args(char **argv)
 {
-	char *p;
+	char	*p;
+	int		len;
 	
 	p = *argv + 1;
+	len = ft_strlen(p);
 	while (*p)
 	{
-		if (!ft_isdigit(*p))
+		if (!ft_isdigit(*p) || len > 20)
 		{
 			ft_putstr_fd("minishell: exit:", 2);
 			ft_putstr_fd(*argv + 1, 2);
@@ -35,7 +37,7 @@ static void	exit_args(char **argv)
 		else
 			p++;
 	}
-	exit(ft_atoi(*argv + 1));
+	exit((unsigned char)ft_atol(*argv + 1));
 }
 
 void	ft_exit(t_minishell *minishell, int argc, char **argv)
