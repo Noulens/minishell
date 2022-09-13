@@ -18,6 +18,7 @@ void	init_minishell(t_minishell *minishell)
 	minishell->cmd_array = NULL;
 	minishell->exec_ret = 0;
 	minishell->gb = NULL;
+	minishell->list = NULL;
 }
 
 void	init_struct(t_minishell *ms, t_command *cm)

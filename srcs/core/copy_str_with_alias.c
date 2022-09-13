@@ -109,13 +109,19 @@ void	init_copy_alias(char *new_str, char *str, char **env, t_minishell *minishel
 			{
 				j = alias_ret(new_str, minishell);
 				i += 2;
-			}	
+				continue ;
+			}
+			else if (char_is_token(str[i + 1] == 1) || str[i + 1] == '$' || str[i + 1] == 0 || char_is_whitespace(str[i + 1]) == 1 || char_is_quote(str[i + 1]) == 0)
+			{
+
+			}
 			else
 			{	
 				j = copy_alias(str + (i + 1), new_str, env);
 				i = break_point_alias(str, (i + 1));
+				continue ;
 			}	
-			continue ;
+			
 		}
 		new_str[j] = str[i];
 		j++;

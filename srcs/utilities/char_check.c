@@ -33,6 +33,16 @@ int	check_quote(char *str, int i)
 	return (0);
 }
 
+int	char_is_token_with_trigg(char c, int trigger)
+{
+	if (trigger == 0)
+	{
+		if (c == '<' || c == '>' || c == '|')
+			return (1);
+	}	
+	return (0);
+}
+
 int	char_is_quote(char c)
 {
 	if (c == 34 || c == 39)
@@ -52,7 +62,7 @@ int	char_is_whitespace(char c)
 
 int		char_is_token(char c)
 {
-	if (c == '<' || c == '>' || c == '$' || c == '|')
+	if (c == '<' || c == '>' || c == '|')
 		return (1);
 	else
 		return (0);	

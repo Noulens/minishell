@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/12 22:15:04 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/13 17:12:02 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@
 set in /proc/sys/fs/pipe-user-pages-soft (since Linux 4.5) */
 
 /* Structure signal*/
+
+typedef struct s_tok {
+    char *data;
+    int type;
+    void *next;
+}        t_tok;
 
 typedef struct s_list_split
 {
@@ -105,11 +111,19 @@ typedef struct s_minishell
 	int			exec_ret;
 	t_list		*gb;
 	char		**env;
+	t_tok		*list;
 }	t_minishell;
 /* Protos */
 
 	/* --- parsing line --- */
-	
+
+void	ft_lstclear_tok(t_tok *lst);
+t_tok	*ft_lstnew_tok(char *content, int content2);
+t_tok	*ft_lstlast_tok(t_tok *lst);
+void	ft_lstadd_back_tok(t_tok **lst, t_tok *new);
+void	printlist(t_tok *list);
+int		parse_lexer(t_minishell *minishell, char **env);
+int		lexer(char *str, t_minishell *minishell);
 void	ft_printab(char **str);
 int		char_is_whitespace(char c);
 char	*init_str_alias(char *str, char **env, int len, t_minishell *minishell);
@@ -155,6 +169,7 @@ int		char_is_token(char c);
 int		char_is_quote(char c);
 int		char_is_whitespace(char c);
 int		check_quote(char *str, int i);
+int		char_is_token_with_trigg(char c, int trigger);
 void	error_clean_up(t_list *lst, char **env);
 
 	/* --- build-in --- */

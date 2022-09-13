@@ -30,7 +30,9 @@ CORE		=	./srcs/core/prompt.c\
 				./srcs/core/init_chevron.c\
 				./srcs/core/expend_alias.c\
 				./srcs/core/copy_str_with_alias.c\
-				./srcs/core/build_env.c
+				./srcs/core/build_env.c\
+				./srcs/core/lexer.c\
+				./srcs/core/parse_lexer.c
 
 BUILTIN		=	./srcs/built-in/ft_echo.c\
 				./srcs/built-in/ft_env.c\
