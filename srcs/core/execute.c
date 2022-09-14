@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:29:21 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/13 14:53:28 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/15 00:20:43 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,37 @@ char	*cmd_check(char **bin_path, char *cmd)
 	return (ft_free_split(bin_path), NULL);
 }
 
-int	exec(char **cmds, char **envp)
+int	is_built_in(t_minishell *ms, int argc, char **argv)
+{
+	int			i;
+	int			nbr_builtin;
+	t_builtin	*p;
+
+	i = 0;
+	p = (t_builtin *)ms->bi;
+	nbr_builtin = 7;
+	while (i < nbr_builtin)
+	{
+		if (ft_strncmp(argv[0], p[i].name, 10))
+		{
+			ms->exec_ret = p[i].func(ms, argc, argv);
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
+int	exec(t_minishell *ms, char **cmds, char **envp)
 {
 	char	*cmd_path;
+	int		i;
 
-	if (cmds != NULL)
+	i = nb_cmd(cmds);
+	if (i)
 	{
+		if (is_built_in(ms, i, cmds))
+			return (ms->exec_ret);
 		if (memchr(cmds[0], '/', ft_strlen(cmds[0])))
 		{
 			if (access(cmds[0], F_OK | X_OK) == 0)

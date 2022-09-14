@@ -6,7 +6,7 @@
 #    By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/09/12 17:42:47 by waxxy            ###   ########.fr        #
+#    Updated: 2022/09/15 00:24:57 by waxxy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,14 +37,16 @@ CORE		=	./srcs/core/prompt.c\
 BUILTIN		=	./srcs/built-in/ft_echo.c\
 				./srcs/built-in/ft_env.c\
 				./srcs/built-in/ft_exit.c\
-				./srcs/built-in/ft_pwd.c
+				./srcs/built-in/ft_pwd.c\
+				./srcs/built-in/ft_export.c
 
 UTILITIES	= 	./srcs/utilities/garbage_collector.c\
 				./srcs/utilities/welcome_message.c\
 				./srcs/utilities/pipes_mgmt.c\
 				./srcs/utilities/init.c\
 				./srcs/utilities/char_check.c\
-				./srcs/utilities/clean_up.c
+				./srcs/utilities/clean_up.c\
+				./srcs/utilities/utils1.c
 
 SRCS		=	${MAIN} ${CORE} ${BUILTIN} ${UTILITIES}
 

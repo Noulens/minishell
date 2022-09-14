@@ -6,21 +6,11 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/13 20:04:25 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/15 00:05:20 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-/*static int	nb_cmd(t_command *cm)
-{
-	int	i;
-
-	i = 0;
-	while (cm->cmd[i])
-		i++;
-	return (i);
-}*/
 
 int	child_mgmt(t_command *cm, int i, int cmd_nbr, t_minishell *minishell)
 {
@@ -43,7 +33,7 @@ int	child_mgmt(t_command *cm, int i, int cmd_nbr, t_minishell *minishell)
 		arg_cm = cm->cmd;
 		if (gb_c(&minishell->gb, NULL, (void **)arg_cm) == -1)
 			return (ft_lstclear(minishell->gb), exit(errno), errno);
-		cm->exec_ret = exec(arg_cm, cm->env);
+		cm->exec_ret = exec(minishell, arg_cm, cm->env);
 		close_std_in_child();
 		clean_up(minishell->gb, minishell->env_array, minishell->env);
 		exit(cm->exec_ret);
@@ -97,11 +87,8 @@ int	pipex(t_command *cm, t_minishell *minishell)
 	int		ret;
 	int		i;
 
-	/*cmd_nbr = nb_cmd(cm);
-	if (cmd_nbr == 0)
-		return (0);*/
 	cmd_nbr = 1;
-	get_fd_in(cm);
+	get_fd_in(cm); /* a mettre dans le child, le dernier fdin a etre trouver est le fd in*/
 	cm->pids = (pid_t *)malloc(cmd_nbr * sizeof(pid_t));
 	if (gb_c(&minishell->gb, (void *)cm->pids, NULL) == -1)
 		return (perror("pipex pids"), errno);

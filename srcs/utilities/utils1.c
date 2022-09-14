@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/18 19:00:00 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/14 23:34:22 by waxxy            ###   ########.fr       */
+/*   Created: 2022/09/14 23:28:09 by waxxy             #+#    #+#             */
+/*   Updated: 2022/09/15 00:23:41 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_env(t_minishell *minishell, int argc, char **argv)
+int	nb_cmd(char **argv)
 {
 	int	i;
 
-	(void)argc;
-	(void)argv;
-	if (!minishell->env_array || !*minishell->env_array)
-		return (perror("env: no env array"), errno);
 	i = 0;
-	while (minishell->env_array[i])
-	{
-		ft_putendl_fd(minishell->env_array[i], STDOUT_FILENO);
-		++i;
-	}
-	return (0);
+    if (argv == NULL || *argv == NULL)
+        return (0);
+	else
+    {
+        while (argv[i])
+		    i++;
+    }
+	return (i);
 }
-/*
-int	main(int argc, char **argv, char ** envp)
-{
-	(void)argc;
-	(void)argv;
-	ft_env(envp);
-	return (0);
-}*/

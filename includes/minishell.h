@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/13 20:20:44 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/15 00:22:18 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,15 @@
 # define MAX_PIPE 1024 /* max # of pipe per process: pipe(7) man page
 set in /proc/sys/fs/pipe-user-pages-soft (since Linux 4.5) */
 
-/* Structure signal*/
+/* Structure lexer */
 
 typedef struct s_tok {
     char *data;
     int type;
     void *next;
 }        t_tok;
+
+/* Sructure parsing */
 
 typedef struct s_list_split
 {
@@ -79,11 +81,6 @@ typedef struct s_split
 	int		count;
 }	t_split;
 
-typedef struct s_signal
-{
-	pid_t	pid_client;
-}	t_signal;
-
 typedef struct s_commands
 {
 	char	**cmd;
@@ -114,7 +111,17 @@ typedef struct s_minishell
 	char		**env_array;
 	char		**local_env;
 	t_tok		*list;
+	void		*bi;
 }	t_minishell;
+
+/* struct for builtin utilities */
+
+typedef struct s_builtin
+{
+	char	name[9];
+	int		(*func)(t_minishell *ms, int argc, char **argv);
+}	t_builtin;
+
 /* Protos */
 
 	/* --- parsing line --- */
@@ -152,7 +159,7 @@ char	*expend_alias(char *str, char **env, t_minishell *minishell);
 	/* --- core --- */
 
 char	*prompt_line(t_minishell *ms, t_command *cm);
-int		exec(char **argv, char **envp);
+int		exec(t_minishell *ms, char **cmds, char **envp);
 int		pipex(t_command *cm, t_minishell *minishell);
 void	build_env(t_minishell *ms, char **envp);
 
@@ -174,13 +181,14 @@ int		check_quote(char *str, int i);
 int		char_is_token_with_trigg(char c, int trigger);
 void	error_clean_up(t_list *lst, char **env_array, t_list *env);
 void    list_to_array(t_minishell *ms);
+int		nb_cmd(char **argv);
 
 	/* --- build-in --- */
 
 int		ft_echo(t_minishell *minishell, int argc, char **argv);
 int		ft_pwd(t_minishell *minishell, int argc, char **argv);
 int		ft_env(t_minishell *minishell, int argc, char **argv);
-void	ft_exit(t_minishell *minishell, int argc, char **argv);
+int		ft_exit(t_minishell *minishell, int argc, char **argv);
 int 	ft_export(t_minishell *minishell, int argc, char **argv);
 
 	/* --- signals --- */

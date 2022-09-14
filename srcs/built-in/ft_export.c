@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:42:15 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/13 20:21:41 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/15 00:28:48 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int ft_export(t_minishell *minishell, int argc, char **argv)
         }
         if (minishell->env_array != NULL)
             free(minishell->env_array);
-        list_to_array(minishell->env);
+        list_to_array(minishell);
     }
+    return (SUCCESS);
 }

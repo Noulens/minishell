@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:43:44 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/13 21:03:07 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/15 00:21:56 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	exit_args(char **argv)
 	exit((unsigned char)ft_atol(*argv + 1));
 }
 
-void	ft_exit(t_minishell *minishell, int argc, char **argv)
+int	ft_exit(t_minishell *minishell, int argc, char **argv)
 {
 	(void)argc;
 	clean_up(minishell->gb, minishell->env_array, minishell->env);
@@ -51,4 +51,5 @@ void	ft_exit(t_minishell *minishell, int argc, char **argv)
 		exit_1();
 	else
 		exit_args(argv);
+	return (SUCCESS);
 }
