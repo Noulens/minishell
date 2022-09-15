@@ -6,11 +6,11 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 13:53:15 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/13 19:59:57 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/15 17:05:17 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 static void	init_env_var(t_minishell *ms, int shlvl)
 {
@@ -34,6 +34,8 @@ void    list_to_array(t_minishell *ms)
     t_list  *tmp;
     size_t  idx;
 
+	if (ms->env_array != NULL)
+		free(ms->env_array);
     idx = ft_lstsize(ms->env);
     ms->env_array = (char **)ft_calloc(sizeof(char *), idx + 1);
     if (!ms->env_array)

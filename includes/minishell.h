@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/15 00:22:18 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/15 13:54:28 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,6 +190,7 @@ int		ft_pwd(t_minishell *minishell, int argc, char **argv);
 int		ft_env(t_minishell *minishell, int argc, char **argv);
 int		ft_exit(t_minishell *minishell, int argc, char **argv);
 int 	ft_export(t_minishell *minishell, int argc, char **argv);
+int		ft_unset(t_minishell *ms, int argc, char **argv);
 
 	/* --- signals --- */
 void	tmp_handler(int sig, siginfo_t *info, void *context);
@@ -209,5 +210,8 @@ extern t_command	*g_cm;
 # define WHITE "\033[0;37m"
 # define BLUE "\033[0;34m"
 # define IRED "\033[0;41m"
+# define BOLD "\033[1m"
+# define UNDER "\033[4m"
+# define REV "\033[7m"
 
 #endif

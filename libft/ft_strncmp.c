@@ -6,11 +6,45 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 14:35:48 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/04 14:05:35 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/15 16:00:22 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	if (s1 == NULL && s2 == NULL)
+		return (0);
+	else if ((s1 == NULL && s2) || (s1 && s2 == NULL))
+		return (-1);
+	else
+	{
+		while (*s1 && (*s1 == *s2))
+		{
+			++s1;
+			++s2;
+		}
+		return (*(unsigned char *)s1 - *(unsigned char *)s2);
+	}
+}
+
+int	ft_cmpchr(const char *s1, const char *s2, char c)
+{
+	if (s1 == NULL && s2 == NULL)
+		return (0);
+	else if ((s1 == NULL && s2) || (s1 && s2 == NULL))
+		return (-1);
+	else
+	{
+		while (*s1 && (*s1 == *s2) && *(s1 + 1) != c)
+		{
+			++s1;
+			++s2;
+		}
+		return (*(unsigned char *)s1 - *(unsigned char *)s2);
+	}
+}
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

@@ -6,7 +6,7 @@
 #    By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/09/15 00:24:57 by waxxy            ###   ########.fr        #
+#    Updated: 2022/09/15 17:05:53 by waxxy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ BUILTIN		=	./srcs/built-in/ft_echo.c\
 				./srcs/built-in/ft_env.c\
 				./srcs/built-in/ft_exit.c\
 				./srcs/built-in/ft_pwd.c\
-				./srcs/built-in/ft_export.c
+				./srcs/built-in/ft_export.c\
+				./srcs/built-in/ft_unset.c
 
 UTILITIES	= 	./srcs/utilities/garbage_collector.c\
 				./srcs/utilities/welcome_message.c\

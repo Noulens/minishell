@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:05:08 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/12 23:34:04 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/15 15:33:22 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,7 @@ long	ft_atol(const char *nptr);
 int		ft_atoi_base(const char *str, int base);
 void	ft_free_split(char **tofree);
 int		ft_isspace(char c);
+int		ft_strcmp(const char *s1, const char *s2);
+int		ft_cmpchr(const char *s1, const char *s2, char c);
 
 #endif
