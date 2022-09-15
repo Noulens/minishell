@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   m_parsing_quote.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 14:51:12 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/05 16:36:36 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/15 10:56:49 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,4 @@ int	check_double_quote(char *str, int *i)
 	return (0);
 }
 
-int	parsing_quote(char *str)
-{
-	int		i;
 
-	i = 0;
-	if (str[i] == 34)
-	{
-		if (check_double_quote(str, &i) == 1)
-			return (1);
-	}
-	if (str[i] == 39)
-	{
-		if (check_single_quote(str, &i) == 1)
-			return (1);
-	}
-	return (0);
-}

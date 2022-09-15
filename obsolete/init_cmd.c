@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 10:36:13 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/13 11:43:26 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/15 16:54:11 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	next_token_or_space(char *str, int i)
+/*int	next_token_or_space(char *str, int i)
 {
 	char	c;
 
@@ -238,6 +238,22 @@ int	init_cmd(char *str, t_command *cmd, t_minishell *minishell)
 		i++;
 		if (str[i] == '<' || str[i] == '>')
 		{	
+
+int	init_cmd(char *str, t_command *cmd, t_minishell *minishell)
+{
+	int	i;
+	//int	j;
+	//int	trigg;
+	
+	//trigg = 0;
+	i = 0;
+	//j = 0;
+	while (str[i] != 0)
+	{
+		while (char_is_whitespace(str[i]) == 1)
+		i++;
+		if (str[i] == '<' || str[i] == '>')
+		{	
 			if (chevron_init(str, &i, cmd) == 1)
 				return (1);
 		}
@@ -251,3 +267,4 @@ int	init_cmd(char *str, t_command *cmd, t_minishell *minishell)
 	//ajouter une fonction qui remplit ma liste des elements malloque dans la commande
 	return (0);
 }
+*/

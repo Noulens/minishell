@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/15 00:22:18 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/15 17:05:32 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,16 @@
 # define MAX_PIPE 1024 /* max # of pipe per process: pipe(7) man page
 set in /proc/sys/fs/pipe-user-pages-soft (since Linux 4.5) */
 
+/* macros lexer type */
+
+# define END_LEX 0
+# define STDIN_LEX 1
+# define STDOUT_LEX 2
+# define HEREDOC_LEX 3
+# define APPEND_LEX 4
+# define CMD_LEX 5
+# define PIPE_LEX 6
+
 /* Structure lexer */
 
 typedef struct s_tok {
@@ -49,15 +59,21 @@ typedef struct s_tok {
     void *next;
 }        t_tok;
 
+typedef struct s_int {
+    int i;
+    int j;
+    int k;
+}        t_int;
+
 /* Sructure parsing */
 
-typedef struct s_list_split
+/*typedef struct s_list_split // PROBABLEMENT A SUPPRIMER
 {
 	char			*str;
 	void	*next;
 }	t_list_split;
 
-typedef struct s_new_cut_line
+typedef struct s_new_cut_line // PROBABLEMENT A SUPPRIMER
 {
 	int		i;
 	int		j;
@@ -66,7 +82,7 @@ typedef struct s_new_cut_line
 
 }			t_new_cut_line;
 
-typedef struct s_mega_split
+typedef struct s_mega_split // PROBABLEMENT A SUPPRIMER
 {
 	int		i;
 	int		j;
@@ -74,12 +90,12 @@ typedef struct s_mega_split
 
 }			t_mega_split;
 
-typedef struct s_split
+typedef struct s_split // PROBABLEMENT A SUPPRIMER
 {
 	char	**str;
 	int		len;
 	int		count;
-}	t_split;
+}	t_split;*/
 
 typedef struct s_commands
 {
@@ -112,6 +128,7 @@ typedef struct s_minishell
 	char		**local_env;
 	t_tok		*list;
 	void		*bi;
+	t_int		i;
 }	t_minishell;
 
 /* struct for builtin utilities */
@@ -126,36 +143,31 @@ typedef struct s_builtin
 
 	/* --- parsing line --- */
 
+int		cmd_lexer(char *str, int i, t_minishell *minishell);
 void	ft_lstclear_tok(t_tok *lst);
 t_tok	*ft_lstnew_tok(char *content, int content2);
 t_tok	*ft_lstlast_tok(t_tok *lst);
 void	ft_lstadd_back_tok(t_tok **lst, t_tok *new);
 void	printlist(t_tok *list);
-int		parse_lexer(t_minishell *minishell, char **env);
+int		expend_and_cut_quote(t_minishell *minishell, char **env);
 int		lexer(char *str, t_minishell *minishell);
 void	ft_printab(char **str);
 int		char_is_whitespace(char c);
-char	*init_str_alias(char *str, char **env, int len, t_minishell *minishell);
+char	*init_str_alias(char *str, int len, t_minishell *minishell);
 int		break_point_alias(char *str, int i);
 int		trigger_double_quote(int trigg, char c);
 int		init_cmd(char *str, t_command *cmd, t_minishell *minishell);
 char	*m_init_str(char *s, char c, char *str, int *j);
 int		m_line_lenght(char *s, char c, int *j);
 char	**ft_split_space_and_quote(char *s, char c);
-char	**m_split(char *str);
-void	count_sep_quote(t_mega_split *split, char *s);
 int		m_split_count_line(char *s, char c);
-void	ft_count_up(t_mega_split *split);
 char	*m_malloc_str(char *str, int len);
 void	m_init_str_with_sep(char *s, char *str, int *i, int *k);
 int		char_is_quote(char c);
 int		check_single_quote(char *str, int *i);
 int		check_double_quote(char *str, int *i);
 int		parsing_quote(char *str);
-void	new_cut_line2(char *str, char *new_str, t_new_cut_line *line);
-char	*new_cut_line(char *str);
-int		cut_quote(char **split_line);
-char	*expend_alias(char *str, char **env, t_minishell *minishell);
+char	*expend_alias(char *str, t_minishell *ms);
 	/* --- core --- */
 
 char	*prompt_line(t_minishell *ms, t_command *cm);
@@ -182,7 +194,7 @@ int		char_is_token_with_trigg(char c, int trigger);
 void	error_clean_up(t_list *lst, char **env_array, t_list *env);
 void    list_to_array(t_minishell *ms);
 int		nb_cmd(char **argv);
-
+void	printlist(t_tok *list);
 	/* --- build-in --- */
 
 int		ft_echo(t_minishell *minishell, int argc, char **argv);

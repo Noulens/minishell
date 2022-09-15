@@ -1,9 +1,5 @@
 make --dry-run --keep-going --print-directory
-make: Entering directory '/home/cfontain/Documents/minishell'
-cc -Wall -Wextra -Werror -g -I includes/  -c srcs/core/parse_lexer.c -o srcs/core/parse_lexer.o
-echo "\033[34m----Compiling----"
-cc -Wall -Wextra -Werror -g -I includes/ ./srcs/main.o ./srcs/core/prompt.o ./srcs/core/pipex.o ./srcs/core/execute.o ./srcs/core/m_parsing_quote.o ./srcs/core/m_split_init.o ./srcs/core/m_split_parse.o ./srcs/core/cut_quote.o ./srcs/core/init_cmd.o ./srcs/core/signals.o ./srcs/core/init_chevron.o ./srcs/core/expend_alias.o ./srcs/core/copy_str_with_alias.o ./srcs/core/build_env.o ./srcs/core/lexer.o ./srcs/core/parse_lexer.o ./srcs/built-in/ft_echo.o ./srcs/built-in/ft_env.o ./srcs/built-in/ft_exit.o ./srcs/built-in/ft_pwd.o ./srcs/utilities/garbage_collector.o ./srcs/utilities/welcome_message.o ./srcs/utilities/pipes_mgmt.o ./srcs/utilities/init.o ./srcs/utilities/char_check.o ./srcs/utilities/clean_up.o  -L/usr/include -lreadline -o minishell ./libft/libft.a
-printf "{\n    leak readline\n    Memcheck:Leak\n    ...\n    fun:readline\n}\n{\n    leak add_history\n   Memcheck:Leak\n    ...\n    fun:add_history\n}" > ignore_leak.supp
-echo "OK\033[0m"
-make: Leaving directory '/home/cfontain/Documents/minishell'
+make: Entering directory '/mnt/nfs/homes/cfontain/Documents/Cursus/minishell'
+make: Nothing to be done for 'all'.
+make: Leaving directory '/mnt/nfs/homes/cfontain/Documents/Cursus/minishell'
  
