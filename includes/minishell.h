@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/15 13:54:28 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/15 17:10:45 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ typedef struct s_minishell
 
 typedef struct s_builtin
 {
-	char	name[9];
+	char	name[10];
 	int		(*func)(t_minishell *ms, int argc, char **argv);
 }	t_builtin;
 
