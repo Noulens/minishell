@@ -6,7 +6,7 @@
 #    By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/09/15 17:05:53 by waxxy            ###   ########.fr        #
+#    Updated: 2022/09/15 17:43:16 by waxxy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,18 +21,14 @@ MAIN		=	./srcs/main.c
 CORE		=	./srcs/core/prompt.c\
 				./srcs/core/pipex.c\
 				./srcs/core/execute.c\
-				./srcs/core/m_parsing_quote.c\
-				./srcs/core/m_split_init.c\
-				./srcs/core/m_split_parse.c\
-				./srcs/core/cut_quote.c\
-				./srcs/core/init_cmd.c\
 				./srcs/core/signals.c\
-				./srcs/core/init_chevron.c\
 				./srcs/core/expend_alias.c\
 				./srcs/core/copy_str_with_alias.c\
 				./srcs/core/build_env.c\
 				./srcs/core/lexer.c\
-				./srcs/core/parse_lexer.c
+				./srcs/core/expend_and_cut_quote.c\
+				./srcs/core/cmd_lexer.c\
+				./srcs/core/list_token.c
 
 BUILTIN		=	./srcs/built-in/ft_echo.c\
 				./srcs/built-in/ft_env.c\
@@ -46,8 +42,10 @@ UTILITIES	= 	./srcs/utilities/garbage_collector.c\
 				./srcs/utilities/pipes_mgmt.c\
 				./srcs/utilities/init.c\
 				./srcs/utilities/char_check.c\
+				./srcs/utilities/check_quote.c\
 				./srcs/utilities/clean_up.c\
-				./srcs/utilities/utils1.c
+				./srcs/utilities/utils1.c\
+				./srcs/utilities/print_token_list.c
 
 SRCS		=	${MAIN} ${CORE} ${BUILTIN} ${UTILITIES}
 

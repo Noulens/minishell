@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   m_split_parse.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:58:18 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/12 23:52:22 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/15 10:59:22 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	count_sep_quote(t_mega_split *split, char *s)
+/*void	count_sep_quote(t_mega_split *split, char *s)
 {
 	if (s[(*split).i] == 34)
 	{
@@ -98,3 +98,4 @@ char	**m_split(char *str)
 	final_split = m_split_space_and_quote(str, '|');
 	return (final_split);
 }
+*/

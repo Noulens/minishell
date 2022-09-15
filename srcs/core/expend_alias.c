@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:44:18 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/12 14:37:21 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/15 17:28:04 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int	break_point_alias(char *str, int i)
 {
 	while (str[i] != 0 && char_is_whitespace(str[i]) != 1
-		&& char_is_token(str[i]) != 1 && char_is_quote(str[i]) != 0)
+		&& char_is_token(str[i]) != 1
+		&& char_is_quote(str[i]) != 0 && str[i] != '$')
 	{
 		i++;
 	}
@@ -38,8 +39,8 @@ int	alias_ret_len(t_minishell *minishell, int *i)
 {
 	char	*temp;
 	int		value;
-	
-	(*i)++;	
+
+	(*i)++;
 	temp = NULL;
 	temp = ft_itoa(minishell->exec_ret);
 	if (temp == NULL)
@@ -54,6 +55,7 @@ int	alias_len(char *str, char **env)
 	int	i;
 	int	len;
 	int	j;
+
 
 	len = 0;
 	j = 0;
@@ -70,52 +72,45 @@ int	alias_len(char *str, char **env)
 	return (len - (j + 1));
 }
 
-char	*expend_alias(char *str, char **env, t_minishell *minishell)
+int	expend_alias2(char *str, int i, int len, t_minishell *ms)
 {
-	char	*new_str;
-	int		i;
-	int		len;
 	int		trigg;
 
-	len = 0;
-	i = 0;
 	trigg = 0;
 	while (str[i] != 0)
 	{
+		
 		if (str[i] == 39 && check_quote(str, i) == 0 && trigg == 0)
 		{
 			i++;
 			while (str[i] != 39)
 				i++;
 		}
+		
 		trigg = trigger_double_quote(trigg, str[i]);
 		if (str[i] == '$')
 		{
 			if (str[i + 1] == '?')
-				len = (len + alias_ret_len(minishell, &i));
-			else	
-				len = (len + alias_len(str + (i + 1), env));
+				len = (len + alias_ret_len(ms, &i));
+			else
+				len = (len + alias_len(str + (i + 1), ms->env_array));
 		}	
 		i++;
 	}
-	new_str = init_str_alias(str, env, len, minishell);
+	return (len);
+}
+
+char	*expend_alias(char *str, t_minishell *ms)
+{
+	char	*new_str;
+	int		i;
+	int		len;
+
+	len = 0;
+	i = 0;
+	len = expend_alias2(str, i , len, ms);
+	new_str = init_str_alias(str, len, ms);
 	if (new_str == NULL)
 		return (NULL);
 	return (new_str);
 }
-
-/*
-on part du $ et on va jusqu'a un espace un token ou un double guillemet
-
-Seul le $ coupe l'allocation dans une double quote
-cette merde est recursive, elle remplace les dollars par les variables jusqu'a un token
-si $ strncp jusqu'a l'espace ou le dollar apres l'espace
-
-les regles c'est tout token desactive dans '', sauf $ dans ""
-apres ca se stop lorsqu'on croise un token ou un espace
-
-regle de l'export avant
-tout ce qui se trouve entre export et le mot precedant (hors token) = n'est pas pris en compte
-les quotes ne sont pas pris en compte, pas d'espace a l'interieur et pas de token sinon l'export fail
-
-*/

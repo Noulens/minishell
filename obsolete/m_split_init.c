@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   m_split_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:20:29 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/12 19:32:28 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/15 10:59:47 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_count_up(t_mega_split *split)
+/*void	ft_count_up(t_mega_split *split)
 {
 	if ((*split).j > 0)
 	{
@@ -98,11 +98,12 @@ void	m_init_str_with_sep(char *s, char *str, int *i, int *k)
 		str[(*k)] = s[(*i)];
 		(*k)++;
 		(*i)++;
-	}/*
+	}
 	while (s[(*i)] != 0 && s[(*i)] != '|')
 	{
 		str[(*k)] = s[(*i)];
 		(*k)++;
 		(*i)++;
-	}*/
+	}
 }
+*/

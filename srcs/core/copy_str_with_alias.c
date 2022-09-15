@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:22:08 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/12 14:38:15 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/15 16:28:34 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	copy_alias2(char *new_str, char *env)
 	return (j);
 }
 
-int	copy_alias(char *str, char *new_str, char **env)
+int	copy_alias(char *str, char *new_str, t_minishell *ms)
 {
 	int	j;
 	int	k;
@@ -45,12 +45,12 @@ int	copy_alias(char *str, char *new_str, char **env)
 	k = 0;
 	i = 0;
 	k = break_point_alias(str, k);
-	while (env[i] != NULL)
+	while (ms->env_array[i] != NULL)
 	{
-		if (ft_strncmp(env[i], str, k) == 0)
+		if (ft_strncmp(ms->env_array[i], str, k) == 0)
 		{
-			if (env[i][k] == '=')
-				j = copy_alias2(new_str, env[i]);
+			if (ms->env_array[i][k] == '=')
+				j = copy_alias2(new_str, ms->env_array[i]);
 		}	
 		i++;
 	}
@@ -75,7 +75,7 @@ int	alias_ret(char *new_str, t_minishell *minishell)
 {
 	char	*temp;
 	int		value;
-	
+
 	value = 0;
 	temp = NULL;
 	temp = ft_itoa(minishell->exec_ret);
@@ -89,47 +89,50 @@ int	alias_ret(char *new_str, t_minishell *minishell)
 	return ((value));
 }
 
-void	init_copy_alias(char *new_str, char *str, char **env, t_minishell *minishell)
+void	copy_str(char *str, char *new_str, t_minishell *ms)
 {
-	int	i;
-	int	j;
-	int	trigg;
+	new_str[ms->i.j] = str[ms->i.i];
+	ms->i.j++;
+	ms->i.i++;
+}
 
-	trigg = 0;
-	i = 0;
-	j = 0;
-	while (str[i] != 0)
+void	test(char *str, char *new_str, t_minishell *ms)
+{
+	if (str[ms->i.i] == 39 && check_quote(str, ms->i.i) == 0 && ms->i.k == 0)
 	{
-		if (str[i] == 39 && check_quote(str, i) == 0 && trigg == 0)
-			j = alias_copy_with_single_quote(str, new_str, &i, j);
-		trigg = trigger_double_quote(trigg, str[i]);
-		if (str[i] == '$')
+		ms->i.j = alias_copy_with_single_quote(str, new_str, &ms->i.i, ms->i.j);
+		ms->i.k = trigger_double_quote(ms->i.k, str[ms->i.i]);
+	}	
+}
+
+void	init_copy_alias(char *new_str, char *str, t_minishell *ms)
+{
+	while (str[ms->i.i] != 0)
+	{
+		test(str, new_str, ms);
+		if (str[ms->i.i] == '$')
 		{
-			if (str[i + 1] == '?')
+			if (str[ms->i.i + 1] == '?')
 			{
-				j = alias_ret(new_str, minishell);
-				i += 2;
+				ms->i.j = alias_ret(new_str, ms);
+				ms->i.i += 2;
 				continue ;
 			}
-			else if (char_is_token(str[i + 1] == 1) || str[i + 1] == '$' || str[i + 1] == 0 || char_is_whitespace(str[i + 1]) == 1 || char_is_quote(str[i + 1]) == 0)
-			{
-
-			}
-			else
+			else if (char_is_token(str[ms->i.i + 1]) == 0 && str[ms->i.i + 1]
+				!= '$' && str[ms->i.i + 1] != 0
+				&& char_is_whitespace(str[ms->i.i + 1]) == 0
+				&& char_is_quote(str[ms->i.i + 1]) == 1)
 			{	
-				j = copy_alias(str + (i + 1), new_str, env);
-				i = break_point_alias(str, (i + 1));
+				ms->i.j = copy_alias(str + (ms->i.i + 1), new_str, ms);
+				ms->i.i = break_point_alias(str, (ms->i.i + 1));
 				continue ;
 			}	
-			
 		}
-		new_str[j] = str[i];
-		j++;
-		i++;
+		copy_str(str, new_str, ms);
 	}
 }
 
-char	*init_str_alias(char *str, char **env, int len, t_minishell *minishell)
+char	*init_str_alias(char *str, int len, t_minishell *minishell)
 {
 	char	*new_str;
 
@@ -137,6 +140,9 @@ char	*init_str_alias(char *str, char **env, int len, t_minishell *minishell)
 	new_str = calloc(sizeof(char), (ft_strlen(str) + len + 1));
 	if (new_str == NULL)
 		return (perror("malloc"), NULL);
-	init_copy_alias(new_str, str, env, minishell);
+	minishell->i.i = 0;
+	minishell->i.j = 0;
+	minishell->i.k = 0;
+	init_copy_alias(new_str, str, minishell);
 	return (new_str);
 }
