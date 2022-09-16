@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:57:27 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/15 17:12:33 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/16 10:30:07 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	init_minishell(t_minishell *minishell)
 	minishell->exec_ret = 0;
 	minishell->gb = NULL;
 	minishell->env = NULL;
+	minishell->env_array = NULL;
 	minishell->list = NULL;
 	minishell->local_env = NULL;
 	minishell->bi = built;

@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 12:11:25 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/15 17:25:26 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/16 10:35:48 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ char	*dup_without_quote_init(char *str)
 	return (new_str);
 }
 
-int	expend_and_cut_quote(t_minishell *minishell, char **env)
+int	expend_and_cut_quote(t_minishell *minishell)
 {
 	char	*str;
 	char	*str2;
 	t_tok	*temp;
-	(void)env;
+
 	temp = minishell->list;
 	while (minishell->list)
 	{

@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/15 17:16:33 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/16 10:30:24 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	main(int argc, char **argv, char **envp)
 	t_minishell	minishell;
 	t_command	cm;
 
+	
 	i = 0;
 	(void)argv;
 	(void)i;
@@ -80,6 +81,7 @@ int	main(int argc, char **argv, char **envp)
 	g_cm = &cm;
 	print_welcome_msg();
 	signal_handling();
+	
 	while (42)
 	{
 		minishell.list = NULL;
