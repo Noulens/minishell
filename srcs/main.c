@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/16 13:47:37 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/16 18:01:14 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,32 +81,24 @@ int	main(int argc, char **argv, char **envp)
 	g_cm = &cm;
 	print_welcome_msg();
 	signal_handling();
-	
 	while (42)
 	{
+		minishell.nbr_cmd = 1;
 		minishell.list = NULL;
 		init_struct(&minishell, &cm);
 		minishell.gb = NULL;
 		p = prompt_line(&minishell, &cm);
-		
 		if (space_only(p))
 		{
 			cm.sigint = FALSE;
 			continue ;
 		}
-		lexer(p, &minishell);
-		expend_and_cut_quote(&minishell);
-		printlist(minishell.list);
-		/*p = expend_alias(p, minishell.env, &minishell);
-		minishell.cmd_array = m_split(p);
-		if (minishell.cmd_array == NULL)
-			continue ;
-		init_cmd(minishell.cmd_array[i], &cm, &minishell);
-		if (gb_c(&minishell.gb, NULL, (void **)minishell.cmd_array) == -1)
+		if (lexer_and_expend(p, &minishell) == 1)
+			return (ft_printf("%s", strerror(errno)), errno);
+		/*if (gb_c(&minishell.gb, NULL, (void **)minishell.cmd_array) == -1)
 			return (ft_printf("%s", strerror(errno)), errno);
 		if (gb_c(&minishell.gb, (void *)p, NULL) == -1)
 			return (ft_printf("%s", strerror(errno)), errno);
-		minishell.nbr_cmd = ft_strlen_tab(minishell.cmd_array);
 		minishell.exec_ret = pipex(&cm, &minishell);*/
 		ft_lstclear(minishell.gb);
 		ft_lstclear_tok(minishell.list);

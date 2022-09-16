@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+         #
+#    By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/09/15 17:43:16 by waxxy            ###   ########.fr        #
+#    Updated: 2022/09/16 11:55:54 by cfontain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,14 +28,16 @@ CORE		=	./srcs/core/prompt.c\
 				./srcs/core/lexer.c\
 				./srcs/core/expend_and_cut_quote.c\
 				./srcs/core/cmd_lexer.c\
-				./srcs/core/list_token.c
+				./srcs/core/list_token.c\
+				./srcs/core/lexer_and_expend.c
 
 BUILTIN		=	./srcs/built-in/ft_echo.c\
 				./srcs/built-in/ft_env.c\
 				./srcs/built-in/ft_exit.c\
 				./srcs/built-in/ft_pwd.c\
 				./srcs/built-in/ft_export.c\
-				./srcs/built-in/ft_unset.c
+				./srcs/built-in/ft_unset.c\
+				./srcs/built-in/ft_cd.c
 
 UTILITIES	= 	./srcs/utilities/garbage_collector.c\
 				./srcs/utilities/welcome_message.c\

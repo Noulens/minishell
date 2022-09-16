@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:57:27 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/16 15:39:49 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/16 17:59:48 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	init_minishell(t_minishell *minishell)
 	built[4].func = ft_pwd;
 	built[5].func = ft_unset;
 	//built[6].func = ft_cd;
-	minishell->nbr_cmd = 0;
+	minishell->nbr_cmd = 1;
 	minishell->cmd_array = NULL;
 	minishell->exec_ret = 0;
 	minishell->gb = NULL;
