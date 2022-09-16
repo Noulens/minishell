@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 12:11:25 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/16 10:35:48 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/16 10:50:08 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ char	*dup_without_quote_init(char *str)
 	j = 0;
 	i = 0;
 	new_str = calloc(sizeof(char), (ft_strlen(str) + 1));
+	if (new_str == NULL)
+		return (NULL);
 	dup_without_quote(str, new_str, i, j);
 	return (new_str);
 }
@@ -64,8 +66,12 @@ int	expend_and_cut_quote(t_minishell *minishell)
 	while (minishell->list)
 	{
 		str = expend_alias(minishell->list->data, minishell);
+		if (str == NULL)
+			return (1);
 		free (minishell->list->data);
 		str2 = dup_without_quote_init(str);
+		if (str2 == NULL)
+			return (1);
 		free (str);
 		minishell->list->data = str2;
 		minishell->list = minishell->list->next;

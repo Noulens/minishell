@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/16 10:35:05 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/16 15:58:56 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,15 @@ set in /proc/sys/fs/pipe-user-pages-soft (since Linux 4.5) */
 
 /* Structure lexer */
 
-typedef struct s_tok {
-    char *data;
-    int type;
-    void *next;
+typedef struct s_tok 
+{
+    char 		*data;
+    int 		type;
+    struct s_tok *next;
 }        t_tok;
 
-typedef struct s_int {
+typedef struct s_int 
+{
     int i;
     int j;
     int k;
@@ -143,15 +145,27 @@ typedef struct s_builtin
 
 	/* --- parsing line --- */
 
-int		cmd_lexer(char *str, int i, t_minishell *minishell);
-void	ft_lstclear_tok(t_tok *lst);
-t_tok	*ft_lstnew_tok(char *content, int content2);
-t_tok	*ft_lstlast_tok(t_tok *lst);
-void	ft_lstadd_back_tok(t_tok **lst, t_tok *new);
-void	printlist(t_tok *list);
-int		expend_and_cut_quote(t_minishell *minishell);
+	/* --- lexer --- */
+
+int		lexer_and_expend(char *p, t_minishell *minishell);
+void	count_pipe(t_minishell *ms);
+
 int		lexer(char *str, t_minishell *minishell);
-void	ft_printab(char **str);
+int		pipe_lexer(int i, t_minishell *minishell);
+int		chevron_lexer(char *str, int i, t_minishell *minishell);
+int		chevron(char *str, int i, t_minishell *minishell, int type);
+int		token_lenght(char *str, int i, char c);
+
+int		cmd_lexer(char *str, int i, t_minishell *minishell);
+int		cmd_lexer_leght(char *str, int i);
+
+int		expend_and_cut_quote(t_minishell *minishell);
+char	*dup_without_quote_init(char *str);
+int		dup_without_quote(char *str, char *new_str, int i, int j);
+
+int		count_expend(char *str, t_minishell *minishell);
+
+char	*copy_expend(char *s, char *new_s, t_minishell *ms);
 int		char_is_whitespace(char c);
 char	*init_str_alias(char *str, int len, t_minishell *minishell);
 int		break_point_alias(char *str, int i);
@@ -195,6 +209,11 @@ void	error_clean_up(t_list *lst, char **env_array, t_list *env);
 void    list_to_array(t_minishell *ms);
 int		nb_cmd(char **argv);
 void	printlist(t_tok *list);
+void	ft_lstclear_tok(t_tok *lst);
+t_tok	*ft_lstnew_tok(char *content, int content2);
+t_tok	*ft_lstlast_tok(t_tok *lst);
+void	ft_lstadd_back_tok(t_tok **lst, t_tok *new);
+void	ft_printab(char **str);
 	/* --- build-in --- */
 
 int		ft_echo(t_minishell *minishell, int argc, char **argv);
@@ -203,6 +222,7 @@ int		ft_env(t_minishell *minishell, int argc, char **argv);
 int		ft_exit(t_minishell *minishell, int argc, char **argv);
 int 	ft_export(t_minishell *minishell, int argc, char **argv);
 int		ft_unset(t_minishell *ms, int argc, char **argv);
+int		ft_cd(t_minishell *ms, int argc, char **argv);
 
 	/* --- signals --- */
 void	tmp_handler(int sig, siginfo_t *info, void *context);
