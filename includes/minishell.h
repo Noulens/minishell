@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/15 17:41:59 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/16 00:32:53 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,15 @@ set in /proc/sys/fs/pipe-user-pages-soft (since Linux 4.5) */
 
 /* Structure lexer */
 
-typedef struct s_tok {
-    char *data;
-    int type;
-    void *next;
-}        t_tok;
+typedef struct s_tok
+{
+    char			*data;
+    int				type;
+    struct s_tok	*next;
+}	t_tok;
 
-typedef struct s_int {
+typedef struct s_int
+{
     int i;
     int j;
     int k;
@@ -118,7 +120,7 @@ typedef struct s_commands
 
 typedef struct s_minishell
 {
-	t_command	 cm[10];
+	t_command	 *cm;
 	int			nbr_cmd;
 	char		**cmd_array;
 	int			exec_ret;
