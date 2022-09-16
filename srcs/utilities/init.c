@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:57:27 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/16 17:59:48 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/16 18:05:35 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ void	init_minishell(t_minishell *minishell)
 	ft_strlcpy(built[3].name, "export", 7);
 	ft_strlcpy(built[4].name, "pwd", 4);
 	ft_strlcpy(built[5].name, "unset", 6);
-	//ft_strlcpy(built[6].name, "cd", 3);
+	ft_strlcpy(built[6].name, "cd", 3);
 	built[0].func = ft_echo;
 	built[1].func = ft_env;
 	built[2].func = ft_exit;
 	built[3].func = ft_export;
 	built[4].func = ft_pwd;
 	built[5].func = ft_unset;
-	//built[6].func = ft_cd;
+	built[6].func = ft_cd;
 	minishell->nbr_cmd = 1;
 	minishell->cmd_array = NULL;
 	minishell->exec_ret = 0;

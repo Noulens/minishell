@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/16 18:03:41 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/16 18:05:10 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ typedef struct s_tok
 }	t_tok;
 
 typedef struct s_int
->>>>>>> 9f19430678092fbd02fd298b2ae0c4268a2957da
 {
     int i;
     int j;
