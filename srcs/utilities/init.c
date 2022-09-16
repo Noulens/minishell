@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:57:27 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/16 10:30:07 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/16 15:39:49 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,3 +58,19 @@ void	init_struct(t_minishell *ms, t_command *cm)
 	cm->env = ms->env_array;
 	cm->sigint = FALSE;
 }
+/*
+	char	**cmd; ok
+	char	*infile; ok
+	char	*outfile; ok
+	char	**env; ok
+	pid_t	pid; ok
+	pid_t	*pids; ok
+	int		*end; ok
+	int		fd[2]; ok
+	int		fdhd; ok
+	short	here_doc; ok
+	short	outfile_append; ok
+	char	*limiter; ok
+	int		exec_ret; NOPE
+	short	sigint; ok
+*/

@@ -3,14 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 18:08:38 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/05/10 16:28:17 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/16 17:45:02 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static void	ft_supercat(char *p, const char *s1, const char *s2, char *sep)
+{
+	while (*s1)
+		*p++ = *s1++;
+	while (*sep)
+		*p++ = *sep++;
+	while (*s2)
+		*p++ = *s2++;
+	*p = 0;
+}
+
+char	*ft_strjoinsep(char const *s1, char const *s2, char *sep)
+{
+	int		len;
+	int		len_sep;
+	char	*sct;
+	char	*p;
+
+	len = ft_strlen(s1) + ft_strlen(s2);
+	len_sep = ft_strlen(sep);
+	sct = (char *)malloc(sizeof(char) * len + len_sep + 1);
+	if (!sct)
+		return (NULL);
+	p = sct;
+	ft_supercat(p, s1, s2, sep);
+	return (sct);
+}
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -30,26 +58,18 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	*p = 0;
 	return (char_ptr);
 }
-
-/*#include <stdio.h>
+/*
+#include <stdio.h>
 #include <stdlib.h>
-
-size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (*(s + i))
-		++i;
-	return (i);
-}
 
 int	main(void)
 {
-	char	s1[] = "Niiiiiiiiiiiiiiiiiiiiiiiiiiiice";
-	char	s2[] = "join";
+	char	s1[] = "test";
+	char	s2[] = "okay";
+	char	*p;
 
-	printf("%s", ft_strjoin(s1, s2));
+	printf("%s", p = ft_strjoinsep(s1, s2, "\t\n\v\f\r"));
+	free(p);
 	return (0);
 }*/
 

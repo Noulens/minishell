@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/16 13:32:58 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/16 16:34:29 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ typedef struct s_commands
 
 typedef struct s_minishell
 {
-	t_command	 *cm;
+	t_command	 **cm;
 	int			nbr_cmd;
 	char		**cmd_array;
 	int			exec_ret;
@@ -183,6 +183,7 @@ void	print_welcome_msg(void);
 int		gb_c(t_list **gb, void *content, void **content2);
 void	init_minishell(t_minishell *minishell);
 void	clean_up(t_list *lst, char **env_array, t_list *env);
+void	error_clean_up(t_minishell *ms);
 void	init_struct(t_minishell *ms, t_command *cm);
 int		close_pipes(int cmd_nbr, int *end, t_command *cm);
 void	close_std_in_child(void);
@@ -193,10 +194,12 @@ int		char_is_quote(char c);
 int		char_is_whitespace(char c);
 int		check_quote(char *str, int i);
 int		char_is_token_with_trigg(char c, int trigger);
-void	error_clean_up(t_list *lst, char **env_array, t_list *env);
+void	error_clean_up(t_minishell *ms);
 void    list_to_array(t_minishell *ms);
 int		nb_cmd(char **argv);
 void	printlist(t_tok *list);
+void	free_param(t_command **param);
+
 	/* --- build-in --- */
 
 int		ft_echo(t_minishell *minishell, int argc, char **argv);

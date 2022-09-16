@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/16 10:30:24 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/16 13:47:37 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	main(int argc, char **argv, char **envp)
 			continue ;
 		}
 		lexer(p, &minishell);
-		expend_and_cut_quote(&minishell, envp);
+		expend_and_cut_quote(&minishell);
 		printlist(minishell.list);
 		/*p = expend_alias(p, minishell.env, &minishell);
 		minishell.cmd_array = m_split(p);
