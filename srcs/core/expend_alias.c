@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:44:18 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/15 17:28:04 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/16 10:33:43 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	alias_len(char *str, char **env)
 	int	len;
 	int	j;
 
-
 	len = 0;
 	j = 0;
 	j = break_point_alias(str, j);
@@ -79,14 +78,12 @@ int	expend_alias2(char *str, int i, int len, t_minishell *ms)
 	trigg = 0;
 	while (str[i] != 0)
 	{
-		
 		if (str[i] == 39 && check_quote(str, i) == 0 && trigg == 0)
 		{
 			i++;
 			while (str[i] != 39)
 				i++;
 		}
-		
 		trigg = trigger_double_quote(trigg, str[i]);
 		if (str[i] == '$')
 		{
@@ -108,7 +105,7 @@ char	*expend_alias(char *str, t_minishell *ms)
 
 	len = 0;
 	i = 0;
-	len = expend_alias2(str, i , len, ms);
+	len = expend_alias2(str, i, len, ms);
 	new_str = init_str_alias(str, len, ms);
 	if (new_str == NULL)
 		return (NULL);

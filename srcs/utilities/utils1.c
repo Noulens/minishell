@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 23:28:09 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/15 00:23:41 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/16 10:41:36 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int	nb_cmd(char **argv)
 	int	i;
 
 	i = 0;
-    if (argv == NULL || *argv == NULL)
-        return (0);
+	if (argv == NULL || *argv == NULL)
+		return (0);
 	else
-    {
-        while (argv[i])
-		    i++;
-    }
+	{
+		while (argv[i])
+			i++;
+	}
 	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/16 00:32:53 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/16 13:32:58 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ t_tok	*ft_lstnew_tok(char *content, int content2);
 t_tok	*ft_lstlast_tok(t_tok *lst);
 void	ft_lstadd_back_tok(t_tok **lst, t_tok *new);
 void	printlist(t_tok *list);
-int		expend_and_cut_quote(t_minishell *minishell, char **env);
+int		expend_and_cut_quote(t_minishell *minishell);
 int		lexer(char *str, t_minishell *minishell);
 void	ft_printab(char **str);
 int		char_is_whitespace(char c);
