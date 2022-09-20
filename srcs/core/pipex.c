@@ -6,11 +6,34 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/15 00:05:20 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/19 08:01:42 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+/*
+int	builtin_mgmt(t_command *cm, int i, int cmd_nbr, t_minishell *minishell)
+{
+	int			i;
+	int			nbr_builtin;
+	t_builtin	*p;
+	int			k;
+
+	k = nb_cmd()
+	i = 0;
+	p = (t_builtin *)minishell->bi;
+	nbr_builtin = 7;
+	while (i < nbr_builtin)
+	{
+		if (ft_strncmp(argv[0], p[i].name, 10))
+		{
+			minishell->exec_ret = p[i].func(minishell, argc, argv);
+			return (1);
+		}
+		i++;
+	}
+	return (0);;
+}*/
 
 int	child_mgmt(t_command *cm, int i, int cmd_nbr, t_minishell *minishell)
 {
@@ -96,11 +119,11 @@ int	pipex(t_command *cm, t_minishell *minishell)
 	if ((gb_c(&minishell->gb, (void *)cm->end, NULL) == -1 && cmd_nbr - 1 != 0) || open_pipes(cmd_nbr, cm->end) != 0)
 		return (perror("pipex end"), errno);
 	i = -1;
-	while (++i < cmd_nbr && cm->sigint == FALSE)
+	while (++i < cmd_nbr && minishell->sigint == FALSE)
 		child_mgmt(cm, i, cmd_nbr, minishell);
 	close_pipes(cmd_nbr, cm->end, cm);
 	i = -1;
-	while (++i < cmd_nbr && cm->sigint == FALSE)
+	while (++i < cmd_nbr && minishell->sigint == FALSE)
 	{
 		waitpid(cm->pids[i], &ret, 0);
 		if (WIFEXITED(ret))

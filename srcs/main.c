@@ -6,13 +6,13 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/16 18:01:14 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/20 18:13:56 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_command	*g_cm;
+t_minishell	*g_ms;
 
 int	ft_strlen_tab(char **str)
 {
@@ -78,7 +78,7 @@ int	main(int argc, char **argv, char **envp)
 	(void)argc;
 	init_minishell(&minishell);
 	build_env(&minishell, envp);
-	g_cm = &cm;
+	g_ms = &minishell;
 	print_welcome_msg();
 	signal_handling();
 	while (42)
@@ -95,6 +95,10 @@ int	main(int argc, char **argv, char **envp)
 		}
 		if (lexer_and_expend(p, &minishell) == 1)
 			return (ft_printf("%s", strerror(errno)), errno);
+		if (parse(&minishell) == 1)
+			return (ft_printf("%s", strerror(errno)), errno);
+		ft_printab(minishell.cm[0]->cmd);
+		ft_printab(minishell.cm[1]->cmd);
 		/*if (gb_c(&minishell.gb, NULL, (void **)minishell.cmd_array) == -1)
 			return (ft_printf("%s", strerror(errno)), errno);
 		if (gb_c(&minishell.gb, (void *)p, NULL) == -1)
@@ -103,6 +107,8 @@ int	main(int argc, char **argv, char **envp)
 		ft_lstclear(minishell.gb);
 		ft_lstclear_tok(minishell.list);
 		printf("exit code: %d\n", minishell.exec_ret);
+		free_param(minishell.cm);
+		//printf("nbr_cmd: %d\n", minishell.nbr_cmd);
 	}
 	return (0);
 }

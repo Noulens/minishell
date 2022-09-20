@@ -6,16 +6,14 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:57:27 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/16 18:05:35 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/20 16:23:44 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	init_minishell(t_minishell *minishell)
+static void	init_builtin(t_builtin *built)
 {
-	t_builtin	built[7];
-
 	ft_strlcpy(built[0].name, "echo", 5);
 	ft_strlcpy(built[1].name, "env", 4);
 	ft_strlcpy(built[2].name, "exit", 5);
@@ -30,6 +28,12 @@ void	init_minishell(t_minishell *minishell)
 	built[4].func = ft_pwd;
 	built[5].func = ft_unset;
 	built[6].func = ft_cd;
+}
+
+void	init_minishell(t_minishell *minishell)
+{
+	t_builtin	built[7];
+
 	minishell->nbr_cmd = 1;
 	minishell->cmd_array = NULL;
 	minishell->exec_ret = 0;
@@ -39,6 +43,8 @@ void	init_minishell(t_minishell *minishell)
 	minishell->list = NULL;
 	minishell->local_env = NULL;
 	minishell->bi = built;
+	minishell->sigint = FALSE;
+	init_builtin(built);
 }
 
 void	init_struct(t_minishell *ms, t_command *cm)
@@ -50,13 +56,12 @@ void	init_struct(t_minishell *ms, t_command *cm)
 	cm->fd[1] = STDOUT_FILENO;
 	cm->fdhd = -1;
 	cm->here_doc = FALSE;
-	cm->outfile_append = FALSE;
 	cm->limiter = NULL;
 	cm->infile = NULL;
 	cm->outfile = NULL;
 	cm->pids = NULL;
 	cm->env = ms->env_array;
-	cm->sigint = FALSE;
+	cm->sigint = ms->sigint;
 }
 /*
 	char	**cmd; ok

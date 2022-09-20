@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 12:50:10 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/15 17:01:21 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/16 19:35:32 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,10 +290,9 @@ int ft_export(t_minishell *minishell, int argc, char **argv)
 int main(int argc, char **argv, char **envp)
 {
 	t_minishell ms;
-
-	argc;
-	argv;
+	
 	ms.env = NULL;
+	
 	ft_printf("\n");
 	ft_printf(BOLD);
 	ft_printf(YELLOW"\n");
@@ -311,35 +310,55 @@ int main(int argc, char **argv, char **envp)
 	ft_printf("\n");
 	ft_printf(BOLD);
 	ft_printf(YELLOW"\n");
-	ft_printf("DEBUT TEST EXPORT");
-	ft_printf("\n"END);
-	ft_export(&ms, argc, argv);
-	ft_printf("\n");
-	ft_printlist(ms.env);
-	ft_printf("\n");
-	ft_printf(BOLD);
-	ft_printf(YELLOW"\n");
-	ft_printf("LST TO ARRAY AFTER EXPORT");
-	ft_printf("\n"END);
-	ft_printab(ms.env_array);
-	ft_printf("\n");
-	ft_printf(BOLD);
-	ft_printf(YELLOW"\n");
-	ft_printf("DEBUT TEST UNSET");
-	ft_printf("\n"END);
-	ft_unset(&ms, argc, argv);
-	ft_printlist(ms.env);
-	ft_printf("\n");
-	ft_printf(BOLD);
-	ft_printf(YELLOW"\n");
-	ft_printf("LST TO ARRAY");
-	ft_printf("\n"END);
-	ft_printab(ms.env_array);
-	ft_printf("\n");
-	ft_printf(BOLD);
-	ft_printf(YELLOW"\n");
-	ft_printf("LST CLEAR");
-	ft_printf("\n"END);
+
+	int pid = fork();
+	if (pid == -1)
+		return (1);
+	else if (pid == 0)
+	{
+		printf(YELLOW"Child : exporting\n"END);
+		ft_printf("DEBUT TEST EXPORT");
+		ft_printf("\n"END);
+		ft_export(&ms, argc, argv);
+		ft_printf("\n");
+		ft_printlist(ms.env);
+		ft_printf("\n");
+		ft_printf(BOLD);
+		ft_printf(YELLOW"\n");
+		ft_printf("LST TO ARRAY AFTER EXPORT CHILD");
+		ft_printf("\n"END);
+		ft_printab(ms.env_array);
+		ft_printf("\n");
+		ft_printf(BOLD);
+		ft_printf(YELLOW"\n");
+	//ft_printf("DEBUT TEST UNSET");
+	//ft_printf("\n"END);
+	//ft_unset(&ms, argc, argv);
+	//ft_printlist(ms.env);
+	//ft_printf("\n");
+	//ft_printf(BOLD);
+	//ft_printf(YELLOW"\n");
+	//ft_printf("LST TO ARRAY");
+	//ft_printf("\n"END);
+	//ft_printab(ms.env_array);
+	//ft_printf("\n");
+	//ft_printf(BOLD);
+	//ft_printf(YELLOW"\n");
+	//ft_printf("LST CLEAR");
+	//ft_printf("\n"END);
+		return (0);
+	}
+	else
+	{
+		waitpid(pid, NULL, 0);
+		ft_printf("LST TO ARRAY AFTER EXPORT PARENT");
+		ft_printf("\n"END);
+		ft_printab(ms.env_array);
+		ft_printf("\n");
+		ft_printf(BOLD);
+		ft_printf(YELLOW"\n");
+		printf(GREEN"Parent : done\n"END);
+	}
 	ftft_lstclear(ms.env);
 	free(ms.env_array);
 	return (0);

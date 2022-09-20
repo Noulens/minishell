@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:34:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/13 20:02:28 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/20 13:01:04 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	*prompt_line(t_minishell *ms, t_command *cm)
 {
 	static char	*line_read;
 
+	(void)cm;
 	if (line_read)
 	{
 		free(line_read);
@@ -32,8 +33,8 @@ char	*prompt_line(t_minishell *ms, t_command *cm)
 		return (NULL);
 	if (line_read && *line_read)
 		add_history(line_read);
-	if (cm->sigint == TRUE)
-		cm->sigint = FALSE;
+	if (g_ms->sigint == TRUE)
+		g_ms->sigint = FALSE;
 	return (line_read);
 }
 
