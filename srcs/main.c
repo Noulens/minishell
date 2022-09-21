@@ -97,8 +97,6 @@ int	main(int argc, char **argv, char **envp)
 			return (ft_printf("%s", strerror(errno)), errno);
 		if (parse(&minishell) == 1)
 			return (ft_printf("%s", strerror(errno)), errno);
-		ft_printab(minishell.cm[0]->cmd);
-		ft_printab(minishell.cm[1]->cmd);
 		/*if (gb_c(&minishell.gb, NULL, (void **)minishell.cmd_array) == -1)
 			return (ft_printf("%s", strerror(errno)), errno);
 		if (gb_c(&minishell.gb, (void *)p, NULL) == -1)

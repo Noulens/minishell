@@ -6,11 +6,12 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Sep 15 16:55:20 2022
+# Make data base, printed on Wed Sep 21 10:45:48 2022
 
 # Variables
 
- 
+# 'override' directive
+GNUMAKEFLAGS := 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
@@ -22,31 +23,39 @@ DESKTOP_SESSION = ubuntu
 # environment
 XDG_SESSION_CLASS = user
 # environment
+SNAP_COMMON = /var/snap/code/common
+# environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-XAUTHORITY = /mnt/nfs/homes/cfontain/.Xauthority
+XAUTHORITY = /run/user/1000/gdm/Xauthority
 # environment
 GDMSESSION = ubuntu
 # environment
 XMODIFIERS = @im=ibus
 # makefile
-CURDIR := /mnt/nfs/homes/cfontain/Documents/Cursus/minishell
+CURDIR := /home/cfontain/Documents/minishell
 # makefile
 SHELL = /bin/sh
-# makefile (from 'Makefile', line 53)
+# makefile (from 'Makefile', line 57)
 RM = rm -f
+# environment
+SNAP_DATA = /var/snap/code/106
 # environment
 VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 9:5358097
+JOURNAL_STREAM = 8:44194
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
+# environment
+SNAP_INSTANCE_NAME = code
+# environment
+SNAP_ARCH = amd64
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # makefile (from 'Makefile', line 15)
@@ -55,62 +64,74 @@ LIB_DIR = ./libft
 @F = $(notdir $@)
 # environment
 IM_CONFIG_PHASE = 1
-# 'override' directive
-GNUMAKEFLAGS := 
+# environment
+USERNAME = cfontain
+# environment
+MAKELEVEL := 0
 # environment
 MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
 # environment
-XDG_DATA_DIRS = /usr/share/gnome:/usr/share/ubuntu:/mnt/nfs/homes/cfontain/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/101819/bus,guid=378b33087deff9980afb5d736322de82
-# environment
-_ = /usr/bin/code
-# makefile (from 'Makefile', line 51)
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=1b5420323827faff73ffab54632acea3
+# makefile (from 'Makefile', line 55)
 OBJS = ${SRCS:.c=.o} 
 # environment
-MANAGERPID = 303262
+MANAGERPID = 1253
 # environment
-VSCODE_CWD = /mnt/nfs/homes/cfontain/Documents/Cursus
+LESSOPEN = | /usr/bin/lesspipe %s
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session5
+LC_NAME = fr_FR.UTF-8
 # environment
-KRB5CCNAME = FILE:/tmp/krb5cc_101819_qbur0F
+VSCODE_CWD = /home/cfontain/Documents/minishell
+# environment
+GSETTINGS_SCHEMA_DIR = /snap/code/106/usr/share/glib-2.0/schemas
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /mnt/nfs/homes/cfontain/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
-GPG_AGENT_INFO = /run/user/101819/gnupg/S.gpg-agent:0:1
+GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/e1r12p14.clusters.42paris.fr:@/tmp/.ICE-unix/303792,unix/e1r12p14.clusters.42paris.fr:/tmp/.ICE-unix/303792
+SESSION_MANAGER = local/cfontain-OMEN-by-HP-Laptop-15-dc0xxx:@/tmp/.ICE-unix/1501,unix/cfontain-OMEN-by-HP-Laptop-15-dc0xxx:/tmp/.ICE-unix/1501
 # environment
-XDG_RUNTIME_DIR = /run/user/101819
+XDG_RUNTIME_DIR = /run/user/1000
+# environment
+GDK_PIXBUF_MODULE_FILE = /home/cfontain/snap/code/common/.cache/gdk-pixbuf-loaders.cache
+# environment
+SNAP = /snap/code/106
+# environment
+SNAP_VERSION = 784b0177
 # environment
 XDG_MENU_PREFIX = gnome-
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = eebaaf51335f4d92889d623c632ea60f
+INVOCATION_ID = 8e5c0ff3acbc4f53af619989cbd536d7
+# environment
+GDK_PIXBUF_MODULEDIR = /snap/code/106/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
-XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/cfontain
-# makefile (from 'Makefile', line 39)
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+# makefile (from 'Makefile', line 43)
 UTILITIES = ./srcs/utilities/garbage_collector.c ./srcs/utilities/welcome_message.c ./srcs/utilities/pipes_mgmt.c ./srcs/utilities/init.c ./srcs/utilities/char_check.c ./srcs/utilities/check_quote.c ./srcs/utilities/clean_up.c ./srcs/utilities/utils1.c ./srcs/utilities/print_token_list.c
 # environment
 XDG_SESSION_DESKTOP = ubuntu
 # environment
-SSH_AUTH_SOCK = /run/user/101819/keyring/ssh
+SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # automatic
 %F = $(notdir $%)
 # environment
 DISPLAY = :0
 # environment
-PWD = /mnt/nfs/homes/cfontain/Documents/Cursus/minishell
+SNAP_INSTANCE_KEY = 
+# environment
+PWD = /home/cfontain/Documents/minishell
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 303703
+SSH_AGENT_PID = 1465
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -118,17 +139,27 @@ GTK_MODULES = gail:atk-bridge
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
-HOME = /mnt/nfs/homes/cfontain
+HOME = /home/cfontain
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 VSCODE_CLI = 1
 # environment
-VSCODE_CODE_CACHE_PATH = /mnt/nfs/homes/cfontain/.config/Code/CachedData/784b0177c56c607789f9638da7b6bf3230d47a8c
+VSCODE_CODE_CACHE_PATH = /home/cfontain/.config/Code/CachedData/784b0177c56c607789f9638da7b6bf3230d47a8c
 # environment
 LOGNAME = cfontain
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
+SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
+# environment
+SNAP_CONTEXT = OkFIKGYNABu6bqUEWM2sIn7C4-PxERXU5-Ry1kL_c4otdmjNLgTp
+# automatic
++F = $(notdir $+)
+# environment
 ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+SNAP_USER_COMMON = /home/cfontain/snap/code/common
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # environment
@@ -136,7 +167,9 @@ GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
-MAKELEVEL := 0
+LC_TIME = fr_FR.UTF-8
+# environment
+SNAP_REAL_HOME = /home/cfontain
 # environment
 COLORTERM = truecolor
 # default
@@ -145,38 +178,44 @@ MAKE = $(MAKE_COMMAND)
 MAKECMDGOALS := all
 # environment
 QT_IM_MODULE = ibus
-# makefile (from 'Makefile', line 49)
+# makefile (from 'Makefile', line 53)
 SRCS = ${MAIN} ${CORE} ${BUILTIN} ${UTILITIES}
 # environment
-SHLVL = 2
+SNAP_USER_DATA = /home/cfontain/snap/code/106
+# environment
+SHLVL = 1
 # makefile (from 'Makefile', line 17)
 LIBFT = ./libft/libft.a
-# makefile (from 'Makefile', line 55)
+# makefile (from 'Makefile', line 59)
 CC = cc
+# environment
+GNOME_SHELL_SESSION_MODE = ubuntu
 # default
 MAKE_VERSION := 4.2.1
 # environment
 USER = cfontain
+# environment
+SNAP_REVISION = 106
+# environment
+LC_MONETARY = fr_FR.UTF-8
 # makefile
 .DEFAULT_GOAL := all
 # environment
 XDG_CURRENT_DESKTOP = Unity
-# environment
-LIBVIRT_DEFAULT_URI = qemu:///system
+# makefile (from 'Makefile', line 13)
+NAME = minishell
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
+# environment
+LC_TELEPHONE = fr_FR.UTF-8
 # default
 MAKE_COMMAND := make
-# environment
-OLDPWD = /mnt/nfs/homes/cfontain/Documents/Cursus
 # default
 .VARIABLES := 
 # automatic
 *F = $(notdir $*)
 # environment
-XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
-# environment
-VSCODE_IPC_HOOK = /run/user/101819/vscode-21d98923-1.71.0-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-274db8b0-1.71.0-main.sock
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -189,56 +228,69 @@ MAIN = ./srcs/main.c
 +D = $(patsubst %/,%,$(dir $+))
 # environment
 GDK_BACKEND = x11
-# automatic
-+F = $(notdir $+)
+# environment
+LC_PAPER = fr_FR.UTF-8
 # environment
 QT_ACCESSIBILITY = 1
 # environment
 DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
 # default
 MAKEFILES := 
+# environment
+SNAP_COOKIE = OkFIKGYNABu6bqUEWM2sIn7C4-PxERXU5-Ry1kL_c4otdmjNLgTp
+# environment
+LC_NUMERIC = fr_FR.UTF-8
 # automatic
 <F = $(notdir $<)
-# makefile (from 'Makefile', line 33)
-BUILTIN = ./srcs/built-in/ft_echo.c ./srcs/built-in/ft_env.c ./srcs/built-in/ft_exit.c ./srcs/built-in/ft_pwd.c ./srcs/built-in/ft_export.c
-# makefile (from 'Makefile', line 59)
+# makefile (from 'Makefile', line 35)
+BUILTIN = ./srcs/built-in/ft_echo.c ./srcs/built-in/ft_env.c ./srcs/built-in/ft_exit.c ./srcs/built-in/ft_pwd.c ./srcs/built-in/ft_export.c ./srcs/built-in/ft_unset.c ./srcs/built-in/ft_cd.c
+# makefile (from 'Makefile', line 63)
 SUPP = printf "{\n    leak readline\n    Memcheck:Leak\n    ...\n    fun:readline\n}\n{\n    leak add_history\n   Memcheck:Leak\n    ...\n    fun:add_history\n}" > ignore_leak.supp
+# environment
+LC_MEASUREMENT = fr_FR.UTF-8
+# environment
+SNAP_NAME = code
 # environment
 LC_ALL = C
 # environment
 DBUS_STARTER_BUS_TYPE = session
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/c065bc7b_d2d9_4420_9f22_22fc56d27789
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/b7b10d47_73a5_4931_aaf8_73271749feda
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.98
+GNOME_TERMINAL_SERVICE = :1.127
 # default
 SUFFIXES := 
-# makefile (from 'Makefile', line 57)
+# makefile (from 'Makefile', line 61)
 FLAGS = -Wall -Wextra -Werror -g -I includes/
 # environment
+SNAP_REEXEC = 
+# environment
 CHROME_DESKTOP = code-url-handler.desktop
+# environment
+WINDOWPATH = 2
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+LC_IDENTIFICATION = fr_FR.UTF-8
 # makefile (from 'Makefile', line 21)
-CORE = ./srcs/core/prompt.c ./srcs/core/pipex.c ./srcs/core/execute.c ./srcs/core/signals.c ./srcs/core/expend_alias.c ./srcs/core/copy_str_with_alias.c ./srcs/core/build_env.c ./srcs/core/lexer.c ./srcs/core/expend_and_cut_quote.c ./srcs/core/cmd_lexer.c ./srcs/core/list_token.c
-# makefile (from 'Makefile', line 13)
-NAME = minishell
+ 
+CORE = ./srcs/core/prompt.c ./srcs/core/pipex.c ./srcs/core/execute.c ./srcs/core/signals.c ./srcs/core/expend_alias.c ./srcs/core/copy_str_with_alias.c ./srcs/core/build_env.c ./srcs/core/lexer.c ./srcs/core/expend_and_cut_quote.c ./srcs/core/cmd_lexer.c ./srcs/core/list_token.c ./srcs/core/lexer_and_expend.c ./srcs/core/parser.c
 # default
 .RECIPEPREFIX := 
+# environment
+LC_ADDRESS = fr_FR.UTF-8
 # environment
 LANG = C
 # environment
 TERM = xterm-256color
 # environment
-DOCKER_HOST = unix:///run/user/101819/docker.sock
+VSCODE_PID = 4193
 # environment
-VSCODE_PID = 305224
-# environment
-DBUS_STARTER_ADDRESS = unix:path=/run/user/101819/bus,guid=378b33087deff9980afb5d736322de82
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=1b5420323827faff73ffab54632acea3
 # variable set hash-table stats:
-# Load=113/1024=11%, Rehash=0, Collisions=17/148=11%
+# Load=139/1024=14%, Rehash=0, Collisions=20/179=11%
 
 # Pattern-specific Variable Values
 
@@ -246,39 +298,26 @@ DBUS_STARTER_ADDRESS = unix:path=/run/user/101819/bus,guid=378b33087deff9980afb5
 
 # Directories
 
-# . (device 56, inode 314710063): 33 files, no impossibilities.
-# srcs/core (device 56, inode 314722339): 25 files, no impossibilities so far.
-# srcs/built-in (device 56, inode 314722338): 12 files, no impossibilities so far.
-# srcs (device 56, inode 314722337): 4 files, no impossibilities so far.
-# srcs/utilities (device 56, inode 314722340): 20 files, no impossibilities so far.
+# . (device 2053, inode 918602): 15 files, no impossibilities.
+# srcs (device 2053, inode 920239): 2 files, no impossibilities so far.
 
-# 94 files, no impossibilities in 5 directories.
+# 17 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
 %.o: %.c
-#  recipe to execute (from 'Makefile', line 64):
+#  recipe to execute (from 'Makefile', line 68):
 		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
 
 # 1 implicit rules, 0 (0.0%) terminal.
 
 # Files
 
-srcs/core/list_token.o: srcs/core/list_token.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/core/list_token'
-#  Last modified 2022-09-15 16:55:14.622194193
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
-
 # Not a target:
-srcs/utilities/welcome_message.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 10:16:17.354855452
-#  File has been updated.
-#  Successfully updated.
+srcs/core/list_token.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 all: minishell
 #  Phony target (prerequisite of .PHONY).
@@ -286,157 +325,97 @@ all: minishell
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
 
- 
+# Not a target:
+srcs/core/parser.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 .PHONY: all clean fclean re
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-srcs/core/expend_alias.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 14:18:14.886495957
-#  File has been updated.
-#  Successfully updated.
-
-srcs/built-in/ft_echo.o: srcs/built-in/ft_echo.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/built-in/ft_echo'
-#  Last modified 2022-09-15 16:55:14.669194467
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
+srcs/built-in/ft_echo.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-srcs/core/build_env.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 10:16:17.317855233
-#  File has been updated.
-#  Successfully updated.
-
-srcs/core/copy_str_with_alias.o: srcs/core/copy_str_with_alias.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/core/copy_str_with_alias'
-#  Last modified 2022-09-15 16:55:14.357192649
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
+srcs/core/copy_str_with_alias.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-srcs/utilities/print_token_list.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 14:52:26.569583013
-#  File has been updated.
-#  Successfully updated.
-
-srcs/built-in/ft_export.o: srcs/built-in/ft_export.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/built-in/ft_export'
-#  Last modified 2022-09-15 16:55:14.862195591
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
-
-srcs/utilities/clean_up.o: srcs/utilities/clean_up.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/utilities/clean_up'
-#  Last modified 2022-09-15 16:55:15.227197718
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
+srcs/built-in/ft_export.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-srcs/core/prompt.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 10:16:17.338855358
-#  File has been updated.
-#  Successfully updated.
+srcs/utilities/clean_up.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-15 16:55:11.76317753
+#  Last modified 2022-09-21 10:45:35.750914511
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 srcs/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-15 16:50:27.427520666
+#  Last modified 2022-09-21 10:45:35.778914261
 #  File has been updated.
 #  Successfully updated.
-
-srcs/core/expend_and_cut_quote.o: srcs/core/expend_and_cut_quote.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/core/expend_and_cut_quote'
-#  Last modified 2022-09-15 16:55:14.512193552
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
 
 # Not a target:
-srcs/utilities/pipes_mgmt.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 10:16:17.351855435
-#  File has been updated.
-#  Successfully updated.
-
-srcs/core/lexer.o: srcs/core/lexer.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/core/lexer'
-#  Last modified 2022-09-15 16:55:14.461193255
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
-
-srcs/utilities/init.o: srcs/utilities/init.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/utilities/init'
-#  Last modified 2022-09-15 16:55:15.070196803
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
-
-# Not a target:
-srcs/core/list_token.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 16:46:59.044306406
-#  File has been updated.
-#  Successfully updated.
-
-srcs/core/execute.o: srcs/core/execute.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/core/execute'
-#  Last modified 2022-09-15 16:55:14.187191658
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
-
-srcs/core/cmd_lexer.o: srcs/core/cmd_lexer.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/core/cmd_lexer'
-#  Last modified 2022-09-15 16:55:14.567193873
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
-
-minishell: srcs/main.o srcs/core/prompt.o srcs/core/pipex.o srcs/core/execute.o srcs/core/signals.o srcs/core/expend_alias.o srcs/core/copy_str_with_alias.o srcs/core/build_env.o srcs/core/lexer.o srcs/core/expend_and_cut_quote.o srcs/core/cmd_lexer.o srcs/core/list_token.o srcs/built-in/ft_echo.o srcs/built-in/ft_env.o srcs/built-in/ft_exit.o srcs/built-in/ft_pwd.o srcs/built-in/ft_export.o srcs/utilities/garbage_collector.o srcs/utilities/welcome_message.o srcs/utilities/pipes_mgmt.o srcs/utilities/init.o srcs/utilities/char_check.o srcs/utilities/check_quote.o srcs/utilities/clean_up.o srcs/utilities/utils1.o srcs/utilities/print_token_list.o libft/libft.a
+srcs/core/expend_and_cut_quote.o:
 #  Implicit rule search has not been done.
-#  Last modified 2022-09-15 16:55:17.592211498
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/core/lexer.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/utilities/init.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/core/execute.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/core/cmd_lexer.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+minishell: srcs/main.o srcs/core/prompt.o srcs/core/pipex.o srcs/core/execute.o srcs/core/signals.o srcs/core/expend_alias.o srcs/core/copy_str_with_alias.o srcs/core/build_env.o srcs/core/lexer.o srcs/core/expend_and_cut_quote.o srcs/core/cmd_lexer.o srcs/core/list_token.o srcs/core/lexer_and_expend.o srcs/core/parser.o srcs/built-in/ft_echo.o srcs/built-in/ft_env.o srcs/built-in/ft_exit.o srcs/built-in/ft_pwd.o srcs/built-in/ft_export.o srcs/built-in/ft_unset.o srcs/built-in/ft_cd.o srcs/utilities/garbage_collector.o srcs/utilities/welcome_message.o srcs/utilities/pipes_mgmt.o srcs/utilities/init.o srcs/utilities/char_check.o srcs/utilities/check_quote.o srcs/utilities/clean_up.o srcs/utilities/utils1.o srcs/utilities/print_token_list.o libft/libft.a
+#  Implicit rule search has not been done.
+#  Last modified 2022-09-21 10:45:35.774914296
 #  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 72):
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+#  recipe to execute (from 'Makefile', line 76):
 		@echo "\033[34m----Compiling----"
 		@${CC} ${FLAGS} ${OBJS} -L/usr/include -lreadline -o ${NAME} ${LIBFT}
 		@${SUPP}
@@ -444,100 +423,60 @@ minishell: srcs/main.o srcs/core/prompt.o srcs/core/pipex.o srcs/core/execute.o 
 
 libft/libft.a:
 #  Implicit rule search has not been done.
-#  Last modified 2022-09-15 16:55:17.507211003
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 67):
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 71):
 		@echo "\033[35m----Building libft----"
 		@make -sC ${LIB_DIR}
 		@echo "OK\033[0m"
 
-srcs/utilities/char_check.o: srcs/utilities/char_check.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/utilities/char_check'
-#  Last modified 2022-09-15 16:55:15.126197129
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
+# Not a target:
+srcs/utilities/char_check.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
-srcs/utilities/check_quote.o: srcs/utilities/check_quote.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/utilities/check_quote'
-#  Last modified 2022-09-15 16:55:15.179197438
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
+# Not a target:
+srcs/utilities/check_quote.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 fclean: clean
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 86):
+#  recipe to execute (from 'Makefile', line 90):
 		@echo "\033[33m----Cleaning all----"
 		@${RM} ${NAME}
 		@${RM} ${LIBFT}
 		@${RM} ignore_leak.supp
 		@echo "OK\033[0m"
 
-srcs/core/pipex.o: srcs/core/pipex.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/core/pipex'
-#  Last modified 2022-09-15 16:55:14.12919132
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
-
-srcs/built-in/ft_env.o: srcs/built-in/ft_env.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/built-in/ft_env'
-#  Last modified 2022-09-15 16:55:14.716194741
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
+# Not a target:
+srcs/core/pipex.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-srcs/built-in/ft_echo.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 10:16:17.307855174
-#  File has been updated.
-#  Successfully updated.
-
-srcs/built-in/ft_exit.o: srcs/built-in/ft_exit.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/built-in/ft_exit'
-#  Last modified 2022-09-15 16:55:14.766195032
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
-
-srcs/utilities/garbage_collector.o: srcs/utilities/garbage_collector.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/utilities/garbage_collector'
-#  Last modified 2022-09-15 16:55:14.913195888
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
+srcs/built-in/ft_env.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-srcs/core/copy_str_with_alias.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 16:28:34.172878689
-#  File has been updated.
-#  Successfully updated.
+srcs/built-in/ft_exit.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-srcs/built-in/ft_export.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 10:16:17.31385521
-#  File has been updated.
-#  Successfully updated.
+srcs/utilities/garbage_collector.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 .DEFAULT:
@@ -545,47 +484,23 @@ srcs/built-in/ft_export.c:
 #  Modification time never checked.
 #  File has not been updated.
 
-srcs/utilities/utils1.o: srcs/utilities/utils1.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/utilities/utils1'
-#  Last modified 2022-09-15 16:55:15.27219798
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
+# Not a target:
+srcs/utilities/utils1.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-srcs/utilities/clean_up.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 10:16:17.346855405
-#  File has been updated.
-#  Successfully updated.
+srcs/core/signals.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-srcs/core/expend_and_cut_quote.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 16:49:20.152128654
-#  File has been updated.
-#  Successfully updated.
-
-srcs/core/signals.o: srcs/core/signals.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/core/signals'
- 
-#  Last modified 2022-09-15 16:55:14.243191984
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
-
-srcs/built-in/ft_pwd.o: srcs/built-in/ft_pwd.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/built-in/ft_pwd'
-#  Last modified 2022-09-15 16:55:14.8121953
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
+srcs/built-in/ft_pwd.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 re: fclean all
 #  Phony target (prerequisite of .PHONY).
@@ -598,7 +513,7 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 78):
+#  recipe to execute (from 'Makefile', line 82):
 		@echo "\033[31m----Cleaning libft----"
 		@make clean -sC ${LIB_DIR}
 		@echo "OK"
@@ -607,180 +522,108 @@ clean:
 		@echo "OK\033[0m"
 
 # Not a target:
-srcs/core/lexer.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 12:59:05.563525648
-#  File has been updated.
-#  Successfully updated.
+srcs/built-in/ft_unset.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-srcs/utilities/init.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 10:16:17.349855423
-#  File has been updated.
-#  Successfully updated.
-
-srcs/utilities/welcome_message.o: srcs/utilities/welcome_message.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/utilities/welcome_message'
-#  Last modified 2022-09-15 16:55:14.959196156
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
+srcs/utilities/welcome_message.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-srcs/core/execute.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 10:16:17.322855263
-#  File has been updated.
-#  Successfully updated.
+srcs/core/expend_alias.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-srcs/core/cmd_lexer.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 16:53:25.982561118
-#  File has been updated.
-#  Successfully updated.
-
-srcs/core/expend_alias.o: srcs/core/expend_alias.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/core/expend_alias'
-#  Last modified 2022-09-15 16:55:14.297192299
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
+srcs/core/lexer_and_expend.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-srcs/utilities/char_check.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 10:16:17.344855393
-#  File has been updated.
-#  Successfully updated.
+srcs/core/build_env.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-srcs/utilities/check_quote.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 10:56:49.376146871
-#  File has been updated.
-#  Successfully updated.
+ 
+srcs/utilities/print_token_list.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-srcs/core/pipex.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 10:16:17.336855346
-#  File has been updated.
-#  Successfully updated.
-
-srcs/core/build_env.o: srcs/core/build_env.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/core/build_env'
-#  Last modified 2022-09-15 16:55:14.409192952
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
-
-srcs/utilities/print_token_list.o: srcs/utilities/print_token_list.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/utilities/print_token_list'
-#  Last modified 2022-09-15 16:55:15.322198271
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
-
-# Not a target:
-srcs/built-in/ft_env.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 10:16:17.309855186
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-srcs/built-in/ft_exit.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 10:16:17.311855198
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-srcs/utilities/garbage_collector.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 10:16:17.348855417
-#  File has been updated.
-#  Successfully updated.
-
-srcs/core/prompt.o: srcs/core/prompt.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/core/prompt'
-#  Last modified 2022-09-15 16:55:14.053190877
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
+srcs/core/prompt.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 srcs/main.o: srcs/main.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'srcs/main'
-#  Last modified 2022-09-15 16:55:13.995190539
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
+#  Needs to be updated (-q is set).
+# automatic
+# @ := srcs/main.o
+# automatic
+# % := 
+# automatic
+# * := srcs/main
+# automatic
+# + := srcs/main.c
+# automatic
+# | := 
+# automatic
+# < := srcs/main.c
+# automatic
+# ^ := srcs/main.c
+# automatic
+# ? := srcs/main.c
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/15=7%
+#  recipe to execute (from 'Makefile', line 68):
 		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
-
-# Not a target:
-srcs/utilities/utils1.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 10:16:17.353855446
-#  File has been updated.
-#  Successfully updated.
 
 ms: all
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 95):
+#  recipe to execute (from 'Makefile', line 99):
 		valgrind --suppressions=ignore_leak.supp --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --verbose ./minishell
 
 # Not a target:
-srcs/core/signals.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 10:16:17.340855369
-#  File has been updated.
-#  Successfully updated.
+srcs/built-in/ft_cd.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-srcs/built-in/ft_pwd.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-15 10:16:17.314855215
-#  File has been updated.
-#  Successfully updated.
-
-srcs/utilities/pipes_mgmt.o: srcs/utilities/pipes_mgmt.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'srcs/utilities/pipes_mgmt'
-#  Last modified 2022-09-15 16:55:15.011196459
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 64):
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
+srcs/utilities/pipes_mgmt.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # files hash-table stats:
-# Load=63/1024=6%, Rehash=0, Collisions=0/189=0%
+# Load=42/1024=4%, Rehash=0, Collisions=0/97=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 180 / storage = 3319 B / avg = 18 B
-# current buf: size = 8162 B / used = 3319 B / count = 180 / avg = 18 B
+# strcache buffers: 1 (0) / strings = 62 / storage = 1017 B / avg = 16 B
+# current buf: size = 8162 B / used = 1017 B / count = 62 / avg = 16 B
 
-# strcache performance: lookups = 239 / hit rate = 24%
+# strcache performance: lookups = 88 / hit rate = 29%
 # hash-table stats:
-# Load=180/8192=2%, Rehash=0, Collisions=8/239=3%
-# Finished Make data base on Thu Sep 15 16:55:20 2022
+# Load=62/8192=1%, Rehash=0, Collisions=5/88=6%
+# Finished Make data base on Wed Sep 21 10:45:48 2022
 
  

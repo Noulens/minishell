@@ -39,6 +39,20 @@ int	token_lenght(char *str, int i, char c)
 	return (i);
 }
 
+int	ft_copy_chevron(char *str, char *new_str, int j, int type)
+{
+	new_str[0] = str[j];
+	j++;
+	if (type == HEREDOC_LEX || type == APPEND_LEX)
+	{
+		new_str[1] = str[j];
+		j++;
+	}
+	while (char_is_whitespace(str[j]) == 1)
+		j++;
+	return (j);
+}
+
 int	chevron(char *str, int i, t_minishell *minishell, int type)
 {
 	char	*new_str;
@@ -55,7 +69,8 @@ int	chevron(char *str, int i, t_minishell *minishell, int type)
 	new_str = calloc(sizeof(char), (i + 1));
 	if (new_str == NULL)
 		return (perror("malloc"), -1);
-	ft_strlcpy(new_str, str + j, ((i - j) + 1));
+	j = ft_copy_chevron(str, new_str, j, type);
+	ft_strlcpy(new_str + (ft_strlen(new_str)), str + j, ((i - j) + 1));
 	ft_lstadd_back_tok(&minishell->list, ft_lstnew_tok(new_str, type));
 	return (i);
 }
