@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/20 17:09:07 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/22 15:19:40 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ typedef struct s_split // PROBABLEMENT A SUPPRIMER
 typedef struct s_commands
 {
 	char	**cmd;
-	char	*infile;
-	char	*outfile;
+	char	*inf;
+	char	*o;
 	char	**env;
 	pid_t	pid;
 	pid_t	*pids;
@@ -145,88 +145,95 @@ typedef struct s_builtin
 
 	/* --- lexer --- */
 
-int		lexer_and_expend(char *p, t_minishell *minishell);
-void	count_pipe(t_minishell *ms);
-int		lexer(char *str, t_minishell *minishell);
-int		pipe_lexer(int i, t_minishell *minishell);
-int		chevron_lexer(char *str, int i, t_minishell *minishell);
-int		chevron(char *str, int i, t_minishell *minishell, int type);
-int		token_lenght(char *str, int i, char c);
-int		cmd_lexer(char *str, int i, t_minishell *minishell);
-int		cmd_lexer_leght(char *str, int i);
-int		expend_and_cut_quote(t_minishell *minishell);
-char	*dup_without_quote_init(char *str);
-int		dup_without_quote(char *str, char *new_str, int i, int j);
-int		count_expend(char *str, t_minishell *minishell);
-char	*copy_expend(char *s, char *new_s, t_minishell *ms);
-int		char_is_whitespace(char c);
-char	*init_str_alias(char *str, int len, t_minishell *minishell);
-int		break_point_alias(char *str, int i);
-int		trigger_double_quote(int trigg, char c);
-int		init_cmd(char *str, t_command *cmd, t_minishell *minishell);
-char	*m_init_str(char *s, char c, char *str, int *j);
-int		m_line_lenght(char *s, char c, int *j);
-char	**ft_split_space_and_quote(char *s, char c);
-int		m_split_count_line(char *s, char c);
-char	*m_malloc_str(char *str, int len);
-void	m_init_str_with_sep(char *s, char *str, int *i, int *k);
-int		char_is_quote(char c);
-int		check_single_quote(char *str, int *i);
-int		check_double_quote(char *str, int *i);
-int		parsing_quote(char *str);
-char	*expend_alias(char *str, t_minishell *ms);
+int			lexer_and_expend(char *p, t_minishell *minishell);
+void		count_pipe(t_minishell *ms);
+int			lexer(char *str, t_minishell *minishell);
+int			pipe_lexer(int i, t_minishell *minishell);
+int			chevron_lexer(char *str, int i, t_minishell *minishell);
+int			chevron(char *str, int i, t_minishell *minishell, int type);
+int			token_lenght(char *str, int i, char c);
+int			cmd_lexer(char *str, int i, t_minishell *minishell);
+int			cmd_lexer_leght(char *str, int i);
+int			expend_and_cut_quote(t_minishell *minishell);
+char		*dup_without_quote_init(char *str);
+int			dup_without_quote(char *str, char *new_str, int i, int j);
+int			count_expend(char *str, t_minishell *minishell);
+char		*copy_expend(char *s, char *new_s, t_minishell *ms);
+int			char_is_whitespace(char c);
+char		*init_str_alias(char *str, int len, t_minishell *minishell);
+int			break_point_alias(char *str, int i);
+int			trigger_double_quote(int trigg, char c);
+int			init_cmd(char *str, t_command *cmd, t_minishell *minishell);
+char		*m_init_str(char *s, char c, char *str, int *j);
+int			m_line_lenght(char *s, char c, int *j);
+char		**ft_split_space_and_quote(char *s, char c);
+int			m_split_count_line(char *s, char c);
+char		*m_malloc_str(char *str, int len);
+void		m_init_str_with_sep(char *s, char *str, int *i, int *k);
+int			char_is_quote(char c);
+int			check_single_quote(char *str, int *i);
+int			check_double_quote(char *str, int *i);
+int			parsing_quote(char *str);
+char		*expend_alias(char *str, t_minishell *ms);
 
 	/* --- parser --- */
 
-int	parse(t_minishell *ms);
+int			parse(t_minishell *ms);
+int			ttok4(t_tok *tmp, t_command **pa, int i);
+t_command	**malloc_pa(t_minishell *ms, int *j,t_tok **tmp, char **cmdline);
+int			ttok0(t_command **pa, int *i, char **cmdline);
+int			ttok1(t_tok *tmp, t_command **pa, int i);
+int			ttok2(t_tok *tmp, t_command **pa, int i);
+int			ttok356(t_tok *tmp, t_command **pa, int *i, char **cmdline);
 
 	/* --- core --- */
 
-char	*prompt_line(t_minishell *ms, t_command *cm);
-int		exec(t_minishell *ms, char **cmds, char **envp);
-int		pipex(t_command *cm, t_minishell *minishell);
-void	build_env(t_minishell *ms, char **envp);
+char		*prompt_line(t_minishell *ms, t_command *cm);
+int			exec(t_minishell *ms, char **cmds, char **envp);
+int			pipex(t_command *cm, t_minishell *minishell);
+void		build_env(t_minishell *ms, char **envp);
 
 	/* --- utilities --- */
 
-void	print_welcome_msg(void);
-int		gb_c(t_list **gb, void *content, void **content2);
-void	init_minishell(t_minishell *minishell);
-void	clean_up(t_list *lst, char **env_array, t_list *env);
-void	init_struct(t_minishell *ms, t_command *cm);
-int		close_pipes(int cmd_nbr, int *end, t_command *cm);
-void	close_std_in_child(void);
-int		open_pipes(int cmd_nbr, int *end);
-void	dupper(int input, int output);
-int		char_is_token(char c);
-int		char_is_quote(char c);
-int		char_is_whitespace(char c);
-int		check_quote(char *str, int i);
-int		char_is_token_with_trigg(char c, int trigger);
-void	error_clean_up(t_minishell *ms);
-void    list_to_array(t_minishell *ms);
-int		nb_cmd(char **argv);
-void	printlist(t_tok *list);
-void	free_param(t_command **param);
-void	ft_lstclear_tok(t_tok *lst);
-t_tok	*ft_lstnew_tok(char *content, int content2);
-t_tok	*ft_lstlast_tok(t_tok *lst);
-void	ft_lstadd_back_tok(t_tok **lst, t_tok *new);
-void	ft_printab(char **str);
+void		print_welcome_msg(void);
+int			gb_c(t_list **gb, void *content, void **content2);
+void		init_minishell(t_minishell *minishell);
+void		clean_up(t_list *lst, char **env_array, t_list *env);
+void		init_struct(t_minishell *ms, t_command *cm);
+int			close_pipes(int cmd_nbr, int *end, t_command *cm);
+void		close_std_in_child(void);
+int			open_pipes(int cmd_nbr, int *end);
+void		dupper(int input, int output);
+int			char_is_token(char c);
+int			char_is_quote(char c);
+int			char_is_whitespace(char c);
+int			check_quote(char *str, int i);
+int			char_is_token_with_trigg(char c, int trigger);
+void		error_clean_up(t_minishell *ms);
+void    	list_to_array(t_minishell *ms);
+int			nb_cmd(char **argv);
+void		printlist(t_tok *list);
+void		free_param(t_command **param);
+void		ft_lstclear_tok(t_tok *lst);
+t_tok		*ft_lstnew_tok(char *content, int content2);
+t_tok		*ft_lstlast_tok(t_tok *lst);
+void		ft_lstadd_back_tok(t_tok **lst, t_tok *new);
+void		ft_printab(char **str);
+char		*isallspace(char *str);
 
 	/* --- build-in --- */
 
-int		ft_echo(t_minishell *minishell, int argc, char **argv);
-int		ft_pwd(t_minishell *minishell, int argc, char **argv);
-int		ft_env(t_minishell *minishell, int argc, char **argv);
-int		ft_exit(t_minishell *minishell, int argc, char **argv);
-int 	ft_export(t_minishell *minishell, int argc, char **argv);
-int		ft_unset(t_minishell *ms, int argc, char **argv);
-int		ft_cd(t_minishell *ms, int argc, char **argv);
+int			ft_echo(t_minishell *minishell, int argc, char **argv);
+int			ft_pwd(t_minishell *minishell, int argc, char **argv);
+int			ft_env(t_minishell *minishell, int argc, char **argv);
+int			ft_exit(t_minishell *minishell, int argc, char **argv);
+int 		ft_export(t_minishell *minishell, int argc, char **argv);
+int			ft_unset(t_minishell *ms, int argc, char **argv);
+int			ft_cd(t_minishell *ms, int argc, char **argv);
 
 	/* --- signals --- */
-void	tmp_handler(int sig, siginfo_t *info, void *context);
-void	signal_handling(void);
+void		tmp_handler(int sig, siginfo_t *info, void *context);
+void		signal_handling(void);
 
 extern t_minishell	*g_ms;
 

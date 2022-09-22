@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:57:27 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/20 16:23:44 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/22 15:05:36 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	init_struct(t_minishell *ms, t_command *cm)
 	cm->fdhd = -1;
 	cm->here_doc = FALSE;
 	cm->limiter = NULL;
-	cm->infile = NULL;
-	cm->outfile = NULL;
+	cm->inf = NULL;
+	cm->o = NULL;
 	cm->pids = NULL;
 	cm->env = ms->env_array;
 	cm->sigint = ms->sigint;

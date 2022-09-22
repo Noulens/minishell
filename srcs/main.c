@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/20 18:13:56 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/22 13:42:47 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ int	main(int argc, char **argv, char **envp)
 		ft_lstclear_tok(minishell.list);
 		printf("exit code: %d\n", minishell.exec_ret);
 		free_param(minishell.cm);
-		//printf("nbr_cmd: %d\n", minishell.nbr_cmd);
 	}
 	return (0);
 }

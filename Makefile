@@ -6,7 +6,7 @@
 #    By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/09/20 17:19:50 by waxxy            ###   ########.fr        #
+#    Updated: 2022/09/22 15:13:52 by waxxy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ CORE		=	./srcs/core/prompt.c\
 				./srcs/core/cmd_lexer.c\
 				./srcs/core/list_token.c\
 				./srcs/core/lexer_and_expend.c\
-				./srcs/core/parser.c
+				./srcs/core/parser.c\
+				./srcs/core/parser_tools1.c\
+				./srcs/core/parser_tools2.c
 
 BUILTIN		=	./srcs/built-in/ft_echo.c\
 				./srcs/built-in/ft_env.c\
