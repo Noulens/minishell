@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/22 15:19:40 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/22 15:24:00 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,37 +144,38 @@ typedef struct s_builtin
 /* Protos */
 
 	/* --- lexer --- */
-
-int			lexer_and_expend(char *p, t_minishell *minishell);
-void		count_pipe(t_minishell *ms);
-int			lexer(char *str, t_minishell *minishell);
-int			pipe_lexer(int i, t_minishell *minishell);
-int			chevron_lexer(char *str, int i, t_minishell *minishell);
-int			chevron(char *str, int i, t_minishell *minishell, int type);
-int			token_lenght(char *str, int i, char c);
-int			cmd_lexer(char *str, int i, t_minishell *minishell);
-int			cmd_lexer_leght(char *str, int i);
-int			expend_and_cut_quote(t_minishell *minishell);
-char		*dup_without_quote_init(char *str);
-int			dup_without_quote(char *str, char *new_str, int i, int j);
-int			count_expend(char *str, t_minishell *minishell);
-char		*copy_expend(char *s, char *new_s, t_minishell *ms);
-int			char_is_whitespace(char c);
-char		*init_str_alias(char *str, int len, t_minishell *minishell);
-int			break_point_alias(char *str, int i);
-int			trigger_double_quote(int trigg, char c);
-int			init_cmd(char *str, t_command *cmd, t_minishell *minishell);
-char		*m_init_str(char *s, char c, char *str, int *j);
-int			m_line_lenght(char *s, char c, int *j);
-char		**ft_split_space_and_quote(char *s, char c);
-int			m_split_count_line(char *s, char c);
-char		*m_malloc_str(char *str, int len);
-void		m_init_str_with_sep(char *s, char *str, int *i, int *k);
-int			char_is_quote(char c);
-int			check_single_quote(char *str, int *i);
-int			check_double_quote(char *str, int *i);
-int			parsing_quote(char *str);
-char		*expend_alias(char *str, t_minishell *ms);
+int		cmd_argv(char **argv, t_minishell *minishell);
+char	*str_join_tab(char **argv);
+int		lexer_and_expend(char *p, t_minishell *minishell);
+void	count_pipe(t_minishell *ms);
+int		lexer(char *str, t_minishell *minishell);
+int		pipe_lexer(int i, t_minishell *minishell);
+int		chevron_lexer(char *str, int i, t_minishell *minishell);
+int		chevron(char *str, int i, t_minishell *minishell, int type);
+int		token_lenght(char *str, int i, char c);
+int		cmd_lexer(char *str, int i, t_minishell *minishell);
+int		cmd_lexer_leght(char *str, int i);
+int		expend_and_cut_quote(t_minishell *minishell);
+char	*dup_without_quote_init(char *str);
+int		dup_without_quote(char *str, char *new_str, int i, int j);
+int		count_expend(char *str, t_minishell *minishell);
+char	*copy_expend(char *s, char *new_s, t_minishell *ms);
+int		char_is_whitespace(char c);
+char	*init_str_alias(char *str, int len, t_minishell *minishell);
+int		break_point_alias(char *str, int i);
+int		trigger_double_quote(int trigg, char c);
+int		init_cmd(char *str, t_command *cmd, t_minishell *minishell);
+char	*m_init_str(char *s, char c, char *str, int *j);
+int		m_line_lenght(char *s, char c, int *j);
+char	**ft_split_space_and_quote(char *s, char c);
+int		m_split_count_line(char *s, char c);
+char	*m_malloc_str(char *str, int len);
+void	m_init_str_with_sep(char *s, char *str, int *i, int *k);
+int		char_is_quote(char c);
+int		check_single_quote(char *str, int *i);
+int		check_double_quote(char *str, int *i);
+int		parsing_quote(char *str);
+char	*expend_alias(char *str, t_minishell *ms);
 
 	/* --- parser --- */
 

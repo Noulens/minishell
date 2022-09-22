@@ -37,7 +37,7 @@ void	printlist(t_tok *list) // NE PAS GARDER A LA FIN
 		while (list != NULL)
 		{
 			if (list->data != NULL)
-				ft_printf("%s", list->data);
+				ft_printf("[%s]", list->data);
 			else
 				ft_printf("<end node>");
 			print_token_type(list->type);
