@@ -30,7 +30,9 @@ CORE		=	./srcs/core/prompt.c\
 				./srcs/core/cmd_lexer.c\
 				./srcs/core/list_token.c\
 				./srcs/core/lexer_and_expend.c\
-				./srcs/core/parser.c
+				./srcs/core/parser.c\
+				./srcs/core/str_join_tab.c\
+				./srcs/core/cmd_argv.c
 
 BUILTIN		=	./srcs/built-in/ft_echo.c\
 				./srcs/built-in/ft_env.c\

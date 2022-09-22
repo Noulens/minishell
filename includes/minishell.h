@@ -144,7 +144,8 @@ typedef struct s_builtin
 /* Protos */
 
 	/* --- lexer --- */
-
+int		cmd_argv(char **argv, t_minishell *minishell);
+char	*str_join_tab(char **argv);
 int		lexer_and_expend(char *p, t_minishell *minishell);
 void	count_pipe(t_minishell *ms);
 int		lexer(char *str, t_minishell *minishell);

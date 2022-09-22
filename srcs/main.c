@@ -67,20 +67,19 @@ int	space_only(char *p)
 int	main(int argc, char **argv, char **envp)
 {
 	char		*p;
-	int			i;
 	t_minishell	minishell;
 	t_command	cm;
 
-	
-	i = 0;
-	(void)argv;
-	(void)i;
-	(void)argc;
 	init_minishell(&minishell);
 	build_env(&minishell, envp);
 	g_ms = &minishell;
 	print_welcome_msg();
 	signal_handling();
+	if (argc > 1)
+	{
+		cmd_argv(argv + 1, &minishell);
+		return (0);
+	}	
 	while (42)
 	{
 		minishell.nbr_cmd = 1;
