@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:33:49 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/25 13:40:54 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/25 18:31:27 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	tmp_handler(int sig, siginfo_t *info, void *context)
 		{
 			if (close(g_ms->cm[g_ms->i.i]->fdhd) == -1)
 				perror("tmp_handler close");
+			unlink(".here_doc.tmp");
 		}
 		write(STDIN_FILENO, "\n", 1);
 		rl_replace_line("", 1);

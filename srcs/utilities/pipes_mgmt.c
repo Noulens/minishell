@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:06:24 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/25 17:31:15 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/25 18:29:04 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,6 @@ int	close_pipes_parent(int cmd_nbr, int *end, t_minishell *ms)
 	i = 0;
 	while (ms->cm[i] != NULL)
 	{
-		//if (ms->cm[i]->here_doc >= TRUE)
-		//{
-		//	if (close(ms->cm[i]->fd[0]) == -1)
-		//		return (perror("close_pipes"), errno);
-		//	unlink(".here_doc.tmp");
-		//}
 		if (ms->cm[i]->fd[0] != 0)
 		{
 			if (close(ms->cm[i]->fd[0]) == -1)
