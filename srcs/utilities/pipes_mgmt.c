@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:06:24 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/25 13:25:28 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/25 17:31:15 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,41 @@ int	close_pipes(int cmd_nbr, int *end, t_command *cm)
 	{
 		close(cm->fd[0]);
 		unlink(".here_doc.tmp");
+	}
+	return (0);
+}
+
+int	close_pipes_parent(int cmd_nbr, int *end, t_minishell *ms)
+{
+	int	i;
+
+	i = 0;
+	while (i < 2 * (cmd_nbr))
+	{
+		if (close(end[i]) == -1)
+			return (perror("close_pipes"), errno);
+		i++;
+	}
+	i = 0;
+	while (ms->cm[i] != NULL)
+	{
+		//if (ms->cm[i]->here_doc >= TRUE)
+		//{
+		//	if (close(ms->cm[i]->fd[0]) == -1)
+		//		return (perror("close_pipes"), errno);
+		//	unlink(".here_doc.tmp");
+		//}
+		if (ms->cm[i]->fd[0] != 0)
+		{
+			if (close(ms->cm[i]->fd[0]) == -1)
+				return (perror("close_pipes"), errno);
+		}
+		if (ms->cm[i]->fd[1] != 1)
+		{
+			if (close(ms->cm[i]->fd[1]) == -1)
+				return (perror("close_pipes"), errno);
+		}
+		i++;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:57:27 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/22 15:05:36 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/25 13:41:27 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	init_minishell(t_minishell *minishell)
 	minishell->local_env = NULL;
 	minishell->bi = built;
 	minishell->sigint = FALSE;
+	minishell->i.i = -1;
 	init_builtin(built);
 }
 

@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/25 13:26:15 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/25 17:45:31 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,51 +15,18 @@
 int	builtin_mgmt(t_command *cm, int i, int cmd_nbr, t_minishell *ms)
 {
 	int			i;
-	int			nbr_builtin;
 	t_builtin	*p;
-	int			k;
 
-	k = nb_cmd()
 	i = 0;
 	p = (t_builtin *)ms->bi;
-	nbr_builtin = 7;
-	while (i < nbr_builtin)
+	while (i < NBR_BI)
 	{
 		if (ft_strncmp(argv[0], p[i].name, 10))
 		{
-			ms->exec_ret = p[i].func(ms, argc, argv);
+			ms->exec_ret = p[i].func(ms, argc, cm->cmd);
 			return (1);
 		}
 		i++;
-	}
-	return (0);;
-}*/
-/*
-int	child_mgmt(int i, int cmd_nbr, t_minishell *ms)
-{
-	char	**arg_cm;
-
-	ms->pids[i] = fork();
-	if (ms->pids[i] == -1)
-		return (perror("child_mgmt"), errno);
-	else if (!ms->pids[i])
-	{
-		if (i == 0 && cmd_nbr == 1)
-			dupper(cm->fd[0], cm->fd[1]);
-		else if (i == 0)
-			dupper(cm->fd[0], cm->end[1]);
-		else if (i == cmd_nbr - 1)
-			dupper(cm->end[2 * i - 2], cm->fd[1]);
-		else
-			dupper(cm->end[2 * i - 2], cm->end[2 * i + 1]);
-		close_pipes(cmd_nbr, cm->end, cm);
-		arg_cm = cm->cmd;
-		if (gb_c(&ms->gb, NULL, (void **)arg_cm) == -1)
-			return (ft_lstclear(ms->gb), exit(errno), errno);
-		cm->exec_ret = exec(ms, arg_cm, cm->env);
-		close_std_in_child();
-		clean_up(ms->gb, ms->env_array, ms->env);
-		exit(cm->exec_ret);
 	}
 	return (0);
 }*/
@@ -72,6 +39,33 @@ void	get_fd_in(t_command *cm)
 		if (cm->fd[0] == -1)
 			perror("get_fd_in");
 	}
+}
+
+int	child_mgmt(int i, int cmd_nbr, t_minishell *ms)
+{
+	ms->pids[i] = fork();
+	if (ms->pids[i] == -1)
+		return (perror("child_mgmt"), errno);
+	else if (!ms->pids[i])
+	{
+		get_fd_in(ms->cm[i]);
+		if (i == 0 && cmd_nbr == 1)
+			dupper(ms->cm[i]->fd[0], ms->cm[i]->fd[1]);
+		else if (i == 0)
+			dupper(ms->cm[i]->fd[0], ms->end[1]);
+		else if (i == cmd_nbr - 1)
+			dupper(ms->end[2 * i - 2], ms->cm[i]->fd[1]);
+		else
+			dupper(ms->end[2 * i - 2], ms->end[2 * i + 1]);
+		close_pipes(cmd_nbr, ms->end, ms->cm[i]);
+		ms->exec_ret = exec(ms, ms->cm[i]->cmd, ms->cm[i]->env);
+		close_std_in_child();
+		clean_up(ms->gb, ms->env_array, ms->env);
+		ft_lstclear_tok(ms->list);
+		free_param(ms->cm);
+		exit(ms->exec_ret);
+	}
+	return (0);
 }
 
 int	malloc_pids(t_minishell *ms)
@@ -91,13 +85,12 @@ int	pipex(t_minishell *ms)
 	int		ret;
 	int		i;
 
-	//get_fd_in(cm); /* a mettre dans le child, le dernier fdin a etre trouver est le fd in*/
 	if (malloc_pids(ms) != 0)
 		return (error_clean_up(ms), -1);
 	i = -1;
-	//while (++i < ms->nbr_cmd && ms->sigint == FALSE)
-	//	child_mgmt(i, ms->nbr_cmd, ms);
-	//close_pipes(ms->nbr_cmd, ms->end, cm); // faire un while pour fermer tous les fd de ms->cm
+	while (++i < ms->nbr_cmd && ms->sigint == FALSE)
+		child_mgmt(i, ms->nbr_cmd, ms);
+	close_pipes_parent(ms->nbr_cmd, ms->end, ms);
 	i = -1;
 	while (++i < ms->nbr_cmd && ms->sigint == FALSE)
 	{

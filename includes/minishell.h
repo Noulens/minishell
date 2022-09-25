@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/25 13:12:43 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/25 17:08:12 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define FALSE 0
 # define MAX_PIPE 1024
 # define MAX_FILE_NAME 255
+# define NBR_BI 7
 
 /* macros lexer type */
 
@@ -206,6 +207,7 @@ void		init_minishell(t_minishell *minishell);
 void		clean_up(t_list *lst, char **env_array, t_list *env);
 void		init_struct(t_minishell *ms, t_command *cm);
 int			close_pipes(int cmd_nbr, int *end, t_command *cm);
+int			close_pipes_parent(int cmd_nbr, int *end, t_minishell *ms);
 void		close_std_in_child(void);
 int			open_pipes(int cmd_nbr, int *end);
 void		dupper(int input, int output);
@@ -239,6 +241,8 @@ int			ft_cd(t_minishell *ms, int argc, char **argv);
 	/* --- signals --- */
 void		tmp_handler(int sig, siginfo_t *info, void *context);
 void		signal_handling(void);
+
+/* Unique local variable to manage signals with sigaction() */
 
 extern t_minishell	*g_ms;
 

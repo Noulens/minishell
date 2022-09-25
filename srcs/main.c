@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/23 13:27:08 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/25 15:57:55 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	main(int argc, char **argv, char **envp)
 			return (ft_printf("%s", strerror(errno)), errno);
 		if (gb_c(&minishell.gb, (void *)p, NULL) == -1)
 			return (ft_printf("%s", strerror(errno)), errno);*/
-		//minishell.exec_ret = pipex(&cm, &minishell);
+		minishell.exec_ret = pipex(&minishell);
 		ft_lstclear(minishell.gb);
 		ft_lstclear_tok(minishell.list);
 		printf("exit code: %d\n", minishell.exec_ret);

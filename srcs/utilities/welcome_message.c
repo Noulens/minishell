@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   welcome_message.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 15:34:55 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/05 16:37:24 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/25 13:39:47 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_welcome_msg(void)
 {
-	char	*username;
+	char	*user;
 
 	ft_printf("\n"WHITE);
 	ft_printf("░▒░    ░░▓  ░ ▒░     ▒▒░▓▒▒▓▒ ▒ ░ ▒ ░  ▒░░▒░░░▒░▓     ▒▓    ");
@@ -31,11 +31,11 @@ void	print_welcome_msg(void)
 	ft_printf("\n");
 	ft_printf("╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚═════╝╚═╝  ╚═╝╚════╝╚════╝╚════╝");
 	ft_printf("\n");
-	username = getenv("USER");
-	if (!username)
+	user = getenv("USER");
+	if (!user)
 		ft_printf("\nWelcome, unknown env -i tester...");
 	else
-		ft_printf ("\nWelcome %s", username);
+		ft_printf ("\nWelcome %s", user);
 	ft_printf("\n"END);
 }
 /*
