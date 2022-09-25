@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:09:09 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/22 15:19:07 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/23 14:07:58 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int	ttok1(t_tok *tmp, t_command **pa, int i)
 			perror("parse fd in close");
 		if (pa[i]->inf)
 			free(pa[i]->inf);
+		pa[i]->here_doc = FALSE;
 		pa[i]->inf = getfilename(tmp->data, 1);
 		if (pa[i]->inf == NULL)
 			return (1);

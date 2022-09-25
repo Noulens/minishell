@@ -6,13 +6,13 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/19 08:01:42 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/25 13:26:15 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 /*
-int	builtin_mgmt(t_command *cm, int i, int cmd_nbr, t_minishell *minishell)
+int	builtin_mgmt(t_command *cm, int i, int cmd_nbr, t_minishell *ms)
 {
 	int			i;
 	int			nbr_builtin;
@@ -21,28 +21,28 @@ int	builtin_mgmt(t_command *cm, int i, int cmd_nbr, t_minishell *minishell)
 
 	k = nb_cmd()
 	i = 0;
-	p = (t_builtin *)minishell->bi;
+	p = (t_builtin *)ms->bi;
 	nbr_builtin = 7;
 	while (i < nbr_builtin)
 	{
 		if (ft_strncmp(argv[0], p[i].name, 10))
 		{
-			minishell->exec_ret = p[i].func(minishell, argc, argv);
+			ms->exec_ret = p[i].func(ms, argc, argv);
 			return (1);
 		}
 		i++;
 	}
 	return (0);;
 }*/
-
-int	child_mgmt(t_command *cm, int i, int cmd_nbr, t_minishell *minishell)
+/*
+int	child_mgmt(int i, int cmd_nbr, t_minishell *ms)
 {
 	char	**arg_cm;
 
-	cm->pids[i] = fork();
-	if (cm->pids[i] == -1)
+	ms->pids[i] = fork();
+	if (ms->pids[i] == -1)
 		return (perror("child_mgmt"), errno);
-	else if (!cm->pids[i])
+	else if (!ms->pids[i])
 	{
 		if (i == 0 && cmd_nbr == 1)
 			dupper(cm->fd[0], cm->fd[1]);
@@ -54,85 +54,61 @@ int	child_mgmt(t_command *cm, int i, int cmd_nbr, t_minishell *minishell)
 			dupper(cm->end[2 * i - 2], cm->end[2 * i + 1]);
 		close_pipes(cmd_nbr, cm->end, cm);
 		arg_cm = cm->cmd;
-		if (gb_c(&minishell->gb, NULL, (void **)arg_cm) == -1)
-			return (ft_lstclear(minishell->gb), exit(errno), errno);
-		cm->exec_ret = exec(minishell, arg_cm, cm->env);
+		if (gb_c(&ms->gb, NULL, (void **)arg_cm) == -1)
+			return (ft_lstclear(ms->gb), exit(errno), errno);
+		cm->exec_ret = exec(ms, arg_cm, cm->env);
 		close_std_in_child();
-		clean_up(minishell->gb, minishell->env_array, minishell->env);
+		clean_up(ms->gb, ms->env_array, ms->env);
 		exit(cm->exec_ret);
 	}
 	return (0);
-}
-
-void	check_heredoc(t_command *cm)
-{
-	char	*p;
-	int		stdin_fd;
-	int		tmp_fd;
-
-	tmp_fd = open(".here_doc.tmp", O_CREAT | O_WRONLY | O_TRUNC, 0644);
-	if (tmp_fd == -1)
-		return (perror("check_heredoc open"), (void)0);
-	stdin_fd = dup(STDIN_FILENO);
-	cm->fdhd = stdin_fd;
-	while (1)
-	{
-		write(STDIN_FILENO, "heredoc> ", 9);
-		p = get_next_line(stdin_fd);
-		if (p == NULL || !ft_strncmp(p, cm->limiter, ft_strlen(cm->limiter)))
-		{
-			close(stdin_fd);
-			if (p == NULL)
-				ft_printf("warning: expected %s\n");
-			free(p);
-			break ;
-		}
-		ft_putstr_fd(p, tmp_fd);
-		free(p);
-	}
-	close(tmp_fd);
-}
+}*/
 
 void	get_fd_in(t_command *cm)
 {
-	if (cm->here_doc == TRUE)
+	if (cm->here_doc >= TRUE)
 	{
-		check_heredoc(cm);
 		cm->fd[0] = open(".here_doc.tmp", O_RDONLY);
 		if (cm->fd[0] == -1)
 			perror("get_fd_in");
 	}
 }
 
-int	pipex(t_command *cm, t_minishell *minishell)
+int	malloc_pids(t_minishell *ms)
 {
-	int		cmd_nbr;
+	ms->pids = (pid_t *)malloc(ms->nbr_cmd * sizeof(pid_t));
+	if (gb_c(&ms->gb, (void *)ms->pids, NULL) == -1)
+		return (perror("pipex pids"), errno);
+	ms->end = malloc(2 * sizeof(int) * (ms->nbr_cmd - 1) + 2 * sizeof(int));
+	if ((gb_c(&ms->gb, (void *)ms->end, NULL) == -1 && ms->nbr_cmd - 1 != 0)
+		|| open_pipes(ms->nbr_cmd, ms->end) != 0)
+		return (perror("pipex end"), errno);
+	return (0);
+}
+
+int	pipex(t_minishell *ms)
+{
 	int		ret;
 	int		i;
 
-	cmd_nbr = 1;
-	get_fd_in(cm); /* a mettre dans le child, le dernier fdin a etre trouver est le fd in*/
-	cm->pids = (pid_t *)malloc(cmd_nbr * sizeof(pid_t));
-	if (gb_c(&minishell->gb, (void *)cm->pids, NULL) == -1)
-		return (perror("pipex pids"), errno);
-	cm->end = (int *)malloc(2 * sizeof(int) * (cmd_nbr - 1) + 2 * sizeof(int));
-	if ((gb_c(&minishell->gb, (void *)cm->end, NULL) == -1 && cmd_nbr - 1 != 0) || open_pipes(cmd_nbr, cm->end) != 0)
-		return (perror("pipex end"), errno);
+	//get_fd_in(cm); /* a mettre dans le child, le dernier fdin a etre trouver est le fd in*/
+	if (malloc_pids(ms) != 0)
+		return (error_clean_up(ms), -1);
 	i = -1;
-	while (++i < cmd_nbr && minishell->sigint == FALSE)
-		child_mgmt(cm, i, cmd_nbr, minishell);
-	close_pipes(cmd_nbr, cm->end, cm);
+	//while (++i < ms->nbr_cmd && ms->sigint == FALSE)
+	//	child_mgmt(i, ms->nbr_cmd, ms);
+	//close_pipes(ms->nbr_cmd, ms->end, cm); // faire un while pour fermer tous les fd de ms->cm
 	i = -1;
-	while (++i < cmd_nbr && minishell->sigint == FALSE)
+	while (++i < ms->nbr_cmd && ms->sigint == FALSE)
 	{
-		waitpid(cm->pids[i], &ret, 0);
+		waitpid(ms->pids[i], &ret, 0);
 		if (WIFEXITED(ret))
-			printf("P %d, exit ok: %d\n", i, cm->exec_ret = WEXITSTATUS(ret));
+			printf("P %d, exit ok: %d\n", i, ms->exec_ret = WEXITSTATUS(ret)); // printf a enlever apres les tests
 		else
 		{
-			cm->exec_ret = errno;
-			printf("P %d, interrupted\n", i);
+			ms->exec_ret = errno;
+			printf("P %d, interrupted\n", i); // printf a enlever apres les tests
 		}
 	}
-	return (cm->exec_ret);
+	return (ms->exec_ret);
 }

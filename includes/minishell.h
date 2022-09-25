@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/22 15:24:00 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/25 13:12:43 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,15 +105,15 @@ typedef struct s_commands
 	char	*inf;
 	char	*o;
 	char	**env;
-	pid_t	pid;
-	pid_t	*pids;
-	int		*end;
 	int		fd[2];
 	int		fdhd;
 	int		here_doc;
 	char	*limiter;
 	int		exec_ret;
 	short	sigint;
+	pid_t		pid; // a virer
+	pid_t		*pids; // a virer
+	int			*end;  // a virer
 	
 }	t_command;
 
@@ -131,6 +131,9 @@ typedef struct s_minishell
 	void		*bi;
 	t_int		i;
 	short		sigint;
+	pid_t		pid;
+	pid_t		*pids;
+	int			*end;
 }	t_minishell;
 
 /* struct for builtin utilities */
@@ -186,12 +189,13 @@ int			ttok0(t_command **pa, int *i, char **cmdline);
 int			ttok1(t_tok *tmp, t_command **pa, int i);
 int			ttok2(t_tok *tmp, t_command **pa, int i);
 int			ttok356(t_tok *tmp, t_command **pa, int *i, char **cmdline);
+void		check_heredoc(t_command **pa, int i);
 
 	/* --- core --- */
 
-char		*prompt_line(t_minishell *ms, t_command *cm);
+char		*prompt_line(t_minishell *ms);
 int			exec(t_minishell *ms, char **cmds, char **envp);
-int			pipex(t_command *cm, t_minishell *minishell);
+int			pipex(t_minishell *minishell);
 void		build_env(t_minishell *ms, char **envp);
 
 	/* --- utilities --- */

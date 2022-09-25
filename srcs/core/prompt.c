@@ -6,17 +6,16 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:34:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/20 13:01:04 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/25 13:18:19 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*prompt_line(t_minishell *ms, t_command *cm)
+char	*prompt_line(t_minishell *ms)
 {
 	static char	*line_read;
 
-	(void)cm;
 	if (line_read)
 	{
 		free(line_read);
@@ -26,7 +25,7 @@ char	*prompt_line(t_minishell *ms, t_command *cm)
 	if (line_read == NULL)
 	{
 		clean_up(ms->gb, ms->env_array, ms->env);
-		ft_printf("exit\n");
+		ft_printf(CYAN"exit bye !\n"END);
 		exit(4);
 	}
 	if (*line_read == '\0')

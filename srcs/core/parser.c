@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:09:29 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/22 15:19:13 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/25 13:21:02 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,35 @@ char	*isallspace(char *str)
 	return (NULL);
 }
 
+void	check_heredoc(t_command **pa, int i)
+{
+	char	*p;
+	int		tmp_fd;
+	int		len;
+
+	tmp_fd = open(".here_doc.tmp", O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	if (tmp_fd == -1)
+		return (perror("check_heredoc open"), (void)0);
+	pa[i]->fdhd = dup(STDIN_FILENO);
+	len = ft_strlen(pa[i]->limiter);
+	while (g_ms->i.i = i, 1 && g_ms->sigint == FALSE)
+	{
+		write(STDIN_FILENO, "heredoc> ", 9);
+		p = get_next_line(pa[i]->fdhd);
+		if (p == NULL || !ft_strncmp(p, pa[i]->limiter, len))
+		{
+			close(pa[i]->fdhd);
+			if (p == NULL)
+				ft_printf("warning: expected %s\n", pa[i]->limiter);
+			free(p);
+			break ;
+		}
+		ft_putstr_fd(p, tmp_fd);
+		free(p);
+	}
+	close(tmp_fd);
+}
+
 int	parse(t_minishell *ms)
 {
 	t_command	**pa;
@@ -36,8 +65,10 @@ int	parse(t_minishell *ms)
 	int			i;
 
 	pa = malloc_pa(ms, &i, &tmp, &cmdline);
+	g_ms->i.i = -1;
 	if (pa == NULL)
 		return (1);
+	ms->cm = pa;
 	while (tmp)
 	{
 		if (tmp->type == 0 && ttok0(pa, &i, &cmdline) == 1)
@@ -52,7 +83,6 @@ int	parse(t_minishell *ms)
 			return (free_param(pa), error_clean_up(ms), 1);
 		tmp = tmp->next;
 	}
-	ms->cm = pa;
 	return (0);
 }
 /*

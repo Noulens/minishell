@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:07:44 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/22 15:18:21 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/25 13:10:55 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,13 @@ int	ttok0(t_command **pa, int *i, char **cmdline)
 
 int	ttok356(t_tok *tmp, t_command **pa, int *i, char **cmdline)
 {
-	if (tmp->type == 3)
+	if (tmp->type == 3 && g_ms->sigint == FALSE)
 	{
 		if (pa[*i]->here_doc++ > 0)
 			free(pa[*i]->limiter);
 		pa[*i]->limiter = gethdname(tmp->data);
+		check_heredoc(pa, *i);
+		g_ms->i.i = -1;
 	}
 	else if (tmp->type == 5)
 	{
