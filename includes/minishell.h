@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/25 17:08:12 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/25 19:50:18 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,6 @@ typedef struct s_minishell
 	char		**env_array;
 	char		**local_env;
 	t_tok		*list;
-	void		*bi;
 	t_int		i;
 	short		sigint;
 	pid_t		pid;
@@ -198,6 +197,7 @@ char		*prompt_line(t_minishell *ms);
 int			exec(t_minishell *ms, char **cmds, char **envp);
 int			pipex(t_minishell *minishell);
 void		build_env(t_minishell *ms, char **envp);
+int			is_built_in(t_minishell *ms, int argc, char **argv);
 
 	/* --- utilities --- */
 
@@ -206,6 +206,7 @@ int			gb_c(t_list **gb, void *content, void **content2);
 void		init_minishell(t_minishell *minishell);
 void		clean_up(t_list *lst, char **env_array, t_list *env);
 void		init_struct(t_minishell *ms, t_command *cm);
+void		init_builtin(t_builtin *built);
 int			close_pipes(int cmd_nbr, int *end, t_command *cm);
 int			close_pipes_parent(int cmd_nbr, int *end, t_minishell *ms);
 void		close_std_in_child(void);

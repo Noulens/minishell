@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/25 18:28:03 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/25 21:02:58 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	main(int argc, char **argv, char **envp)
 	char		*p;
 	t_minishell	minishell;
 	t_command	cm;
-
+	
 	init_minishell(&minishell);
 	build_env(&minishell, envp);
 	g_ms = &minishell;
@@ -78,6 +78,9 @@ int	main(int argc, char **argv, char **envp)
 	if (argc > 1)
 	{
 		cmd_argv(argv + 1, &minishell);
+		if (parse(&minishell) == 1)
+			return (errno);
+		minishell.exec_ret = pipex(&minishell);
 		return (0);
 	}	
 	while (42)
@@ -94,7 +97,7 @@ int	main(int argc, char **argv, char **envp)
 		}
 		if (lexer_and_expend(p, &minishell) == 1)
 			return (ft_printf("%s", strerror(errno)), errno);
-		if (parse(&minishell) == 1)
+		if (parse(&minishell) == 4)
 			return (errno);
 		minishell.exec_ret = pipex(&minishell);
 		ft_lstclear(minishell.gb);

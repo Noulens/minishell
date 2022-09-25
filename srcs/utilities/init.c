@@ -6,14 +6,14 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:57:27 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/25 13:41:27 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/25 19:47:16 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	init_builtin(t_builtin *built)
-{
+void	init_builtin(t_builtin *built)
+{	
 	ft_strlcpy(built[0].name, "echo", 5);
 	ft_strlcpy(built[1].name, "env", 4);
 	ft_strlcpy(built[2].name, "exit", 5);
@@ -32,8 +32,6 @@ static void	init_builtin(t_builtin *built)
 
 void	init_minishell(t_minishell *minishell)
 {
-	t_builtin	built[7];
-
 	minishell->nbr_cmd = 1;
 	minishell->cmd_array = NULL;
 	minishell->exec_ret = 0;
@@ -42,10 +40,8 @@ void	init_minishell(t_minishell *minishell)
 	minishell->env_array = NULL;
 	minishell->list = NULL;
 	minishell->local_env = NULL;
-	minishell->bi = built;
 	minishell->sigint = FALSE;
 	minishell->i.i = -1;
-	init_builtin(built);
 }
 
 void	init_struct(t_minishell *ms, t_command *cm)

@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:09:09 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/23 14:07:58 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/25 21:08:50 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ttok4(t_tok *tmp, t_command **pa, int i)
 	{
 		pa[i]->o = getfilename(tmp->data, 4);
 		if (pa[i]->o == NULL)
-			return (1);
+			return (2);
 		pa[i]->fd[1] = open(pa[i]->o, O_CREAT | O_WRONLY | O_APPEND, 0644);
 		if (pa[i]->fd[1] <= -1)
 			perror("parse fd out append open");
@@ -52,7 +52,7 @@ int	ttok4(t_tok *tmp, t_command **pa, int i)
 			free(pa[i]->o);
 		pa[i]->o = getfilename(tmp->data, 4);
 		if (pa[i]->o == NULL)
-			return (1);
+			return (2);
 		pa[i]->fd[1] = open(pa[i]->o, O_CREAT | O_WRONLY | O_APPEND, 0644);
 		if (pa[i]->fd[1] <= -1)
 			perror("parse fd out append open");
@@ -66,7 +66,7 @@ int	ttok1(t_tok *tmp, t_command **pa, int i)
 	{
 		pa[i]->inf = getfilename(tmp->data, 1);
 		if (pa[i]->inf == NULL)
-			return (1);
+			return (2);
 		pa[i]->fd[0] = open(pa[i]->inf, O_RDONLY);
 		if (pa[i]->fd[0] <= -1)
 			perror("parse fd in open");
@@ -80,7 +80,7 @@ int	ttok1(t_tok *tmp, t_command **pa, int i)
 		pa[i]->here_doc = FALSE;
 		pa[i]->inf = getfilename(tmp->data, 1);
 		if (pa[i]->inf == NULL)
-			return (1);
+			return (2);
 		pa[i]->fd[0] = open(pa[i]->inf, O_RDONLY);
 		if (pa[i]->fd[0] <= -1)
 			perror("parse fd in open");
@@ -94,7 +94,7 @@ int	ttok2(t_tok *tmp, t_command **pa, int i)
 	{
 		pa[i]->o = getfilename(tmp->data, 2);
 		if (pa[i]->o == NULL)
-			return (1);
+			return (2);
 		pa[i]->fd[1] = open(pa[i]->o, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 		if (pa[i]->fd[1] <= -1)
 			perror("parse fd out open");
@@ -107,7 +107,7 @@ int	ttok2(t_tok *tmp, t_command **pa, int i)
 			free(pa[i]->o);
 		pa[i]->o = getfilename(tmp->data, 2);
 		if (pa[i]->o == NULL)
-			return (1);
+			return (2);
 		pa[i]->fd[1] = open(pa[i]->o, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 		if (pa[i]->fd[1] <= -1)
 			perror("parse fd out open");
