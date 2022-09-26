@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+         #
+#    By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/09/22 15:23:32 by waxxy            ###   ########.fr        #
+#    Updated: 2022/09/26 17:31:25 by tnoulens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,6 @@ CORE		=	./srcs/core/prompt.c\
 				./srcs/core/cmd_lexer.c\
 				./srcs/core/list_token.c\
 				./srcs/core/lexer_and_expend.c\
-				./srcs/core/parser.c\
-				./srcs/core/parser_tools1.c\
-				./srcs/core/parser_tools2.c\
 				./srcs/core/str_join_tab.c\
 				./srcs/core/cmd_argv.c
 
@@ -54,7 +51,11 @@ UTILITIES	= 	./srcs/utilities/garbage_collector.c\
 				./srcs/utilities/utils1.c\
 				./srcs/utilities/print_token_list.c
 
-SRCS		=	${MAIN} ${CORE} ${BUILTIN} ${UTILITIES}
+PARSING		=	./srcs/parsing/parser.c\
+				./srcs/parsing/parser_tools1.c\
+				./srcs/parsing/parser_tools2.c
+
+SRCS		=	${MAIN} ${CORE} ${BUILTIN} ${UTILITIES} ${PARSING}
 
 OBJS		=	${SRCS:.c=.o} 
 
