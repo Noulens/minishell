@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:06:24 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/26 16:16:52 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/26 20:14:50 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,16 @@ int	close_pipes(int cmd_nbr, int *end, t_command *cm)
 	{
 		close(cm->fd[0]);
 		unlink(".here_doc.tmp");
+	}
+	else if (cm->fd[0] != 0 && cm->here_doc == FALSE)
+	{
+		if (close(cm->fd[0]) == -1)
+			return (perror("close_std_in_child fd[0]"), errno);
+	}
+	if (cm->fd[1] != 1)
+	{
+		if (close(cm->fd[1]) == -1)
+			return (perror("close_std_in_child fd[1]"), errno);
 	}
 	return (0);
 }
@@ -84,20 +94,20 @@ void	dupper(int input, int output)
 
 void	close_std_in_child(t_minishell *ms, int i)
 {
-	if (ms->cm[i]->fd[0] != 0)
-	{
+	//if (ms->cm[i]->fd[0] != 0 && ms->cm[i]->here_doc == FALSE)
+	//{
 		if (close(ms->cm[i]->fd[0]) == -1)
 			return (perror("close_std_in_child fd[0]"), (void)0);
-	}
-	if (ms->cm[i]->fd[1] != 1)
-	{
+	//}
+	//if (ms->cm[i]->fd[1] != 1)
+	//{
 		if (close(ms->cm[i]->fd[1]) == -1)
 			return (perror("close_std_in_child fd[1]"), (void)0);
-	}
-	if (close(0) == -1)
-		return (perror("close_std_in_child"), (void)0);
-	if (close(1) == -1)
-		return (perror("close_std_in_child"), (void)0);
+	//}
+	//if (close(0) == -1)
+	//	return (perror("close_std_in_child"), (void)0);
+	//if (close(1) == -1)
+	//	return (perror("close_std_in_child"), (void)0);
 	if (close(2) == -1)
 		return (perror("close_std_in_child"), (void)0);
 }
