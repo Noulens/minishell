@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:57:27 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/25 19:47:16 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/26 16:53:19 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+t_minishell	*g_ms;
 
 void	init_builtin(t_builtin *built)
 {	
@@ -32,6 +34,8 @@ void	init_builtin(t_builtin *built)
 
 void	init_minishell(t_minishell *minishell)
 {
+	print_welcome_msg();
+	g_ms = minishell;
 	minishell->nbr_cmd = 1;
 	minishell->cmd_array = NULL;
 	minishell->exec_ret = 0;
@@ -47,8 +51,6 @@ void	init_minishell(t_minishell *minishell)
 void	init_struct(t_minishell *ms, t_command *cm)
 {
 	cm->cmd = NULL;
-	cm->pid = -1;
-	cm->end = NULL;
 	cm->fd[0] = STDIN_FILENO;
 	cm->fd[1] = STDOUT_FILENO;
 	cm->fdhd = -1;
@@ -56,9 +58,15 @@ void	init_struct(t_minishell *ms, t_command *cm)
 	cm->limiter = NULL;
 	cm->inf = NULL;
 	cm->o = NULL;
-	cm->pids = NULL;
 	cm->env = ms->env_array;
 	cm->sigint = ms->sigint;
+}
+
+void	mini_init(t_minishell *ms)
+{
+	ms->nbr_cmd = 1;
+	ms->list = NULL;
+	ms->gb = NULL;
 }
 /*
 	char	**cmd; ok

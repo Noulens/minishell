@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:34:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/25 15:44:18 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/26 15:07:51 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*prompt_line(t_minishell *ms)
 		free(line_read);
 		line_read = NULL;
 	}
-	line_read = readline(BLUE REV"Minishell.>"END);
+	line_read = readline(BLUE REV"Minishell"END BLUE"\uE0B0"END);
 	if (line_read == NULL)
 	{
 		clean_up(ms->gb, ms->env_array, ms->env);

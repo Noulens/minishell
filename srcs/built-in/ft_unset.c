@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 12:50:10 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/16 19:35:32 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/26 13:45:59 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int find_idx(t_list *lst, char *arg)
+static int	find_idx(t_list *lst, char *arg)
 {
-	int i;
-	t_list *p;
+	int		i;
+	t_list	*p;
 
 	i = 0;
 	p = lst;
@@ -32,7 +32,7 @@ static int find_idx(t_list *lst, char *arg)
 static void	del_idx_0(t_minishell *ms)
 {
 	t_list	*tmp;
-	
+
 	tmp = ms->env;
 	ms->env = ms->env->next;
 	free(tmp->content);
@@ -43,7 +43,7 @@ static void	del_idx_pos(t_minishell *ms, int idx)
 {
 	t_list	*tmp;
 	t_list	*tmp2;
-	
+
 	tmp2 = ms->env;
 	while (idx--)
 	{
@@ -55,7 +55,7 @@ static void	del_idx_pos(t_minishell *ms, int idx)
 	free(tmp2);
 }
 
-int ft_unset(t_minishell *ms, int argc, char **argv)
+int	ft_unset(t_minishell *ms, int argc, char **argv)
 {
 	int		i;
 	int		idx;

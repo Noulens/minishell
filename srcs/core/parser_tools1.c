@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_tools1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:07:44 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/25 17:36:10 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/26 13:40:43 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,18 @@
 static char	*gethdname(char *str)
 {
 	int		len;
+	char	*p;
 
 	len = ft_strlen(str);
 	if (len <= 2 || isallspace(str + 2) == NULL)
 		return (ft_putstr_fd(RED"heredoc : bad name\n"END, 2), NULL);
 	else
-		return (ft_strdup(str + 2));
+	{
+		p = ft_strdup(str + 2);
+		if (!p)
+			error_clean_up(g_ms);
+		return (p);
+	}
 }
 
 static char	*append_join(char *cmdline, char *data)
@@ -45,7 +51,7 @@ static char	*append_join(char *cmdline, char *data)
 	return (cmdline);
 }
 
-t_command	**malloc_pa(t_minishell *ms, int *j,t_tok **tmp, char **cmdline)
+t_command	**malloc_pa(t_minishell *ms, int *j, t_tok **tmp, char **cmdline)
 {
 	int			i;
 	t_command	**pa;
@@ -56,12 +62,15 @@ t_command	**malloc_pa(t_minishell *ms, int *j,t_tok **tmp, char **cmdline)
 	*cmdline = NULL;
 	pa = (t_command **)ft_calloc(sizeof(t_command *), ms->nbr_cmd + 1);
 	if (pa == NULL)
-		return (perror("parse"), error_clean_up(ms), NULL);
+		error_clean_up(ms);
 	while (i < ms->nbr_cmd)
 	{
 		pa[i] = (t_command *)malloc(sizeof(t_command));
 		if (pa[i] == NULL)
-			return (perror("parse"), free_param(pa), error_clean_up(ms), NULL);
+		{
+			free_param(pa);
+			error_clean_up(ms);
+		}
 		init_struct(ms, pa[i]);
 		i++;
 	}
@@ -72,7 +81,10 @@ int	ttok0(t_command **pa, int *i, char **cmdline)
 {
 	pa[*i]->cmd = ft_split(*cmdline, ' ');
 	if (pa[*i]->cmd == NULL)
-		return (free(*cmdline), 1);
+	{
+		free(*cmdline);
+		error_clean_up(g_ms);
+	}
 	free(*cmdline);
 	*cmdline = NULL;
 	pa[++*i] = NULL;
@@ -99,6 +111,8 @@ int	ttok356(t_tok *tmp, t_command **pa, int *i, char **cmdline)
 	else if (tmp->type == 6)
 	{
 		pa[*i]->cmd = ft_split(*cmdline, ' ');
+		if (pa[*i]->cmd == NULL)
+			return (free(*cmdline), -1);
 		free(*cmdline);
 		*cmdline = NULL;
 		return (++*i);

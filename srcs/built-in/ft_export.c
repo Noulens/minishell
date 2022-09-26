@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:42:15 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/15 16:35:35 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/26 17:25:13 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void exportlist(t_list *list)
+static void	exportlist(t_list *list)
 {
 	if (list)
 	{
@@ -53,9 +53,9 @@ int	formatok(char *str)
 	p = ft_strchr(str, '=');
 	if (p == NULL || *p == *str || str_is_alnum(str))
 	{
-		ft_putstr_fd("export: ", 2);
+		ft_putstr_fd(RED"export: ", 2);
 		ft_putstr_fd(str, 2);
-		ft_putstr_fd(": no export done, not a valid identifier\n", 2);
+		ft_putstr_fd(": no export done, not a valid identifier\n"END, 2);
 		return (1);
 	}
 	else
@@ -80,9 +80,9 @@ int	is_in_env(t_list *lst, char *str)
 	return (0);
 }
 
-int ft_export(t_minishell *minishell, int argc, char **argv)
+int	ft_export(t_minishell *minishell, int argc, char **argv)
 {
-	int 	i;
+	int	i;
 
 	if (argc == 1)
 		exportlist(minishell->env);

@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/25 21:02:58 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/26 17:02:04 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-t_minishell	*g_ms;
 
 int	ft_strlen_tab(char **str)
 {
@@ -68,12 +66,9 @@ int	main(int argc, char **argv, char **envp)
 {
 	char		*p;
 	t_minishell	minishell;
-	t_command	cm;
-	
+
 	init_minishell(&minishell);
 	build_env(&minishell, envp);
-	g_ms = &minishell;
-	print_welcome_msg();
 	signal_handling();
 	if (argc > 1)
 	{
@@ -82,28 +77,22 @@ int	main(int argc, char **argv, char **envp)
 			return (errno);
 		minishell.exec_ret = pipex(&minishell);
 		return (0);
-	}	
-	while (42)
+	}
+	while (mini_init(&minishell), 42)
 	{
-		minishell.nbr_cmd = 1;
-		minishell.list = NULL;
-		init_struct(&minishell, &cm);
-		minishell.gb = NULL;
 		p = prompt_line(&minishell);
 		if (space_only(p))
 		{
-			cm.sigint = FALSE;
+			minishell.sigint = FALSE;
 			continue ;
 		}
 		if (lexer_and_expend(p, &minishell) == 1)
 			return (ft_printf("%s", strerror(errno)), errno);
-		if (parse(&minishell) == 4)
-			return (errno);
-		minishell.exec_ret = pipex(&minishell);
-		ft_lstclear(minishell.gb);
-		ft_lstclear_tok(minishell.list);
+		minishell.exec_ret = parse(&minishell);
+		if (minishell.exec_ret != 1)
+			minishell.exec_ret = pipex(&minishell);
 		printf("exit code: %d\n", minishell.exec_ret);
-		free_param(minishell.cm);
+		clean_iteration(&minishell);
 	}
 	return (0);
 }

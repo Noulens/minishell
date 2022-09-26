@@ -1,12 +1,17 @@
 <!-- Task List -->
 ## TO DO
 * TO-DO
-	* [x]refaire la variable globale pour qu'elle soit égale au minishell
-	* [x]modifier la gestion des signaux suite à la modif de la variable globale
+	* [x] Refaire la variable globale pour qu'elle soit égale au minishell
+	* [x] Modifier la gestion des signaux suite à la modif de la variable globale
+
+* Mode commande
+	* [ ] implementer le mode command
 
 * Execute on multipipe :
 	* [x] Boucle pour executer les cmd multiples en creant autant de pipe que necessaire et en utilisant execve
 	* [ ] Gestion des built-in avant execve
+	* [ ] redirection quand : echo foo >> infile | grep foo il faut le resultat dans infile et pas dans grep !!
+	* [ ] printf : gestion des espaces a revoir
 
 * Here_doc :
 	* [x] Here_doc : ok.
@@ -25,7 +30,7 @@
 * Signaux :
 	* [x] ctrl-C OK sans leaks : write(1, "\n", 1); rl_on_new_line(); rl_redisplay();
 	* [x] ctrl-D OK sans leaks
-	* [ ] ctrl-\ à tester
+	* [x] ctrl-\ OK
 * Divers
 	* [x] welcome msg en ascii
 	* [x] $? -> faire une variable int qui enregistre la valeur de retour du dernier pipe

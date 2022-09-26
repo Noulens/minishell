@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_up.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:44:09 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/25 21:07:22 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/26 15:27:10 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	error_clean_up(t_minishell *ms)
 {
-	strerror(errno);
+	ft_printf(RED"%s\n"END, strerror(errno));
 	ft_lstclear(ms->gb);
 	ft_lstclear(ms->env);
 	ft_lstclear_tok(ms->list);
 	free(ms->env_array);
-	exit(EXIT_FAILURE);
+	exit(137);
 }
 
 void	free_param(t_command **param)
@@ -29,7 +29,6 @@ void	free_param(t_command **param)
 	i = 0;
 	while (param[i] != NULL)
 	{
-
 		ft_free_split(param[i]->cmd);
 		free(param[i]->inf);
 		free(param[i]->o);
@@ -38,6 +37,13 @@ void	free_param(t_command **param)
 		i++;
 	}
 	free(param);
+}
+
+void	clean_iteration(t_minishell *ms)
+{
+	ft_lstclear(ms->gb);
+	ft_lstclear_tok(ms->list);
+	free_param(ms->cm);
 }
 
 void	clean_up(t_list *lst, char **env_array, t_list *env)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_tools2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:09:09 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/25 21:08:50 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/26 15:53:33 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,25 @@
 
 static char	*getfilename(char *str, int type)
 {
-	int		len;
+	char	*p;
 
-	len = ft_strlen(str);
 	if (type == 2 || type == 1)
 	{
-		if (len <= 1 || isallspace(str + 1) == NULL)
+		if (ft_strlen(str) <= 1 || isallspace(str + 1) == NULL)
 			return (ft_putstr_fd(RED"redirection : bad name\n"END, 2), NULL);
-		else
-			return (ft_strdup(str + 1));
+		p = ft_strdup(str + 1);
+		if (!p)
+			error_clean_up(g_ms);
+		return (p);
 	}
 	else
 	{
-		if (len <= 2 || isallspace(str + 2) == NULL)
+		if (ft_strlen(str) <= 2 || isallspace(str + 2) == NULL)
 			return (ft_putstr_fd(RED"redirection : bad name\n"END, 2), NULL);
-		else
-			return (ft_strdup(str + 2));
+		p = ft_strdup(str + 2);
+		if (!p)
+			error_clean_up(g_ms);
+		return (p);
 	}
 }
 
@@ -39,23 +42,23 @@ int	ttok4(t_tok *tmp, t_command **pa, int i)
 	{
 		pa[i]->o = getfilename(tmp->data, 4);
 		if (pa[i]->o == NULL)
-			return (2);
+			return (1);
 		pa[i]->fd[1] = open(pa[i]->o, O_CREAT | O_WRONLY | O_APPEND, 0644);
 		if (pa[i]->fd[1] <= -1)
-			perror("parse fd out append open");
+			return (perror("parse fd out append open"), 1);
 	}
 	else
 	{
 		if (close(pa[i]->fd[1]) == -1)
-			perror("parse fd out append close");
+			return (perror("parse fd out append close"), 1);
 		if (pa[i]->o)
 			free(pa[i]->o);
 		pa[i]->o = getfilename(tmp->data, 4);
 		if (pa[i]->o == NULL)
-			return (2);
+			return (1);
 		pa[i]->fd[1] = open(pa[i]->o, O_CREAT | O_WRONLY | O_APPEND, 0644);
 		if (pa[i]->fd[1] <= -1)
-			perror("parse fd out append open");
+			return (perror("parse fd out append open"), 1);
 	}
 	return (0);
 }
@@ -66,10 +69,10 @@ int	ttok1(t_tok *tmp, t_command **pa, int i)
 	{
 		pa[i]->inf = getfilename(tmp->data, 1);
 		if (pa[i]->inf == NULL)
-			return (2);
+			return (1);
 		pa[i]->fd[0] = open(pa[i]->inf, O_RDONLY);
 		if (pa[i]->fd[0] <= -1)
-			perror("parse fd in open");
+			return (perror("parse fd in open"), 1);
 	}
 	else
 	{
@@ -80,10 +83,10 @@ int	ttok1(t_tok *tmp, t_command **pa, int i)
 		pa[i]->here_doc = FALSE;
 		pa[i]->inf = getfilename(tmp->data, 1);
 		if (pa[i]->inf == NULL)
-			return (2);
+			return (1);
 		pa[i]->fd[0] = open(pa[i]->inf, O_RDONLY);
 		if (pa[i]->fd[0] <= -1)
-			perror("parse fd in open");
+			return (perror("parse fd in open"), 1);
 	}
 	return (0);
 }
@@ -94,23 +97,23 @@ int	ttok2(t_tok *tmp, t_command **pa, int i)
 	{
 		pa[i]->o = getfilename(tmp->data, 2);
 		if (pa[i]->o == NULL)
-			return (2);
+			return (1);
 		pa[i]->fd[1] = open(pa[i]->o, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 		if (pa[i]->fd[1] <= -1)
-			perror("parse fd out open");
+			return (perror("parse fd out open"), 1);
 	}
 	else
 	{
 		if (close(pa[i]->fd[1]) == -1)
-			perror("parse fd out close");
+			return (perror("parse fd out close"), 1);
 		if (pa[i]->o)
 			free(pa[i]->o);
 		pa[i]->o = getfilename(tmp->data, 2);
 		if (pa[i]->o == NULL)
-			return (2);
+			return (1);
 		pa[i]->fd[1] = open(pa[i]->o, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 		if (pa[i]->fd[1] <= -1)
-			perror("parse fd out open");
+			return (perror("parse fd out open"), 1);
 	}
 	return (0);
 }

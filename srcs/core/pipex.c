@@ -3,33 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/25 19:59:27 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/26 17:23:02 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-/*
-int	builtin_mgmt(t_command *cm, int i, int cmd_nbr, t_minishell *ms)
-{
-	int			i;
-	t_builtin	*p;
-
-	i = 0;
-	p = (t_builtin *)ms->bi;
-	while (i < NBR_BI)
-	{
-		if (ft_strncmp(argv[0], p[i].name, 10))
-		{
-			ms->exec_ret = p[i].func(ms, argc, cm->cmd);
-			return (1);
-		}
-		i++;
-	}
-	return (0);
-}*/
 
 void	get_fd_in(t_command *cm)
 {
@@ -59,7 +40,7 @@ int	child_mgmt(int i, int cmd_nbr, t_minishell *ms)
 			dupper(ms->end[2 * i - 2], ms->end[2 * i + 1]);
 		close_pipes(cmd_nbr, ms->end, ms->cm[i]);
 		ms->exec_ret = exec(ms, ms->cm[i]->cmd, ms->cm[i]->env);
-		close_std_in_child();
+		close_std_in_child(ms, i);
 		clean_up(ms->gb, ms->env_array, ms->env);
 		ft_lstclear_tok(ms->list);
 		free_param(ms->cm);
@@ -85,6 +66,9 @@ int	pipex(t_minishell *ms)
 	int		ret;
 	int		i;
 
+	if (ms->nbr_cmd == 1
+		&& is_built_in(ms, nb_cmd(ms->cm[0]->cmd), ms->cm[0]->cmd))
+		return (ms->exec_ret);
 	if (malloc_pids(ms) != 0)
 		return (error_clean_up(ms), -1);
 	i = -1;
@@ -96,11 +80,11 @@ int	pipex(t_minishell *ms)
 	{
 		waitpid(ms->pids[i], &ret, 0);
 		if (WIFEXITED(ret))
-			printf("P %d, exit ok: %d\n", i, ms->exec_ret = WEXITSTATUS(ret)); // printf a enlever apres les tests
+			ft_printf("P %d, exit ok: %d\n", i, ms->exec_ret = WEXITSTATUS(ret));
 		else
 		{
 			ms->exec_ret = errno;
-			printf("P %d, interrupted\n", i); // printf a enlever apres les tests
+			ft_printf("P %d, interrupted\n", i);
 		}
 	}
 	return (ms->exec_ret);

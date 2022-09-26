@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/25 19:50:18 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/26 16:53:45 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include <limits.h>
 # include <errno.h>
 # include "../libft/libft.h"
+# include "colors.h"
 
 /* define macros */
 
@@ -56,17 +57,17 @@
 
 typedef struct s_tok
 {
-    char			*data;
-    int				type;
-    struct s_tok	*next;
+	char			*data;
+	int				type;
+	struct s_tok	*next;
 }	t_tok;
 
 typedef struct s_int
 {
-    int i;
-    int j;
-    int k;
-}        t_int;
+	int	i;
+	int	j;
+	int	k;
+}	t_int;
 
 /* Sructure parsing */
 
@@ -112,10 +113,6 @@ typedef struct s_commands
 	char	*limiter;
 	int		exec_ret;
 	short	sigint;
-	pid_t		pid; // a virer
-	pid_t		*pids; // a virer
-	int			*end;  // a virer
-	
 }	t_command;
 
 typedef struct s_minishell
@@ -147,44 +144,44 @@ typedef struct s_builtin
 /* Protos */
 
 	/* --- lexer --- */
-int		cmd_argv(char **argv, t_minishell *minishell);
-char	*str_join_tab(char **argv);
-int		lexer_and_expend(char *p, t_minishell *minishell);
-void	count_pipe(t_minishell *ms);
-int		lexer(char *str, t_minishell *minishell);
-int		pipe_lexer(int i, t_minishell *minishell);
-int		chevron_lexer(char *str, int i, t_minishell *minishell);
-int		chevron(char *str, int i, t_minishell *minishell, int type);
-int		token_lenght(char *str, int i, char c);
-int		cmd_lexer(char *str, int i, t_minishell *minishell);
-int		cmd_lexer_leght(char *str, int i);
-int		expend_and_cut_quote(t_minishell *minishell);
-char	*dup_without_quote_init(char *str);
-int		dup_without_quote(char *str, char *new_str, int i, int j);
-int		count_expend(char *str, t_minishell *minishell);
-char	*copy_expend(char *s, char *new_s, t_minishell *ms);
-int		char_is_whitespace(char c);
-char	*init_str_alias(char *str, int len, t_minishell *minishell);
-int		break_point_alias(char *str, int i);
-int		trigger_double_quote(int trigg, char c);
-int		init_cmd(char *str, t_command *cmd, t_minishell *minishell);
-char	*m_init_str(char *s, char c, char *str, int *j);
-int		m_line_lenght(char *s, char c, int *j);
-char	**ft_split_space_and_quote(char *s, char c);
-int		m_split_count_line(char *s, char c);
-char	*m_malloc_str(char *str, int len);
-void	m_init_str_with_sep(char *s, char *str, int *i, int *k);
-int		char_is_quote(char c);
-int		check_single_quote(char *str, int *i);
-int		check_double_quote(char *str, int *i);
-int		parsing_quote(char *str);
-char	*expend_alias(char *str, t_minishell *ms);
+int			cmd_argv(char **argv, t_minishell *minishell);
+char		*str_join_tab(char **argv);
+int			lexer_and_expend(char *p, t_minishell *minishell);
+void		count_pipe(t_minishell *ms);
+int			lexer(char *str, t_minishell *minishell);
+int			pipe_lexer(int i, t_minishell *minishell);
+int			chevron_lexer(char *str, int i, t_minishell *minishell);
+int			chevron(char *str, int i, t_minishell *minishell, int type);
+int			token_lenght(char *str, int i, char c);
+int			cmd_lexer(char *str, int i, t_minishell *minishell);
+int			cmd_lexer_leght(char *str, int i);
+int			expend_and_cut_quote(t_minishell *minishell);
+char		*dup_without_quote_init(char *str);
+int			dup_without_quote(char *str, char *new_str, int i, int j);
+int			count_expend(char *str, t_minishell *minishell);
+char		*copy_expend(char *s, char *new_s, t_minishell *ms);
+int			char_is_whitespace(char c);
+char		*init_str_alias(char *str, int len, t_minishell *minishell);
+int			break_point_alias(char *str, int i);
+int			trigger_double_quote(int trigg, char c);
+int			init_cmd(char *str, t_command *cmd, t_minishell *minishell);
+char		*m_init_str(char *s, char c, char *str, int *j);
+int			m_line_lenght(char *s, char c, int *j);
+char		**ft_split_space_and_quote(char *s, char c);
+int			m_split_count_line(char *s, char c);
+char		*m_malloc_str(char *str, int len);
+void		m_init_str_with_sep(char *s, char *str, int *i, int *k);
+int			char_is_quote(char c);
+int			check_single_quote(char *str, int *i);
+int			check_double_quote(char *str, int *i);
+int			parsing_quote(char *str);
+char		*expend_alias(char *str, t_minishell *ms);
 
 	/* --- parser --- */
 
 int			parse(t_minishell *ms);
 int			ttok4(t_tok *tmp, t_command **pa, int i);
-t_command	**malloc_pa(t_minishell *ms, int *j,t_tok **tmp, char **cmdline);
+t_command	**malloc_pa(t_minishell *ms, int *j, t_tok **tmp, char **cmdline);
 int			ttok0(t_command **pa, int *i, char **cmdline);
 int			ttok1(t_tok *tmp, t_command **pa, int i);
 int			ttok2(t_tok *tmp, t_command **pa, int i);
@@ -204,12 +201,14 @@ int			is_built_in(t_minishell *ms, int argc, char **argv);
 void		print_welcome_msg(void);
 int			gb_c(t_list **gb, void *content, void **content2);
 void		init_minishell(t_minishell *minishell);
+void		mini_init(t_minishell *ms);
 void		clean_up(t_list *lst, char **env_array, t_list *env);
+void		clean_iteration(t_minishell *ms);
 void		init_struct(t_minishell *ms, t_command *cm);
 void		init_builtin(t_builtin *built);
 int			close_pipes(int cmd_nbr, int *end, t_command *cm);
 int			close_pipes_parent(int cmd_nbr, int *end, t_minishell *ms);
-void		close_std_in_child(void);
+void		close_std_in_child(t_minishell *ms, int i);
 int			open_pipes(int cmd_nbr, int *end);
 void		dupper(int input, int output);
 int			char_is_token(char c);
@@ -218,7 +217,7 @@ int			char_is_whitespace(char c);
 int			check_quote(char *str, int i);
 int			char_is_token_with_trigg(char c, int trigger);
 void		error_clean_up(t_minishell *ms);
-void    	list_to_array(t_minishell *ms);
+void		list_to_array(t_minishell *ms);
 int			nb_cmd(char **argv);
 void		printlist(t_tok *list);
 void		free_param(t_command **param);
@@ -235,7 +234,7 @@ int			ft_echo(t_minishell *minishell, int argc, char **argv);
 int			ft_pwd(t_minishell *minishell, int argc, char **argv);
 int			ft_env(t_minishell *minishell, int argc, char **argv);
 int			ft_exit(t_minishell *minishell, int argc, char **argv);
-int 		ft_export(t_minishell *minishell, int argc, char **argv);
+int			ft_export(t_minishell *minishell, int argc, char **argv);
 int			ft_unset(t_minishell *ms, int argc, char **argv);
 int			ft_cd(t_minishell *ms, int argc, char **argv);
 
