@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/26 17:23:02 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/26 22:58:25 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,58 @@ int	malloc_pids(t_minishell *ms)
 	return (0);
 }
 
+int	is_built(t_minishell *ms, char *str)
+{
+	int			i;
+	t_builtin	built[7];
+
+	i = 0;
+	init_builtin(built);
+	while (i < NBR_BI)
+	{
+		if (!ft_strncmp(str, built[i].name, 10))
+		{
+			ms->i.j = i;
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
+int	built_mgmt(t_minishell *ms, int argc, char **argv)
+{
+	int			fdin;
+	int			fdout;
+	t_builtin	built[7];
+
+	init_builtin(built);
+	fdin = dup(STDIN_FILENO);
+	fdout = dup(STDOUT_FILENO);
+	dup2(ms->cm[0]->fd[0], STDIN_FILENO);
+	dup2(ms->cm[0]->fd[1], STDOUT_FILENO);
+	ms->exec_ret = built[ms->i.j].func(ms, argc, argv);
+	dup2(fdin, STDIN_FILENO);
+	dup2(fdout, STDOUT_FILENO);
+	close(fdin);
+	close(fdout);
+	if (ms->cm[0]->fd[0] != STDIN_FILENO)
+		close(ms->cm[0]->fd[0]);
+	if (ms->cm[0]->fd[1] != STDOUT_FILENO)
+		close(ms->cm[0]->fd[1]);
+	return (0);
+}
+
 int	pipex(t_minishell *ms)
 {
 	int		ret;
 	int		i;
 
-	if (ms->nbr_cmd == 1
-		&& is_built_in(ms, nb_cmd(ms->cm[0]->cmd), ms->cm[0]->cmd))
+	if (ms->nbr_cmd == 1 && is_built(ms, ms->cm[0]->cmd[0]))
+	{
+		built_mgmt(ms, nb_cmd(ms->cm[0]->cmd), ms->cm[0]->cmd);
 		return (ms->exec_ret);
+	}
 	if (malloc_pids(ms) != 0)
 		return (error_clean_up(ms), -1);
 	i = -1;

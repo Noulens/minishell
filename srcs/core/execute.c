@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:29:21 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/26 16:22:18 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/26 23:21:03 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int	exec(t_minishell *ms, char **cmds, char **envp)
 		else
 			cmd_path = cmd_check(paths_maker(), cmds[0]);
 		if (!cmd_path)
-			return (ft_printf(RED"%s: command not found\n"END, cmds[0]), 127);
+			return (ft_putstr_fd(RED"command not found\n"END, 2), 127);
 		if (execve(cmd_path, cmds, envp) == -1)
 			return (perror("exec"), errno);
 	}

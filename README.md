@@ -9,7 +9,7 @@
 
 * Execute on multipipe :
 	* [x] Boucle pour executer les cmd multiples en creant autant de pipe que necessaire et en utilisant execve
-	* [ ] Gestion des built-in avant execve
+	* [x] Gestion des built-in avant execve
 	* [ ] redirection quand : echo foo >> infile | grep foo il faut le resultat dans infile et pas dans grep !!
 	* [ ] printf : gestion des espaces a revoir
 
