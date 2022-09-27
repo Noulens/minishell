@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipes_mgmt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:06:24 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/26 23:19:08 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/27 15:41:53 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,17 +96,6 @@ void	close_std_in_child(t_minishell *ms, int i)
 {
 	(void)i;
 	(void)ms;
-	//if (ms->cm[i]->fd[0] != STDIN_FILENO && ms->cm[i]->here_doc == FALSE)
-	//{
-	//	if (close(ms->cm[i]->fd[0]) == -1)
-	//		return (perror("close_std_in_child fd[0]"), (void)0);
-	//}
-	//if (ms->cm[i]->fd[1] != STDIN_FILENO)
-	//{
-	//	ft_putnbr_fd(ms->cm[i]->fd[1], 2);
-	//	if (close(ms->cm[i]->fd[1]) == -1)
-	//		return (perror("close_std_in_child fd[1]"), (void)0);
-	//}
 	if (close(0) == -1)
 		return (perror("close_std_in_child"), (void)0);
 	if (close(1) == -1)

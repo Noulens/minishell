@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/26 17:02:04 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/27 15:42:52 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	space_only(char *p)
 	char_ptr = p;
 	if (char_ptr != NULL)
 	{
-		while (char_ptr)
+		while (*char_ptr)
 		{
 			if (ft_isspace(*char_ptr))
 				char_ptr++;

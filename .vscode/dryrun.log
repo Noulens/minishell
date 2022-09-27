@@ -1,9 +1,6 @@
 make --dry-run --keep-going --print-directory
-make: Entering directory '/home/cfontain/Documents/minishell'
-cc -Wall -Wextra -Werror -g -I includes/  -c srcs/core/cmd_argv.c -o srcs/core/cmd_argv.o
-echo "\033[34m----Compiling----"
-cc -Wall -Wextra -Werror -g -I includes/ ./srcs/main.o ./srcs/core/prompt.o ./srcs/core/pipex.o ./srcs/core/execute.o ./srcs/core/signals.o ./srcs/core/expend_alias.o ./srcs/core/copy_str_with_alias.o ./srcs/core/build_env.o ./srcs/core/lexer.o ./srcs/core/expend_and_cut_quote.o ./srcs/core/cmd_lexer.o ./srcs/core/list_token.o ./srcs/core/lexer_and_expend.o ./srcs/core/parser.o ./srcs/core/str_join_tab.o ./srcs/core/cmd_argv.o ./srcs/built-in/ft_echo.o ./srcs/built-in/ft_env.o ./srcs/built-in/ft_exit.o ./srcs/built-in/ft_pwd.o ./srcs/built-in/ft_export.o ./srcs/built-in/ft_unset.o ./srcs/built-in/ft_cd.o ./srcs/utilities/garbage_collector.o ./srcs/utilities/welcome_message.o ./srcs/utilities/pipes_mgmt.o ./srcs/utilities/init.o ./srcs/utilities/char_check.o ./srcs/utilities/check_quote.o ./srcs/utilities/clean_up.o ./srcs/utilities/utils1.o ./srcs/utilities/print_token_list.o  -L/usr/include -lreadline -o minishell ./libft/libft.a
-printf "{\n    leak readline\n    Memcheck:Leak\n    ...\n    fun:readline\n}\n{\n    leak add_history\n   Memcheck:Leak\n    ...\n    fun:add_history\n}" > ignore_leak.supp
-echo "OK\033[0m"
-make: Leaving directory '/home/cfontain/Documents/minishell'
+make: Entering directory '/mnt/nfs/homes/tnoulens/minishell'
+ 
+make: Nothing to be done for 'all'.
+make: Leaving directory '/mnt/nfs/homes/tnoulens/minishell'
  

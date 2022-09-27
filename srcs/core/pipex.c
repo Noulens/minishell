@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/26 22:58:25 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/27 15:46:53 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,17 @@ int	built_mgmt(t_minishell *ms, int argc, char **argv)
 	t_builtin	built[7];
 
 	init_builtin(built);
+	if (ms->i.j == 2)
+		ms->exec_ret = built[ms->i.j].func(ms, argc, argv);
 	fdin = dup(STDIN_FILENO);
 	fdout = dup(STDOUT_FILENO);
-	dup2(ms->cm[0]->fd[0], STDIN_FILENO);
-	dup2(ms->cm[0]->fd[1], STDOUT_FILENO);
+	dupper(ms->cm[0]->fd[0], ms->cm[0]->fd[1]);
+	//dup2(ms->cm[0]->fd[0], STDIN_FILENO);
+	//dup2(ms->cm[0]->fd[1], STDOUT_FILENO);
 	ms->exec_ret = built[ms->i.j].func(ms, argc, argv);
-	dup2(fdin, STDIN_FILENO);
-	dup2(fdout, STDOUT_FILENO);
+	dupper(fdin, fdout);
+	//dup2(fdin, STDIN_FILENO);
+	//dup2(fdout, STDOUT_FILENO);
 	close(fdin);
 	close(fdout);
 	if (ms->cm[0]->fd[0] != STDIN_FILENO)
