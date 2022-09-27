@@ -1,7 +1,0 @@
-{
-    "makefile.extensionOutputFolder": "./.vscode",
-    "files.associations": {
-        "history.h": "c",
-        "cstdio": "c"
-    }
-}
