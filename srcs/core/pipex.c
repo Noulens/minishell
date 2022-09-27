@@ -6,21 +6,11 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/27 16:26:13 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/27 17:32:26 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	get_fd_in(t_command *cm)
-{
-	if (cm->here_doc >= TRUE)
-	{
-		cm->fd[0] = open(".here_doc.tmp", O_RDONLY);
-		if (cm->fd[0] == -1)
-			perror("get_fd_in");
-	}
-}
 
 int	child_mgmt(int i, int cmd_nbr, t_minishell *ms)
 {
@@ -80,7 +70,7 @@ int	is_built(t_minishell *ms, char *str)
 	return (0);
 }
 
-int	built_mgmt(t_minishell *ms, int argc, char **argv)
+void	built_mgmt(t_minishell *ms, int argc, char **argv)
 {
 	int			fdin;
 	int			fdout;
@@ -95,18 +85,16 @@ int	built_mgmt(t_minishell *ms, int argc, char **argv)
 	ms->exec_ret = built[ms->i.j].func(ms, argc, argv);
 	dupper(fdin, fdout);
 	if (close(fdin) == -1 || close(fdout) == -1)
-		return (perror(RED"built mgmt fdin-out"END), errno);
+		perror(RED"built mgmt fdin-out"END);
 	if (ms->cm[0]->fd[0] != STDIN_FILENO)
-	{
 		if (close(ms->cm[0]->fd[0]) == -1)
-			return (perror(RED"built mgmt fd0"END), errno);
-	}
+			perror(RED"built mgmt fd0"END);
+	if (ms->cm[0]->fdhd >= TRUE)
+		if (unlink(".here_doc.tmp") == -1)
+			perror(RED"built mgmt fdhd"END);
 	if (ms->cm[0]->fd[1] != STDOUT_FILENO)
-	{
 		if (close(ms->cm[0]->fd[1]) == -1)
-			return (perror(RED"built mgmt fd1"END), errno);
-	}
-	return (0);
+			perror(RED"built mgmt fd1"END);
 }
 
 int	pipex(t_minishell *ms)

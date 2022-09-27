@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/27 16:26:07 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/27 16:56:54 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,6 +227,7 @@ t_tok		*ft_lstlast_tok(t_tok *lst);
 void		ft_lstadd_back_tok(t_tok **lst, t_tok *new);
 void		ft_printab(char **str);
 char		*isallspace(char *str);
+void		get_fd_in(t_command *cm);
 
 	/* --- build-in --- */
 
