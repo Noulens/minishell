@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:06:24 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/27 16:25:50 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/27 16:28:34 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	dupper(int input, int output)
 
 void	close_std_in_child(t_minishell *ms)
 {
-	int j;
+	int	j;
 
 	if (close(0) == -1)
 		return (perror("close_std_in_child"), (void)0);

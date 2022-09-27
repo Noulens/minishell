@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:43:44 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/26 16:49:21 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/27 16:29:05 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ static void	exit_args(char **argv, t_minishell *minishell)
 			clean_up(minishell->gb, minishell->env_array, minishell->env);
 			exit(2);
 		}
-		else
-			p++;
+		p++;
 	}
 	code = (unsigned char)ft_atol(argv[1]);
 	ft_lstclear_tok(minishell->list);
