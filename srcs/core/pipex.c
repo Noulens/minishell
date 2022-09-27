@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/27 15:46:53 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/27 16:00:51 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,18 +92,20 @@ int	built_mgmt(t_minishell *ms, int argc, char **argv)
 	fdin = dup(STDIN_FILENO);
 	fdout = dup(STDOUT_FILENO);
 	dupper(ms->cm[0]->fd[0], ms->cm[0]->fd[1]);
-	//dup2(ms->cm[0]->fd[0], STDIN_FILENO);
-	//dup2(ms->cm[0]->fd[1], STDOUT_FILENO);
 	ms->exec_ret = built[ms->i.j].func(ms, argc, argv);
 	dupper(fdin, fdout);
-	//dup2(fdin, STDIN_FILENO);
-	//dup2(fdout, STDOUT_FILENO);
-	close(fdin);
-	close(fdout);
+	if (close(fdin) == -1 || close(fdout) == -1)
+		return (perror(RED"built mgmt fdin-out"END), errno);
 	if (ms->cm[0]->fd[0] != STDIN_FILENO)
-		close(ms->cm[0]->fd[0]);
+	{
+		if (close(ms->cm[0]->fd[0]) == -1)
+			return (perror(RED"built mgmt fd0"END), errno);
+	}
 	if (ms->cm[0]->fd[1] != STDOUT_FILENO)
-		close(ms->cm[0]->fd[1]);
+	{
+		if (close(ms->cm[0]->fd[1]) == -1)
+			return (perror(RED"built mgmt fd1"END), errno);
+	}
 	return (0);
 }
 
