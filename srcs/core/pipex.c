@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/27 16:00:51 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/27 16:26:13 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	child_mgmt(int i, int cmd_nbr, t_minishell *ms)
 			dupper(ms->end[2 * i - 2], ms->end[2 * i + 1]);
 		close_pipes(cmd_nbr, ms->end, ms->cm[i]);
 		ms->exec_ret = exec(ms, ms->cm[i]->cmd, ms->cm[i]->env);
-		close_std_in_child(ms, i);
+		close_std_in_child(ms);
 		clean_up(ms->gb, ms->env_array, ms->env);
 		ft_lstclear_tok(ms->list);
 		free_param(ms->cm);

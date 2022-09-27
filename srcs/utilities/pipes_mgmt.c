@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:06:24 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/27 15:41:53 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/27 16:25:50 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,14 +92,24 @@ void	dupper(int input, int output)
 		return (perror("dupper output"), (void)0);
 }
 
-void	close_std_in_child(t_minishell *ms, int i)
+void	close_std_in_child(t_minishell *ms)
 {
-	(void)i;
-	(void)ms;
+	int j;
+
 	if (close(0) == -1)
 		return (perror("close_std_in_child"), (void)0);
 	if (close(1) == -1)
 		return (perror("close_std_in_child"), (void)0);
 	if (close(2) == -1)
 		return (perror("close_std_in_child"), (void)0);
+	j = 0;
+	while (ms->cm[j] != NULL)
+	{
+		if (ms->cm[j]->fd[1] != STDOUT_FILENO)
+		{
+			if (close(ms->cm[j]->fd[1]) == -1)
+				return (perror("close while"), (void)0);
+		}
+		j++;
+	}
 }

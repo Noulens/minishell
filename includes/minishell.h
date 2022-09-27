@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/26 16:53:45 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/27 16:26:07 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,7 +208,7 @@ void		init_struct(t_minishell *ms, t_command *cm);
 void		init_builtin(t_builtin *built);
 int			close_pipes(int cmd_nbr, int *end, t_command *cm);
 int			close_pipes_parent(int cmd_nbr, int *end, t_minishell *ms);
-void		close_std_in_child(t_minishell *ms, int i);
+void		close_std_in_child(t_minishell *ms);
 int			open_pipes(int cmd_nbr, int *end);
 void		dupper(int input, int output);
 int			char_is_token(char c);
