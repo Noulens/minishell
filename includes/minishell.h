@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/27 17:54:16 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/27 21:58:38 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,6 +228,7 @@ void		ft_lstadd_back_tok(t_tok **lst, t_tok *new);
 void		ft_printab(char **str);
 char		*isallspace(char *str);
 void		get_fd_in(t_command *cm);
+void		exit_fd(void);
 
 	/* --- build-in --- */
 

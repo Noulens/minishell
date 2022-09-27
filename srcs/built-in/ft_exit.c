@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:43:44 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/27 16:29:05 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/27 21:56:24 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	exit_fd(void)
+{
+	if (close(0) == -1)
+		return (perror("exit close"), (void)0);
+	if (close(1) == -1)
+		return (perror("exit close"), (void)0);
+	if (close(2) == -1)
+		return (perror("exit close"), (void)0);
+}
 
 static void	exit_1(t_minishell *minishell)
 {
@@ -18,6 +28,7 @@ static void	exit_1(t_minishell *minishell)
 	free_param(minishell->cm);
 	clean_up(minishell->gb, minishell->env_array, minishell->env);
 	ft_putstr_fd(RED"minishell: exit: too many arguments\n"END, 2);
+	exit_fd();
 	exit(1);
 }
 
@@ -33,12 +44,11 @@ static void	exit_args(char **argv, t_minishell *minishell)
 	{
 		if (!ft_isdigit(*p) || len > 20)
 		{
-			ft_putstr_fd(RED"minishell: exit:", 2);
-			ft_putstr_fd(argv[1], 2);
-			ft_putstr_fd(": not a numeric argument\n"END, 2);
+			ft_putstr_fd(RED"minishell: exit: not a numeric argument\n"END, 2);
 			ft_lstclear_tok(minishell->list);
 			free_param(minishell->cm);
 			clean_up(minishell->gb, minishell->env_array, minishell->env);
+			exit_fd();
 			exit(2);
 		}
 		p++;
@@ -47,18 +57,20 @@ static void	exit_args(char **argv, t_minishell *minishell)
 	ft_lstclear_tok(minishell->list);
 	free_param(minishell->cm);
 	clean_up(minishell->gb, minishell->env_array, minishell->env);
+	exit_fd();
 	exit(code);
 }
 
 int	ft_exit(t_minishell *minishell, int argc, char **argv)
 {
 	(void)argc;
-	ft_printf(CYAN"exit bye !\n"END);
+	ft_printf("exit\n");
 	if (argc == 1)
 	{
 		ft_lstclear_tok(minishell->list);
 		free_param(minishell->cm);
 		clean_up(minishell->gb, minishell->env_array, minishell->env);
+		exit_fd();
 		exit(minishell->exec_ret);
 	}
 	else if (argc > 2)
