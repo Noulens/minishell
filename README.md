@@ -5,13 +5,15 @@
 	* [x] Modifier la gestion des signaux suite à la modif de la variable globale
 
 * Mode commande
-	* [ ] implementer le mode command
+	* [x] implementer le mode command
 
 * Execute on multipipe :
 	* [x] Boucle pour executer les cmd multiples en creant autant de pipe que necessaire et en utilisant execve
 	* [x] Gestion des built-in avant execve
 	* [ ] redirection quand : echo foo >> infile | grep foo il faut le resultat dans infile et pas dans grep !!
 	* [ ] printf : gestion des espaces a revoir
+	* [ ] echo "$" -> doit afficher $
+	* [ ] $$ a gerer ?
 
 * Here_doc :
 	* [x] Here_doc : ok.
