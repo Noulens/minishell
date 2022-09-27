@@ -1,6 +1,7 @@
 #other
 *.nfs*
 *.txt
+.vscode/
 
 # Prerequisites
 *.d
