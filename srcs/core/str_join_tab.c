@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   str_join_tab.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/27 17:38:08 by tnoulens          #+#    #+#             */
+/*   Updated: 2022/09/27 17:40:26 by tnoulens         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 int	copy_tab_with_space(char **argv, char *str)
@@ -17,8 +29,8 @@ int	copy_tab_with_space(char **argv, char *str)
 
 int	ft_count_tab(char **str)
 {
-	int		i;
-	int     len;
+	int	i;
+	int	len;
 
 	len = 0;
 	i = 0;
@@ -33,16 +45,16 @@ int	ft_count_tab(char **str)
 	return (len + i);
 }
 
-char *str_join_tab(char **argv)
+char	*str_join_tab(char **argv)
 {
-	int     i;
-	char *str;
+	int		i;
+	char	*str;
 
 	i = ft_count_tab(argv);
 	//ft_printf("i =%d\n", i);
 	str = calloc(sizeof(char), (i + 1));
 	if (str == NULL)
 		return (NULL);
-	copy_tab_with_space(argv, str);	
+	copy_tab_with_space(argv, str);
 	return (str);
 }

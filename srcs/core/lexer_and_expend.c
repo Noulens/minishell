@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_and_expend.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 11:55:02 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/16 16:57:31 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/27 17:48:35 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void count_pipe(t_minishell *ms)
+void	count_pipe(t_minishell *ms)
 {
-	t_tok *temp;
-	
+	t_tok	*temp;
+
 	temp = ms->list;
 	if (ms->list)
 	{
@@ -28,7 +28,6 @@ void count_pipe(t_minishell *ms)
 	}
 	ms->list = temp;
 }
-
 
 int	lexer_and_expend(char *p, t_minishell *minishell)
 {

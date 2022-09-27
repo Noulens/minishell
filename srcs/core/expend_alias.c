@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expend_alias.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:44:18 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/16 16:54:30 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/09/27 17:47:21 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,7 @@ int	break_point_alias(char *str, int i)
 	return (i);
 }
 
-
-int		count_ret(char *str, t_minishell *minishell, int i)
+int	count_ret(char *str, t_minishell *minishell, int i)
 {
 	char	*temp;
 
@@ -153,10 +152,10 @@ int		count_ret(char *str, t_minishell *minishell, int i)
 	return (i);
 }	
 
-int		count_alias(char *str, t_minishell *ms, int i)
+int	count_alias(char *str, t_minishell *ms, int i)
 {
 	int	j;
-	int k;
+	int	k;
 
 	k = 0;
 	j = 0;
@@ -172,13 +171,13 @@ int		count_alias(char *str, t_minishell *ms, int i)
 	return (i);
 }
 
-
-int	count_dollar(char *str,t_minishell *minishell, int i)
+int	count_dollar(char *str, t_minishell *minishell, int i)
 {
 	i++;
 	if (str[i] == '?')
 		i = count_ret(str, minishell, i);
-	else if (char_is_whitespace(str[i]) != 1 && char_is_token(str[i]) != 1 && char_is_quote(str[i]) != 0)
+	else if (char_is_whitespace(str[i]) != 1
+		&& char_is_token(str[i]) != 1 && char_is_quote(str[i]) != 0)
 		i = count_alias(str, minishell, i);
 	return (i);
 }
@@ -199,20 +198,18 @@ int	count_expend(char *str, t_minishell *minishell)
 			i = count_dollar(str, minishell, i);
 			if (i == -1)
 				return (1);
-			continue;	
+			continue ;
 		}
 		if (str[i] == 34 && t2 == 0)
 			t2 = 1;
 		else if (str[i] == 34 && t2 == 1)
-			t2 = 0;	
+			t2 = 0;
 		if (str[i] == 39 && trigger == 0 && check_quote(str, i) == 0 && t2 == 0)
 			trigger = 1;
 		else if (str[i] == 39 && trigger == 1)
-			trigger = 0;	
+			trigger = 0;
 		i++;
 		minishell->i.j++;
 	}
 	return (minishell->i.k += minishell->i.j);
-}	
-
-
+}

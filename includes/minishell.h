@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/27 16:56:54 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/27 17:54:16 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,7 +200,7 @@ int			is_built_in(t_minishell *ms, int argc, char **argv);
 
 void		print_welcome_msg(void);
 int			gb_c(t_list **gb, void *content, void **content2);
-void		init_minishell(t_minishell *minishell);
+void		init_minishell(t_minishell *minishell, int argc);
 void		mini_init(t_minishell *ms);
 void		clean_up(t_list *lst, char **env_array, t_list *env);
 void		clean_iteration(t_minishell *ms);
