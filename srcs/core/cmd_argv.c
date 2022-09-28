@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_argv.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:51:33 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/27 18:01:03 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/28 11:09:21 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	cmd_argv(char **argv, t_minishell *minishell)
+void	cmd_argv(char **argv, t_minishell *minishell)
 {
 	char	*p;
 
@@ -21,9 +21,9 @@ int	cmd_argv(char **argv, t_minishell *minishell)
 	else
 		p = str_join_tab(argv);
 	if (p == NULL)
-		return (1);
+		return (perror("cmd mode: join"), error_clean_up(minishell), (void)0);
 	if (lexer_and_expend(p, minishell) == 1)
-		return (ft_printf("%s", strerror(errno)), errno);
+		return (perror("cmd mode: lexer"), error_clean_up(minishell), (void)0);
 	minishell->exec_ret = parse(minishell);
 	if (minishell->exec_ret != 1)
 		minishell->exec_ret = pipex(minishell);
@@ -33,5 +33,5 @@ int	cmd_argv(char **argv, t_minishell *minishell)
 	free_param(minishell->cm);
 	ft_lstclear(minishell->env);
 	free(minishell->env_array);
-	return (0);
+	exit(minishell->exec_ret);
 }

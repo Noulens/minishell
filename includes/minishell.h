@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/27 21:58:38 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/28 10:42:33 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,6 @@ typedef struct s_minishell
 	t_list		*gb;
 	t_list		*env;
 	char		**env_array;
-	char		**local_env;
 	t_tok		*list;
 	t_int		i;
 	short		sigint;
@@ -144,7 +143,7 @@ typedef struct s_builtin
 /* Protos */
 
 	/* --- lexer --- */
-int			cmd_argv(char **argv, t_minishell *minishell);
+void			cmd_argv(char **argv, t_minishell *minishell);
 char		*str_join_tab(char **argv);
 int			lexer_and_expend(char *p, t_minishell *minishell);
 void		count_pipe(t_minishell *ms);

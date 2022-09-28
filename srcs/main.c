@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/27 18:11:16 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/28 10:40:49 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,7 @@ int	main(int argc, char **argv, char **envp)
 	build_env(&minishell, envp);
 	signal_handling();
 	if (argc > 1)
-	{
 		cmd_argv(argv + 1, &minishell);
-		return (minishell.exec_ret);
-	}
 	while (mini_init(&minishell), 42)
 	{
 		p = prompt_line(&minishell);
@@ -84,7 +81,7 @@ int	main(int argc, char **argv, char **envp)
 			continue ;
 		}
 		if (lexer_and_expend(p, &minishell) == 1)
-			return (ft_printf("%s", strerror(errno)), errno);
+			return (perror("main: lexer:"), errno);
 		minishell.exec_ret = parse(&minishell);
 		if (minishell.exec_ret != 1)
 			minishell.exec_ret = pipex(&minishell);
@@ -93,74 +90,3 @@ int	main(int argc, char **argv, char **envp)
 	}
 	return (0);
 }
-
-/*int	main(int argc, char **argv, char **envp)
-{
-	char		*p;
-	int		i;
-	t_minishell minishell;
-
-	i = 0;
-	init_struct(&minishell.cm[0], envp, argc, argv);
-	g_cm = &minishell.cm[0];
-	print_welcome_msg();
-	signal_handling();
-	while (42)
-	{
-		p = prompt_line(&minishell.cm[0]);
-		if (space_only(p))
-		{
-			minishell.cm[0].sigint = FALSE;
-			continue ;
-		}
-		minishell.cmd_array = m_split(p);
-		//minishell.cmd_array = ft_lstnew(NULL, (void **)cm.cmd);
-		//if (minishell.cmd_array == NULL)
-		//	return (ft_printf("%s", strerror(errno)), errno);
-		minishell.nbr_cmd = ft_strlen_tab(minishell.cmd_array);
-		while (i < minishell.nbr_cmd)
-		{
-			printf("%d\n", minishell.nbr_cmd);
-			parsing_token(minishell.cmd_array[i], &minishell.cm[i]);	
-			minishell.cm[i].exec_ret = pipex(&minishell.cm[i]);
-			ft_lstclear(minishell.cm[i].gb);
-			printf("%d\n", minishell.cm[i].exec_ret);
-			init_struct(&minishell.cm[i], envp, argc, argv);
-			i++;
-		}	
-	}
-
-
-
-
-
-
-
-
-
-	return (0);
-
-
-
-
-
-int main()
-{
-    char str[] = ">>";
-    
-    if (str[0] = (str[0] | str[1]))
-        printf("ca marche\n");
-
-    return 0;
-}
-
-
-0 = COMMANDE
-1 = CHEVRON in
-2 = CHEVRON OUT
-3 = pipe
-4 = alias ($)
-5 = 0
-
-
-}*/

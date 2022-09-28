@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:57:27 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/27 18:04:06 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:38:26 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ void	init_builtin(t_builtin *built)
 
 void	init_minishell(t_minishell *minishell, int argc)
 {
-	if (argc == 1)
-		print_welcome_msg();
+	(void)argc;
+	//if (argc == 1)
+	//	print_welcome_msg();
 	g_ms = minishell;
 	minishell->nbr_cmd = 1;
 	minishell->cmd_array = NULL;
@@ -44,7 +45,6 @@ void	init_minishell(t_minishell *minishell, int argc)
 	minishell->env = NULL;
 	minishell->env_array = NULL;
 	minishell->list = NULL;
-	minishell->local_env = NULL;
 	minishell->sigint = FALSE;
 	minishell->i.i = -1;
 }
@@ -69,19 +69,3 @@ void	mini_init(t_minishell *ms)
 	ms->list = NULL;
 	ms->gb = NULL;
 }
-/*
-	char	**cmd; ok
-	char	*infile; ok
-	char	*outfile; ok
-	char	**env; ok
-	pid_t	pid; ok
-	pid_t	*pids; ok
-	int		*end; ok
-	int		fd[2]; ok
-	int		fdhd; ok
-	short	here_doc; ok
-	short	outfile_append; ok
-	char	*limiter; ok
-	int		exec_ret; NOPE
-	short	sigint; ok
-*/
