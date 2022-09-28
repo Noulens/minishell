@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 20:47:10 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/14 23:33:16 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/28 21:36:32 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,3 @@ int	ft_pwd(t_minishell *minishell, int argc, char **argv)
 	else
 		return (perror("pwd"), errno);
 }
-/*
-int main(void)
-{
-	ft_pwd();
-	return 0;
-}
-*/

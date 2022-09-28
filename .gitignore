@@ -2,6 +2,8 @@
 *.nfs*
 *.txt
 .vscode/
+testunset.c
+test_build_env.c
 
 # Prerequisites
 *.d

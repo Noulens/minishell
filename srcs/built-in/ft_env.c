@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 19:00:00 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/14 23:34:22 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/28 21:35:59 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,3 @@ int	ft_env(t_minishell *minishell, int argc, char **argv)
 	}
 	return (0);
 }
-/*
-int	main(int argc, char **argv, char ** envp)
-{
-	(void)argc;
-	(void)argv;
-	ft_env(envp);
-	return (0);
-}*/

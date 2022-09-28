@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:09:29 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/26 13:59:39 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/28 21:40:48 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,41 +84,3 @@ int	parse(t_minishell *ms)
 	}
 	return (0);
 }
-
-/*
-int	parse(t_minishell *ms)
-{
-	t_command	**pa;
-	t_tok		*tmp;
-	char		*cmdline;
-	int			i;
-
-	pa = malloc_pa(ms, &i, &tmp, &cmdline);
-	g_ms->i.i = -1;
-	if (pa == NULL)
-		return (1);
-	ms->cm = pa;
-	while (tmp)
-	{
-		if (tmp->type == 0 && ttok0(pa, &i, &cmdline) == 138)
-			return (perror("parse"), free_param(pa), error_clean_up(ms), 1);
-		else if (tmp->type == 1 && ttok1(tmp, pa, i) == 1)
-			return (perror("parse"), free_param(pa), error_clean_up(ms), 1);
-		else if (tmp->type == 2 && ttok2(tmp, pa, i) == 1)
-			return (perror("parse"), free_param(pa), error_clean_up(ms), 1);
-		else if (tmp->type == 4 && ttok4(tmp, pa, i) == 1)
-			return (perror("parse"), free_param(pa), error_clean_up(ms), 1);
-		else if (ttok356(tmp, pa, &i, &cmdline) == -1)
-			return (free_param(pa), error_clean_up(ms), 1);
-		tmp = tmp->next;
-	}
-	return (0);
-}
-*/
-/*
-int	main(int argc, char **argv)
-{
-	(void)argc;
-	ft_printf("res:%s\n", gethdname(argv[1]));
-	return 0;
-}*/

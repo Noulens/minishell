@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:23:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/26 13:44:14 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/09/28 21:35:39 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,3 @@ int	ft_echo(t_minishell *minishell, int argc, char **argv)
 		ft_printf("\n");
 	return (SUCCESS);
 }
-/*
-int main(int argc, char **p)
-{
-	
-	t_minishell *ms;
-	ft_echo(ms, argc, p);
-	return 0;
-}*/

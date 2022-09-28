@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 15:34:55 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/25 13:39:47 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/28 21:41:40 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,3 @@ void	print_welcome_msg(void)
 		ft_printf ("\nWelcome %s", user);
 	ft_printf("\n"END);
 }
-/*
-int main(void)
-{
-	print_welcome_msg();
-	return 0;
-}
-*/

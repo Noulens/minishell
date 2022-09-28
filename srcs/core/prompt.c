@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:34:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/27 21:57:56 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/28 21:39:50 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,3 @@ char	*prompt_line(t_minishell *ms)
 		g_ms->sigint = FALSE;
 	return (line_read);
 }
-
-/*
-int main(int argc, char **argv, char **envp)
-{
-	char 		*p;
-	t_command 	cm;
-	t_list		*list;
-
-	(void)argc;
-	(void)argv;
-	list = NULL;
-	cm.env = envp;
-	cm.gb = &list;
-	print_welcome_msg();
-	while (42)
-	{
-		p = prompt_line();
-		cm.cmd = ft_split(p, '|');
-		pipex(&cm);
-		printf("ok\n");
-	}
-	ft_lstclear(*(cm.gb));
-	free(p);
-	return (0);
-}*/

@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:57:27 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/28 14:38:26 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/28 21:41:18 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	init_builtin(t_builtin *built)
 void	init_minishell(t_minishell *minishell, int argc)
 {
 	(void)argc;
-	//if (argc == 1)
-	//	print_welcome_msg();
+	if (argc == 1)
+		print_welcome_msg();
 	g_ms = minishell;
 	minishell->nbr_cmd = 1;
 	minishell->cmd_array = NULL;
