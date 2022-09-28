@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/28 10:42:33 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/28 19:02:24 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ typedef struct s_builtin
 /* Protos */
 
 	/* --- lexer --- */
-void			cmd_argv(char **argv, t_minishell *minishell);
+void		cmd_argv(char **argv, t_minishell *minishell);
 char		*str_join_tab(char **argv);
 int			lexer_and_expend(char *p, t_minishell *minishell);
 void		count_pipe(t_minishell *ms);
@@ -209,7 +209,7 @@ int			close_pipes(int cmd_nbr, int *end, t_command *cm);
 int			close_pipes_parent(int cmd_nbr, int *end, t_minishell *ms);
 void		close_std_in_child(t_minishell *ms);
 int			open_pipes(int cmd_nbr, int *end);
-void		dupper(int input, int output);
+void		dupper(int input, int output, t_minishell *ms, int i);
 int			char_is_token(char c);
 int			char_is_quote(char c);
 int			char_is_whitespace(char c);

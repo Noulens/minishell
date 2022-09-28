@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/27 22:03:00 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/09/28 19:05:29 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ int	child_mgmt(int i, int cmd_nbr, t_minishell *ms)
 	{
 		get_fd_in(ms->cm[i]);
 		if (i == 0 && cmd_nbr == 1)
-			dupper(ms->cm[i]->fd[0], ms->cm[i]->fd[1]);
+			dupper(ms->cm[i]->fd[0], ms->cm[i]->fd[1], ms, i);
 		else if (i == 0)
-			dupper(ms->cm[i]->fd[0], ms->end[1]);
+			dupper(ms->cm[i]->fd[0], ms->end[1], ms, i);
 		else if (i == cmd_nbr - 1)
-			dupper(ms->end[2 * i - 2], ms->cm[i]->fd[1]);
+			dupper(ms->end[2 * i - 2], ms->cm[i]->fd[1], ms, i);
 		else
-			dupper(ms->end[2 * i - 2], ms->end[2 * i + 1]);
+			dupper(ms->end[2 * i - 2], ms->end[2 * i + 1], ms, i);
 		close_pipes(cmd_nbr, ms->end, ms->cm[i]);
 		ms->exec_ret = exec(ms, ms->cm[i]->cmd, ms->cm[i]->env);
 		close_std_in_child(ms);
@@ -81,9 +81,9 @@ void	built_mgmt(t_minishell *ms, int argc, char **argv)
 		ms->exec_ret = built[ms->i.j].func(ms, argc, argv);
 	fdin = dup(STDIN_FILENO);
 	fdout = dup(STDOUT_FILENO);
-	dupper(ms->cm[0]->fd[0], ms->cm[0]->fd[1]);
+	dupper(ms->cm[0]->fd[0], ms->cm[0]->fd[1], ms, 0);
 	ms->exec_ret = built[ms->i.j].func(ms, argc, argv);
-	dupper(fdin, fdout);
+	dupper(fdin, fdout, ms, 0);
 	if (close(fdin) == -1 || close(fdout) == -1)
 		perror(RED"built mgmt fdin-out"END);
 	if (ms->cm[0]->fd[0] != STDIN_FILENO)
