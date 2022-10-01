@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:07:44 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/01 16:05:33 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/01 16:53:19 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char	*gethdname(char *str)
 
 	len = ft_strlen(str);
 	if (len <= 2 || isallspace(str + 2) == NULL)
-		return (ft_putstr_fd(RED"heredoc : bad name\n"END, 2), NULL);
+		return (ft_putstr_fd("heredoc : bad name\n", 2), NULL);
 	else
 	{
 		p = ft_strdup(str + 2);

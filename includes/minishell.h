@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/01 16:00:03 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/01 16:46:37 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@
 # define APPEND_LEX 4
 # define CMD_LEX 5
 # define PIPE_LEX 6
+# define NOTFOUND " command not found"
 
 /* Structure lexer */
 

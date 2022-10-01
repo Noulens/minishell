@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:44:09 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/01 15:59:01 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/01 16:53:46 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	error_clean_up(t_minishell *ms)
 	int	error;
 
 	error = errno;
-	ft_printf(RED"%s\n"END, strerror(error));
+	ft_printf("%s\n", strerror(error));
 	ft_lstclear(ms->gb);
 	ft_lstclear(ms->env);
 	ft_lstclear_tok(ms->list);

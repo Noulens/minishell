@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:09:29 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/01 16:01:06 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/01 16:53:37 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	check_heredoc(t_command **pa, int i)
 		{
 			close(pa[i]->fdhd);
 			if (p == NULL)
-				ft_printf(RED"warning: expected %s\n"END, pa[i]->limiter);
+				ft_printf("warning: expected %s\n", pa[i]->limiter);
 			free(p);
 			break ;
 		}
