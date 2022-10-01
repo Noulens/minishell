@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:09:09 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/01 16:53:27 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/01 17:12:29 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	ttok4(t_tok *tmp, t_command **pa, int i)
 		if (pa[i]->o == NULL)
 			return (1);
 		pa[i]->fd[1] = open(pa[i]->o, O_CREAT | O_WRONLY | O_APPEND, 0644);
-		if (pa[i]->fd[1] <= -1)
+		if (pa[i]->fd[1] <= -1 || pa[i]->fd[1] > FOPEN_MAX)
 			return (perror("parse fd out append open"), 1);
 	}
 	else
@@ -57,7 +57,7 @@ int	ttok4(t_tok *tmp, t_command **pa, int i)
 		if (pa[i]->o == NULL)
 			return (1);
 		pa[i]->fd[1] = open(pa[i]->o, O_CREAT | O_WRONLY | O_APPEND, 0644);
-		if (pa[i]->fd[1] <= -1)
+		if (pa[i]->fd[1] <= -1 || pa[i]->fd[1] > FOPEN_MAX)
 			return (perror("parse fd out append open"), 1);
 	}
 	return (0);
@@ -71,7 +71,7 @@ int	ttok1(t_tok *tmp, t_command **pa, int i)
 		if (pa[i]->inf == NULL)
 			return (1);
 		pa[i]->fd[0] = open(pa[i]->inf, O_RDONLY);
-		if (pa[i]->fd[0] <= -1)
+		if (pa[i]->fd[0] <= -1 || pa[i]->fd[0] > FOPEN_MAX)
 			return (perror("parse fd in open"), 1);
 	}
 	else
@@ -85,7 +85,7 @@ int	ttok1(t_tok *tmp, t_command **pa, int i)
 		if (pa[i]->inf == NULL)
 			return (1);
 		pa[i]->fd[0] = open(pa[i]->inf, O_RDONLY);
-		if (pa[i]->fd[0] <= -1)
+		if (pa[i]->fd[0] <= -1 || pa[i]->fd[0] > FOPEN_MAX)
 			return (perror("parse fd in open"), 1);
 	}
 	return (0);
@@ -99,7 +99,7 @@ int	ttok2(t_tok *tmp, t_command **pa, int i)
 		if (pa[i]->o == NULL)
 			return (1);
 		pa[i]->fd[1] = open(pa[i]->o, O_CREAT | O_WRONLY | O_TRUNC, 0644);
-		if (pa[i]->fd[1] <= -1)
+		if (pa[i]->fd[1] <= -1 || pa[i]->fd[1] > FOPEN_MAX)
 			return (perror("parse fd out open"), 1);
 	}
 	else
@@ -112,7 +112,7 @@ int	ttok2(t_tok *tmp, t_command **pa, int i)
 		if (pa[i]->o == NULL)
 			return (1);
 		pa[i]->fd[1] = open(pa[i]->o, O_CREAT | O_WRONLY | O_TRUNC, 0644);
-		if (pa[i]->fd[1] <= -1)
+		if (pa[i]->fd[1] <= -1 || pa[i]->fd[1] > FOPEN_MAX)
 			return (perror("parse fd out open"), 1);
 	}
 	return (0);

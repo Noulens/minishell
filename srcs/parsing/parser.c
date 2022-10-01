@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:09:29 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/01 16:53:37 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/01 17:13:14 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	check_heredoc(t_command **pa, int i)
 	int		tmp_fd;
 
 	tmp_fd = open(".here_doc.tmp", O_CREAT | O_WRONLY | O_TRUNC, 0644);
-	if (tmp_fd == -1)
+	if (tmp_fd == -1 || tmp_fd > FOPEN_MAX)
 		return (perror("check_heredoc open"), (void)0);
 	pa[i]->fdhd = dup(STDIN_FILENO);
 	g_ms->i.i = i;
