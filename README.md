@@ -11,7 +11,8 @@
 	* [x] Boucle pour executer les cmd multiples en creant autant de pipe que necessaire et en utilisant execve
 	* [x] Gestion des built-in avant execve
 	* [x] /!\ redirection quand : echo foo >> infile | grep foo il faut le resultat dans infile et pas dans grep !!
-	* [ ] /!\ parsing : faire une LL pour gérer les espaces
+	* [ ] /!\ lexer: gérer les espaces en envoyant un élément à la fois par maillon de liste tok (ex: echo -n fuu  -> echo -> -n -> fuu au lieu de -> echo -n fuu)
+	* [x] /!\ parsing: faire une LL pour gérer les espaces
 	* [ ] /!\ echo "$" -> doit afficher $
 	* [x] $$ a gerer ? -> non
 
