@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/01 15:24:04 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/01 16:00:03 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ typedef struct s_split // PROBABLEMENT A SUPPRIMER
 typedef struct s_commands
 {
 	char	**cmd;
-	t_list	*cmdline;
+	t_list	*cmdlst;
 	char	*inf;
 	char	*o;
 	char	**env;
@@ -181,11 +181,11 @@ char		*expend_alias(char *str, t_minishell *ms);
 
 int			parse(t_minishell *ms);
 int			ttok4(t_tok *tmp, t_command **pa, int i);
-t_command	**malloc_pa(t_minishell *ms, int *j, t_tok **tmp, char **cmdline);
-int			ttok0(t_command **pa, int *i, char **cmdline);
+t_command	**malloc_pa(t_minishell *ms, int *j, t_tok **tmp);
+int			ttok0(t_command **pa, int *i);
 int			ttok1(t_tok *tmp, t_command **pa, int i);
 int			ttok2(t_tok *tmp, t_command **pa, int i);
-int			ttok356(t_tok *tmp, t_command **pa, int *i, char **cmdline);
+int			ttok356(t_tok *tmp, t_command **pa, int *i);
 void		check_heredoc(t_command **pa, int i);
 
 	/* --- core --- */

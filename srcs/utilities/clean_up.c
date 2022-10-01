@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:44:09 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/01 15:27:18 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/01 15:59:01 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	free_param(t_command **param)
 	while (param[i] != NULL)
 	{
 		free(param[i]->cmd);
-		ft_lstclear(param[i]->cmdline);
+		ft_lstclear(param[i]->cmdlst);
 		free(param[i]->inf);
 		free(param[i]->o);
 		free(param[i]->limiter);
