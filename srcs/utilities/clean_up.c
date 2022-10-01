@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_up.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:44:09 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/26 15:27:10 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/01 15:27:18 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 void	error_clean_up(t_minishell *ms)
 {
-	ft_printf(RED"%s\n"END, strerror(errno));
+	int	error;
+
+	error = errno;
+	ft_printf(RED"%s\n"END, strerror(error));
 	ft_lstclear(ms->gb);
 	ft_lstclear(ms->env);
 	ft_lstclear_tok(ms->list);
 	free(ms->env_array);
-	exit(137);
+	exit(error);
 }
 
 void	free_param(t_command **param)
@@ -29,7 +32,8 @@ void	free_param(t_command **param)
 	i = 0;
 	while (param[i] != NULL)
 	{
-		ft_free_split(param[i]->cmd);
+		free(param[i]->cmd);
+		ft_lstclear(param[i]->cmdline);
 		free(param[i]->inf);
 		free(param[i]->o);
 		free(param[i]->limiter);

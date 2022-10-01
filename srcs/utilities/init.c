@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:57:27 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/28 21:41:18 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/01 15:24:46 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	init_minishell(t_minishell *minishell, int argc)
 void	init_struct(t_minishell *ms, t_command *cm)
 {
 	cm->cmd = NULL;
+	cm->cmdline = NULL;
 	cm->fd[0] = STDIN_FILENO;
 	cm->fd[1] = STDOUT_FILENO;
 	cm->fdhd = -1;

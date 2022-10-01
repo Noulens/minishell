@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/28 19:02:24 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/01 15:24:04 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ typedef struct s_split // PROBABLEMENT A SUPPRIMER
 typedef struct s_commands
 {
 	char	**cmd;
+	t_list	*cmdline;
 	char	*inf;
 	char	*o;
 	char	**env;
