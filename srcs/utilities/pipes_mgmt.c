@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:06:24 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/28 19:04:51 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/01 16:29:34 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	close_std_in_child(t_minishell *ms)
 		if (ms->cm[j]->fd[1] != STDOUT_FILENO)
 		{
 			if (close(ms->cm[j]->fd[1]) == -1)
-				return (perror("close while"), (void)0);
+				return (perror("close_std_in_child while loop"), (void)0);
 		}
 		j++;
 	}
