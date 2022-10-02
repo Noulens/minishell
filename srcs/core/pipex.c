@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/28 21:50:17 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/02 19:14:48 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,13 @@ void	built_mgmt(t_minishell *ms, int argc, char **argv)
 		ms->exec_ret = built[ms->i.j].func(ms, argc, argv);
 	fdin = dup(STDIN_FILENO);
 	fdout = dup(STDOUT_FILENO);
+	if (fdin == -1 || fdout == -1)
+		perror(RED"built mgmt dup fdin-out"END);
 	dupper(ms->cm[0]->fd[0], ms->cm[0]->fd[1], ms, 0);
 	ms->exec_ret = built[ms->i.j].func(ms, argc, argv);
-	dupper(fdin, fdout, ms, 0);
+	if (dup2(fdout, STDOUT_FILENO) == -1
+		|| dup2(fdin, STDIN_FILENO) == -1)
+		perror(RED"built mgmt fdin-out re-STD"END);
 	if (close(fdin) == -1 || close(fdout) == -1)
 		perror(RED"built mgmt fdin-out"END);
 	if (ms->cm[0]->fd[0] != STDIN_FILENO)
