@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/02 19:23:56 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/02 19:51:53 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,23 +82,20 @@ void	built_mgmt(t_minishell *ms, int argc, char **argv)
 	fdin = dup(STDIN_FILENO);
 	fdout = dup(STDOUT_FILENO);
 	if (fdin == -1 || fdout == -1)
-		perror(RED"built mgmt dup fdin-out"END);
+		perror("built mgmt dup fdin-out");
 	dupper(ms->cm[0]->fd[0], ms->cm[0]->fd[1], ms, 0);
 	ms->exec_ret = built[ms->i.j].func(ms, argc, argv);
 	if (dup2(fdout, STDOUT_FILENO) == -1
 		|| dup2(fdin, STDIN_FILENO) == -1)
-		perror(RED"built mgmt fdin-out re-STD"END);
+		perror("built mgmt fdin-out re-STD");
 	if (close(fdin) == -1 || close(fdout) == -1)
 		perror("built mgmt fdin-out");
-	if (ms->cm[0]->fd[0] != STDIN_FILENO)
-		if (close(ms->cm[0]->fd[0]) == -1)
-			perror("built mgmt fd0");
-	if (ms->cm[0]->fdhd >= TRUE)
-		if (unlink(".here_doc.tmp") == -1)
-			perror("built mgmt fdhd");
-	if (ms->cm[0]->fd[1] != STDOUT_FILENO)
-		if (close(ms->cm[0]->fd[1]) == -1)
-			perror("built mgmt fd1");
+	if (ms->cm[0]->fd[0] != STDIN_FILENO && close(ms->cm[0]->fd[0]) == -1)
+		perror("built mgmt fd0");
+	if (ms->cm[0]->fdhd >= TRUE && unlink(".here_doc.tmp") == -1)
+		perror("built mgmt fdhd");
+	if (ms->cm[0]->fd[1] != STDOUT_FILENO && close(ms->cm[0]->fd[1]) == -1)
+		perror("built mgmt fd1");
 }
 
 int	pipex(t_minishell *ms)
