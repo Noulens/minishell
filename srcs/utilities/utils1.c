@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 23:28:09 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/27 16:55:57 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/01 17:13:52 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	get_fd_in(t_command *cm)
 	if (cm->here_doc >= TRUE)
 	{
 		cm->fd[0] = open(".here_doc.tmp", O_RDONLY);
-		if (cm->fd[0] == -1)
+		if (cm->fd[0] == -1 || cm->fd[0] > FOPEN_MAX)
 			perror("get_fd_in");
 	}
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+         #
+#    By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/09/27 15:47:05 by tnoulens         ###   ########.fr        #
+#    Updated: 2022/10/01 15:13:21 by waxxy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,32 +70,32 @@ SUPP		=	printf "{\n    leak readline\n    Memcheck:Leak\n    ...\n    fun:readli
 all			: ${NAME}
 
 %.o: %.c
-		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
+		${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
 
 ${LIBFT}	:
 		@echo "\033[35m----Building libft----"
-		@make -sC ${LIB_DIR}
+		make -sC ${LIB_DIR}
 		@echo "OK\033[0m"
 
 ${NAME}		: ${OBJS}  ${LIBFT}
 		@echo "\033[34m----Compiling----"
-		@${CC} ${FLAGS} ${OBJS} -L/usr/include -lreadline -o ${NAME} ${LIBFT}
-		@${SUPP}
+		${CC} ${FLAGS} ${OBJS} -L/usr/include -lreadline -o ${NAME} ${LIBFT}
+		${SUPP}
 		@echo "OK\033[0m"
 
 clean		:
 		@echo "\033[31m----Cleaning libft----"
-		@make clean -sC ${LIB_DIR}
+		make clean -sC ${LIB_DIR}
 		@echo "OK"
 		@echo "\033[31m----Cleaning objects----"
-		@${RM} ${OBJS}
+		${RM} ${OBJS}
 		@echo "OK\033[0m"
 
 fclean		: clean
 		@echo "\033[33m----Cleaning all----"
-		@${RM} ${NAME}
-		@${RM} ${LIBFT}
-		@${RM} ignore_leak.supp
+		${RM} ${NAME}
+		${RM} ${LIBFT}
+		${RM} ignore_leak.supp
 		@echo "OK\033[0m"
 
 re			: fclean all

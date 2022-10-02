@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/02 19:14:48 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/02 19:23:56 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,16 +89,16 @@ void	built_mgmt(t_minishell *ms, int argc, char **argv)
 		|| dup2(fdin, STDIN_FILENO) == -1)
 		perror(RED"built mgmt fdin-out re-STD"END);
 	if (close(fdin) == -1 || close(fdout) == -1)
-		perror(RED"built mgmt fdin-out"END);
+		perror("built mgmt fdin-out");
 	if (ms->cm[0]->fd[0] != STDIN_FILENO)
 		if (close(ms->cm[0]->fd[0]) == -1)
-			perror(RED"built mgmt fd0"END);
+			perror("built mgmt fd0");
 	if (ms->cm[0]->fdhd >= TRUE)
 		if (unlink(".here_doc.tmp") == -1)
-			perror(RED"built mgmt fdhd"END);
+			perror("built mgmt fdhd");
 	if (ms->cm[0]->fd[1] != STDOUT_FILENO)
 		if (close(ms->cm[0]->fd[1]) == -1)
-			perror(RED"built mgmt fd1"END);
+			perror("built mgmt fd1");
 }
 
 int	pipex(t_minishell *ms)

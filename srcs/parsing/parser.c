@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:09:29 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/28 21:40:48 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/01 17:13:14 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	check_heredoc(t_command **pa, int i)
 	int		tmp_fd;
 
 	tmp_fd = open(".here_doc.tmp", O_CREAT | O_WRONLY | O_TRUNC, 0644);
-	if (tmp_fd == -1)
+	if (tmp_fd == -1 || tmp_fd > FOPEN_MAX)
 		return (perror("check_heredoc open"), (void)0);
 	pa[i]->fdhd = dup(STDIN_FILENO);
 	g_ms->i.i = i;
@@ -46,7 +46,7 @@ void	check_heredoc(t_command **pa, int i)
 		{
 			close(pa[i]->fdhd);
 			if (p == NULL)
-				ft_printf(RED"warning: expected %s\n"END, pa[i]->limiter);
+				ft_printf("warning: expected %s\n", pa[i]->limiter);
 			free(p);
 			break ;
 		}
@@ -60,10 +60,9 @@ int	parse(t_minishell *ms)
 {
 	t_command	**pa;
 	t_tok		*tmp;
-	char		*cmdline;
 	int			i;
 
-	pa = malloc_pa(ms, &i, &tmp, &cmdline);
+	pa = malloc_pa(ms, &i, &tmp);
 	g_ms->i.i = -1;
 	if (pa == NULL)
 		return (1);
@@ -71,16 +70,45 @@ int	parse(t_minishell *ms)
 	while (tmp)
 	{
 		if (tmp->type == 0)
-			ttok0(pa, &i, &cmdline);
+			ttok0(pa, &i);
 		else if (tmp->type == 1 && ttok1(tmp, pa, i) == 1)
 			return (1);
 		else if (tmp->type == 2 && ttok2(tmp, pa, i) == 1)
 			return (1);
 		else if (tmp->type == 4 && ttok4(tmp, pa, i) == 1)
 			return (1);
-		else if (ttok356(tmp, pa, &i, &cmdline) == -1)
+		else if (ttok356(tmp, pa, &i) == -1)
 			return (free_param(pa), error_clean_up(ms), 1);
 		tmp = tmp->next;
 	}
 	return (0);
 }
+
+//int	parse(t_minishell *ms)
+//{
+//	t_command	**pa;
+//	t_tok		*tmp;
+//	char		*cmdline;
+//	int			i;
+//
+//	pa = malloc_pa(ms, &i, &tmp, &cmdline);
+//	g_ms->i.i = -1;
+//	if (pa == NULL)
+//		return (1);
+//	ms->cm = pa;
+//	while (tmp)
+//	{
+//		if (tmp->type == 0)
+//			ttok0(pa, &i, &cmdline);
+//		else if (tmp->type == 1 && ttok1(tmp, pa, i) == 1)
+//			return (1);
+//		else if (tmp->type == 2 && ttok2(tmp, pa, i) == 1)
+//			return (1);
+//		else if (tmp->type == 4 && ttok4(tmp, pa, i) == 1)
+//			return (1);
+//		else if (ttok356(tmp, pa, &i, &cmdline) == -1)
+//			return (free_param(pa), error_clean_up(ms), 1);
+//		tmp = tmp->next;
+//	}
+//	return (0);
+//}

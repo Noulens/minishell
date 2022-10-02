@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:43:44 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/02 17:08:50 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/02 19:21:41 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	exit_1(t_minishell *minishell)
 	ft_lstclear_tok(minishell->list);
 	free_param(minishell->cm);
 	clean_up(minishell->gb, minishell->env_array, minishell->env);
-	ft_putstr_fd(RED"minishell: exit: too many arguments\n"END, 2);
+	ft_putstr_fd("minishell: exit: too many arguments\n", 2);
 	exit_fd();
 	exit(1);
 }
@@ -44,7 +44,7 @@ static void	exit_args(char **argv, t_minishell *minishell)
 	{
 		if (!ft_isdigit(*p) || len > 20)
 		{
-			ft_putstr_fd(RED"minishell: exit: not a numeric argument\n"END, 2);
+			ft_putstr_fd("minishell: exit: not a numeric argument\n", 2);
 			ft_lstclear_tok(minishell->list);
 			free_param(minishell->cm);
 			clean_up(minishell->gb, minishell->env_array, minishell->env);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:42:15 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/26 17:25:13 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/01 16:52:35 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ int	formatok(char *str)
 	p = ft_strchr(str, '=');
 	if (p == NULL || *p == *str || str_is_alnum(str))
 	{
-		ft_putstr_fd(RED"export: ", 2);
+		ft_putstr_fd("export: ", 2);
 		ft_putstr_fd(str, 2);
-		ft_putstr_fd(": no export done, not a valid identifier\n"END, 2);
+		ft_putstr_fd(": no export done, not a valid identifier\n", 2);
 		return (1);
 	}
 	else
