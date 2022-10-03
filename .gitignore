@@ -8,6 +8,7 @@ script_lexer.sh
 bu_monitoring.sh
 tno/
 README.md
+obsolete/
 
 # Prerequisites
 *.d
