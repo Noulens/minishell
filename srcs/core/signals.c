@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:33:49 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/03 17:41:05 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/03 18:54:45 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	tmp_handler(int sig, siginfo_t *info, void *context)
 {
-	(void)info;
 	(void)context;
+	(void)info;
 	if (sig == SIGINT)
 	{
 		g_ms->sigint = TRUE;
@@ -33,6 +33,8 @@ void	tmp_handler(int sig, siginfo_t *info, void *context)
 	}
 	if (sig == SIGQUIT)
 		ft_printf("\b\b");
+	if (sig == SIGTERM)
+		ft_printf("\b\b");
 }
 
 void	signal_handling(void)
@@ -44,4 +46,5 @@ void	signal_handling(void)
 	sa.sa_sigaction = tmp_handler;
 	sigaction(SIGINT, &sa, NULL);
 	sigaction(SIGQUIT, &sa, NULL);
+	sigaction(SIGTERM, &sa, NULL);
 }
