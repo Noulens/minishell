@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/03 14:52:57 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/03 17:43:33 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,21 +85,7 @@ int	main(int argc, char **argv, char **envp)
 		minishell.exec_ret = parse(&minishell);
 		if (minishell.exec_ret != 1)
 			minishell.exec_ret = pipex(&minishell);
-		printf("exit code: %d\n", minishell.exec_ret); // a virer
 		clean_iteration(&minishell);
 	}
 	return (0);
 }
-
-
-
-/*
-
-str ls 
-type CMD
-str -l
-type CMD
-str "  foo  "
-type CMD
-
-"$" : ne marche pas quand il y en a qu'un*/

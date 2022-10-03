@@ -4,6 +4,8 @@
 .vscode/
 testunset.c
 test_build_env.c
+script_lexer.sh
+bu_monitoring.sh
 
 # Prerequisites
 *.d

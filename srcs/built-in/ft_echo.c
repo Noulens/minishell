@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:23:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/28 21:35:39 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/03 17:14:00 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static int	options_n(char *p)
+{
+	char	*ptr;
+
+	ptr = p;
+	while (*ptr == 'n' && *ptr)
+		++ptr;
+	if (*ptr == 0)
+		return (1);
+	else
+		return (0);
+}
 
 int	ft_echo(t_minishell *minishell, int argc, char **argv)
 {
@@ -22,7 +35,7 @@ int	ft_echo(t_minishell *minishell, int argc, char **argv)
 	i = 1;
 	while (--argc > 0 && argv[i][0] == '-')
 	{
-		if (argv[i][1] == 'n' && argv[i][2] == '\0')
+		if (options_n(argv[1] + 1))
 			option_n = i++;
 		else if (argc == 1)
 			ft_printf("%s", argv[i++]);

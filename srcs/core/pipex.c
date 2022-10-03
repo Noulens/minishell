@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/02 19:51:53 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/03 17:29:22 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,12 +119,9 @@ int	pipex(t_minishell *ms)
 	{
 		waitpid(ms->pids[i], &ret, 0);
 		if (WIFEXITED(ret))
-			ft_printf("P %d, exit ok: %d\n", i, ms->exec_ret = WEXITSTATUS(ret)); // garder ms->exec_ret = WEXITSTATUS(ret) uniquement
+			ms->exec_ret = WEXITSTATUS(ret);
 		else
-		{
 			ms->exec_ret = errno;
-			ft_printf("P %d, interrupted\n", i); // a virer
-		}
 	}
 	return (ms->exec_ret);
 }

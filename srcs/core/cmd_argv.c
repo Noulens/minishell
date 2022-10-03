@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_argv.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:51:33 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/28 21:49:28 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/03 17:44:03 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	cmd_argv(char **argv, t_minishell *minishell)
 		minishell->exec_ret = pipex(minishell);
 	ft_lstclear(minishell->gb);
 	ft_lstclear_tok(minishell->list);
-	printf("exit code: %d\n", minishell->exec_ret); //a virer
 	free_param(minishell->cm);
 	ft_lstclear(minishell->env);
 	free(minishell->env_array);
