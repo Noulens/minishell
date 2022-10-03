@@ -4,10 +4,9 @@
 .vscode/
 testunset.c
 test_build_env.c
-script_lexer.sh
-bu_monitoring.sh
+*.sh
 tno/
-README.md
+*.md
 obsolete/
 
 # Prerequisites

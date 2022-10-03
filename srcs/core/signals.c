@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:33:49 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/03 18:54:45 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/03 22:20:38 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ void	tmp_handler(int sig, siginfo_t *info, void *context)
 	if (sig == SIGQUIT)
 		ft_printf("\b\b");
 	if (sig == SIGTERM)
-		ft_printf("\b\b");
+		return (ft_lstclear_tok(g_ms->list), free_param(g_ms->cm),
+		clean_up(g_ms->gb, g_ms->env_array, g_ms->env),
+		ft_printf("Terminated\n"), exit_fd(), exit(143), (void)0);
 }
 
 void	signal_handling(void)
