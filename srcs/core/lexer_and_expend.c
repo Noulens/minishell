@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_and_expend.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 11:55:02 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/27 17:48:35 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/03 15:07:10 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	lexer_and_expend(char *p, t_minishell *minishell)
 	if (expend_and_cut_quote(minishell) == 1)
 		return (1);
 	count_pipe(minishell);
-	printlist(minishell->list); //A SUPPRIMER A LA FIN
-	ft_printf("nombre de process : %d\n", minishell->nbr_cmd);
+	//printlist(minishell->list); //A SUPPRIMER A LA FIN
+	//ft_printf("nombre de process : %d\n", minishell->nbr_cmd);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/01 19:59:28 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/03 14:52:57 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,3 +90,16 @@ int	main(int argc, char **argv, char **envp)
 	}
 	return (0);
 }
+
+
+
+/*
+
+str ls 
+type CMD
+str -l
+type CMD
+str "  foo  "
+type CMD
+
+"$" : ne marche pas quand il y en a qu'un*/

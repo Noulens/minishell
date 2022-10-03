@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expend_alias.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:44:18 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/27 17:47:21 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/03 11:15:27 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,18 @@ int	expend_alias2(char *str, int i, int len, t_minishell *ms)
 */
 char	*expend_alias(char *str, t_minishell *ms)
 {
-	char	*new_str;
-	int		len;
+	char			*new_str;
+	int				len;
+	struct s_int	i;
 
+	i.i = 0;
+	i.j = 0;
+	i.k = 0;
 	len = 0;
 	ms->i.i = 0;
 	ms->i.j = 0;
 	ms->i.k = 0;
-	len = count_expend(str, ms);
+	len = count_expend(i, str, ms);
 	new_str = init_str_alias(str, len, ms);
 	if (new_str == NULL)
 		return (NULL);
@@ -182,33 +186,27 @@ int	count_dollar(char *str, t_minishell *minishell, int i)
 	return (i);
 }
 
-int	count_expend(char *str, t_minishell *minishell)
+int	count_expend(struct s_int i, char *str, t_minishell *minishell)
 {
-	int		trigger;
-	int		i;
-	int		t2;
-
-	i = 0;
-	t2 = 0;
-	trigger = 0;
-	while (str[i] != 0)
+	while (str[i.i] != 0)
 	{
-		if (str[i] == '$' && trigger == 0)
+		if (str[i.i] == '$' && i.k == 0)
 		{
-			i = count_dollar(str, minishell, i);
-			if (i == -1)
+			i.i = count_dollar(str, minishell, i.i);
+			if (i.i == -1)
 				return (1);
 			continue ;
 		}
-		if (str[i] == 34 && t2 == 0)
-			t2 = 1;
-		else if (str[i] == 34 && t2 == 1)
-			t2 = 0;
-		if (str[i] == 39 && trigger == 0 && check_quote(str, i) == 0 && t2 == 0)
-			trigger = 1;
-		else if (str[i] == 39 && trigger == 1)
-			trigger = 0;
-		i++;
+		if (str[i.i] == 34 && i.j == 0)
+			i.j = 1;
+		else if (str[i.i] == 34 && i.j == 1)
+			i.j = 0;
+		if (str[i.i] == 39 && i.k == 0
+			&& check_quote(str, i.i) == 0 && i.j == 0)
+			i.k = 1;
+		else if (str[i.i] == 39 && i.k == 1)
+			i.k = 0;
+		i.i++;
 		minishell->i.j++;
 	}
 	return (minishell->i.k += minishell->i.j);

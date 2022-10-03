@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   copy_str_with_alias.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:22:08 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/27 17:47:39 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/03 15:06:59 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,7 +255,7 @@ int	trigg_alias(char *s, t_minishell *ms, int trigger)
 		trigger = 0;
 	ms->i.k = trigger2;
 	return (trigger);
-}	
+}
 
 char	*copy_expend(char *s, char *new_s, t_minishell *ms)
 {
@@ -264,7 +264,7 @@ char	*copy_expend(char *s, char *new_s, t_minishell *ms)
 	trigger = 0;
 	while (s[ms->i.i] != 0)
 	{
-		if (s[ms->i.i] == '$' && trigger == 0)
+		if (s[ms->i.i] == '$' && trigger == 0 && s[ms->i.i + 1] != 0 && char_is_token(s[ms->i.i + 1]) == 0 && s[ms->i.i + 1] != 34)
 		{
 			if (copy_dollar(s, new_s, ms) == 1)
 				return (NULL);

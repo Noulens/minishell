@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:27:31 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/16 10:41:09 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/03 14:26:38 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	char_is_token_with_trigg(char c, int trigger)
 {
 	if (trigger == 0)
 	{
-		if (c == '<' || c == '>' || c == '|')
+		if (c == '<' || c == '>' || c == '|' || char_is_whitespace(c) == 1)
 			return (1);
 	}	
 	return (0);

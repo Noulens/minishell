@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/01 16:46:37 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/03 11:13:29 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ int			cmd_lexer_leght(char *str, int i);
 int			expend_and_cut_quote(t_minishell *minishell);
 char		*dup_without_quote_init(char *str);
 int			dup_without_quote(char *str, char *new_str, int i, int j);
-int			count_expend(char *str, t_minishell *minishell);
+int			count_expend(struct s_int i, char *str, t_minishell *minishell);
 char		*copy_expend(char *s, char *new_s, t_minishell *ms);
 int			char_is_whitespace(char c);
 char		*init_str_alias(char *str, int len, t_minishell *minishell);
