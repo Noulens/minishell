@@ -6,6 +6,7 @@ testunset.c
 test_build_env.c
 script_lexer.sh
 bu_monitoring.sh
+tno/
 
 # Prerequisites
 *.d
