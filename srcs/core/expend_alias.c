@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:44:18 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/03 11:15:27 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/03 16:42:35 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ char	*expend_alias(char *str, t_minishell *ms)
 	ms->i.j = 0;
 	ms->i.k = 0;
 	len = count_expend(i, str, ms);
+	len += ft_strlen(str);
 	new_str = init_str_alias(str, len, ms);
 	if (new_str == NULL)
 		return (NULL);
