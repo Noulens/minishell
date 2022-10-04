@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:29:21 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/01 16:46:12 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/04 21:29:04 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	**paths_maker(void)
 
 	path = env_parser("PATH");
 	if (!path)
-		bin_path = ft_split("/usr/bin", ' ');
+		bin_path = NULL; //ft_split("/usr/bin", ' ');
 	else
 		bin_path = ft_split(path, ':');
 	free(path);
