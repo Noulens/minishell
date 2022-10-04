@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:53:51 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/15 16:53:25 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/04 14:26:05 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ int	cmd_lexer(char *str, int i, t_minishell *minishell)
 	if (new_str == NULL)
 		return (-1);
 	ft_strlcpy(new_str, str + j, ((i - j) + 1));
-	ft_lstadd_back_tok(&minishell->list, ft_lstnew_tok(new_str, CMD_LEX));
+	if (ft_strlen(new_str) == 0)
+		free (new_str);
+	else
+		ft_lstadd_back_tok(&minishell->list, ft_lstnew_tok(new_str, CMD_LEX));
 	return (i);
 }
