@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 23:28:09 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/04 20:11:10 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/04 22:45:33 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,25 +103,25 @@ void	ft_sorted(int nb, char **str)
 	}
 }
 
-void swap(t_lst *a, t_lst *b) 
+void swap(t_list *a, t_list *b) 
 { 
-    char *temp 
+    char *temp;
 	
 	temp = a->content; 
     a->content = b->content; 
     b->content= temp; 
 }
 
-void bubblesortlist(t_lst *start) 
+void bubblesortlist(t_list *start) 
 { 
     short	swapped;
-    t_lst	*ptr1;
-    t_lst	*lptr;
-	int		i;
+    t_list	*ptr1;
+    t_list	*lptr;
+	//int		i;
 
-    if (start == NULL) 
-        return ; 
-	while (*p)
+    //if (start == NULL) 
+    //    return ; 
+	while (swapped)
     do
     { 
         swapped = 0; 
@@ -129,7 +129,7 @@ void bubblesortlist(t_lst *start)
   
         while (ptr1->next != lptr) 
         { 
-            if (ptr1->data > ptr1->next->data) 
+            if (ptr1->content > ptr1->next->content) 
             { 
                 swap(ptr1, ptr1->next); 
                 swapped = 1; 

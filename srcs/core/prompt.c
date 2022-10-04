@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:34:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/04 19:06:24 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/04 22:38:30 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ char	*prompt_line(t_minishell *ms)
 		free(line_read);
 		line_read = NULL;
 	}
-	if (isatty(2) == 1)
+	if (isatty(2))
 		rl_outstream = stderr;
 	line_read = readline("Minishell $> ");
 	if (line_read == NULL)
 	{
 		clean_up(ms->gb, ms->env_array, ms->env);
-		ft_printf("exit\n");
+		if (isatty(0))
+			ft_printf("exit\n");
 		exit_fd();
 		exit(0);
 	}

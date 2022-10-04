@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:43:44 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/02 19:21:41 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/04 22:40:49 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ static void	exit_args(char **argv, t_minishell *minishell)
 
 int	ft_exit(t_minishell *minishell, int argc, char **argv)
 {
-	(void)argc;
-	ft_printf("exit\n");
+	if (isatty(0))
+		ft_printf("exit\n");
 	if (argc == 1)
 	{
 		ft_lstclear_tok(minishell->list);
