@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:44:18 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/03 16:42:35 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/04 17:37:28 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,12 +133,8 @@ int	trigger_double_quote(int trigg, char c)
 
 int	break_point_alias(char *str, int i)
 {
-	while (str[i] != 0 && char_is_whitespace(str[i]) != 1
-		&& char_is_token(str[i]) != 1
-		&& char_is_quote(str[i]) != 0 && str[i] != '$')
-	{	
+	while (str[i] != 0 && ft_isalnum(str[i]) == 1)
 		i++;
-	}	
 	return (i);
 }
 
