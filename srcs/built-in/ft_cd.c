@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 11:14:25 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/02 19:32:04 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/04 15:06:43 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ int	ft_cd(t_minishell *ms, int argc, char **argv)
 {
 	char	*p;
 
-	(void)argc;
-	(void)argv;
 	if (argc > 2)
 		return (ft_putendl_fd("cd:wrong arguments", 2), 1);
 	if (argc == 1)
@@ -48,6 +46,9 @@ int	ft_cd(t_minishell *ms, int argc, char **argv)
 			return (perror("cd gethome"), errno);
 	}
 	else if (chdir(argv[1]) == -1)
-		return (perror("cd chdir"), errno);
+	{
+
+		return (perror(argv[1]), errno);
+	}	
 	return (0);
 }

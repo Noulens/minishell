@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/03 17:43:33 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/04 13:48:26 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,14 @@ int	main(int argc, char **argv, char **envp)
 	init_minishell(&minishell, argc);
 	build_env(&minishell, envp);
 	signal_handling();
+	int i = isatty(0);
+	printf("tty is =%d\n", i);
 	if (argc > 1)
 		cmd_argv(argv + 1, &minishell);
 	while (mini_init(&minishell), 42)
 	{
 		p = prompt_line(&minishell);
+		//printf("[[%s]]\n", p);
 		if (space_only(p))
 		{
 			minishell.sigint = FALSE;
