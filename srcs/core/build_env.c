@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 13:53:15 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/04 14:36:36 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/04 19:24:39 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,27 +27,6 @@ static void	init_env_var(t_minishell *ms, int shlvl)
 	if (ft_lstlast(ms->env)->content == NULL)
 		return (perror("init_env_var"), (void)0);
 	free(pwd);
-}
-
-void	list_to_array(t_minishell *ms)
-{
-	t_list	*tmp;
-	size_t	idx;
-
-	if (ms->env_array != NULL)
-		free(ms->env_array);
-	idx = ft_lstsize(ms->env);
-	ms->env_array = (char **)ft_calloc(sizeof(char *), idx + 1);
-	if (!ms->env_array)
-		return (perror("list_to_array"), (void)0);
-	tmp = ms->env;
-	idx = 0;
-	while (tmp != NULL)
-	{
-		ms->env_array[idx] = tmp->content;
-		idx++;
-		tmp = tmp->next;
-	}
 }
 
 static void	check_shlvl(int *shlvl)

@@ -3,6 +3,9 @@
 * TO-DO
 	* [x] Refaire la variable globale pour qu'elle soit égale au minishell
 	* [x] Modifier la gestion des signaux suite à la modif de la variable globale
+	* [ ] Trier le env par valeur ascii
+	* [x] export AAA -> declare -x AAA
+	* [ ] export A="ls -l" ; $A -> execute ls -l
 
 * Mode commande
 	* [x] implementer le mode command

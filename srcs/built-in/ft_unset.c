@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 12:50:10 by waxxy             #+#    #+#             */
-/*   Updated: 2022/09/28 21:37:00 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/04 19:39:00 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ int	ft_unset(t_minishell *ms, int argc, char **argv)
 			del_idx_pos(ms, idx);
 		i++;
 	}
-	list_to_array(ms);
+	list_to_export(ms);
 	return (SUCCESS);
 }

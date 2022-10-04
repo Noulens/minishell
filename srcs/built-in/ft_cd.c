@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 11:14:25 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/04 15:06:43 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/04 19:49:43 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	ft_cd(t_minishell *ms, int argc, char **argv)
 	}
 	else if (chdir(argv[1]) == -1)
 	{
-
 		return (perror(argv[1]), errno);
 	}	
 	return (0);

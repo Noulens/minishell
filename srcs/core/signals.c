@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:33:49 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/04 14:41:21 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/04 18:59:56 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	tmp_handler(int sig, siginfo_t *info, void *context)
 				perror("tmp_handler close");
 			unlink(".here_doc.tmp");
 		}
-		write(STDIN_FILENO, "\n", 1);
 		rl_replace_line("", 1);
 		rl_on_new_line();
+		write(STDIN_FILENO, "\n", 1);
 		rl_redisplay();
 	}
 	if (sig == SIGQUIT)

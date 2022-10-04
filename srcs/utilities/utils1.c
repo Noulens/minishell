@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 23:28:09 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/01 17:13:52 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/04 20:11:10 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,108 @@ int	nb_cmd(char **argv)
 			i++;
 	}
 	return (i);
+}
+
+void	list_to_array(t_minishell *ms)
+{
+	t_list	*tmp;
+	size_t	idx;
+
+	if (ms->env_array != NULL)
+		free(ms->env_array);
+	idx = ft_lstsize(ms->env);
+	ms->env_array = (char **)ft_calloc(sizeof(char *), idx + 1);
+	if (!ms->env_array)
+		return (perror("list_to_array"), (void)0);
+	tmp = ms->env;
+	idx = 0;
+	while (tmp != NULL)
+	{
+		ms->env_array[idx] = tmp->content;
+		idx++;
+		tmp = tmp->next;
+	}
+}
+
+void	list_to_export(t_minishell *ms)
+{
+	t_list	*tmp;
+	size_t	idx;
+
+	if (ms->env_array != NULL)
+		free(ms->env_array);
+	idx = ft_lstsize(ms->env);
+	ms->env_array = (char **)ft_calloc(sizeof(char *), idx + 1);
+	if (!ms->env_array)
+		return (perror("list_to_array"), (void)0);
+	tmp = ms->env;
+	idx = 0;
+	while (tmp != NULL)
+	{
+		if (ft_strchr(tmp->content, '='))
+		{
+			ms->env_array[idx] = tmp->content;
+			idx++;
+		}
+		tmp = tmp->next;
+	}
+}
+
+void	ft_sorted(int nb, char **str)
+{
+	int		i;
+	int		j;
+	char	*p;
+
+	i = 1;
+	while (i < nb)
+	{
+		j = i;
+		while (j > 0 && ft_strcmp(str[j - 1], str[j]) > 0)
+		{
+			p = str[j - 1];
+			str[j - 1] = str[j];
+			str[j] = p;
+			--j;
+		}
+		++i;
+	}
+}
+
+void swap(t_lst *a, t_lst *b) 
+{ 
+    char *temp 
+	
+	temp = a->content; 
+    a->content = b->content; 
+    b->content= temp; 
+}
+
+void bubblesortlist(t_lst *start) 
+{ 
+    short	swapped;
+    t_lst	*ptr1;
+    t_lst	*lptr;
+	int		i;
+
+    if (start == NULL) 
+        return ; 
+	while (*p)
+    do
+    { 
+        swapped = 0; 
+        ptr1 = start; 
+  
+        while (ptr1->next != lptr) 
+        { 
+            if (ptr1->data > ptr1->next->data) 
+            { 
+                swap(ptr1, ptr1->next); 
+                swapped = 1; 
+            } 
+            ptr1 = ptr1->next; 
+        } 
+        lptr = ptr1; 
+    } 
+    while (swapped); 
 }

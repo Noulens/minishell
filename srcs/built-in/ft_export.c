@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:42:15 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/01 16:52:35 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/04 19:53:29 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ int	formatok(char *str)
 	char	*p;
 
 	p = ft_strchr(str, '=');
-	if (p == NULL || *p == *str || str_is_alnum(str))
+	if (p == NULL && !str_is_alnum(str))
+		return (0);
+	if (str_is_alnum(str) || *p == *str)
 	{
 		ft_putstr_fd("export: ", 2);
 		ft_putstr_fd(str, 2);
@@ -100,7 +102,7 @@ int	ft_export(t_minishell *minishell, int argc, char **argv)
 			}
 			++i;
 		}
-		list_to_array(minishell);
+		list_to_export(minishell);
 	}
 	return (SUCCESS);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/03 11:13:29 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/04 19:30:57 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,6 +219,7 @@ int			check_quote(char *str, int i);
 int			char_is_token_with_trigg(char c, int trigger);
 void		error_clean_up(t_minishell *ms);
 void		list_to_array(t_minishell *ms);
+void		list_to_export(t_minishell *ms);
 int			nb_cmd(char **argv);
 void		printlist(t_tok *list);
 void		free_param(t_command **param);
