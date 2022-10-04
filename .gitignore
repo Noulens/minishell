@@ -4,7 +4,6 @@
 .vscode/
 testunset.c
 test_build_env.c
-*.sh
 tno/
 *.md
 obsolete/
