@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   welcome_message.c                                  :+:      :+:    :+:   */
+/*   ft_fdi.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 15:34:55 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/04 15:32:39 by tnoulens         ###   ########.fr       */
+/*   Created: 2022/05/17 17:37:34 by tnoulens          #+#    #+#             */
+/*   Updated: 2022/10/04 15:19:45 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	print_welcome_msg(void)
+int	ft_fdi(int fd, int nbr)
 {
-	char	*user;
+	char	*p;
+	int		j;
 
-	ft_fprintf(2, YELLOW"\n🅼 🅸 🅽 🅸 🆂 🅷 🅴 🅻 ->"BLINK_YELLOW"🅻\n"WHITE);
-	user = getenv("USER");
-	if (!user)
-		ft_fprintf(2, "\nWelcome,"RED" no env detected at launch"END);
-	else
-		ft_fprintf (2, "\nWelcome %s", user);
-	ft_fprintf(2, "\n"END);
+	p = ft_itoa(nbr);
+	j = ft_strlen(p);
+	ft_putstr_fd(p, fd);
+	if (p)
+		free(p);
+	return (j);
 }

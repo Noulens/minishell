@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:05:08 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/16 17:38:54 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/04 15:30:28 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,12 @@ int		ft_di(int nbr);
 int		ft_xupx(unsigned int nbr, char c);
 char	*ft_uitoa(unsigned int nbr);
 int		ft_printf(const char *format, ...);
+int		ft_fc(int fd, int c);
+int		ft_fs(int fd, char *p);
+int		ft_fp(int fd, void *p);
+int		ft_fdi(int fd, int nbr);
+int		ft_fxupx(int fd, unsigned int nbr, char c);
+int		ft_fprintf(int fd, const char *format, ...);
 /* get_next_line */
 char	*get_next_line(int fd);
 size_t	ft_strlenb(const char *s);

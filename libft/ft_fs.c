@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   welcome_message.c                                  :+:      :+:    :+:   */
+/*   ft_fs.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 15:34:55 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/04 15:32:39 by tnoulens         ###   ########.fr       */
+/*   Created: 2022/05/17 16:33:35 by tnoulens          #+#    #+#             */
+/*   Updated: 2022/10/04 15:21:57 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	print_welcome_msg(void)
+int	ft_fs(int fd, char *p)
 {
-	char	*user;
+	int	i;
 
-	ft_fprintf(2, YELLOW"\n🅼 🅸 🅽 🅸 🆂 🅷 🅴 🅻 ->"BLINK_YELLOW"🅻\n"WHITE);
-	user = getenv("USER");
-	if (!user)
-		ft_fprintf(2, "\nWelcome,"RED" no env detected at launch"END);
+	if (p)
+	{
+		i = 0;
+		while (p[i] != 0)
+		{
+			write(fd, &p[i], sizeof(char));
+			++i;
+		}
+	}
 	else
-		ft_fprintf (2, "\nWelcome %s", user);
-	ft_fprintf(2, "\n"END);
+	{
+		write(fd, "(null)", 6);
+		i = 6;
+	}
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:34:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/02 19:00:10 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/04 15:11:39 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*prompt_line(t_minishell *ms)
 		free(line_read);
 		line_read = NULL;
 	}
+	if (isatty(2) == 0)
+		rl_outstream = stderr;
 	line_read = readline("Minishell $> ");
 	if (line_read == NULL)
 	{

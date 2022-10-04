@@ -83,7 +83,13 @@ SRCS		=	ft_isalpha.c\
 				ft_free_split.c\
 				ft_atoi_base.c\
 				get_next_line_utils_bonus.c\
-				ft_isspace.c
+				ft_isspace.c\
+				ft_fc.c\
+				ft_fs.c\
+				ft_fp.c\
+				ft_fdi.c\
+				ft_fxupx.c\
+				ft_fprintf.c\
 
 
 OBJS		=	${SRCS:.c=.o}

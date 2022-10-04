@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 13:53:15 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/28 21:38:34 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/04 14:36:36 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,24 @@ void	list_to_array(t_minishell *ms)
 	}
 }
 
+static void	check_shlvl(int *shlvl)
+{
+	if (*shlvl >= 1000)
+	{
+		ft_putendl_fd("Warning: shell level too high returning to 1", 2);
+		*shlvl = 1;
+	}
+	else
+		++*shlvl;
+}
+
 void	build_env(t_minishell *ms, char **envp)
 {
 	int	shlvl;
 	int	i;
 
 	shlvl = ft_atoi(getenv("SHLVL"));
-	++shlvl;
+	check_shlvl(&shlvl);
 	init_env_var(ms, shlvl);
 	i = 0;
 	if (envp != NULL && *envp != NULL)

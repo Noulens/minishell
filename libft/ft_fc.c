@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   welcome_message.c                                  :+:      :+:    :+:   */
+/*   ft_fc.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 15:34:55 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/04 15:32:39 by tnoulens         ###   ########.fr       */
+/*   Created: 2022/05/18 15:48:16 by tnoulens          #+#    #+#             */
+/*   Updated: 2022/10/04 15:27:57 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	print_welcome_msg(void)
+int	ft_fc(int fd, int c)
 {
-	char	*user;
-
-	ft_fprintf(2, YELLOW"\n🅼 🅸 🅽 🅸 🆂 🅷 🅴 🅻 ->"BLINK_YELLOW"🅻\n"WHITE);
-	user = getenv("USER");
-	if (!user)
-		ft_fprintf(2, "\nWelcome,"RED" no env detected at launch"END);
-	else
-		ft_fprintf (2, "\nWelcome %s", user);
-	ft_fprintf(2, "\n"END);
+	ft_putchar_fd(c, fd);
+	return (1);
 }
