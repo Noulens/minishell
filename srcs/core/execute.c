@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:29:21 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/05 18:37:45 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/05 18:56:59 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int	exec(t_minishell *ms, char **cmds, char **envp)
 		}
 		else
 			cmd_path = cmd_check(paths_maker(ms), cmds[0]);
-		if (!cmd_path)
+		if (!cmd_path || cmds[0][0] == '\0')
 			return (ft_putstr_fd(cmds[0], 2), ft_putendl_fd(NOTFOUND, 2), 127);
 		if (execve(cmd_path, cmds, envp) == -1)
 			return (free(cmd_path), perror("exec"), errno);
