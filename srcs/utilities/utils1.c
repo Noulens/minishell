@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 23:28:09 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/05 17:52:09 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/05 22:20:57 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,13 @@ void	list_to_export(t_minishell *ms)
 		}
 		tmp = tmp->next;
 	}
+}
+
+void	child_exit(t_minishell *ms)
+{
+	close_std_in_child(ms);
+	clean_up(ms->gb, ms->env_array, ms->env);
+	ft_lstclear_tok(ms->list);
+	free_param(ms->cm);
+	exit(ms->exec_ret);
 }

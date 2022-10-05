@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:09:29 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/05 16:28:51 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/05 22:12:01 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	check_heredoc(t_command **pa, int i)
 		{
 			close(pa[i]->fdhd);
 			if (p == NULL)
-				ft_printf("warning: expected %s\n", pa[i]->limiter);
+				ft_fprintf(2, "warning: expected %s\n", pa[i]->limiter);
 			free(p);
 			break ;
 		}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/05 18:19:59 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/05 22:21:21 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,6 +236,7 @@ void		get_fd_in(t_command *cm);
 void		exit_fd(void);
 void		bubblesortlist(t_list *start);
 char		*genv(t_minishell *ms, char *p);
+void		child_exit(t_minishell *ms);
 
 	/* --- build-in --- */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/03 17:29:22 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/05 22:21:39 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,7 @@ int	child_mgmt(int i, int cmd_nbr, t_minishell *ms)
 			dupper(ms->end[2 * i - 2], ms->end[2 * i + 1], ms, i);
 		close_pipes(cmd_nbr, ms->end, ms->cm[i]);
 		ms->exec_ret = exec(ms, ms->cm[i]->cmd, ms->cm[i]->env);
-		close_std_in_child(ms);
-		clean_up(ms->gb, ms->env_array, ms->env);
-		ft_lstclear_tok(ms->list);
-		free_param(ms->cm);
-		exit(ms->exec_ret);
+		child_exit(ms);
 	}
 	return (0);
 }
