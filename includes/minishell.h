@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/05 15:42:42 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/05 16:05:33 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,6 +226,7 @@ int			nb_cmd(char **argv);
 void		printlist(t_tok *list);
 void		free_param(t_command **param);
 void		ft_lstclear_tok(t_tok *lst);
+int			ft_lstsize_tok(t_tok *lst);
 t_tok		*ft_lstnew_tok(char *content, int content2);
 t_tok		*ft_lstlast_tok(t_tok *lst);
 void		ft_lstadd_back_tok(t_tok **lst, t_tok *new);
