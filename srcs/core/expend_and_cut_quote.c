@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expend_and_cut_quote.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 12:11:25 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/05 16:30:37 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/05 18:04:19 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char	**list_to_export_tok(t_minishell *ms)
 	idx = ft_lstsize_tok(ms->list);
 	empty_str = (char **)ft_calloc(sizeof(char *), idx + 1);
 	if (!empty_str)
-		return (perror("list_to_array"), NULL);
+		return (perror("list_to_export_tok"), NULL);
 	tmp = ms->list;
 	idx = 0;
 	while (tmp != NULL)
@@ -114,7 +114,7 @@ int	cut_quote(t_minishell *minishell)
 int	expend_and_cut_quote(t_minishell *minishell)
 {
 	char	*str;
-	char	*str2;
+	//char	*str2;
 	t_tok	*temp;
 
 	temp = minishell->list;

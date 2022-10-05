@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/05 16:30:08 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/05 18:19:59 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,6 +234,8 @@ void		ft_printab(char **str);
 char		*ias(char *str);
 void		get_fd_in(t_command *cm);
 void		exit_fd(void);
+void		bubblesortlist(t_list *start);
+char		*genv(t_minishell *ms, char *p);
 
 	/* --- build-in --- */
 

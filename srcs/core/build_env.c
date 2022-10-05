@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 13:53:15 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/04 19:24:39 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/05 17:55:21 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ void	build_env(t_minishell *ms, char **envp)
 			}
 		}
 	}
+	bubblesortlist(ms->env);
 	list_to_array(ms);
 }

@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:42:15 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/04 19:53:29 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/05 17:57:25 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int	ft_export(t_minishell *minishell, int argc, char **argv)
 			}
 			++i;
 		}
+		bubblesortlist(minishell->env);
 		list_to_export(minishell);
 	}
 	return (SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 23:28:09 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/05 16:35:36 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/05 17:52:09 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,63 +80,4 @@ void	list_to_export(t_minishell *ms)
 		}
 		tmp = tmp->next;
 	}
-}
-
-void	ft_sorted(int nb, char **str)
-{
-	int		i;
-	int		j;
-	char	*p;
-
-	i = 1;
-	while (i < nb)
-	{
-		j = i;
-		while (j > 0 && ft_strcmp(str[j - 1], str[j]) > 0)
-		{
-			p = str[j - 1];
-			str[j - 1] = str[j];
-			str[j] = p;
-			--j;
-		}
-		++i;
-	}
-}
-
-void swap(t_list *a, t_list *b)
-{
-	char *temp;
-
-	temp = a->content;
-	a->content = b->content;
-	b->content = temp;
-}
-
-void bubblesortlist(t_list *start)
-{
-	short swapped;
-	t_list *ptr1;
-	t_list *lptr;
-	// int		i;
-
-	// if (start == NULL)
-	//     return ;
-	swapped = 0;
-	while (swapped)
-		do
-		{
-			swapped = 0;
-			ptr1 = start;
-
-			while (ptr1->next != lptr)
-			{
-				if (ptr1->content > ptr1->next->content)
-				{
-					swap(ptr1, ptr1->next);
-					swapped = 1;
-				}
-				ptr1 = ptr1->next;
-			}
-			lptr = ptr1;
-		} while (swapped);
 }

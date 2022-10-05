@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:06:11 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/05 16:38:31 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/05 18:37:10 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,52 @@ int	checkforenvvar(t_command **pa, int *i)
 			return (ft_free_split(p), -1);
 	}
 	return (ft_free_split(p), 0);
+}
+
+static void	swap(t_list *a, t_list *b)
+{
+	char	*temp;
+
+	temp = a->content;
+	a->content = b->content;
+	b->content = temp;
+}
+
+void	bubblesortlist(t_list *start)
+{
+	short	swapped;
+	t_list	*ptr1;
+	t_list	*lptr;
+
+	swapped = 1;
+	lptr = NULL;
+	while (swapped)
+	{
+		swapped = 0;
+		ptr1 = start;
+		while (ptr1->next != lptr)
+		{
+			if (ft_strcmp(ptr1->content, ptr1->next->content) > 0)
+			{
+				swap(ptr1, ptr1->next);
+				swapped = 1;
+			}
+			ptr1 = ptr1->next;
+		}
+		lptr = ptr1;
+	}
+}
+
+char	*genv(t_minishell *ms, char *p)
+{
+	int	i;
+
+	i = 0;
+	while (ms->env_array[i])
+	{
+		if (!ft_cmpchr(ms->env_array[i], p, '='))
+			return (ft_strchr(ms->env_array[i], '=') + 1);
+		i++;
+	}
+	return (NULL);
 }

@@ -6,19 +6,19 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:29:21 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/05 16:06:27 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/05 18:37:45 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*env_parser(char *env_var)
+static char	*env_parser(char *env_var, t_minishell *ms)
 {
 	char	*p;
 	char	*env_ptr;
 
 	p = NULL;
-	env_ptr = getenv(env_var);
+	env_ptr = genv(ms, env_var);
 	if (!env_ptr)
 		return (NULL);
 	p = ft_substr(env_ptr, 0, ft_strlen(env_ptr));
@@ -27,7 +27,7 @@ char	*env_parser(char *env_var)
 	return (p);
 }
 
-char	**paths_maker(void)
+static char	**paths_maker(t_minishell *ms)
 {
 	char	*path;
 	char	**bin_path;
@@ -35,7 +35,7 @@ char	**paths_maker(void)
 	char	**tmp2;
 	int		i;
 
-	path = env_parser("PATH");
+	path = env_parser("PATH", ms);
 	if (!path)
 		bin_path = NULL;
 	else
@@ -104,7 +104,7 @@ int	exec(t_minishell *ms, char **cmds, char **envp)
 	{
 		if (is_built_in(ms, i, cmds))
 			return (ms->exec_ret);
-		if (ft_memchr(cmds[0], '/', ft_strlen(cmds[0])) || !getenv("PATH"))
+		if (ft_memchr(cmds[0], '/', ft_strlen(cmds[0])) || !genv(ms, "PATH"))
 		{
 			if (access(cmds[0], F_OK | X_OK) == 0)
 				cmd_path = cmds[0];
@@ -114,7 +114,7 @@ int	exec(t_minishell *ms, char **cmds, char **envp)
 				return (perror("access"), errno);
 		}
 		else
-			cmd_path = cmd_check(paths_maker(), cmds[0]);
+			cmd_path = cmd_check(paths_maker(ms), cmds[0]);
 		if (!cmd_path)
 			return (ft_putstr_fd(cmds[0], 2), ft_putendl_fd(NOTFOUND, 2), 127);
 		if (execve(cmd_path, cmds, envp) == -1)
