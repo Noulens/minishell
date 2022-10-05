@@ -6,13 +6,13 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:09:29 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/04 19:09:20 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/05 16:28:51 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*isallspace(char *str)
+char	*ias(char *str)
 {
 	char	*p;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_tools2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:09:09 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/01 17:12:29 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/05 16:29:51 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	*getfilename(char *str, int type)
 
 	if (type == 2 || type == 1)
 	{
-		if (ft_strlen(str) <= 1 || isallspace(str + 1) == NULL)
+		if (ft_strlen(str) <= 1 || ias(str + 1) == NULL)
 			return (ft_putstr_fd("redirection : bad name\n", 2), NULL);
 		p = ft_strdup(str + 1);
 		if (!p)
@@ -27,7 +27,7 @@ static char	*getfilename(char *str, int type)
 	}
 	else
 	{
-		if (ft_strlen(str) <= 2 || isallspace(str + 2) == NULL)
+		if (ft_strlen(str) <= 2 || ias(str + 2) == NULL)
 			return (ft_putstr_fd("redirection : bad name\n", 2), NULL);
 		p = ft_strdup(str + 2);
 		if (!p)
