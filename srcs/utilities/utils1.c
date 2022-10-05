@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 23:28:09 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/04 22:45:33 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/05 11:11:14 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void bubblesortlist(t_list *start)
     t_list	*ptr1;
     t_list	*lptr;
 	//int		i;
-
+	swapped = 0;
     //if (start == NULL) 
     //    return ; 
 	while (swapped)

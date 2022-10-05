@@ -6,11 +6,19 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:41:40 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/15 16:46:59 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/05 12:37:30 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	ft_lstsize_tok(t_tok *lst)
+{
+	if (lst)
+		return (ft_lstsize_tok(lst->next) + 1);
+	else
+		return (0);
+}
 
 void	ft_lstclear_tok(t_tok *lst)
 {

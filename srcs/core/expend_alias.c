@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:44:18 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/04 17:37:28 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:36:38 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,8 @@ int	trigger_double_quote(int trigg, char c)
 
 int	break_point_alias(char *str, int i)
 {
+	if (ft_isdigit(str[i]) == 1)
+		return (i += 1);
 	while (str[i] != 0 && ft_isalnum(str[i]) == 1)
 		i++;
 	return (i);

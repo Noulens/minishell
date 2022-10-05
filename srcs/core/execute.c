@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:29:21 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/04 23:05:26 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/05 15:08:04 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int	exec(t_minishell *ms, char **cmds, char **envp)
 		if (!cmd_path)
 			return (ft_putstr_fd(cmds[0], 2), ft_putendl_fd(NOTFOUND, 2), 127);
 		if (execve(cmd_path, cmds, envp) == -1)
-			return (perror("exec"), errno);
+			return (free(cmd_path), perror("exec"), errno);
 	}
 	return (0);
 }

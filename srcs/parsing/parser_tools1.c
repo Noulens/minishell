@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_tools1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:07:44 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/04 17:25:00 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:02:26 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	ttok356(t_tok *tmp, t_command **pa, int *i)
 			check_heredoc(pa, *i);
 		g_ms->i.i = -1;
 	}
-	else if (tmp->type == 5 && *tmp->data != '\0')
+	else if (tmp->type == 5)
 	{
 		ft_lstadd_back(&pa[*i]->cmdlst, ft_lstnew(ft_strdup(tmp->data), NULL));
 		if (ft_lstlast(pa[*i]->cmdlst)->content == NULL)

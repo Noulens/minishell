@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+         #
+#    By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/10/04 19:36:52 by tnoulens         ###   ########.fr        #
+#    Updated: 2022/10/05 15:10:24 by cfontain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,6 +101,6 @@ fclean		: clean
 re			: fclean all
 
 ms	: all
-		valgrind --suppressions=ignore_leak.supp --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --trace-children=yes  ./minishell
+		valgrind --suppressions=ignore_leak.supp --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./minishell
 
 .PHONY		: all clean fclean re
