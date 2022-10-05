@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/04 19:30:57 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:42:42 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,8 @@ int			ttok1(t_tok *tmp, t_command **pa, int i);
 int			ttok2(t_tok *tmp, t_command **pa, int i);
 int			ttok356(t_tok *tmp, t_command **pa, int *i);
 void		check_heredoc(t_command **pa, int i);
+int			list_to_cmd(t_command **cm, int i);
+int			checkforenvvar(t_command **pa, int *i);
 
 	/* --- core --- */
 

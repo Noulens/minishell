@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:07:44 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/04 17:25:00 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:42:12 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char	*gethdname(char *str)
 	}
 }
 
-static int	list_to_cmd(t_command **cm, int i)
+int	list_to_cmd(t_command **cm, int i)
 {
 	t_list	*tmp;
 	size_t	idx;
@@ -80,7 +80,7 @@ int	ttok0(t_command **pa, int *i)
 {
 	if (list_to_cmd(pa, *i) == -1)
 		return (-1);
-	if (pa[*i]->cmd == NULL)
+	if (pa[*i]->cmd == NULL || checkforenvvar(pa, i) == -1)
 	{
 		free_param(pa);
 		error_clean_up(g_ms);

@@ -6,7 +6,7 @@
 #    By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/10/04 19:36:52 by tnoulens         ###   ########.fr        #
+#    Updated: 2022/10/05 16:02:24 by tnoulens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ UTILITIES	= 	./srcs/utilities/garbage_collector.c\
 				./srcs/utilities/check_quote.c\
 				./srcs/utilities/clean_up.c\
 				./srcs/utilities/utils1.c\
+				./srcs/utilities/utils2.c\
 				./srcs/utilities/print_token_list.c
 
 PARSING		=	./srcs/parsing/parser.c\
@@ -101,6 +102,6 @@ fclean		: clean
 re			: fclean all
 
 ms	: all
-		valgrind --suppressions=ignore_leak.supp --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --trace-children=yes  ./minishell
+		valgrind --suppressions=ignore_leak.supp --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./minishell
 
 .PHONY		: all clean fclean re

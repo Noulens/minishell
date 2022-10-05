@@ -5,7 +5,7 @@
 	* [x] Modifier la gestion des signaux suite à la modif de la variable globale
 	* [ ] Trier le env par valeur ascii -> TNO finir utils1.c
 	* [x] export AAA -> declare -x AAA
-	* [ ] export A="ls -l" ; $A -> execute ls -l -> TNO faire ft_strchr(' ') si non NULL -> split et refaire char **
+	* [x] export A="ls -l" ; $A -> execute ls -l -> TNO faire ft_strchr(' ') si non NULL -> split et refaire char **
 	* [ ] ligne 21 et 107 execute.c -> supprimer getenv pour PATH et prendre env ms à la place
 
 * Mode commande
