@@ -4,6 +4,7 @@
 .vscode/
 testunset.c
 test_build_env.c
+./minishell.tester/*
 
 tno/
 *.md
