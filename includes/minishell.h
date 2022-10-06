@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/06 14:21:19 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/06 14:38:02 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,38 +69,6 @@ typedef struct s_int
 	int	j;
 	int	k;
 }	t_int;
-
-/* Sructure parsing */
-
-/*typedef struct s_list_split // PROBABLEMENT A SUPPRIMER
-{
-	char			*str;
-	void	*next;
-}	t_list_split;
-
-typedef struct s_new_cut_line // PROBABLEMENT A SUPPRIMER
-{
-	int		i;
-	int		j;
-	int		trigger;
-	char	c;
-
-}			t_new_cut_line;
-
-typedef struct s_mega_split // PROBABLEMENT A SUPPRIMER
-{
-	int		i;
-	int		j;
-	int		count;
-
-}			t_mega_split;
-
-typedef struct s_split // PROBABLEMENT A SUPPRIMER
-{
-	char	**str;
-	int		len;
-	int		count;
-}	t_split;*/
 
 typedef struct s_commands
 {
