@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_tools1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:07:44 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/05 18:11:50 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/06 13:59:14 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,10 @@ int	ttok356(t_tok *tmp, t_command **pa, int *i)
 			free(pa[*i]->limiter);
 		pa[*i]->limiter = gethdname(tmp->data);
 		if (pa[*i]->limiter != NULL)
+		{
+			pa[*i]->lim_len = ft_strlen(pa[*i]->limiter);
 			check_heredoc(pa, *i);
+		}
 		g_ms->i.i = -1;
 	}
 	else if (tmp->type == 5)

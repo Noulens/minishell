@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:09:29 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/05 22:12:01 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/06 13:57:35 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	check_heredoc(t_command **pa, int i)
 	{
 		write(STDIN_FILENO, "heredoc> ", 9);
 		p = get_next_line(pa[i]->fdhd);
-		if (p == NULL || ft_strcmp(p, pa[i]->limiter) - 10 == 0)
+		if (p == NULL || ft_strncmp(p, pa[i]->limiter, pa[i]->lim_len) == 0)
 		{
 			close(pa[i]->fdhd);
 			if (p == NULL)
