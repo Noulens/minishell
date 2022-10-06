@@ -6,13 +6,13 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 12:48:20 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/16 10:40:38 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/06 12:43:10 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_token_type(int i) //NE PAS GARDER A LA FIN
+void	print_token_type(int i)
 {
 	if (i == END_LEX)
 		ft_printf(" ***END_TYPE***\n");
@@ -30,7 +30,7 @@ void	print_token_type(int i) //NE PAS GARDER A LA FIN
 		ft_printf(" ***CMD_TYPE***\n");
 }
 
-void	printlist(t_tok *list) // NE PAS GARDER A LA FIN
+void	printlist(t_tok *list)
 {
 	if (list)
 	{

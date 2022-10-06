@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:41:46 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/16 11:58:20 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/06 12:44:06 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int	chevron(char *str, int i, t_minishell *minishell, int type)
 	j = ft_copy_chevron(str, new_str, j, type);
 	ft_strlcpy(new_str + (ft_strlen(new_str)), str + j, ((i - j) + 1));
 	ft_lstadd_back_tok(&minishell->list, ft_lstnew_tok(new_str, type));
+	if (minishell->list == NULL)
+		return (free (new_str), -1);
 	return (i);
 }
 
@@ -94,18 +96,6 @@ int	chevron_lexer(char *str, int i, t_minishell *minishell)
 	if (i == -1)
 		return (-1);
 	return (i);
-}
-
-int	pipe_lexer(int i, t_minishell *minishell)
-{
-	char	*new_str;
-
-	new_str = calloc(sizeof(char), 2);
-	if (new_str == NULL)
-		return (perror("malloc"), -1);
-	new_str[0] = '|';
-	ft_lstadd_back_tok(&minishell->list, ft_lstnew_tok(new_str, PIPE_LEX));
-	return ((i + 1));
 }
 
 int	lexer(char *str, t_minishell *minishell)
