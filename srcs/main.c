@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/06 14:09:38 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/06 15:58:25 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	main(int argc, char **argv, char **envp)
 			continue ;
 		}
 		if (lexer_and_expend(p, &minishell) == 1)
-			return (perror("main: lexer:"), errno);
+			return (perror("main: lexer:"), error_clean_up(&minishell), 1);
 		minishell.exec_ret = parse(&minishell);
 		if (minishell.exec_ret != 1 && minishell.sigint == FALSE)
 			minishell.exec_ret = pipex(&minishell);

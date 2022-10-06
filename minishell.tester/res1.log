@@ -46,13 +46,13 @@ cfontain cfontain
 cfontain=12cfontain
 USER 'cfontain=12'
 /mnt/nfs/homes/cfontain/Documents/Cursus/minishell
-declare -x SHLVL=6
+declare -x SHLVL=5
 declare -x OLDPWD=/mnt/nfs/homes/cfontain/Documents/Cursus/minishell/minishell.tester
 declare -x OLDPWD=/mnt/nfs/homes/cfontain/Documents/Cursus/minishell/minishell.tester
 declare -x PWD=/mnt/nfs/homes/cfontain/Documents/Cursus/minishell
-declare -x SHLVL=6
+declare -x SHLVL=5
 _=./minishell
-SHLVL=6
+SHLVL=5
 oui$
 something
 something
@@ -186,23 +186,25 @@ FLAGS		=	-Wall -Wextra -Werror -g -I includes/$
 		@${CC} ${FLAGS} ${OBJS} -L/usr/include -lreadline -o ${NAME} ${LIBFT}$
 test$$$
 test$$$$$$$$$$$$$$$$$$$$
-total 376
-drwxr-xr-x  8 cfontain 2022_paris   4096 Oct  6 14:10 .
+total 740
+drwxr-xr-x  7 cfontain 2022_paris   4096 Oct  6 16:27 .
 drwxr-xr-x 16 cfontain 2022_paris   4096 Oct  6 11:29 ..
 -rw-r--r--  1 cfontain 2022_paris     18 Oct  6 12:43 aurevoir
+-rw-r--r--  1 cfontain 2022_paris      9 Oct  6 14:11 bonsoir
 -rwxr-xr-x  1 cfontain 2022_paris   1183 Oct  6 11:29 bu_monitoring.sh
-drwxr-xr-x  7 cfontain 2022_paris   4096 Oct  6 12:55 ft_mallocator
-drwxr-xr-x  8 cfontain 2022_paris   4096 Oct  6 12:47 .git
+drwxr-xr-x  8 cfontain 2022_paris   4096 Oct  6 14:37 .git
 -rw-r--r--  1 cfontain 2022_paris    510 Oct  6 11:29 .gitignore
--rw-r--r--  1 cfontain 2022_paris    134 Oct  6 14:10 ignore_leak.supp
-drwxr-xr-x  2 cfontain 2022_paris   4096 Oct  6 11:29 includes
-drwxr-xr-x  2 cfontain 2022_paris   4096 Oct  6 12:40 libft
--rw-r--r--  1 cfontain 2022_paris  39032 Oct  6 12:55 libmallocator.a
+-rw-r--r--  1 cfontain 2022_paris    134 Oct  6 16:27 ignore_leak.supp
+drwxr-xr-x  2 cfontain 2022_paris   4096 Oct  6 14:36 includes
+drwxr-xr-x  2 cfontain 2022_paris   4096 Oct  6 16:14 libft
+-rw-r--r--  1 cfontain 2022_paris      0 Oct  6 14:20 lol
 -rw-r--r--  1 cfontain 2022_paris   3357 Oct  6 12:56 Makefile
--rwxr-xr-x  1 cfontain 2022_paris 135288 Oct  6 14:10 minishell
+-rwxr-xr-x  1 cfontain 2022_paris 135968 Oct  6 16:27 minishell
 drwxr-xr-x  2 cfontain 2022_paris   4096 Oct  6 11:29 minishell.tester
+-rwxr-xr-x  1 cfontain 2022_paris 135288 Oct  6 14:10 .nfs00000000139a99f700000157
 -rwxr-xr-x  1 cfontain 2022_paris 135248 Oct  6 13:02 .nfs00000000139a9a1400000152
+-rwxr-xr-x  1 cfontain 2022_paris 135936 Oct  6 14:43 .nfs00000000139a9a8c00000162
+-rwxr-xr-x  1 cfontain 2022_paris 135944 Oct  6 14:48 .nfs00000000139a9a8d00000166
 -rw-r--r--  1 cfontain 2022_paris   2071 Oct  6 11:29 README.md
-drwxr-xr-x  6 cfontain 2022_paris   4096 Oct  6 12:40 srcs
--rw-r--r--  1 cfontain 2022_paris   2638 Oct  6 11:29 tcput.c
--rw-r--r--  1 cfontain 2022_paris     79 Oct  6 14:10 test
+drwxr-xr-x  6 cfontain 2022_paris   4096 Oct  6 16:14 srcs
+-rw-r--r--  1 cfontain 2022_paris     79 Oct  6 16:28 test

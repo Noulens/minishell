@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:22:08 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/06 13:02:14 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/06 15:16:51 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ char	*init_expender(char *str, int len, t_minishell *minishell)
 	minishell->i.j = 0;
 	minishell->i.k = 0;
 	if (copy_expend(str, new_str, minishell) == NULL)
-		return (NULL);
+		return (free (new_str), NULL);
 	return (new_str);
 }

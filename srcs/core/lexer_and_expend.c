@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 11:55:02 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/06 12:46:13 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/06 16:27:33 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	pipe_lexer(int i, t_minishell *minishell)
 		return (perror("malloc"), -1);
 	new_str[0] = '|';
 	ft_lstadd_back_tok(&minishell->list, ft_lstnew_tok(new_str, PIPE_LEX));
-	if (minishell->list == NULL)
+	if (ft_lstlast_tok(minishell->list) == NULL)
 		return (free (new_str), -1);
 	return ((i + 1));
 }

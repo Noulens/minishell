@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:41:46 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/06 12:44:06 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/06 16:27:38 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	chevron(char *str, int i, t_minishell *minishell, int type)
 	j = ft_copy_chevron(str, new_str, j, type);
 	ft_strlcpy(new_str + (ft_strlen(new_str)), str + j, ((i - j) + 1));
 	ft_lstadd_back_tok(&minishell->list, ft_lstnew_tok(new_str, type));
-	if (minishell->list == NULL)
+	if (ft_lstlast_tok(minishell->list) == NULL)
 		return (free (new_str), -1);
 	return (i);
 }
