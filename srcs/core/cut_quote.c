@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cut_quote.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 12:11:25 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/06 16:21:47 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/06 17:27:30 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*dup_without_quote_init(char *str)
 
 	j = 0;
 	i = 0;
-	new_str = calloc(sizeof(char), (ft_strlen(str) + 1));
+	new_str = ft_calloc(sizeof(char), (ft_strlen(str) + 1));
 	if (new_str == NULL)
 		return (NULL);
 	dup_without_quote(str, new_str, i, j);

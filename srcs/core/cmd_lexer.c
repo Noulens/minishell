@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_lexer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:53:51 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/06 16:27:47 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/06 17:27:02 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	cmd_lexer(char *str, int i, t_minishell *minishell)
 
 	j = i;
 	i = cmd_lexer_leght(str, i);
-	new_str = calloc(sizeof(char), (i + 1));
+	new_str = ft_calloc(sizeof(char), (i + 1));
 	if (new_str == NULL)
 		return (-1);
 	ft_strlcpy(new_str, str + j, ((i - j) + 1));

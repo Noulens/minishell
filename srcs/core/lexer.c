@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:41:46 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/06 16:27:38 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/06 17:27:46 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	chevron(char *str, int i, t_minishell *minishell, int type)
 	if (type == 1 || type == 2)
 		i += 1;
 	i = token_lenght(str, i, c);
-	new_str = calloc(sizeof(char), (i + 1));
+	new_str = ft_calloc(sizeof(char), (i + 1));
 	if (new_str == NULL)
 		return (perror("malloc"), -1);
 	j = ft_copy_chevron(str, new_str, j, type);

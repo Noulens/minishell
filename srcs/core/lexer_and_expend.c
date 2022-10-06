@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_and_expend.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 11:55:02 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/06 16:27:33 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/06 17:27:42 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	pipe_lexer(int i, t_minishell *minishell)
 {
 	char	*new_str;
 
-	new_str = calloc(sizeof(char), 2);
+	new_str = ft_calloc(sizeof(char), 2);
 	if (new_str == NULL)
 		return (perror("malloc"), -1);
 	new_str[0] = '|';
