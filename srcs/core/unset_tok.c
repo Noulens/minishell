@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:44:18 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/06 12:45:55 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/06 14:02:08 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ int	ft_unset_tok(t_minishell *ms)
 	char	**argv;
 
 	argv = list_to_export_tok(ms);
+	if (argv == NULL)
+		return (1);
 	i = 0;
 	while (argv[i] != NULL)
 	{

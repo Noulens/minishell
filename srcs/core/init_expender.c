@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:22:08 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/06 12:33:39 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/06 13:02:14 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ char	*copy_expend(char *s, char *new_s, t_minishell *ms)
 		{
 			if (copy_dollar(s, new_s, ms) == 1)
 				return (NULL);
-			if (ms->i.i == -1)
-				return (NULL);
 			continue ;
 		}
 		trigger = trigg_alias(s, ms, trigger);
@@ -71,6 +69,7 @@ char	*init_expender(char *str, int len, t_minishell *minishell)
 	minishell->i.i = 0;
 	minishell->i.j = 0;
 	minishell->i.k = 0;
-	copy_expend(str, new_str, minishell);
+	if (copy_expend(str, new_str, minishell) == NULL)
+		return (NULL);
 	return (new_str);
 }

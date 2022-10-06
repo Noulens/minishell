@@ -6,20 +6,11 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 12:11:25 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/06 12:44:43 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/06 14:07:39 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-/*char	*str_with_one_space(char *str2)
-{
-	str2 = calloc(sizeof(char), 2);
-	if (str2 == NULL)
-		return (NULL);
-	str2[0] = ' ';
-	return (str2);
-}*/
 
 int	dup_without_quote(char *str, char *new_str, int i, int j)
 {
@@ -82,5 +73,7 @@ int	cut_quote(t_minishell *minishell)
 	}
 	minishell->list = temp;
 	ft_lstadd_back_tok(&minishell->list, ft_lstnew_tok(NULL, END_LEX));
+	if (minishell->list == NULL)
+		return (1);
 	return (0);
 }	
