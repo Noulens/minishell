@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/05 22:21:21 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/06 13:55:06 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,17 +104,18 @@ typedef struct s_split // PROBABLEMENT A SUPPRIMER
 
 typedef struct s_commands
 {
-	char	**cmd;
-	t_list	*cmdlst;
-	char	*inf;
-	char	*o;
-	char	**env;
-	int		fd[2];
-	int		fdhd;
-	int		here_doc;
-	char	*limiter;
-	int		exec_ret;
-	short	sigint;
+	char			**cmd;
+	t_list			*cmdlst;
+	char			*inf;
+	char			*o;
+	char			**env;
+	int				fd[2];
+	int				fdhd;
+	int				here_doc;
+	char			*limiter;
+	unsigned int	lim_len;
+	int				exec_ret;
+	short			sigint;
 }	t_command;
 
 typedef struct s_minishell

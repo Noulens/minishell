@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/05 22:21:39 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/06 14:19:28 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,8 @@ int	pipex(t_minishell *ms)
 	int		i;
 
 	if (ms->nbr_cmd == 1 && is_built(ms, ms->cm[0]->cmd[0]))
-	{
-		built_mgmt(ms, nb_cmd(ms->cm[0]->cmd), ms->cm[0]->cmd);
-		return (ms->exec_ret);
-	}
+		return (built_mgmt(ms, nb_cmd(ms->cm[0]->cmd),
+			ms->cm[0]->cmd), ms->exec_ret);
 	if (malloc_pids(ms) != 0)
 		return (error_clean_up(ms), -1);
 	i = -1;
@@ -116,6 +114,8 @@ int	pipex(t_minishell *ms)
 		waitpid(ms->pids[i], &ret, 0);
 		if (WIFEXITED(ret))
 			ms->exec_ret = WEXITSTATUS(ret);
+		else if (ms->sigint == TRUE)
+			ms->exec_ret = 130;
 		else
 			ms->exec_ret = errno;
 	}
