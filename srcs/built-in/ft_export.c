@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:42:15 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/05 17:57:25 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/06 16:27:39 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ int	ft_export(t_minishell *minishell, int argc, char **argv)
 			{
 				ft_lstadd_back(&minishell->env,
 					ft_lstnew(ft_strdup(argv[i]), NULL));
-				if (ft_lstlast(minishell->env)->content == NULL)
+				if (!ft_lstlast(minishell->env)
+					|| !ft_lstlast(minishell->env)->content)
 					return (perror("ft_export"), errno);
 			}
 			++i;

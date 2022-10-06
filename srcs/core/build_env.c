@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 13:53:15 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/05 17:55:21 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/06 16:32:20 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ static void	check_shlvl(int *shlvl)
 		++*shlvl;
 }
 
+static void	normadjust(t_minishell *ms)
+{
+	bubblesortlist(ms->env);
+	list_to_array(ms);
+}
+
 void	build_env(t_minishell *ms, char **envp)
 {
 	int	shlvl;
@@ -59,12 +65,12 @@ void	build_env(t_minishell *ms, char **envp)
 			else
 			{
 				ft_lstadd_back(&ms->env, ft_lstnew(ft_strdup(envp[i]), NULL));
-				if (ft_lstlast(ms->env)->content == NULL)
+				if (!ft_lstlast(ms->env)
+					|| !ft_lstlast(ms->env)->content)
 					return (perror("build_env"), (void)0);
 				i++;
 			}
 		}
 	}
-	bubblesortlist(ms->env);
-	list_to_array(ms);
+	normadjust(ms);
 }

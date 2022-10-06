@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:06:11 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/05 18:37:10 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/06 16:36:21 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	checkforenvvar(t_command **pa, int *i)
 		while (--k, k >= 0)
 		{
 			ft_lstadd_front(&pa[*i]->cmdlst, ft_lstnew(ft_strdup(p[k]), NULL));
-			if (pa[*i]->cmdlst->content == NULL)
+			if (pa[*i]->cmdlst->content == NULL || pa[*i]->cmdlst == NULL)
 				return (ft_free_split(p), -1);
 		}
 		if (list_to_cmd(pa, *i) == -1)

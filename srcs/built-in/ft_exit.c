@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:43:44 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/04 22:40:49 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/06 16:41:12 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ static void	exit_1(t_minishell *minishell)
 
 static void	exit_args(char **argv, t_minishell *minishell)
 {
-	char	*p;
-	int		len;
-	long	code;
+	char				*p;
+	int					len;
+	unsigned long long	code;
 
 	p = argv[1];
 	len = ft_strlen(p);
@@ -53,7 +53,7 @@ static void	exit_args(char **argv, t_minishell *minishell)
 		}
 		p++;
 	}
-	code = (unsigned char)ft_atol(argv[1]);
+	code = (unsigned char)ft_atoll(argv[1]);
 	ft_lstclear_tok(minishell->list);
 	free_param(minishell->cm);
 	clean_up(minishell->gb, minishell->env_array, minishell->env);
