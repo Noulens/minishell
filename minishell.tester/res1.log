@@ -46,27 +46,27 @@ cfontain cfontain
 cfontain=12cfontain
 USER 'cfontain=12'
 /mnt/nfs/homes/cfontain/Documents/Cursus/minishell
-declare -x SHLVL=6
-declare -x OLDPWD=/mnt/nfs/homes/cfontain/Documents/Cursus
+declare -x SHLVL=5
+declare -x OLDPWD=/mnt/nfs/homes/cfontain/Documents/Cursus/minishell/includes
+declare -x OLDPWD=/mnt/nfs/homes/cfontain/Documents/Cursus/minishell/includes
 declare -x PWD=/mnt/nfs/homes/cfontain/Documents/Cursus/minishell
-declare -x OLDPWD=/mnt/nfs/homes/cfontain/Documents/Cursus
-declare -x SHLVL=6
+declare -x SHLVL=5
 _=./minishell
-SHLVL=6
+SHLVL=5
 oui$
 something
 something
 something
 something
 docker0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
-        ether 02:42:83:2d:f6:df  txqueuelen 0  (Ethernet)
+        ether 02:42:c3:f3:7f:17  txqueuelen 0  (Ethernet)
 enp3s0f0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        inet6 fe80::12dd:b1ff:fec1:6e45  prefixlen 64  scopeid 0x20<link>
-        ether 10:dd:b1:c1:6e:45  txqueuelen 1000  (Ethernet)
+        inet6 fe80::12dd:b1ff:fea2:6ca4  prefixlen 64  scopeid 0x20<link>
+        ether 10:dd:b1:a2:6c:a4  txqueuelen 1000  (Ethernet)
 lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         inet6 ::1  prefixlen 128  scopeid 0x10<host>
 virbr0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
-        ether 52:54:00:f3:fa:6b  txqueuelen 1000  (Ethernet)
+        ether 52:54:00:ee:5b:1a  txqueuelen 1000  (Ethernet)
 cfontain
 FLAGS		=	-Wall -Wextra -Werror -g -I includes/
 		@${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
@@ -79,7 +79,7 @@ FLAGS		=	-Wall -Wextra -Werror -g -I includes/
 #    By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+         #$$
 #                                                 +#+#+#+#+#+   +#+            #$$
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #$$
-#    Updated: 2022/10/05 15:10:24 by cfontain         ###   ########.fr        #$$
+#    Updated: 2022/10/06 12:40:26 by cfontain         ###   ########.fr        #$$
 #                                                                              #$$
 # **************************************************************************** #$$
 $$
@@ -95,14 +95,17 @@ CORE		=	./srcs/core/prompt.c\$$
 				./srcs/core/pipex.c\$$
 				./srcs/core/execute.c\$$
 				./srcs/core/signals.c\$$
-				./srcs/core/expend_alias.c\$$
-				./srcs/core/copy_str_with_alias.c\$$
+				./srcs/core/cmd_lexer.c\$$
+				./srcs/core/copy_dollar.c\$$
 				./srcs/core/build_env.c\$$
 				./srcs/core/lexer.c\$$
-				./srcs/core/expend_and_cut_quote.c\$$
-				./srcs/core/cmd_lexer.c\$$
+				./srcs/core/count_expender.c\$$
+				./srcs/core/cut_quote.c\$$
 				./srcs/core/list_token.c\$$
+				./srcs/core/expender_and_cut.c\$$
+				./srcs/core/init_expender.c\$$
 				./srcs/core/lexer_and_expend.c\$$
+				./srcs/core/unset_tok.c\$$
 				./srcs/core/str_join_tab.c\$$
 				./srcs/core/cmd_argv.c$$
 $$
@@ -122,6 +125,7 @@ UTILITIES	= 	./srcs/utilities/garbage_collector.c\$$
 				./srcs/utilities/check_quote.c\$$
 				./srcs/utilities/clean_up.c\$$
 				./srcs/utilities/utils1.c\$$
+				./srcs/utilities/utils2.c\$$
 				./srcs/utilities/print_token_list.c$$
 $$
 PARSING		=	./srcs/parsing/parser.c\$$
@@ -174,7 +178,7 @@ $$
 re			: fclean all$$
 $$
 ms	: all$$
-		valgrind --suppressions=ignore_leak.supp --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./minishell$$
+		valgrind --suppressions=ignore_leak.supp --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes -s ./minishell$$
 $$
 .PHONY		: all clean fclean re$$
 FLAGS		=	-Wall -Wextra -Werror -g -I includes/$
@@ -182,21 +186,20 @@ FLAGS		=	-Wall -Wextra -Werror -g -I includes/$
 		@${CC} ${FLAGS} ${OBJS} -L/usr/include -lreadline -o ${NAME} ${LIBFT}$
 test$$$
 test$$$$$$$$$$$$$$$$$$$$
-total 188
-drwxr-xr-x  8 cfontain 2022_paris   4096 Oct  5 15:41 .
-drwxr-xr-x 16 cfontain 2022_paris   4096 Oct  5 11:09 ..
--rwxr-xr-x  1 cfontain 2022_paris   1183 Oct  5 11:09 bu_monitoring.sh
-drwxr-xr-x  8 cfontain 2022_paris   4096 Oct  5 11:09 .git
--rw-r--r--  1 cfontain 2022_paris    510 Oct  5 11:09 .gitignore
--rw-r--r--  1 cfontain 2022_paris      0 Oct  5 11:40 i123
--rw-r--r--  1 cfontain 2022_paris    134 Oct  5 15:36 ignore_leak.supp
-drwxr-xr-x  2 cfontain 2022_paris   4096 Oct  5 11:09 includes
-drwxr-xr-x  2 cfontain 2022_paris   4096 Oct  5 14:13 libft
--rw-r--r--  1 cfontain 2022_paris   3242 Oct  5 15:10 Makefile
--rwxr-xr-x  1 cfontain 2022_paris 130288 Oct  5 15:36 minishell
-drwxr-xr-x  2 cfontain 2022_paris   4096 Oct  5 15:49 minishell.tester
-drwxr-xr-x  2 cfontain 2022_paris   4096 Oct  5 11:09 obsolete
--rw-r--r--  1 cfontain 2022_paris   2071 Oct  5 11:09 README.md
-drwxr-xr-x  6 cfontain 2022_paris   4096 Oct  5 14:13 srcs
--rw-r--r--  1 cfontain 2022_paris   2638 Oct  5 11:09 tcput.c
--rw-r--r--  1 cfontain 2022_paris     79 Oct  5 15:50 test
+total 196
+drwxr-xr-x  7 cfontain 2022_paris   4096 Oct  6 12:41 .
+drwxr-xr-x 16 cfontain 2022_paris   4096 Oct  6 11:29 ..
+-rw-r--r--  1 cfontain 2022_paris     12 Oct  6 11:44 aurevoir
+-rwxr-xr-x  1 cfontain 2022_paris   1183 Oct  6 11:29 bu_monitoring.sh
+drwxr-xr-x  8 cfontain 2022_paris   4096 Oct  6 11:29 .git
+-rw-r--r--  1 cfontain 2022_paris    510 Oct  6 11:29 .gitignore
+-rw-r--r--  1 cfontain 2022_paris    134 Oct  6 12:40 ignore_leak.supp
+drwxr-xr-x  2 cfontain 2022_paris   4096 Oct  6 11:29 includes
+drwxr-xr-x  2 cfontain 2022_paris   4096 Oct  6 12:40 libft
+-rw-r--r--  1 cfontain 2022_paris   3357 Oct  6 12:40 Makefile
+-rwxr-xr-x  1 cfontain 2022_paris 135248 Oct  6 12:40 minishell
+drwxr-xr-x  2 cfontain 2022_paris   4096 Oct  6 11:29 minishell.tester
+-rw-r--r--  1 cfontain 2022_paris   2071 Oct  6 11:29 README.md
+drwxr-xr-x  6 cfontain 2022_paris   4096 Oct  6 12:40 srcs
+-rw-r--r--  1 cfontain 2022_paris   2638 Oct  6 11:29 tcput.c
+-rw-r--r--  1 cfontain 2022_paris     79 Oct  6 12:41 test

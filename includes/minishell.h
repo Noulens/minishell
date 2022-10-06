@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/05 22:21:21 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/06 12:39:59 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,38 +145,49 @@ typedef struct s_builtin
 /* Protos */
 
 	/* --- lexer --- */
-void		cmd_argv(char **argv, t_minishell *minishell);
-char		*str_join_tab(char **argv);
+
 int			lexer_and_expend(char *p, t_minishell *minishell);
 void		count_pipe(t_minishell *ms);
+int			pipe_lexer(int i, t_minishell *minishell);	
+
 int			lexer(char *str, t_minishell *minishell);
-int			pipe_lexer(int i, t_minishell *minishell);
 int			chevron_lexer(char *str, int i, t_minishell *minishell);
 int			chevron(char *str, int i, t_minishell *minishell, int type);
+int			ft_copy_chevron(char *str, char *new_str, int j, int type);
 int			token_lenght(char *str, int i, char c);
+
 int			cmd_lexer(char *str, int i, t_minishell *minishell);
 int			cmd_lexer_leght(char *str, int i);
-int			expend_and_cut_quote(t_minishell *minishell);
+
+void		cmd_argv(char **argv, t_minishell *minishell);
+
+	/* --- expender --- */
+
+char		*init_expender(char *str, int len, t_minishell *minishell);
+char		*copy_expend(char *s, char *new_s, t_minishell *ms);
+int			trigg_alias(char *s, t_minishell *ms, int trigger);
+void		copy_str(char *str, char *new_str, t_minishell *ms);
+
+int			expender_and_cut(t_minishell *minishell);
+char		*expender(char *str, t_minishell *ms);
+
+int			count_expender(struct s_int i, char *str, t_minishell *minishell);
+int			count_dollar(char *str, t_minishell *minishell, int i);
+int			count_ret(char *str, t_minishell *minishell, int i);
+int			count_alias(char *str, t_minishell *ms, int i);
+int			break_point_alias(char *str, int i);
+
+int			ft_unset_tok(t_minishell *ms);
+char		**list_to_export_tok(t_minishell *ms);
+
+int			cut_quote(t_minishell *minishell);
 char		*dup_without_quote_init(char *str);
 int			dup_without_quote(char *str, char *new_str, int i, int j);
-int			count_expend(struct s_int i, char *str, t_minishell *minishell);
-char		*copy_expend(char *s, char *new_s, t_minishell *ms);
-int			char_is_whitespace(char c);
-char		*init_str_alias(char *str, int len, t_minishell *minishell);
-int			break_point_alias(char *str, int i);
-int			trigger_double_quote(int trigg, char c);
-int			init_cmd(char *str, t_command *cmd, t_minishell *minishell);
-char		*m_init_str(char *s, char c, char *str, int *j);
-int			m_line_lenght(char *s, char c, int *j);
-char		**ft_split_space_and_quote(char *s, char c);
-int			m_split_count_line(char *s, char c);
-char		*m_malloc_str(char *str, int len);
-void		m_init_str_with_sep(char *s, char *str, int *i, int *k);
-int			char_is_quote(char c);
-int			check_single_quote(char *str, int *i);
-int			check_double_quote(char *str, int *i);
-int			parsing_quote(char *str);
-char		*expend_alias(char *str, t_minishell *ms);
+
+int			copy_dollar(char *s, char *new_s, t_minishell *ms);
+void		search_alias(char *str, char *new_s, t_minishell *ms);
+void		copy_alias(char *env, char *new_s, t_minishell *ms);
+int			copy_ret(char *new_s, t_minishell *ms);
 
 	/* --- parser --- */
 
@@ -237,6 +248,9 @@ void		exit_fd(void);
 void		bubblesortlist(t_list *start);
 char		*genv(t_minishell *ms, char *p);
 void		child_exit(t_minishell *ms);
+char		*str_join_tab(char **argv);
+int			ft_count_tab(char **str);
+int			copy_tab_with_space(char **argv, char *str);
 
 	/* --- build-in --- */
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+         #
+#    By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/10/05 22:24:47 by waxxy            ###   ########.fr        #
+#    Updated: 2022/10/06 12:40:26 by cfontain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,14 +22,17 @@ CORE		=	./srcs/core/prompt.c\
 				./srcs/core/pipex.c\
 				./srcs/core/execute.c\
 				./srcs/core/signals.c\
-				./srcs/core/expend_alias.c\
-				./srcs/core/copy_str_with_alias.c\
+				./srcs/core/cmd_lexer.c\
+				./srcs/core/copy_dollar.c\
 				./srcs/core/build_env.c\
 				./srcs/core/lexer.c\
-				./srcs/core/expend_and_cut_quote.c\
-				./srcs/core/cmd_lexer.c\
+				./srcs/core/count_expender.c\
+				./srcs/core/cut_quote.c\
 				./srcs/core/list_token.c\
+				./srcs/core/expender_and_cut.c\
+				./srcs/core/init_expender.c\
 				./srcs/core/lexer_and_expend.c\
+				./srcs/core/unset_tok.c\
 				./srcs/core/str_join_tab.c\
 				./srcs/core/cmd_argv.c
 

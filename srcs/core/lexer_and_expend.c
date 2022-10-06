@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 11:55:02 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/04 14:28:06 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/06 12:46:13 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,26 @@ void	count_pipe(t_minishell *ms)
 	ms->list = temp;
 }
 
+int	pipe_lexer(int i, t_minishell *minishell)
+{
+	char	*new_str;
+
+	new_str = calloc(sizeof(char), 2);
+	if (new_str == NULL)
+		return (perror("malloc"), -1);
+	new_str[0] = '|';
+	ft_lstadd_back_tok(&minishell->list, ft_lstnew_tok(new_str, PIPE_LEX));
+	if (minishell->list == NULL)
+		return (free (new_str), -1);
+	return ((i + 1));
+}
+
 int	lexer_and_expend(char *p, t_minishell *minishell)
 {
 	if (lexer(p, minishell) == 1)
 		return (1);
-	if (expend_and_cut_quote(minishell) == 1)
+	if (expender_and_cut(minishell) == 1)
 		return (1);
 	count_pipe(minishell);
-	//printlist(minishell->list); //A SUPPRIMER A LA FIN
-	//ft_printf("nombre de process : %d\n", minishell->nbr_cmd);
 	return (0);
 }

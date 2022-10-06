@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   str_join_tab.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:38:08 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/09/27 17:40:26 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/06 12:31:40 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ char	*str_join_tab(char **argv)
 	char	*str;
 
 	i = ft_count_tab(argv);
-	//ft_printf("i =%d\n", i);
 	str = calloc(sizeof(char), (i + 1));
 	if (str == NULL)
 		return (NULL);
