@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/06 16:43:25 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/06 20:10:34 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	built_mgmt(t_minishell *ms, int argc, char **argv)
 
 	init_builtin(built);
 	if (ms->i.j == 2)
-		ms->exec_ret = built[ms->i.j].func(ms, argc, argv);
+		built[ms->i.j].func(ms, argc, argv);
 	fdin = dup(STDIN_FILENO);
 	fdout = dup(STDOUT_FILENO);
 	if (fdin == -1 || fdout == -1)

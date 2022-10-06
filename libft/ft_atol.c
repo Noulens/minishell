@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 16:59:32 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/06 16:37:14 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/06 19:43:11 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ long	ft_atol(const char *nptr)
 	return (sign * result);
 }
 
-long long	ft_atoll(const char *nptr)
+long long	ft_capped_atoll(const char *nptr)
 {
 	int			sign;
 	long long	result;
@@ -52,8 +52,12 @@ long long	ft_atoll(const char *nptr)
 	result = 0;
 	while (*nptr >= '0' && *nptr <= '9')
 	{
-		result = result * 10 + *nptr - 48;
-		++nptr;
+		if (sign > 0 && (LLONG_MAX - *nptr + '0') / 10 < result)
+			return (0);
+		if (sign < 0 && (LLONG_MIN + *nptr - '0') / 10 > -result)
+			return (0);
+		result = 10 * result + *nptr - '0';
+		nptr++;
 	}
 	return (sign * result);
 }

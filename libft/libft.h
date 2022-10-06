@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:05:08 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/06 16:39:18 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/06 19:43:26 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdarg.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <limits.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4096
@@ -103,7 +104,7 @@ void		*ft_callocb(size_t nmemb, size_t size);
 void		ft_cpy(char *suf, char *p);
 /* Other */
 long		ft_atol(const char *nptr);
-long long	ft_atoll(const char *nptr);
+long long	ft_capped_atoll(const char *nptr);
 int			ft_atoi_base(const char *str, int base);
 void		ft_free_split(char **tofree);
 int			ft_isspace(char c);

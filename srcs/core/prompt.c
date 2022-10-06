@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:34:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/04 22:38:30 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/06 20:12:12 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ char	*prompt_line(t_minishell *ms)
 	{
 		clean_up(ms->gb, ms->env_array, ms->env);
 		if (isatty(0))
-			ft_printf("exit\n");
+			ft_fprintf(2, "exit\n");
 		exit_fd();
-		exit(0);
+		exit(ms->exec_ret);
 	}
 	if (*line_read == '\0')
 		return (NULL);
