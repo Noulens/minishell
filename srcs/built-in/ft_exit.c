@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:43:44 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/06 19:58:34 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/07 19:14:41 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	exit_args(char **argv, t_minishell *minishell)
 		p++;
 	}
 	code = ft_capped_atoll(argv[1]);
-	if (code == 0 && ft_strlen(p) >= 19)
+	if (code == 0 && ft_strlen(argv[1]) > 1)
 	{
 		ft_putstr_fd("minishell: exit: not a numeric argument\n", 2);
 		wrap_up_exit(minishell);

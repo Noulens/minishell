@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:51:33 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/06 17:19:45 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/07 19:22:36 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	cmd_argv(char **argv, t_minishell *minishell)
 		return (perror("cmd mode: join"), error_clean_up(minishell), (void)0);
 	if (lexer_and_expend(p, minishell) == 1)
 		return (perror("cmd mode: lexer"), error_clean_up(minishell), (void)0);
-	minishell->exec_ret = parse(minishell);
-	if (minishell->exec_ret != 1)
+	minishell->parse_status = parse(minishell);
+	if (minishell->parse_status != 1)
 		minishell->exec_ret = pipex(minishell);
 	ft_lstclear(minishell->gb);
 	ft_lstclear_tok(minishell->list);
