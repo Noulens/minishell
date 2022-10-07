@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:33:49 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/07 19:17:37 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/07 19:33:13 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	tmp_handler(int sig, siginfo_t *info, void *context)
 {
 	(void)context;
-	(void)info;
 	if (sig == SIGINT)
 	{
 		g_ms->sigint = TRUE;
