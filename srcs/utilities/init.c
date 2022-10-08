@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:57:27 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/02 19:25:45 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/08 10:56:53 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	init_minishell(t_minishell *minishell, int argc)
 	minishell->list = NULL;
 	minishell->sigint = FALSE;
 	minishell->i.i = -1;
+	minishell->pid = 0;
 }
 
 void	init_struct(t_minishell *ms, t_command *cm)
@@ -69,4 +70,5 @@ void	mini_init(t_minishell *ms)
 	ms->nbr_cmd = 1;
 	ms->list = NULL;
 	ms->gb = NULL;
+	ms->pid = 0;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:33:49 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/07 19:33:13 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/08 10:59:03 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	tmp_handler(int sig, siginfo_t *info, void *context)
 {
 	(void)context;
+	(void)info;
 	if (sig == SIGINT)
 	{
 		g_ms->sigint = TRUE;
@@ -25,7 +26,7 @@ void	tmp_handler(int sig, siginfo_t *info, void *context)
 				perror("tmp_handler close");
 			unlink(".here_doc.tmp");
 		}
-		if (info->si_pid != 0)
+		if (g_ms->pid == 0)
 		{
 			rl_replace_line("", 1);
 			rl_on_new_line();

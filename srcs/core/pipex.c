@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/06 20:10:34 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/08 11:01:13 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	child_mgmt(int i, int cmd_nbr, t_minishell *ms)
 {
 	ms->pids[i] = fork();
+	ms->pid = 1;
 	if (ms->pids[i] == -1)
 		return (perror("child_mgmt"), errno);
 	else if (!ms->pids[i])
