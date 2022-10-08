@@ -6,16 +6,26 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:33:49 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/08 10:59:03 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/09 01:29:21 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	tmp_handler(int sig, siginfo_t *info, void *context)
+static void	wrap_up_terminate(siginfo_t *info, void *context)
 {
 	(void)context;
 	(void)info;
+	ft_lstclear_tok(g_ms->list);
+	free_param(g_ms->cm);
+	clean_up(g_ms->gb, g_ms->env_array, g_ms->env);
+	ft_fprintf(2, "Terminated\n");
+	exit_fd();
+	exit(143);
+}
+
+void	tmp_handler(int sig, siginfo_t *info, void *context)
+{
 	if (sig == SIGINT)
 	{
 		g_ms->sigint = TRUE;
@@ -33,13 +43,13 @@ void	tmp_handler(int sig, siginfo_t *info, void *context)
 			write(2, "\n", 1);
 			rl_redisplay();
 		}
+		else
+			write(2, "", 1);
 	}
 	if (sig == SIGQUIT)
 		ft_printf("\b\b");
 	if (sig == SIGTERM)
-		return (ft_lstclear_tok(g_ms->list), free_param(g_ms->cm),
-			clean_up(g_ms->gb, g_ms->env_array, g_ms->env),
-			ft_fprintf(2, "Terminated\n"), exit_fd(), exit(143), (void)0);
+		return (wrap_up_terminate(info, context), (void)0);
 }
 
 void	signal_handling(void)
