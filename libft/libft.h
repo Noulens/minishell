@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:05:08 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/06 19:43:26 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/10 14:43:54 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # define HEX "0123456789abcdef"
 # define BINARY "01"
 # define OCT "012345678"
+# define TRUE 1
+# define FALSE 0
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -104,7 +106,7 @@ void		*ft_callocb(size_t nmemb, size_t size);
 void		ft_cpy(char *suf, char *p);
 /* Other */
 long		ft_atol(const char *nptr);
-long long	ft_capped_atoll(const char *nptr);
+long long	ft_capped_atoll(const char *nptr, int *status);
 int			ft_atoi_base(const char *str, int base);
 void		ft_free_split(char **tofree);
 int			ft_isspace(char c);

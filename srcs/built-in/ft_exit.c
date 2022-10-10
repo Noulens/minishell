@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:43:44 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/07 19:14:41 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/10 15:10:50 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,23 @@ static void	exit_args(char **argv, t_minishell *minishell)
 {
 	char		*p;
 	long long	code;
+	int			status;
 
 	p = argv[1];
+	status = FALSE;
 	if (*p == '-')
 		p++;
 	while (*p)
 	{
 		if (!ft_isdigit(*p))
-		{
-			ft_putstr_fd("minishell: exit: not a numeric argument\n", 2);
-			wrap_up_exit(minishell);
-			exit(2);
-		}
+			return (ft_putstr_fd("exit: not a numeric argument\n", 2),
+					wrap_up_exit(minishell), exit(2), (void)0);
 		p++;
 	}
-	code = ft_capped_atoll(argv[1]);
-	if (code == 0 && ft_strlen(argv[1]) > 1)
+	code = ft_capped_atoll(argv[1], &status);
+	if (code == 0 && status == TRUE)
 	{
-		ft_putstr_fd("minishell: exit: not a numeric argument\n", 2);
+		ft_putstr_fd("exit: not a numeric argument\n", 2);
 		wrap_up_exit(minishell);
 		exit(2);
 	}
