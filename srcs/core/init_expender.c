@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_expender.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:22:08 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/06 17:36:38 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/10 11:36:33 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@ char	*copy_expend(char *s, char *new_s, t_minishell *ms)
 	trigger = 0;
 	while (s[ms->i.i] != 0)
 	{
-		if ((s[ms->i.i] == '$' && s[ms->i.i + 1] == '?') || (s[ms->i.i] == '$'
-				&& trigger == 0 && ft_isalnum(s[ms->i.i + 1]) == 1))
+		if ((s[ms->i.i] == '$' && s[ms->i.i + 1] == '?' && trigger == 0)
+			|| (s[ms->i.i] == '$' && trigger == 0
+				&& ft_isalnum(s[ms->i.i + 1]) == 1))
 		{
 			if (copy_dollar(s, new_s, ms) == 1)
 				return (NULL);
