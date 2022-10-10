@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 16:59:32 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/10 15:06:04 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/10 15:14:27 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ long long	ft_capped_atoll(const char *nptr, int *status)
 	while (*nptr >= '0' && *nptr <= '9')
 	{
 		if (sign > 0 && (LLONG_MAX - *nptr + '0') / 10 < result)
-			return (*status = TRUE, 0);
+			return (++*status, 0);
 		if (sign < 0 && (LLONG_MIN + *nptr - '0') / 10 > -result)
-			return (*status = TRUE, 0);
+			return (++*status, 0);
 		result = 10 * result + *nptr - '0';
 		nptr++;
 	}
