@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:44:09 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/01 16:53:46 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/10 14:12:32 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,18 @@ void	free_param(t_command **param)
 	int	i;
 
 	i = 0;
-	while (param[i] != NULL)
+	if (param != NULL)
 	{
-		free(param[i]->cmd);
-		ft_lstclear(param[i]->cmdlst);
-		free(param[i]->inf);
-		free(param[i]->o);
-		free(param[i]->limiter);
-		free(param[i]);
-		i++;
+		while (param[i] != NULL)
+		{
+			free(param[i]->cmd);
+			ft_lstclear(param[i]->cmdlst);
+			free(param[i]->inf);
+			free(param[i]->o);
+			free(param[i]->limiter);
+			free(param[i]);
+			i++;
+		}
 	}
 	free(param);
 }

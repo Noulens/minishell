@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:57:27 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/08 10:56:53 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/10 14:19:17 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	init_minishell(t_minishell *minishell, int argc)
 		print_welcome_msg();
 	g_ms = minishell;
 	minishell->nbr_cmd = 1;
+	minishell->cm = NULL;
 	minishell->cmd_array = NULL;
 	minishell->exec_ret = 0;
 	minishell->gb = NULL;
@@ -70,5 +71,6 @@ void	mini_init(t_minishell *ms)
 	ms->nbr_cmd = 1;
 	ms->list = NULL;
 	ms->gb = NULL;
+	ms->cm = NULL;
 	ms->pid = 0;
 }
