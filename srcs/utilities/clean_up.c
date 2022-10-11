@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_up.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:44:09 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/10 14:12:32 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/11 20:42:44 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,10 @@ void	clean_up(t_list *lst, char **env_array, t_list *env)
 	ft_lstclear(env);
 	free(env_array);
 	return ;
+}
+
+void	freer(char **ptr)
+{
+	free(ptr[1]);
+	free(ptr);
 }

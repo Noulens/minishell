@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 20:33:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/06 20:39:57 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/11 19:43:46 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	main(int argc, char **argv, char **envp)
 	char		*p;
 	t_minishell	minishell;
 
-	init_minishell(&minishell, argc);
+	init_minishell(&minishell, argc, envp);
 	build_env(&minishell, envp);
 	signal_handling();
 	if (argc > 1)

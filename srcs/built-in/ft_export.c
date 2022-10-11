@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:42:15 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/06 16:27:39 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/11 18:10:42 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,14 @@ int	str_is_alnum(char *p)
 
 	ptr = p;
 	if (!ft_isalpha(*ptr))
-		return (1);
+	{
+		if (*ptr != '_')
+			return (1);
+	}
 	ptr++;
 	while (*ptr && *ptr != '=')
 	{
-		if (ft_isalnum(*ptr))
+		if (ft_isalnum(*ptr) || *ptr == '_')
 			ptr++;
 		else
 			return (1);

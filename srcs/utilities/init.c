@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:57:27 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/10 14:19:17 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/11 19:44:26 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ void	init_builtin(t_builtin *built)
 	built[6].func = ft_cd;
 }
 
-void	init_minishell(t_minishell *minishell, int argc)
+void	init_minishell(t_minishell *minishell, int argc, char **envp)
 {
 	(void)argc;
 	if (argc == 1)
-		print_welcome_msg();
+		print_welcome_msg(envp);
 	g_ms = minishell;
 	minishell->nbr_cmd = 1;
 	minishell->cm = NULL;

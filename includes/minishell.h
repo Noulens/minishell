@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/06 20:05:44 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/11 20:43:06 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,9 +182,9 @@ int			is_built_in(t_minishell *ms, int argc, char **argv);
 
 	/* --- utilities --- */
 
-void		print_welcome_msg(void);
+void		print_welcome_msg(char **envp);
 int			gb_c(t_list **gb, void *content, void **content2);
-void		init_minishell(t_minishell *minishell, int argc);
+void		init_minishell(t_minishell *minishell, int argc, char **envp);
 void		mini_init(t_minishell *ms);
 void		clean_up(t_list *lst, char **env_array, t_list *env);
 void		clean_iteration(t_minishell *ms);
@@ -221,6 +221,7 @@ void		child_exit(t_minishell *ms);
 char		*str_join_tab(char **argv);
 int			ft_count_tab(char **str);
 int			copy_tab_with_space(char **argv, char *str);
+void		freer(char **ptr);
 
 	/* --- build-in --- */
 
