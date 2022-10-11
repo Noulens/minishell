@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+         #
+#    By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/10/06 17:53:45 by tnoulens         ###   ########.fr        #
+#    Updated: 2022/10/11 18:05:24 by cfontain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ CORE		=	./srcs/core/prompt.c\
 				./srcs/core/lexer_and_expend.c\
 				./srcs/core/unset_tok.c\
 				./srcs/core/str_join_tab.c\
+				./srcs/core/heredoc_bullshit.c\
 				./srcs/core/cmd_argv.c
 
 BUILTIN		=	./srcs/built-in/ft_echo.c\

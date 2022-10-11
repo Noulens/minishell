@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_tools1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:07:44 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/06 13:59:14 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/11 18:31:43 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	ttok0(t_command **pa, int *i)
 	return (0);
 }
 
-int	ttok356(t_tok *tmp, t_command **pa, int *i)
+int	ttok356(t_tok *tmp, t_command **pa, int *i, t_minishell *ms)
 {
 	if (tmp->type == 3 && g_ms->sigint == FALSE)
 	{
@@ -99,7 +99,7 @@ int	ttok356(t_tok *tmp, t_command **pa, int *i)
 		if (pa[*i]->limiter != NULL)
 		{
 			pa[*i]->lim_len = ft_strlen(pa[*i]->limiter);
-			check_heredoc(pa, *i);
+			check_heredoc(pa, *i, ms);
 		}
 		g_ms->i.i = -1;
 	}
