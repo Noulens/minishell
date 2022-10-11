@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:43:44 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/10 15:10:50 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/11 14:17:08 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	exit_args(char **argv, t_minishell *minishell)
 	{
 		if (!ft_isdigit(*p))
 			return (ft_putstr_fd("exit: not a numeric argument\n", 2),
-					wrap_up_exit(minishell), exit(2), (void)0);
+				wrap_up_exit(minishell), exit(2), (void)0);
 		p++;
 	}
 	code = ft_capped_atoll(argv[1], &status);
