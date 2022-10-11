@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:09:29 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/06 20:28:12 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/11 17:40:04 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,30 @@ char	*ias(char *str)
 	return (NULL);
 }
 
+char	*expd(char *str, t_minishell *ms)
+{
+	char			*new_str;
+	int				len;
+	struct s_int	i;
+
+	i.i = 0;
+	i.j = 0;
+	i.k = 0;
+	len = 0;
+	ms->i.i = 0;
+	ms->i.j = 0;
+	ms->i.k = 0;
+	if (str == NULL)
+		return (NULL);
+	len = count_expender(i, str, ms);
+	len += ft_strlen(str);
+	new_str = init_expender(str, len, ms);
+	if (new_str == NULL)
+		return (NULL);
+	free(str);
+	return (new_str);
+}
+
 void	check_heredoc(t_command **pa, int i)
 {
 	char	*p;
@@ -42,6 +66,7 @@ void	check_heredoc(t_command **pa, int i)
 	{
 		write(STDIN_FILENO, "heredoc> ", 9);
 		p = get_next_line(pa[i]->fdhd);
+		p = expd(p, g_ms);
 		if (p == NULL || ft_strncmp(p, pa[i]->limiter, pa[i]->lim_len) == 0)
 		{
 			close(pa[i]->fdhd);
