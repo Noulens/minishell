@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/10/11 20:43:06 by tnoulens         ###   ########.fr       */
+=======
+/*   Updated: 2022/10/11 18:32:05 by cfontain         ###   ########.fr       */
+>>>>>>> 490ffa2bdc58d2cf9c93db49296b69ce6dfbccca
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +163,9 @@ void		search_alias(char *str, char *new_s, t_minishell *ms);
 void		copy_alias(char *env, char *new_s, t_minishell *ms);
 int			copy_ret(char *new_s, t_minishell *ms);
 
+char		*add_double_quote(char *str);
+char		*suppr_double_quote(char *str);
+
 	/* --- parser --- */
 
 int			parse(t_minishell *ms);
@@ -167,8 +174,8 @@ t_command	**malloc_pa(t_minishell *ms, int *j, t_tok **tmp);
 int			ttok0(t_command **pa, int *i);
 int			ttok1(t_tok *tmp, t_command **pa, int i);
 int			ttok2(t_tok *tmp, t_command **pa, int i);
-int			ttok356(t_tok *tmp, t_command **pa, int *i);
-void		check_heredoc(t_command **pa, int i);
+int			ttok356(t_tok *tmp, t_command **pa, int *i, t_minishell *ms);
+void		check_heredoc(t_command **pa, int i, t_minishell *ms);
 int			list_to_cmd(t_command **cm, int i);
 int			checkforenvvar(t_command **pa, int *i);
 

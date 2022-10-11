@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:09:29 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/11 17:40:04 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/11 18:30:40 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,24 @@ char	*expd(char *str, t_minishell *ms)
 	ms->i.k = 0;
 	if (str == NULL)
 		return (NULL);
+	str = add_double_quote(str);
+	if (str == NULL)
+		return (ft_lstclear_tok(ms->list), clean_up(ms->gb, ms->env_array, ms->env),
+			perror("malloc"), exit(errno), NULL);
 	len = count_expender(i, str, ms);
 	len += ft_strlen(str);
 	new_str = init_expender(str, len, ms);
 	if (new_str == NULL)
 		return (NULL);
 	free(str);
+	new_str = suppr_double_quote(new_str);
+	if (new_str == NULL)
+		return (ft_lstclear_tok(ms->list), clean_up(ms->gb, ms->env_array, ms->env),
+			perror("malloc"), exit(errno), NULL);
 	return (new_str);
 }
 
-void	check_heredoc(t_command **pa, int i)
+void	check_heredoc(t_command **pa, int i, t_minishell *ms)
 {
 	char	*p;
 	int		tmp_fd;
@@ -66,7 +74,7 @@ void	check_heredoc(t_command **pa, int i)
 	{
 		write(STDIN_FILENO, "heredoc> ", 9);
 		p = get_next_line(pa[i]->fdhd);
-		p = expd(p, g_ms);
+		p = expd(p, ms);
 		if (p == NULL || ft_strncmp(p, pa[i]->limiter, pa[i]->lim_len) == 0)
 		{
 			close(pa[i]->fdhd);
