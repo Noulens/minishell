@@ -6,15 +6,16 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:54:49 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/11 18:21:53 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/12 12:26:11 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char *suppr_double_quote(char *str)
+char	*suppr_double_quote(char *str)
 {
-	char *new_str;
+	char	*new_str;
+
 	new_str = ft_calloc(sizeof(char), ft_strlen(str));
 	if (new_str == NULL)
 		return (NULL);
@@ -23,10 +24,10 @@ char *suppr_double_quote(char *str)
 	return (new_str);
 }
 
-
-char *add_double_quote(char *str)
+char	*add_double_quote(char *str)
 {
-	char *new_str;
+	char	*new_str;
+
 	new_str = ft_calloc(sizeof(char), (ft_strlen(str) + 3));
 	if (new_str == NULL)
 		return (NULL);

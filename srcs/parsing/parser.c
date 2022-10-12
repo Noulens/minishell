@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:09:29 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/11 18:30:40 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/12 12:28:40 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ char	*expd(char *str, t_minishell *ms)
 		return (NULL);
 	str = add_double_quote(str);
 	if (str == NULL)
-		return (ft_lstclear_tok(ms->list), clean_up(ms->gb, ms->env_array, ms->env),
+		return (ft_lstclear_tok(ms->list),
+			clean_up(ms->gb, ms->env_array, ms->env),
 			perror("malloc"), exit(errno), NULL);
 	len = count_expender(i, str, ms);
 	len += ft_strlen(str);
@@ -55,7 +56,8 @@ char	*expd(char *str, t_minishell *ms)
 	free(str);
 	new_str = suppr_double_quote(new_str);
 	if (new_str == NULL)
-		return (ft_lstclear_tok(ms->list), clean_up(ms->gb, ms->env_array, ms->env),
+		return (ft_lstclear_tok(ms->list),
+			clean_up(ms->gb, ms->env_array, ms->env),
 			perror("malloc"), exit(errno), NULL);
 	return (new_str);
 }
@@ -110,7 +112,7 @@ int	parse(t_minishell *ms)
 			return (1);
 		else if (tmp->type == 4 && ttok4(tmp, pa, i) == 1)
 			return (1);
-		else if (ttok356(tmp, pa, &i) == -1)
+		else if (ttok356(tmp, pa, &i, ms) == -1)
 			return (free_param(pa), error_clean_up(ms), 1);
 		tmp = tmp->next;
 	}

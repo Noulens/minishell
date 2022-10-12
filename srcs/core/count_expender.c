@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count_expender.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 11:52:09 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/06 17:33:04 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/12 11:52:18 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	break_point_alias(char *str, int i)
 {
 	if (ft_isdigit(str[i]) == 1)
 		return (i += 1);
-	while (str[i] != 0 && ft_isalnum(str[i]) == 1)
+	while (str[i] != 0 && (ft_isalnum(str[i]) == 1 || str[i] == '_'))
 		i++;
 	return (i);
 }

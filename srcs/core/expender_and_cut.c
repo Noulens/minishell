@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 11:50:36 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/06 16:29:14 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/12 12:26:22 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,3 +55,18 @@ int	expender_and_cut(t_minishell *minishell)
 		return (1);
 	return (0);
 }
+
+/*void	print_tok_list(t_tok *list)
+{
+	t_tok *tmp;
+	tmp = list;
+	if (list)
+	{
+		while (list)
+		{
+			ft_printf("[%s] [%d]\n", list->data, list->type);
+			list = list->next;
+		}
+	}
+	list = tmp;
+}*/
