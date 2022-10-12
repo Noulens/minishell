@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:07:44 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/12 16:54:27 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/12 17:26:05 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	ttok3(t_tok *tmp, t_command **pa, int *i, t_minishell *ms)
 	if (pa[*i]->limiter != NULL)
 	{
 		pa[*i]->lim_len = ft_strlen(pa[*i]->limiter);
-		check_hd(tmp->infos ,pa, *i, ms);
+		check_hd(pa, *i, ms, tmp->infos);
 	}
 	else
 		return (-2);
