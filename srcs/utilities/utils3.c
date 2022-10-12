@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:14:50 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/12 16:15:07 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/12 18:06:22 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,14 @@ int	list_to_cmd(t_command **cm, int i)
 		tmp = tmp->next;
 	}
 	return (0);
+}
+
+void	init_int(t_minishell *ms, t_int *i)
+{
+	i->i = 0;
+	i->j = 0;
+	i->k = 0;
+	ms->i.i = 0;
+	ms->i.j = 0;
+	ms->i.k = 0;
 }

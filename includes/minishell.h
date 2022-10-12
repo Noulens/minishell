@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/12 16:54:01 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/12 18:06:16 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,6 +230,7 @@ char		*str_join_tab(char **argv);
 int			ft_count_tab(char **str);
 int			copy_tab_with_space(char **argv, char *str);
 void		freer(char **ptr);
+void		init_int(t_minishell *ms, t_int *i);
 
 	/* --- build-in --- */
 

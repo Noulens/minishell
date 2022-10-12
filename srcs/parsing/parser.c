@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:09:29 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/12 16:52:03 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/12 18:09:19 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,10 @@ char	*expd(char *str, t_minishell *ms)
 {
 	char			*new_str;
 	int				len;
-	struct s_int	i;
+	t_int			i;
 
-	i.i = 0;
-	i.j = 0;
-	i.k = 0;
+	init_int(ms, &i);
 	len = 0;
-	ms->i.i = 0;
-	ms->i.j = 0;
-	ms->i.k = 0;
 	if (str == NULL)
 		return (NULL);
 	str = add_double_quote(str);
@@ -79,12 +74,12 @@ void	check_hd(t_command **pa, int i, t_minishell *ms, int check_hdq)
 	if (tmp_fd == -1 || tmp_fd > FOPEN_MAX)
 		return (perror("check_heredoc open"), (void)0);
 	pa[i]->fdhd = dup(STDIN_FILENO);
-	g_ms->i.l = i;
+	ms->i.l = i;
 	while (1 && g_ms->sigint == FALSE)
 	{
 		write(STDIN_FILENO, "heredoc> ", 9);
 		p = get_next_line(pa[i]->fdhd);
-		if (p == NULL || ft_strncmp(p, pa[i]->limiter, pa[i]->lim_len) == 0)
+		if (p == NULL || ft_cmpchr(p, pa[i]->limiter, '\n') == 0)
 		{
 			close(pa[i]->fdhd);
 			if (p == NULL)
@@ -104,24 +99,21 @@ int	parse(t_minishell *ms)
 	int			i;
 
 	ms->cm = malloc_pa(ms, &i, &tmp);
-	g_ms->i.l = -1;
 	while (tmp)
 	{
 		if (tmp->type == 0)
 			ttok0(ms->cm, &i);
-		else if (tmp->type == 1 && ttok1(tmp, ms->cm, i) == 1)
-			return (1);
-		else if (tmp->type == 2 && ttok2(tmp, ms->cm, i) == 1)
-			return (1);
-		else if (tmp->type == 4 && ttok4(tmp, ms->cm, i) == 1)
+		else if ((tmp->type == 1 && ttok1(tmp, ms->cm, i) == 1)
+			|| (tmp->type == 2 && ttok2(tmp, ms->cm, i) == 1)
+			|| (tmp->type == 4 && ttok4(tmp, ms->cm, i) == 1))
 			return (1);
 		else
 		{
 			f = ttok356(tmp, ms->cm, &i, ms);
-		if (f == -1)
-			return (free_param(ms->cm), error_clean_up(ms), 1);
-		if (f == -2)
-			return (1);
+			if (f == -1)
+				return (free_param(ms->cm), error_clean_up(ms), 1);
+			if (f == -2)
+				return (1);
 		}
 		tmp = tmp->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:07:44 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/12 17:39:04 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/12 17:49:36 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_command	**malloc_pa(t_minishell *ms, int *j, t_tok **tmp)
 	i = 0;
 	*j = 0;
 	*tmp = ms->list;
+	ms->i.l = -1;
 	pa = (t_command **)ft_calloc(sizeof(t_command *), ms->nbr_cmd + 1);
 	if (pa == NULL)
 		error_clean_up(ms);
@@ -79,7 +80,7 @@ int	ttok3(t_tok *tmp, t_command **pa, int *i, t_minishell *ms)
 	}
 	else
 		return (-2);
-	g_ms->i.l = -1;
+	ms->i.l = -1;
 	return (0);
 }
 
