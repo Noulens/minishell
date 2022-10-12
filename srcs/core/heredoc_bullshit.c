@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:54:49 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/12 15:25:41 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/12 17:12:13 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int		check_heredoc_quote(char *str, t_minishell *ms)
 	int i;
 
 	i = 2;
+	ms->list->infos = 0;
 	while (char_is_whitespace(str[i]) == 1)
 		i++;
 	check_heredoc_quote2(str, i, ms);
