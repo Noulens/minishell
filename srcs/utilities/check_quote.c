@@ -6,11 +6,19 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 14:51:12 by cfontain          #+#    #+#             */
-/*   Updated: 2022/09/16 10:41:59 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/12 14:26:25 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	shitty_char(char c)
+{
+	if (c == '@' || c == '!' || c == '#' || c == '$' || c == '-' 
+		|| c == 34 || c == 39 || c == '&' || c == '*')
+		return (1);
+	return (0);
+}
 
 int	check_single_quote(char *str, int *i)
 {

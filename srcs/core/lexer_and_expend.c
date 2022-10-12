@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_and_expend.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 11:55:02 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/06 17:27:42 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/12 14:57:10 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	lexer_and_expend(char *p, t_minishell *minishell)
 {
 	if (lexer(p, minishell) == 1)
 		return (1);
+	check_heredoc_bullshit(minishell);	
 	if (expender_and_cut(minishell) == 1)
 		return (1);
 	count_pipe(minishell);
