@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:22:08 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/12 11:43:07 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/12 14:26:20 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,16 @@ int	trigg_alias(char *s, t_minishell *ms, int trigger)
 	return (trigger);
 }
 
+int	expend_or_not(char *s, int i, int trigger)
+{
+	if ((s[i] == '$' && s[i + 1] == '?' && trigger == 0))
+		return (1);
+	if (s[i] == '$' && trigger == 0 && (ft_isalnum(s[i + 1]) == 1
+		|| shitty_char(s[i + 1]) == 1 || s[i + 1] == '_'))
+		return (1);	
+	return (0);		
+}
+
 char	*copy_expend(char *s, char *new_s, t_minishell *ms)
 {
 	int		trigger;
@@ -45,9 +55,7 @@ char	*copy_expend(char *s, char *new_s, t_minishell *ms)
 	trigger = 0;
 	while (s[ms->i.i] != 0)
 	{
-		if ((s[ms->i.i] == '$' && s[ms->i.i + 1] == '?' && trigger == 0)
-			|| (s[ms->i.i] == '$' && trigger == 0
-				&& (ft_isalnum(s[ms->i.i + 1]) == 1 || s[ms->i.i + 1] == '_')))
+		if (expend_or_not(s, ms->i.i, trigger) == 1)
 		{
 			if (copy_dollar(s, new_s, ms) == 1)
 				return (NULL);
@@ -74,3 +82,4 @@ char	*init_expender(char *str, int len, t_minishell *minishell)
 		return (free (new_str), NULL);
 	return (new_str);
 }
+

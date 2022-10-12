@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 11:50:36 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/12 12:26:22 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/12 15:27:45 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,14 @@ int	expender_and_cut(t_minishell *minishell)
 	temp = minishell->list;
 	while (minishell->list)
 	{
-		str = expender(minishell->list->data, minishell);
-		if (str == NULL)
-			return (1);
-		free (minishell->list->data);
-		minishell->list->data = str;
+		if (minishell->list->type != 3)
+		{
+			str = expender(minishell->list->data, minishell);
+			if (str == NULL)
+				return (1);
+			free (minishell->list->data);
+			minishell->list->data = str;
+		}
 		minishell->list = minishell->list->next;
 	}
 	minishell->list = temp;

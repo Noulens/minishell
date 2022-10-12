@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/12 11:30:26 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/12 15:25:07 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_tok
 {
 	char			*data;
 	int				type;
+	int				infos;
 	struct s_tok	*next;
 }	t_tok;
 
@@ -102,6 +103,7 @@ typedef struct s_minishell
 	pid_t		pid;
 	pid_t		*pids;
 	int			*end;
+	int			hd_quote;
 }	t_minishell;
 
 /* struct for builtin utilities */
@@ -185,6 +187,8 @@ int			is_built_in(t_minishell *ms, int argc, char **argv);
 
 	/* --- utilities --- */
 
+int			check_heredoc_bullshit(t_minishell *ms);
+int			shitty_char(char c);
 void		print_welcome_msg(char **envp);
 int			gb_c(t_list **gb, void *content, void **content2);
 void		init_minishell(t_minishell *minishell, int argc, char **envp);
