@@ -6,13 +6,13 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:54:49 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/12 17:12:13 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/12 17:46:17 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		check_heredoc_quote2(char *str, int i, t_minishell *ms)
+int	check_heredoc_quote2(char *str, int i, t_minishell *ms)
 {
 	if (str[i] == 34 && str[i + 1] == 34)
 		ms->list->infos = 1;
@@ -21,9 +21,9 @@ int		check_heredoc_quote2(char *str, int i, t_minishell *ms)
 	return (0);
 }
 
-int		check_heredoc_quote(char *str, t_minishell *ms)
+int	check_heredoc_quote(char *str, t_minishell *ms)
 {
-	int i;
+	int	i;
 
 	i = 2;
 	ms->list->infos = 0;
@@ -32,17 +32,18 @@ int		check_heredoc_quote(char *str, t_minishell *ms)
 	check_heredoc_quote2(str, i, ms);
 	while (str[i] != 0 && str[i] != 34 && str[i] != 39)
 		i++;
-	check_heredoc_quote2(str, i, ms);	
+	check_heredoc_quote2(str, i, ms);
 	return (0);
 }
 
-int check_heredoc_bullshit(t_minishell *ms)
+int	check_heredoc_bullshit(t_minishell *ms)
 {
-	t_tok *tmp;
+	t_tok	*tmp;
+
 	tmp = ms->list;
 	if (ms->list)
 	{
-		while(ms->list)
+		while (ms->list)
 		{
 			if (ms->list->type == 3)
 				check_heredoc_quote(ms->list->data, ms);
