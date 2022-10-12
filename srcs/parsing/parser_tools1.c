@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_tools1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:07:44 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/11 18:31:43 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/12 16:52:42 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,6 @@ static char	*gethdname(char *str)
 			error_clean_up(g_ms);
 		return (p);
 	}
-}
-
-int	list_to_cmd(t_command **cm, int i)
-{
-	t_list	*tmp;
-	size_t	idx;
-
-	if (cm[i]->cmd != NULL)
-		free(cm[i]->cmd);
-	idx = ft_lstsize(cm[i]->cmdlst);
-	cm[i]->cmd = (char **)ft_calloc(sizeof(char *), idx + 1);
-	if (!cm[i]->cmd)
-		return (perror("list_to_cmd"), -1);
-	tmp = cm[i]->cmdlst;
-	idx = 0;
-	while (tmp != NULL)
-	{
-		cm[i]->cmd[idx] = tmp->content;
-		idx++;
-		tmp = tmp->next;
-	}
-	return (0);
 }
 
 t_command	**malloc_pa(t_minishell *ms, int *j, t_tok **tmp)
@@ -89,19 +67,28 @@ int	ttok0(t_command **pa, int *i)
 	return (0);
 }
 
+int	ttok3(t_tok *tmp, t_command **pa, int *i, t_minishell *ms)
+{
+	if (pa[*i]->here_doc++ > 0)
+		free(pa[*i]->limiter);
+	pa[*i]->limiter = gethdname(tmp->data);
+	if (pa[*i]->limiter != NULL)
+	{
+		pa[*i]->lim_len = ft_strlen(pa[*i]->limiter);
+		check_hd(tmp->info ,pa, *i, ms);
+	}
+	else
+		return (-2);
+	g_ms->i.l = -1;
+	return (0);
+}
+
 int	ttok356(t_tok *tmp, t_command **pa, int *i, t_minishell *ms)
 {
 	if (tmp->type == 3 && g_ms->sigint == FALSE)
 	{
-		if (pa[*i]->here_doc++ > 0)
-			free(pa[*i]->limiter);
-		pa[*i]->limiter = gethdname(tmp->data);
-		if (pa[*i]->limiter != NULL)
-		{
-			pa[*i]->lim_len = ft_strlen(pa[*i]->limiter);
-			check_heredoc(pa, *i, ms);
-		}
-		g_ms->i.i = -1;
+		if (ttok3(tmp, pa, i, ms) == -2)
+			return (-2);
 	}
 	else if (tmp->type == 5)
 	{

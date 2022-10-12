@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+         #
+#    By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/10/11 18:05:24 by cfontain         ###   ########.fr        #
+#    Updated: 2022/10/12 16:15:20 by tnoulens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ UTILITIES	= 	./srcs/utilities/garbage_collector.c\
 				./srcs/utilities/clean_up.c\
 				./srcs/utilities/utils1.c\
 				./srcs/utilities/utils2.c\
+				./srcs/utilities/utils3.c
 				
 PARSING		=	./srcs/parsing/parser.c\
 				./srcs/parsing/parser_tools1.c\

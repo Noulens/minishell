@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:33:49 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/09 01:29:21 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/12 16:09:49 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	tmp_handler(int sig, siginfo_t *info, void *context)
 	{
 		g_ms->sigint = TRUE;
 		g_ms->exec_ret = 130;
-		if (g_ms->i.i != -1)
+		if (g_ms->i.l != -1)
 		{
-			if (close(g_ms->cm[g_ms->i.i]->fdhd) == -1)
+			if (close(g_ms->cm[g_ms->i.l]->fdhd) == -1)
 				perror("tmp_handler close");
 			unlink(".here_doc.tmp");
 		}

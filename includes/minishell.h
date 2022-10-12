@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/12 11:30:26 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/12 16:51:24 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_int
 	int	i;
 	int	j;
 	int	k;
+	int	l;
 }	t_int;
 
 typedef struct s_commands
@@ -171,7 +172,7 @@ int			ttok0(t_command **pa, int *i);
 int			ttok1(t_tok *tmp, t_command **pa, int i);
 int			ttok2(t_tok *tmp, t_command **pa, int i);
 int			ttok356(t_tok *tmp, t_command **pa, int *i, t_minishell *ms);
-void		check_heredoc(t_command **pa, int i, t_minishell *ms);
+void		check_hd(t_command **pa, int i, t_minishell *ms, int check_hdq);
 int			list_to_cmd(t_command **cm, int i);
 int			checkforenvvar(t_command **pa, int *i);
 

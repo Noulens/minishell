@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:09:29 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/12 12:28:40 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/12 16:52:03 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,15 @@ char	*expd(char *str, t_minishell *ms)
 	return (new_str);
 }
 
-void	check_heredoc(t_command **pa, int i, t_minishell *ms)
+static void	ex_and_put(int check_hdq, char *p, t_minishell *ms, int tmp_fd)
+{
+	if (check_hdq != 1)
+		p = expd(p, ms);
+	ft_putstr_fd(p, tmp_fd);
+	free(p);
+}
+
+void	check_hd(t_command **pa, int i, t_minishell *ms, int check_hdq)
 {
 	char	*p;
 	int		tmp_fd;
@@ -71,12 +79,11 @@ void	check_heredoc(t_command **pa, int i, t_minishell *ms)
 	if (tmp_fd == -1 || tmp_fd > FOPEN_MAX)
 		return (perror("check_heredoc open"), (void)0);
 	pa[i]->fdhd = dup(STDIN_FILENO);
-	g_ms->i.i = i;
+	g_ms->i.l = i;
 	while (1 && g_ms->sigint == FALSE)
 	{
 		write(STDIN_FILENO, "heredoc> ", 9);
 		p = get_next_line(pa[i]->fdhd);
-		p = expd(p, ms);
 		if (p == NULL || ft_strncmp(p, pa[i]->limiter, pa[i]->lim_len) == 0)
 		{
 			close(pa[i]->fdhd);
@@ -85,35 +92,37 @@ void	check_heredoc(t_command **pa, int i, t_minishell *ms)
 			free(p);
 			break ;
 		}
-		ft_putstr_fd(p, tmp_fd);
-		free(p);
+		ex_and_put(check_hdq, p, ms, tmp_fd);
 	}
 	close(tmp_fd);
 }
 
 int	parse(t_minishell *ms)
 {
-	t_command	**pa;
 	t_tok		*tmp;
+	int			f;
 	int			i;
 
-	pa = malloc_pa(ms, &i, &tmp);
-	g_ms->i.i = -1;
-	if (pa == NULL)
-		return (1);
-	ms->cm = pa;
+	ms->cm = malloc_pa(ms, &i, &tmp);
+	g_ms->i.l = -1;
 	while (tmp)
 	{
 		if (tmp->type == 0)
-			ttok0(pa, &i);
-		else if (tmp->type == 1 && ttok1(tmp, pa, i) == 1)
+			ttok0(ms->cm, &i);
+		else if (tmp->type == 1 && ttok1(tmp, ms->cm, i) == 1)
 			return (1);
-		else if (tmp->type == 2 && ttok2(tmp, pa, i) == 1)
+		else if (tmp->type == 2 && ttok2(tmp, ms->cm, i) == 1)
 			return (1);
-		else if (tmp->type == 4 && ttok4(tmp, pa, i) == 1)
+		else if (tmp->type == 4 && ttok4(tmp, ms->cm, i) == 1)
 			return (1);
-		else if (ttok356(tmp, pa, &i, ms) == -1)
-			return (free_param(pa), error_clean_up(ms), 1);
+		else
+		{
+			f = ttok356(tmp, ms->cm, &i, ms);
+		if (f == -1)
+			return (free_param(ms->cm), error_clean_up(ms), 1);
+		if (f == -2)
+			return (1);
+		}
 		tmp = tmp->next;
 	}
 	return (0);
