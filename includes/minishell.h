@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/13 12:05:39 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:13:45 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,7 @@ int			ttok2(t_tok *tmp, t_command **pa, int i);
 int			ttok356(t_tok *tmp, t_command **pa, int *i, t_minishell *ms);
 void		check_hd(t_command **pa, int i, t_minishell *ms, int check_hdq);
 int			list_to_cmd(t_command **cm, int i);
-int			checkforenvvar(t_command **pa, int *i);
+int			checkforenvvar(char *content, t_command **pa, int *i);
 
 	/* --- core --- */
 
