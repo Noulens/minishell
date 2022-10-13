@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:07:44 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/13 17:15:00 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:43:45 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	ttok356(t_tok *tmp, t_command **pa, int *i, t_minishell *ms)
 		if (ttok3(tmp, pa, i, ms) == -2)
 			return (-2);
 	}
-	else if (tmp->type == 5 && tmp->infos == 0)
+	else if (tmp->type == 5 && (tmp->infos == 0 || tmp->infos == 1))
 	{
 		ft_lstadd_back(&pa[*i]->cmdlst, ft_lstnew(ft_strdup(tmp->data), NULL));
 		if (ft_lstlast(pa[*i]->cmdlst)->content == NULL)
