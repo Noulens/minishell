@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:33:49 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/14 01:37:23 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/14 01:55:35 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static void	wrap_up_sigpipe(siginfo_t *info, void *context)
 	ft_lstclear_tok(g_ms->list);
 	free_param(g_ms->cm);
 	clean_up(g_ms->gb, g_ms->env_array, g_ms->env);
-	ft_fprintf(2, YELLOW"\npiped\n"END);
 	exit_fd();
 	exit(141);
 }
