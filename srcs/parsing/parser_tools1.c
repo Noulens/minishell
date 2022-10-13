@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_tools1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:07:44 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/13 18:13:34 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/14 01:53:26 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,21 @@ int	ttok0(t_command **pa, int *i)
 
 int	ttok3(t_tok *tmp, t_command **pa, int *i, t_minishell *ms)
 {
+	char	wd[PATH_MAX];
+
 	if (pa[*i]->here_doc++ > 0)
+	{
 		free(pa[*i]->limiter);
+		free(pa[*i]->hdpath);
+	}
 	pa[*i]->limiter = gethdname(tmp->data);
 	if (pa[*i]->limiter != NULL)
 	{
 		pa[*i]->lim_len = ft_strlen(pa[*i]->limiter);
+		if (getcwd(wd, PATH_MAX))
+			pa[*i]->hdpath = ft_strjoin(wd, "/.here_doc.tmp");
+		else
+			return (perror("get hd path ttok3"), errno);
 		check_hd(pa, *i, ms, tmp->infos);
 	}
 	else
@@ -103,7 +112,8 @@ int	ttok356(t_tok *tmp, t_command **pa, int *i, t_minishell *ms)
 	{
 		if (list_to_cmd(pa, *i) == -1)
 			return (-1);
-		return (++*i);
+		++*i;
+		return (0);
 	}
 	return (0);
 }

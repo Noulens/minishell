@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:33:49 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/12 16:09:49 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/14 01:37:23 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@ static void	wrap_up_terminate(siginfo_t *info, void *context)
 	exit(143);
 }
 
+static void	wrap_up_sigpipe(siginfo_t *info, void *context)
+{
+	(void)context;
+	(void)info;
+	ft_lstclear_tok(g_ms->list);
+	free_param(g_ms->cm);
+	clean_up(g_ms->gb, g_ms->env_array, g_ms->env);
+	ft_fprintf(2, YELLOW"\npiped\n"END);
+	exit_fd();
+	exit(141);
+}
+
 void	tmp_handler(int sig, siginfo_t *info, void *context)
 {
 	if (sig == SIGINT)
@@ -34,7 +46,7 @@ void	tmp_handler(int sig, siginfo_t *info, void *context)
 		{
 			if (close(g_ms->cm[g_ms->i.l]->fdhd) == -1)
 				perror("tmp_handler close");
-			unlink(".here_doc.tmp");
+			unlink(g_ms->cm[g_ms->i.l]->hdpath);
 		}
 		if (g_ms->pid == 0)
 		{
@@ -50,6 +62,8 @@ void	tmp_handler(int sig, siginfo_t *info, void *context)
 		ft_printf("\b\b");
 	if (sig == SIGTERM)
 		return (wrap_up_terminate(info, context), (void)0);
+	if (sig == SIGPIPE)
+		return (wrap_up_sigpipe(info, context), (void)0);
 }
 
 void	signal_handling(void)
@@ -62,4 +76,6 @@ void	signal_handling(void)
 	sigaction(SIGINT, &sa, NULL);
 	sigaction(SIGQUIT, &sa, NULL);
 	sigaction(SIGTERM, &sa, NULL);
+	sigaction(SIGPIPE, &sa, NULL);
+	//signal(SIGPIPE, SIG_IGN);
 }

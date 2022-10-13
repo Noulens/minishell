@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:57:27 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/11 19:44:26 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/14 01:45:35 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	init_struct(t_minishell *ms, t_command *cm)
 	cm->fd[0] = STDIN_FILENO;
 	cm->fd[1] = STDOUT_FILENO;
 	cm->fdhd = -1;
+	cm->hdpath = NULL;
 	cm->here_doc = FALSE;
 	cm->limiter = NULL;
 	cm->inf = NULL;
@@ -73,4 +74,5 @@ void	mini_init(t_minishell *ms)
 	ms->gb = NULL;
 	ms->cm = NULL;
 	ms->pid = 0;
+	ms->i.l = -1;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_up.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:44:09 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/11 20:42:44 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/14 00:20:59 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	free_param(t_command **param)
 			free(param[i]->inf);
 			free(param[i]->o);
 			free(param[i]->limiter);
+			free(param[i]->hdpath);
 			free(param[i]);
 			i++;
 		}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipes_mgmt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:06:24 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/02 19:26:03 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/14 01:08:53 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	close_pipes(int cmd_nbr, int *end, t_command *cm)
 	if (cm->here_doc >= TRUE)
 	{
 		close(cm->fd[0]);
-		unlink(".here_doc.tmp");
+		unlink(cm->hdpath);
 	}
 	else if (cm->fd[0] != STDIN_FILENO)
 	{

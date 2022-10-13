@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:09:29 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/12 18:13:23 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/14 00:33:12 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	parse(t_minishell *ms)
 			f = ttok356(tmp, ms->cm, &i, ms);
 			if (f == -1)
 				return (free_param(ms->cm), error_clean_up(ms), 1);
-			if (f == -2)
+			if (f == -2 || f != 0)
 				return (1);
 		}
 		tmp = tmp->next;
