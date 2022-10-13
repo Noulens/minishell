@@ -19,7 +19,7 @@ static void	wrap_up_terminate(siginfo_t *info, void *context)
 	ft_lstclear_tok(g_ms->list);
 	free_param(g_ms->cm);
 	clean_up(g_ms->gb, g_ms->env_array, g_ms->env);
-	ft_fprintf(2, "Terminated\n");
+	ft_fprintf(2, "\nTerminated\n");
 	exit_fd();
 	exit(143);
 }
