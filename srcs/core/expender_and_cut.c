@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expender_and_cut.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 11:50:36 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/13 12:10:05 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:23:50 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ char	*expender(char *str, t_minishell *ms)
 	return (new_str);
 }
 
+void	print_tok_list(t_tok *list);
+
 int	expender_and_cut(t_minishell *minishell)
 {
 	char	*str;
@@ -56,10 +58,11 @@ int	expender_and_cut(t_minishell *minishell)
 		return (1);
 	if (cut_quote(minishell) == 1)
 		return (1);
+	print_tok_list(minishell->list);
 	return (0);
 }
 
-/*void	print_tok_list(t_tok *list)
+void	print_tok_list(t_tok *list)
 {
 	t_tok *tmp;
 	tmp = list;
@@ -72,4 +75,4 @@ int	expender_and_cut(t_minishell *minishell)
 		}
 	}
 	list = tmp;
-}*/
+}
