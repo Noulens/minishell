@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_bullshit.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:54:49 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/13 15:45:26 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/13 18:04:29 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	check_heredoc_quote2(char *str, int i, t_minishell *ms)
 {
-	int quote;
-	int single;
-	
+	int	quote;
+	int	single;
+
 	quote = 0;
 	single = 0;
 	while (str[i] != 0 && char_is_whitespace(str[i]) == 0)
@@ -25,7 +25,7 @@ int	check_heredoc_quote2(char *str, int i, t_minishell *ms)
 			quote++;
 		if (str[i] == 39)
 			single++;
-		i++;	
+		i++;
 	}	
 	if (quote >= 2 || single >= 2)
 		ms->list->infos = 1;

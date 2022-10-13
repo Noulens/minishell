@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 11:50:36 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/13 17:45:41 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/13 18:04:54 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	expender_and_cut(t_minishell *minishell)
 		return (1);
 	if (cut_quote(minishell) == 1)
 		return (1);
-	
 	return (0);
 }
 

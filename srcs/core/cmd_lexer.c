@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_lexer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:53:51 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/13 17:37:50 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/13 18:05:14 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_infos_one(char *str)
 		return (1);
 	if (str[0] == 39 && str[ft_strlen(str) - 1] == 39)
 		return (0);
-	return (0);	
+	return (0);
 }
 
 int	cmd_lexer(char *str, int i, t_minishell *minishell)
@@ -68,6 +68,5 @@ int	cmd_lexer(char *str, int i, t_minishell *minishell)
 		if (ft_lstlast_tok(minishell->list) == NULL)
 			return (free (new_str), -1);
 	}
-	
 	return (i);
 }
