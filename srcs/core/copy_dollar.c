@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 11:57:51 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/13 12:07:12 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:34:19 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	copy_alias(char *env, char *new_s, t_minishell *ms)
 		i++;
 		ms->i.j++;
 	}
-	if (ms->list->type == 5)
+	if (ms->list->type == 5 && ms->list->infos != 1)
 		ms->list->infos = 2;
 }
 

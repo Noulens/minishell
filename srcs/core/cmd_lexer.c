@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:53:51 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/13 12:05:06 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:37:50 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,22 @@ int	cmd_lexer_leght(char *str, int i)
 	return (i);
 }
 
+int	check_infos_one(char *str)
+{
+	if (str[0] == 34 && str[ft_strlen(str) - 1] == 34)
+		return (1);
+	if (str[0] == 39 && str[ft_strlen(str) - 1] == 39)
+		return (0);
+	return (0);	
+}
+
 int	cmd_lexer(char *str, int i, t_minishell *minishell)
 {
 	char	*new_str;
 	int		j;
+	int		infos;
 
+	infos = 0;
 	j = i;
 	i = cmd_lexer_leght(str, i);
 	new_str = ft_calloc(sizeof(char), (i + 1));
@@ -51,10 +62,12 @@ int	cmd_lexer(char *str, int i, t_minishell *minishell)
 		free (new_str);
 	else
 	{
+		infos = check_infos_one(new_str);
 		ft_lstadd_back_tok(&minishell->list,
-			ft_lstnew_tok(new_str, CMD_LEX, 0));
+			ft_lstnew_tok(new_str, CMD_LEX, infos));
 		if (ft_lstlast_tok(minishell->list) == NULL)
 			return (free (new_str), -1);
-	}	
+	}
+	
 	return (i);
 }
