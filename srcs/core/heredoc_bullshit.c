@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:54:49 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/12 17:46:17 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/13 15:45:26 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,20 @@
 
 int	check_heredoc_quote2(char *str, int i, t_minishell *ms)
 {
-	if (str[i] == 34 && str[i + 1] == 34)
-		ms->list->infos = 1;
-	else if (str[i] == 39 && str[i + 1] == 39)
+	int quote;
+	int single;
+	
+	quote = 0;
+	single = 0;
+	while (str[i] != 0 && char_is_whitespace(str[i]) == 0)
+	{
+		if (str[i] == 34)
+			quote++;
+		if (str[i] == 39)
+			single++;
+		i++;	
+	}	
+	if (quote >= 2 || single >= 2)
 		ms->list->infos = 1;
 	return (0);
 }
@@ -28,9 +39,6 @@ int	check_heredoc_quote(char *str, t_minishell *ms)
 	i = 2;
 	ms->list->infos = 0;
 	while (char_is_whitespace(str[i]) == 1)
-		i++;
-	check_heredoc_quote2(str, i, ms);
-	while (str[i] != 0 && str[i] != 34 && str[i] != 39)
 		i++;
 	check_heredoc_quote2(str, i, ms);
 	return (0);
