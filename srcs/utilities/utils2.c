@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:06:11 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/13 17:26:58 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/13 18:15:18 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ int	checkforenvvar(char *content, t_command **pa, int *i)
 
 	p = NULL;
 	ix = -1;
-	if (ias(content)
-		/*&& ft_memchr(content, ' ', ft_strlen(content))*/)
+	if (ias(content))
 	{
 		p = ft_split(content, ' ');
 		if (p == NULL)
