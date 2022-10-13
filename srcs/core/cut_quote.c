@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cut_quote.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 12:11:25 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/06 17:27:30 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/13 12:05:52 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	cut_quote(t_minishell *minishell)
 		minishell->list = minishell->list->next;
 	}
 	minishell->list = temp;
-	ft_lstadd_back_tok(&minishell->list, ft_lstnew_tok(NULL, END_LEX));
+	ft_lstadd_back_tok(&minishell->list, ft_lstnew_tok(NULL, END_LEX, 0));
 	if (ft_lstlast_tok(minishell->list) == NULL)
 		return (1);
 	return (0);

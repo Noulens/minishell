@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:41:46 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/06 17:27:46 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/13 12:06:14 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	chevron(char *str, int i, t_minishell *minishell, int type)
 		return (perror("malloc"), -1);
 	j = ft_copy_chevron(str, new_str, j, type);
 	ft_strlcpy(new_str + (ft_strlen(new_str)), str + j, ((i - j) + 1));
-	ft_lstadd_back_tok(&minishell->list, ft_lstnew_tok(new_str, type));
+	ft_lstadd_back_tok(&minishell->list, ft_lstnew_tok(new_str, type, 0));
 	if (ft_lstlast_tok(minishell->list) == NULL)
 		return (free (new_str), -1);
 	return (i);

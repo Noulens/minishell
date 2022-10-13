@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:41:40 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/06 12:32:11 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/13 12:04:39 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_lstadd_back_tok(t_tok **lst, t_tok *new)
 	}
 }
 
-t_tok	*ft_lstnew_tok(char *content, int content2)
+t_tok	*ft_lstnew_tok(char *content, int content2, int content3)
 {
 	t_tok	*first;
 
@@ -73,6 +73,7 @@ t_tok	*ft_lstnew_tok(char *content, int content2)
 		return (NULL);
 	first->data = content;
 	first->type = content2;
+	first->infos = content3;
 	first->next = NULL;
 	return (first);
 }

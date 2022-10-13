@@ -6,7 +6,7 @@
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 11:50:36 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/12 17:32:23 by cfontain         ###   ########.fr       */
+/*   Updated: 2022/10/13 12:10:05 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	expender_and_cut(t_minishell *minishell)
 	{
 		while (list)
 		{
-			ft_printf("[%s] [%d]\n", list->data, list->type);
+			ft_printf("[%s] [%d] [%d]\n", list->data, list->type, list->infos);
 			list = list->next;
 		}
 	}

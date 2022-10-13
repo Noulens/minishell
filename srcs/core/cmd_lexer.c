@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_lexer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:53:51 by cfontain          #+#    #+#             */
-/*   Updated: 2022/10/06 17:27:02 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/13 12:05:06 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ int	cmd_lexer(char *str, int i, t_minishell *minishell)
 		free (new_str);
 	else
 	{
-		ft_lstadd_back_tok(&minishell->list, ft_lstnew_tok(new_str, CMD_LEX));
+		ft_lstadd_back_tok(&minishell->list,
+			ft_lstnew_tok(new_str, CMD_LEX, 0));
 		if (ft_lstlast_tok(minishell->list) == NULL)
 			return (free (new_str), -1);
 	}	
