@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/14 01:34:42 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/17 12:36:59 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,13 +112,14 @@ int	pipex(t_minishell *ms)
 	i = -1;
 	while (++i < ms->nbr_cmd && ms->sigint == FALSE)
 	{
-		waitpid(ms->pids[i], &ret, 0);
+		waitpid(ms->pids[i], &ret, WUNTRACED);
 		if (WIFEXITED(ret))
 			ms->exec_ret = WEXITSTATUS(ret);
-		else if (ms->sigint == TRUE)
-			ms->exec_ret = 130;
 		else
-			ms->exec_ret = errno;
+		{
+			ms->exec_ret = WTERMSIG(ret) + 128;
+			ft_fprintf(2, "interrupted with signal %d\n", ms->exec_ret);
+		}
 	}
 	return (ms->exec_ret);
 }
