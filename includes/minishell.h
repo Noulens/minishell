@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/14 01:34:20 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/17 12:58:59 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,6 +232,7 @@ int			ft_count_tab(char **str);
 int			copy_tab_with_space(char **argv, char *str);
 void		freer(char **ptr);
 void		init_int(t_minishell *ms, t_int *i);
+int			cmpheredoc(const char *p, const char *limiter, char c);
 
 	/* --- build-in --- */
 
