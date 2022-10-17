@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:33:49 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/17 11:54:57 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/17 15:06:01 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,14 @@ static void	wrap_up_sigpipe(siginfo_t *info, void *context)
 	exit(141);
 }
 
+static void	redisplay_prompt(void)
+{
+	rl_replace_line("", 1);
+	rl_on_new_line();
+	write(2, "\n", 1);
+	rl_redisplay();
+}
+
 void	tmp_handler(int sig, siginfo_t *info, void *context)
 {
 	if (sig == SIGINT)
@@ -48,12 +56,7 @@ void	tmp_handler(int sig, siginfo_t *info, void *context)
 			unlink(g_ms->cm[g_ms->i.l]->hdpath);
 		}
 		if (g_ms->pid == 0)
-		{
-			rl_replace_line("", 1);
-			rl_on_new_line();
-			write(2, "\n", 1);
-			rl_redisplay();
-		}
+			redisplay_prompt();
 		else
 			write(2, "", 1);
 	}

@@ -6,7 +6,7 @@
 #    By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/10/17 12:05:21 by waxxy            ###   ########.fr        #
+#    Updated: 2022/10/17 14:23:47 by tnoulens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,6 +106,6 @@ fclean		: clean
 re			: fclean all
 
 ms	: all
-		valgrind --suppressions=ignore_leak.supp --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --trace-children=yes -s ./minishell
+		valgrind --suppressions=ignore_leak.supp --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes -s ./minishell
 
 .PHONY		: all clean fclean re
