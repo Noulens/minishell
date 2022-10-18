@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:31:54 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/17 12:40:43 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/18 19:30:15 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int	pipex(t_minishell *ms)
 		else
 		{
 			ms->exec_ret = WTERMSIG(ret) + 128;
-			ft_fprintf(2, "interrupted with signal %d\n", ms->exec_ret);
+			ft_fprintf(2, "\ninterrupted with signal %d\n", ms->exec_ret);
 		}
 	}
 	return (ms->exec_ret);

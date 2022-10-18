@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:33:49 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/17 15:06:01 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/18 20:31:00 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	tmp_handler(int sig, siginfo_t *info, void *context)
 		else
 			write(2, "", 1);
 	}
+	if (g_ms->pid != 0)
 	if (sig == SIGQUIT)
 		ft_printf("\b\b");
 	if (sig == SIGTERM)
@@ -79,4 +80,5 @@ void	signal_handling(void)
 	sigaction(SIGQUIT, &sa, NULL);
 	sigaction(SIGTERM, &sa, NULL);
 	sigaction(SIGPIPE, &sa, NULL);
+
 }
