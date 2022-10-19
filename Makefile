@@ -6,7 +6,7 @@
 #    By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/10/17 14:23:47 by tnoulens         ###   ########.fr        #
+#    Updated: 2022/10/19 18:26:22 by tnoulens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,7 @@ ${LIBFT}	:
 
 ${NAME}		: ${OBJS}  ${LIBFT}
 		@echo "\033[34m----Compiling----"
-		@${CC} ${FLAGS} ${OBJS} -L/usr/include -lreadline -o ${NAME} ${LIBFT}
+		@${CC} ${FLAGS} ${OBJS} -L/usr/include -lreadline -ltermcap -o ${NAME} ${LIBFT}
 		@${SUPP}
 		@echo "OK\033[0m"
 

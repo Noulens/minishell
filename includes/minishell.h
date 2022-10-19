@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/19 15:45:37 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/19 19:05:21 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <readline/history.h>
 # include <sys/types.h>
 # include <signal.h>
+# include <term.h>
 # include <linux/limits.h>
 # include <limits.h>
 # include <errno.h>
@@ -234,6 +235,7 @@ int			copy_tab_with_space(char **argv, char *str);
 void		freer(char **ptr);
 void		init_int(t_minishell *ms, t_int *i);
 int			cmpheredoc(const char *p, const char *limiter, char c);
+int			permission(int err);
 
 	/* --- build-in --- */
 

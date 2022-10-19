@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:14:50 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/17 15:01:47 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/19 19:09:27 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,14 @@ int	cmpheredoc(const char *p, const char *limiter, char c)
 	}
 	else
 		return (-1);
+}
+
+int	permission(int err)
+{
+	if (err == 13)
+		return (126);
+	else if (err == 2)
+		return (127);
+	else
+		return (err);
 }
