@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:33:49 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/19 15:07:02 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/19 15:34:02 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	tmp_handler(int sig, siginfo_t *info, void *context)
 			write(2, "", 1);
 	}
 	if (sig == SIGQUIT)
-		ft_fprintf(2, "\b\b""\033[0J");
+		ft_fprintf(2, "\b\b"CLEAR);
 	if (sig == SIGTERM)
 		return (wrap_up_terminate(info, context), (void)0);
 	if (sig == SIGPIPE)
