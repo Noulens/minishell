@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:29:21 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/17 11:56:27 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/10/19 14:27:54 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	exec(t_minishell *ms, char **cmds, char **envp)
 		if (ft_memchr(cmds[0], '/', ft_strlen(cmds[0])) || !genv(ms, "PATH"))
 		{
 			if (access(cmds[0], F_OK | X_OK) == 0)
-				cmd_path = cmds[0];
+				cmd_path = ft_strdup(cmds[0]);
 			else if (errno == 13)
 				return (perror("access"), 126);
 			else
