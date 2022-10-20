@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 20:33:49 by waxxy             #+#    #+#             */
-/*   Updated: 2022/10/19 19:05:03 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/20 18:12:56 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ void	tmp_handler(int sig, siginfo_t *info, void *context)
 		else
 			write(2, "", 1);
 	}
-	if (sig == SIGQUIT)
-		ft_putstr_fd("\b\b  \b\b", 2);
 	if (sig == SIGTERM)
 		return (wrap_up_terminate(info, context), (void)0);
 	if (sig == SIGPIPE)
@@ -71,12 +69,16 @@ void	tmp_handler(int sig, siginfo_t *info, void *context)
 void	signal_handling(void)
 {
 	struct sigaction	sa;
+	struct sigaction	sb;
 
 	sa.sa_flags = SA_RESTART;
 	sigemptyset(&sa.sa_mask);
 	sa.sa_sigaction = tmp_handler;
+	sb.sa_flags = SA_RESTART;
+	sigemptyset(&sb.sa_mask);
+	sb.sa_handler = SIG_IGN;
 	sigaction(SIGINT, &sa, NULL);
-	sigaction(SIGQUIT, &sa, NULL);
 	sigaction(SIGTERM, &sa, NULL);
 	sigaction(SIGPIPE, &sa, NULL);
+	sigaction(SIGQUIT, &sb, NULL);
 }

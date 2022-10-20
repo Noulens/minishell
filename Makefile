@@ -6,7 +6,7 @@
 #    By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 14:32:38 by cfontain          #+#    #+#              #
-#    Updated: 2022/10/19 18:26:22 by tnoulens         ###   ########.fr        #
+#    Updated: 2022/10/20 18:15:06 by tnoulens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ CORE		=	./srcs/core/prompt.c\
 				./srcs/core/pipex.c\
 				./srcs/core/execute.c\
 				./srcs/core/signals.c\
+				./srcs/core/signals_child.c\
 				./srcs/core/cmd_lexer.c\
 				./srcs/core/copy_dollar.c\
 				./srcs/core/build_env.c\

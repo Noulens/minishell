@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:50:14 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/10/19 19:05:21 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/10/20 18:01:19 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@
 # include <readline/history.h>
 # include <sys/types.h>
 # include <signal.h>
+# include <sys/ioctl.h>
 # include <term.h>
+# include <termios.h>
 # include <linux/limits.h>
 # include <limits.h>
 # include <errno.h>
@@ -250,6 +252,8 @@ int			ft_cd(t_minishell *ms, int argc, char **argv);
 	/* --- signals --- */
 void		tmp_handler(int sig, siginfo_t *info, void *context);
 void		signal_handling(void);
+void		tmp_child_handler(int sig, siginfo_t *info, void *context);
+void		child_sig_handler(void);
 
 /* Unique local variable to manage signals with sigaction() */
 
