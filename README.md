@@ -6,6 +6,7 @@ Minishell is a minimalist Linux Shell written in C able to handle the following 
 - heredocs
 - command with arguments
 - environment variables
+---
 We implemented the single quote and double quote management, however, it does not interpret unclosed quotes or special characters such as \ (backslash) or ; (semicolon).
 ## Built-in
 We implemented the following built-in:
