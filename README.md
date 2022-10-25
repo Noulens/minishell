@@ -1,5 +1,5 @@
 # Minishell
-This project was carried in team with [cfontain](https://github.com/clfontain) who built the lexer and the parser as well as several built-in.
+This project was carried out in team with [cfontain](https://github.com/clfontain) who built the lexer and the parser as well as several built-in.
 ## Description
 Minishell is a minimalist Linux Shell written in C able to handle the following features:
 - pipes
