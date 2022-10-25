@@ -3,10 +3,11 @@ This project was carried out in team with [cfontain](https://github.com/clfontai
 ## Description
 Minishell is a minimalist Linux Shell written in C able to handle the following features:
 - pipes
-- redirections
-- heredocs
+- redirections such as >, <, and >>
+- heredocs with expand option
 - command with arguments
 - environment variables
+- -c option in executable mode
 ---
 We implemented the single quote and double quote management, however, it does not interpret unclosed quotes or special characters such as \ (backslash) or ; (semicolon).
 ## Built-in
@@ -19,7 +20,7 @@ We implemented the following built-in:
 - unset without option
 
 ## Method
-We used a linked list and a lexer to build token that we then sent to a parser. The ouput of the parser is a command tab that can be executed accordingly.
-The environment is a linked list that allow us to add and remove variables easily. This linked list is converted to a table that can be sent to the execution functions.
+We used a linked list and a lexer to build tokens that we then sent to a parser. The ouput of the parser is a command tab that can be executed accordingly.
+The environment is a linked list that allows us to add and remove variables easily. This linked list is converted to a table that can be sent to the execution functions.
 
 This project was a great opportunity to better understand the shell, and to discover how parent and child process works as well as fds and environment of execution.
