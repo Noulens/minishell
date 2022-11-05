@@ -70,7 +70,7 @@ void	check_hd(t_command **pa, int i, t_minishell *ms, int check_hdq)
 	char	*p;
 	int		tmp_fd;
 
-	tmp_fd = open(".here_doc.tmp", O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	tmp_fd = open(pa[i]->hdpath, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (tmp_fd == -1 || tmp_fd > FOPEN_MAX)
 		return (perror("check_heredoc open"), (void)0);
 	pa[i]->fdhd = dup(STDIN_FILENO);
