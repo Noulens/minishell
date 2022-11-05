@@ -22,4 +22,4 @@ We implemented the following built-in:
 We used a linked list and a lexer to build tokens that we then sent to a parser. The ouput of the parser is a command tab that can be executed accordingly.
 The environment is a linked list that allows us to add and remove variables easily. This linked list is converted to a table that can be sent to the execution functions.
 
-This project was a great opportunity to better understand the shell, and to discover how parent and child process works as well as fds and environment of execution.
+This project was a great opportunity to better understand the shell, and to discover how parent and child process work as well as fds and environment of execution.
