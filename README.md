@@ -1,6 +1,11 @@
 # Minishell
 This project was carried out in team with [cfontain](https://github.com/clfontain) who built the lexer and the parser as well as several built-in.
-## Description
+## Summary
+
+Authorized functions for the assignment:  `readline`, `rl_clear_history`, `rl_on_new_line`, `rl_replace_line`, `rl_redisplay`, `add_history`, `printf`, `malloc`, `free`, `write`, `access`, `open`, `read`, `close`, `fork`, `wait`, `waitpid`, `wait3`, `wait4`, `signal`, `sigaction`, `sigemptyset`, `sigaddset`, `kill`, `exit`, `getcwd`, `chdir`, `stat`, `lstat`, `fstat`, `unlink`, `execve`, `dup`, `dup2`, `pipe`, `opendir`, `readdir`, `closedir`, `strerror`, `perror`, `isatty`, `ttyname`, `ttyslot`, `ioctl`, `getenv`, `tcsetattr`, `tcgetattr`, `tgetent`, `tgetflag`, `tgetnum`, `tgetstr`, `tgoto`, `tputs`
+
+Code written in accordance with **42 C** coding style.
+
 Minishell is a minimalist Linux Shell written in C able to handle the following features:
 - pipes
 - redirections such as >, <, and >>
